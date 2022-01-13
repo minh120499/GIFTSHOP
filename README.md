@@ -50,5 +50,35 @@
           Contact
             index.html
             style.css
+# Về công việc
+Nam:
+ + Trang chủ
+ + Danh sách (Tìm kiếm, bộ lọc) 
+ + Login/Res
+ + Thông tin người dùng
+ + Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
+ + Admin
 
+Thành:
+ + Chi tiết sản phẩm
+ + Thanh toán
+ + About
+ + Contact
+ + Wishlist
+
+Hương Giang (Viết API):
+ + Trang chủ 
+ + Danh sách (Tìm kiếm, bộ lọc) 
+ + Login/Res
+ + Thông tin người dùng
+ + Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
+ + Admin
+ + Chi tiết sản phẩm
+ + Thanh toán
+ + About
+ + Contact
+ + Wishlist
+
+Minh: 
+ + Database
 # Anh em có ý tưởng gì mới thì note dưới này nhé
