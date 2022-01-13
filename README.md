@@ -52,3 +52,4 @@
             style.css
 
 # Anh em có ý tưởng gì mới thì note dưới này nhé
+ - Ý tưởng mới nèeeee
