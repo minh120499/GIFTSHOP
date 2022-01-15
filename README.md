@@ -82,15 +82,14 @@ Thành:
 Hương Giang (Viết API):
 
 - Trang chủ
-- Danh sách (Tìm kiếm, bộ lọc)
-- Login/Res
+- Danh sách (Tìm kiếm, bộ lọc) 50%
+- Login/Res 90%
 - Thông tin người dùng
-- Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
 - Admin
-- Chi tiết sản phẩm
+- Chi tiết sản phẩm 
 - Thanh toán
-- About
-- Contact
+- About 99%
+- Contact 99%
 - Wishlist
 
 Minh:
