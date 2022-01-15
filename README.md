@@ -82,15 +82,14 @@ Thành:
 Hương Giang (Viết API):
 
 - Trang chủ
-- Danh sách (Tìm kiếm, bộ lọc)
-- Login/Res
+- Danh sách (Tìm kiếm, bộ lọc)  (50%)
+- Login/Res (90%)
 - Thông tin người dùng
-- Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
 - Admin
 - Chi tiết sản phẩm
 - Thanh toán
-- About
-- Contact
+- About (DONE)
+- Contact (DONE)
 - Wishlist
 
 Minh:
@@ -99,4 +98,6 @@ Minh:
 
 # Anh em có ý tưởng gì mới thì note dưới này nhé
 
+- Ý tưởng mới nèeeee
+- Giang is here
 - Ý tưởng mới nèeeee
