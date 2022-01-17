@@ -1,0 +1,99 @@
+@import "general.css";
+@import "header.css";
+@import "footer.css";
+.bread-crumb {
+  margin: 30px 0;
+}
+.bread-crumb ul li {
+  display: inline;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+.bread-crumb ul li a,
+.bread-crumb ul li i,
+.bread-crumb ul li span {
+  color: #7d7d7d;
+  text-decoration: none;
+  font-weight: 500;
+}
+.bread-crumb ul li a:hover {
+  color: #d7182a;
+}
+
+.main-content {
+  display: flex;
+}
+.main-content .new-price {
+  font-size: 16px;
+  color: #d7182a;
+  font-weight: bold;
+}
+.main-content .leftside {
+  width: 25%;
+}
+.main-content .leftside-categories, .main-content .leftside-bestsellers {
+  margin-bottom: 40px;
+  border: solid 1px #ebebeb;
+}
+.main-content .leftside ul li:first-child {
+  padding: 0;
+  background-color: #f2f2f2;
+}
+.main-content .leftside-bestsellers .item-content {
+  padding: 15px;
+  display: flex;
+}
+.main-content .leftside-bestsellers .item-content .thumbnail,
+.main-content .leftside-bestsellers .item-content .item-info {
+  display: inline-block;
+}
+.main-content .leftside-bestsellers .item-content .thumbnail h4,
+.main-content .leftside-bestsellers .item-content .item-info h4 {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 13px;
+}
+.main-content .leftside-bestsellers .item-content .thumbnail a,
+.main-content .leftside-bestsellers .item-content .item-info a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+.main-content .leftside-bestsellers .item-content .thumbnail a:hover,
+.main-content .leftside-bestsellers .item-content .item-info a:hover {
+  color: #d7182a;
+}
+.main-content .leftside-bestsellers .item-content .thumbnail .new-price,
+.main-content .leftside-bestsellers .item-content .item-info .new-price {
+  transform: translateY(60px);
+}
+.main-content .leftside-categories ul li {
+  border-top: solid 1px #ebebeb;
+  padding: 15px;
+}
+.main-content .leftside-categories ul li a {
+  color: #7d7d7d;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+.main-content .leftside-categories ul li li:last-child {
+  border-bottom: none;
+}
+.main-content .leftside h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: bold;
+  padding: 15px;
+}
+.main-content .leftside h2 i {
+  margin-right: 10px;
+  color: #d7182a;
+}
+
+.rightside {
+  width: 75%;
+}
+
+/*# sourceMappingURL=product.css.map */
