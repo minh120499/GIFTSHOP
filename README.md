@@ -4,7 +4,6 @@
 
   Cách lấy data từ Server:
 <br />
-<code>
 function showData() {<br />
     axios.get('./add.php') -> link của Server<br />
     .then(e => e.data)<br />
@@ -12,11 +11,9 @@ function showData() {<br />
         document.querySelector('#html').innerHTML = e<br />
     })<br />
 }
-</code>
 
  Cách gửi data lên Server
 <br />
-<code>
 function postData() { <br />
     let datalist = new FormData();<br />
     let text = document.getElementById('text').value<br />
@@ -27,7 +24,6 @@ function postData() { <br />
     .then(e => console.log(e.data))<br />
     return false;<br />
 }
-</code>
 # Về công việc
 
 Nam:
