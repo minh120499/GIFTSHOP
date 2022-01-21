@@ -3,6 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   Cách lấy data từ Server:
+
 function showData() {
     axios.get('./add.php') -> link của Server
     .then(e => e.data)
@@ -12,13 +13,13 @@ function showData() {
 }
 
  Cách gửi data lên Server
+
 function postData() {
     let datalist = new FormData();
     let text = document.getElementById('text').value
     let number = document.getElementById('number').value
     datalist.append('text',text);
     datalist.append('number', text);
-
     axios.post('http://localhost/be/add.php', datalist)
     .then(e => console.log(e.data))
     return false;
