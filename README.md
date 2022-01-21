@@ -5,27 +5,27 @@
   Cách lấy data từ Server:
 <br />
 <code>
-function showData() {
-    axios.get('./add.php') -> link của Server
-    .then(e => e.data)
-    .then(e => {
-        document.querySelector('#html').innerHTML = e
-    })
+function showData() {<br />
+    axios.get('./add.php') -> link của Server<br />
+    .then(e => e.data)<br />
+    .then(e => {<br />
+        document.querySelector('#html').innerHTML = e<br />
+    })<br />
 }
 </code>
 
  Cách gửi data lên Server
 <br />
 <code>
-function postData() {
-    let datalist = new FormData();
-    let text = document.getElementById('text').value
-    let number = document.getElementById('number').value
-    datalist.append('text',text);
-    datalist.append('number', text);
-    axios.post('http://localhost/be/add.php', datalist)
-    .then(e => console.log(e.data))
-    return false;
+function postData() { <br />
+    let datalist = new FormData();<br />
+    let text = document.getElementById('text').value<br />
+    let number = document.getElementById('number').value<br />
+    datalist.append('text',text);<br />
+    datalist.append('number', text);<br />
+    axios.post('http://localhost/be/add.php', datalist)<br />
+    .then(e => console.log(e.data))<br />
+    return false;<br />
 }
 </code>
 # Về công việc
