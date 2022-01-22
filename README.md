@@ -1,3 +1,65 @@
+# Về Axios
+  Link file
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  Cách lấy data từ Server:
+<br />
+function showData() {<br />
+    axios.get('./add.php') -> link của Server<br />
+    .then(e => e.data)<br />
+    .then(e => {<br />
+        document.querySelector('#html').innerHTML = e<br />
+    })<br />
+}
+
+ Cách gửi data lên Server
+<br />
+function postData() { <br />
+    let datalist = new FormData();<br />
+    let text = document.getElementById('text').value<br />
+    let number = document.getElementById('number').value<br />
+    datalist.append('text',text);<br />
+    datalist.append('number', text);<br />
+    axios.post('http://localhost/be/add.php', datalist)<br />
+    .then(e => console.log(e.data))<br />
+    return false;<br />
+}
+# Về công việc
+
+Nam:
+
+- Trang chủ
+- Danh sách (Tìm kiếm, bộ lọc)
+- Login/Res
+- Thông tin người dùng
+- Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
+- Admin
+
+Thành:
+
+- Chi tiết sản phẩm
+- Thanh toán
+- About
+- Contact
+- Wishlist
+
+Hương Giang (Viết API):
+
+- Trang chủ
+- Danh sách (Tìm kiếm, bộ lọc) 50%
+- Login/Res 90%
+- Thông tin người dùng
+- Admin
+- Chi tiết sản phẩm
+- Thanh toán
+- About 99%
+- Contact 99%
+- Wishlist
+
+Minh:
+
+- Database
+
 # ----- VỀ GIT ---------
 
 - Nhánh master chứa source code đã hoàn thiện
@@ -59,42 +121,6 @@ BỔ SUNG:
   js
   main.js
   validation.js
-
-# Về công việc
-
-Nam:
-
-- Trang chủ
-- Danh sách (Tìm kiếm, bộ lọc)
-- Login/Res
-- Thông tin người dùng
-- Danh sách các shop -> để liệt kê ra sản phẩm có sẵn ở shop
-- Admin
-
-Thành:
-
-- Chi tiết sản phẩm
-- Thanh toán
-- About
-- Contact
-- Wishlist
-
-Hương Giang (Viết API):
-
-- Trang chủ
-- Danh sách (Tìm kiếm, bộ lọc) 50%
-- Login/Res 90%
-- Thông tin người dùng
-- Admin
-- Chi tiết sản phẩm 
-- Thanh toán
-- About 99%
-- Contact 99%
-- Wishlist
-
-Minh:
-
-- Database
 
 # Anh em có ý tưởng gì mới thì note dưới này nhé
 
