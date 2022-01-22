@@ -51,7 +51,8 @@ a:hover {
 .leftside {
   width: 25%;
 }
-.leftside-categories, .leftside-bestsellers {
+.leftside-categories,
+.leftside-bestsellers {
   margin-bottom: 40px;
   border: solid 1px #ebebeb;
 }
@@ -202,15 +203,29 @@ a:hover {
 .rightside .product-detail .product-info-body .addcart-wrapper > div {
   margin-right: 10px;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier {
   border: 1px solid #d7182a;
   font-size: 16px;
   display: inline-block;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .quantity {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .quantity {
   font-weight: 600;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier input {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  input {
   width: 30px;
   height: 26px;
   border: none;
@@ -218,8 +233,18 @@ a:hover {
   background-color: white;
   text-align: center;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .minus:hover,
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .plus:hover {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .minus:hover,
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .plus:hover {
   color: #c01526;
 }
 .rightside .product-detail .product-info-body .addcart-wrapper .addcart button {
@@ -235,7 +260,12 @@ a:hover {
   padding: 0 10px;
   border-radius: 17px;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .addcart button:hover {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .addcart
+  button:hover {
   background-color: #c01526;
   transition: all 0.3s;
 }
@@ -258,7 +288,12 @@ a:hover {
   transition: all 0.3s;
   cursor: pointer;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .wishlist:hover i {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .wishlist:hover
+  i {
   color: #fff;
 }
 .rightside .product-detail .product-info-body .social {
@@ -317,10 +352,10 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
 }
-.rightside .tabs input[type=radio] {
+.rightside .tabs input[type="radio"] {
   display: none;
 }
-.rightside .tabs input[type=radio]:checked + label {
+.rightside .tabs input[type="radio"]:checked + label {
   background-color: #d7182a;
   color: #fff;
 }
@@ -378,7 +413,7 @@ a:hover {
   padding: 10px;
   border: 1px solid #ebebeb;
 }
-.rightside .tabs .tab .existed-review #form-review input[type=submit] {
+.rightside .tabs .tab .existed-review #form-review input[type="submit"] {
   text-transform: uppercase;
   font-weight: 500;
   background-color: #000;
@@ -388,10 +423,10 @@ a:hover {
   padding: 10px 20px;
   margin-top: 20px;
 }
-.rightside .tabs .tab .existed-review #form-review input[type=submit]:hover {
+.rightside .tabs .tab .existed-review #form-review input[type="submit"]:hover {
   background-color: #c01526;
 }
-.rightside input[type=radio]:checked + label + .tab {
+.rightside input[type="radio"]:checked + label + .tab {
   display: block;
 }
 

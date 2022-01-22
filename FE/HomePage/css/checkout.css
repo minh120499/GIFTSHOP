@@ -1,0 +1,339 @@
+@import "general.css";
+@import "header.css";
+@import "footer.css";
+a {
+  color: #7d7d7d;
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover {
+  color: #d7182a;
+  text-decoration: none;
+}
+
+.bread-crumb {
+  margin: 30px 0;
+}
+.bread-crumb ul li {
+  display: inline;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+.bread-crumb ul li span,
+.bread-crumb ul li i {
+  color: #7d7d7d;
+  font-weight: 500;
+}
+
+.bar-progress {
+  display: flex;
+  margin: 0 auto;
+}
+.bar-progress .step {
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+.bar-progress .step .bullet {
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bar-progress .step .bullet::before, .bar-progress .step .bullet::after {
+  height: 3px;
+  width: calc(100% - 30px);
+  position: absolute;
+  left: calc(50% + 15px);
+  bottom: 14px;
+  content: "";
+  background: #000;
+}
+.bar-progress .step .bullet::after {
+  background: #d7182a;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 0.3s linear forwards;
+}
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+.bar-progress .step p {
+  font-size: 18px;
+  font-weight: 500;
+}
+.bar-progress .step:last-child .bullet::before, .bar-progress .step:last-child .bullet::after {
+  display: none;
+}
+.bar-progress .step .check {
+  position: absolute;
+  left: 47%;
+  bottom: 2%;
+  color: #fff;
+  display: none;
+}
+
+.main-content {
+  display: flex;
+  margin: 30px 0 30px -30px;
+}
+.main-content .buttons {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+}
+.main-content .buttons button {
+  border: none;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+  padding: 8px 15px;
+  margin-left: 15px;
+}
+.main-content .buttons button:hover {
+  background-color: #c01526;
+  color: #000;
+}
+.main-content .card-label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin-left: 15px;
+  border: solid 2px #b7b7b7;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+}
+.main-content .card-input {
+  display: none;
+}
+.main-content .card-input:checked + label {
+  border: solid 2px green;
+}
+.main-content .card-input:checked + label i,
+.main-content .card-input:checked + label h2 {
+  color: green;
+}
+.main-content .details,
+.main-content .total-wrapper,
+.main-content .delivery-wrapper,
+.main-content .payment-wrapper {
+  background-color: #f2f2f2;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+.main-content .details div h2,
+.main-content .total-wrapper div h2,
+.main-content .delivery-wrapper div h2,
+.main-content .payment-wrapper div h2 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.main-content .leftside-wrapper {
+  width: 75%;
+}
+.main-content .leftside-wrapper .item-price {
+  font-size: 20px;
+  font-weight: 700;
+}
+.main-content .leftside-wrapper .cart-items .cart-item {
+  margin-bottom: 10px;
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .image-item {
+  display: inline-block;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .image-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .item-info {
+  flex-grow: 1;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .item-info .item-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc {
+  width: 120px;
+  position: relative;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .item-price {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier {
+  border: 1px solid #d7182a;
+  font-size: 16px;
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  bottom: 0px;
+  height: 30px;
+  border: none;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .quantity {
+  font-weight: 600;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier input {
+  width: 30px;
+  height: 26px;
+  border: none;
+  outline: none;
+  background-color: white;
+  text-align: center;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus:hover,
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus:hover {
+  color: #c01526;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus,
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus {
+  background-color: #d7182a;
+  color: #fff;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus:hover,
+.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus:hover {
+  color: #000;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-left: 1px solid #ebebeb;
+  padding-left: 20px;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .delete-btn i {
+  display: inline-block;
+  font-size: 20px;
+}
+.main-content .leftside-wrapper .cart-items .cart-item .delete-btn i:hover {
+  color: #c01526;
+  cursor: pointer;
+}
+.main-content .delivery,
+.main-content .payment {
+  margin-left: -15px;
+}
+.main-content .delivery-wrapper .delivery {
+  display: flex;
+}
+.main-content .delivery-wrapper .delivery-method {
+  width: 33.3333333333%;
+  margin-right: 15px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label {
+  border-radius: 20px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top i,
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top h2 {
+  margin-bottom: 15px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top i {
+  font-size: 50px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top p {
+  font-size: 16px;
+  color: #7d7d7d;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom {
+  margin-top: auto;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p {
+  font-size: 14px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
+  margin-bottom: 0;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
+  font-size: 24px;
+}
+.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
+  font-size: 30px;
+  font-weight: 500;
+  color: #d7182a;
+}
+.main-content .payment-wrapper .payment {
+  margin-left: 0;
+}
+.main-content .payment-wrapper .payment-method {
+  margin-bottom: 15px;
+}
+.main-content .payment-wrapper .payment .card-label {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.main-content .payment-wrapper .payment .card-label i {
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.total-wrapper {
+  width: 25%;
+  height: 330px;
+}
+.total-wrapper .total-price .form-coupon {
+  border: 1px solid #000;
+  background-color: #fff;
+  margin-bottom: 15px;
+}
+.total-wrapper .total-price .form-coupon form .form-group {
+  display: flex;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+.total-wrapper .total-price .form-coupon form .form-group input {
+  background-color: #fff;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  line-height: 44px;
+}
+.total-wrapper .total-price .form-coupon form .form-group input[type=text] {
+  width: calc(100% - 39.7px);
+}
+.total-wrapper .total-price .form-coupon form .form-group input[type=submit] {
+  padding-right: 10px;
+}
+.total-wrapper .total-price .subtotal,
+.total-wrapper .total-price .total,
+.total-wrapper .total-price .surcharge div {
+  display: flex;
+  justify-content: space-between;
+}
+.total-wrapper .total-price .subtotal {
+  margin-bottom: 16px;
+}
+.total-wrapper .total-price .subtotal span {
+  font-weight: 500;
+  font-size: 18px;
+}
+.total-wrapper .total-price .total span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=checkout.css.map */
