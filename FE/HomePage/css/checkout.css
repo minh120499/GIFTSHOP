@@ -26,7 +26,6 @@ a:hover {
 }
 
 .bar-progress {
-  display: flex;
   margin: 0 auto;
 }
 .bar-progress .step {
@@ -35,8 +34,8 @@ a:hover {
   position: relative;
 }
 .bar-progress .step .bullet {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   background-color: #000;
   color: #fff;
   border-radius: 50%;
@@ -47,9 +46,9 @@ a:hover {
 }
 .bar-progress .step .bullet::before, .bar-progress .step .bullet::after {
   height: 3px;
-  width: calc(100% - 30px);
+  width: calc(100% - 34px);
   position: absolute;
-  left: calc(50% + 15px);
+  left: calc(50% + 17px);
   bottom: 14px;
   content: "";
   background: #000;
@@ -89,19 +88,17 @@ a:hover {
   justify-content: right;
   margin-top: 20px;
 }
-.main-content .buttons button {
-  border: none;
-  outline: none;
+.main-content button {
   background-color: #000;
   color: #fff;
-  padding: 8px 15px;
   margin-left: 15px;
 }
-.main-content .buttons button:hover {
+.main-content button:hover {
   background-color: #c01526;
   color: #000;
 }
-.main-content .card-label {
+
+.card-label {
   display: block;
   cursor: pointer;
   width: 100%;
@@ -112,106 +109,129 @@ a:hover {
   text-align: center;
   background-color: #fff;
 }
-.main-content .card-input {
+
+.card-input {
   display: none;
 }
-.main-content .card-input:checked + label {
+.card-input:checked + label {
   border: solid 2px green;
 }
-.main-content .card-input:checked + label i,
-.main-content .card-input:checked + label h2 {
+.card-input:checked + label i,
+.card-input:checked + label h2 {
   color: green;
 }
-.main-content .details,
-.main-content .total-wrapper,
-.main-content .delivery-wrapper,
-.main-content .payment-wrapper {
+
+.wrapper {
   background-color: #f2f2f2;
   margin-left: 30px;
   margin-bottom: 30px;
   padding: 20px;
 }
-.main-content .details div h2,
-.main-content .total-wrapper div h2,
-.main-content .delivery-wrapper div h2,
-.main-content .payment-wrapper div h2 {
+.wrapper div h2 {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 0;
 }
-.main-content .leftside-wrapper {
+
+.leftside {
   width: 75%;
 }
-.main-content .leftside-wrapper .item-price {
+.leftside .wrapper #form-info div:not(:last-child) {
+  margin-left: -15px;
+}
+.leftside .wrapper #form-info div:not(:last-child) div {
+  margin-left: 15px;
+}
+.leftside .wrapper #form-info label {
+  min-width: 100px;
+}
+.leftside .wrapper #form-info input {
+  padding: 5px;
+  flex-grow: 1;
+}
+.leftside a {
+  background-color: #000;
+  color: #fff;
+}
+.leftside a:hover {
+  background-color: #c01526;
+  color: #000;
+}
+.leftside .or {
+  margin-left: 15px;
+}
+
+.item-price {
   font-size: 20px;
   font-weight: 700;
 }
-.main-content .leftside-wrapper .cart-items .cart-item {
+
+.cart-items .cart-item {
   margin-bottom: 10px;
   display: flex;
   background-color: #fff;
   padding: 20px;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .image-item {
+.cart-items .cart-item .image-item {
   display: inline-block;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .image-item img {
+.cart-items .cart-item .image-item img {
   width: 100px;
   height: 100px;
   margin-right: 20px;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .item-info {
+.cart-items .cart-item .item-info {
   flex-grow: 1;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .item-info .item-title {
-  font-size: 16px;
-  font-weight: 700;
+.cart-items .cart-item .item-info .item-title {
+  font-size: 18px;
+  font-weight: 500;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc {
-  width: 120px;
+.cart-items .cart-item .calc {
+  flex-shrink: 0;
+  width: 140px;
   position: relative;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .item-price {
+.cart-items .cart-item .calc .item-price {
   position: absolute;
   right: 20px;
   top: 0;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier {
+.cart-items .cart-item .calc .quantity-modifier {
   border: 1px solid #d7182a;
   font-size: 16px;
   display: inline-block;
   position: absolute;
   right: 20px;
   bottom: 0px;
-  height: 30px;
   border: none;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .quantity {
+.cart-items .cart-item .calc .quantity-modifier .quantity {
   font-weight: 600;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier input {
-  width: 30px;
-  height: 26px;
+.cart-items .cart-item .calc .quantity-modifier input {
+  width: 32px;
+  height: 32px;
   border: none;
   outline: none;
   background-color: white;
   text-align: center;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus:hover,
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus:hover {
+.cart-items .cart-item .calc .quantity-modifier .minus:hover,
+.cart-items .cart-item .calc .quantity-modifier .plus:hover {
   color: #c01526;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus,
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus {
+.cart-items .cart-item .calc .quantity-modifier .minus,
+.cart-items .cart-item .calc .quantity-modifier .plus {
   background-color: #d7182a;
   color: #fff;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .minus:hover,
-.main-content .leftside-wrapper .cart-items .cart-item .calc .quantity-modifier .plus:hover {
+.cart-items .cart-item .calc .quantity-modifier .minus:hover,
+.cart-items .cart-item .calc .quantity-modifier .plus:hover {
   color: #000;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .delete-btn {
+.cart-items .cart-item .delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,119 +239,146 @@ a:hover {
   border-left: 1px solid #ebebeb;
   padding-left: 20px;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .delete-btn i {
+.cart-items .cart-item .delete-btn i {
   display: inline-block;
   font-size: 20px;
 }
-.main-content .leftside-wrapper .cart-items .cart-item .delete-btn i:hover {
+.cart-items .cart-item .delete-btn i:hover {
   color: #c01526;
   cursor: pointer;
 }
-.main-content .delivery,
-.main-content .payment {
+
+.delivery,
+.payment {
   margin-left: -15px;
 }
-.main-content .delivery-wrapper .delivery {
+
+.wrapper .delivery {
   display: flex;
 }
-.main-content .delivery-wrapper .delivery-method {
+.wrapper .delivery-method {
   width: 33.3333333333%;
   margin-right: 15px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label {
+.wrapper .delivery-method .card-label {
   border-radius: 20px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper {
+.wrapper .delivery-method .card-label .label-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top i,
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top h2 {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-top i,
+.wrapper .delivery-method .card-label .label-wrapper .delivery-top h2 {
   margin-bottom: 15px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top i {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-top i {
   font-size: 50px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-top p {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-top p {
   font-size: 16px;
   color: #7d7d7d;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom {
   margin-top: auto;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p {
   font-size: 14px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
   margin-bottom: 0;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
   font-size: 24px;
 }
-.main-content .delivery-wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
+.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
   font-size: 30px;
   font-weight: 500;
   color: #d7182a;
 }
-.main-content .payment-wrapper .payment {
+
+.wrapper .payment {
   margin-left: 0;
 }
-.main-content .payment-wrapper .payment-method {
+.wrapper .payment-method {
   margin-bottom: 15px;
 }
-.main-content .payment-wrapper .payment .card-label {
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.wrapper .payment-method input:checked ~ .extended {
+  display: block;
 }
-.main-content .payment-wrapper .payment .card-label i {
+.wrapper .payment .card-label {
+  margin: 0;
+  padding: 0 15px;
+}
+.wrapper .payment .card-label i {
   font-size: 30px;
   margin-right: 15px;
+  line-height: 60px;
+}
+.wrapper .payment .extended {
+  display: none;
+  width: 420px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 15px 0;
+}
+.wrapper .payment .extended .form-group .label {
+  display: inline-block;
+  min-width: 120px;
+}
+.wrapper .payment .extended div:nth-child(3) .form-group {
+  margin-bottom: 0;
+}
+.wrapper .payment .extended div:nth-child(3) .form-group input {
+  width: 50px;
+  text-align: center;
+}
+.wrapper .payment .extended input {
+  padding: 5px;
+  flex: 1;
 }
 
-.total-wrapper {
+.rightside {
   width: 25%;
   height: 330px;
 }
-.total-wrapper .total-price .form-coupon {
+.rightside .total-price .form-coupon {
   border: 1px solid #000;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.total-wrapper .total-price .form-coupon form .form-group {
+.rightside .total-price .form-coupon form .form-group {
   display: flex;
   margin-bottom: 0;
   padding-left: 10px;
 }
-.total-wrapper .total-price .form-coupon form .form-group input {
+.rightside .total-price .form-coupon form .form-group input {
   background-color: #fff;
   font-size: 14px;
   border: none;
   outline: none;
   line-height: 44px;
 }
-.total-wrapper .total-price .form-coupon form .form-group input[type=text] {
+.rightside .total-price .form-coupon form .form-group input[type=text] {
   width: calc(100% - 39.7px);
 }
-.total-wrapper .total-price .form-coupon form .form-group input[type=submit] {
+.rightside .total-price .form-coupon form .form-group input[type=submit] {
   padding-right: 10px;
 }
-.total-wrapper .total-price .subtotal,
-.total-wrapper .total-price .total,
-.total-wrapper .total-price .surcharge div {
+.rightside .total-price .subtotal,
+.rightside .total-price .total,
+.rightside .total-price .surcharge div {
   display: flex;
   justify-content: space-between;
 }
-.total-wrapper .total-price .subtotal {
+.rightside .total-price .subtotal {
   margin-bottom: 16px;
 }
-.total-wrapper .total-price .subtotal span {
+.rightside .total-price .subtotal span {
   font-weight: 500;
   font-size: 18px;
 }
-.total-wrapper .total-price .total span {
+.rightside .total-price .total span {
   font-size: 20px;
   font-weight: 700;
 }
