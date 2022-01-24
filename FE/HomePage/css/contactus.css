@@ -41,8 +41,9 @@
   border: #b7b7b7 solid 1px;
   color: #b7b7b7;
   border-radius: 50%;
-  padding: 20px;
+  padding: 15px;
   margin-right: 10px;
+  font-size: 24px;
 }
 .contact div .contact-content {
   font-size: 14px;
@@ -96,6 +97,33 @@
 }
 .wrapper [type=submit]:hover {
   background-color: #a91321;
+}
+
+/* Responsive */
+@media screen and (max-width: 1023px) {
+  .contact,
+.wrapper {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .contact div {
+    width: 100%;
+    margin-left: 0;
+  }
+  .contact div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .contact div .contact-content {
+    font-size: 20px;
+  }
+
+  .wrapper .map,
+.wrapper .form {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+  }
 }
 
 /*# sourceMappingURL=contactus.css.map */

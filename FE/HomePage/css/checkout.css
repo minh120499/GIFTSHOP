@@ -80,7 +80,6 @@ a:hover {
 }
 
 .main-content {
-  display: flex;
   margin: 30px 0 30px -30px;
 }
 .main-content .buttons {
@@ -134,31 +133,30 @@ a:hover {
   margin-bottom: 0;
 }
 
-.leftside {
-  width: 75%;
-}
-.leftside .wrapper #form-info div:not(:last-child) {
+#form-info div:not(:last-child) {
   margin-left: -15px;
 }
-.leftside .wrapper #form-info div:not(:last-child) div {
+#form-info div:not(:last-child) div {
   margin-left: 15px;
 }
-.leftside .wrapper #form-info label {
+#form-info label {
   min-width: 100px;
 }
-.leftside .wrapper #form-info input {
+#form-info input {
   padding: 5px;
   flex-grow: 1;
 }
-.leftside a {
+
+.wrapper a {
   background-color: #000;
   color: #fff;
 }
-.leftside a:hover {
+.wrapper a:hover {
   background-color: #c01526;
   color: #000;
 }
-.leftside .or {
+
+.or {
   margin-left: 15px;
 }
 
@@ -167,38 +165,38 @@ a:hover {
   font-weight: 700;
 }
 
-.cart-items .cart-item {
+.cart-item {
   margin-bottom: 10px;
   display: flex;
   background-color: #fff;
   padding: 20px;
 }
-.cart-items .cart-item .image-item {
+.cart-item .image-item {
   display: inline-block;
 }
-.cart-items .cart-item .image-item img {
+.cart-item .image-item img {
   width: 100px;
   height: 100px;
   margin-right: 20px;
 }
-.cart-items .cart-item .item-info {
+.cart-item .item-info {
   flex-grow: 1;
 }
-.cart-items .cart-item .item-info .item-title {
+.cart-item .item-info .item-title {
   font-size: 18px;
   font-weight: 500;
 }
-.cart-items .cart-item .calc {
+.cart-item .calc {
   flex-shrink: 0;
   width: 140px;
   position: relative;
 }
-.cart-items .cart-item .calc .item-price {
+.cart-item .calc .item-price {
   position: absolute;
   right: 20px;
   top: 0;
 }
-.cart-items .cart-item .calc .quantity-modifier {
+.cart-item .calc .quantity-modifier {
   border: 1px solid #d7182a;
   font-size: 16px;
   display: inline-block;
@@ -207,10 +205,10 @@ a:hover {
   bottom: 0px;
   border: none;
 }
-.cart-items .cart-item .calc .quantity-modifier .quantity {
+.cart-item .calc .quantity-modifier .quantity {
   font-weight: 600;
 }
-.cart-items .cart-item .calc .quantity-modifier input {
+.cart-item .calc .quantity-modifier input {
   width: 32px;
   height: 32px;
   border: none;
@@ -218,20 +216,20 @@ a:hover {
   background-color: white;
   text-align: center;
 }
-.cart-items .cart-item .calc .quantity-modifier .minus:hover,
-.cart-items .cart-item .calc .quantity-modifier .plus:hover {
+.cart-item .calc .quantity-modifier .minus:hover,
+.cart-item .calc .quantity-modifier .plus:hover {
   color: #c01526;
 }
-.cart-items .cart-item .calc .quantity-modifier .minus,
-.cart-items .cart-item .calc .quantity-modifier .plus {
+.cart-item .calc .quantity-modifier .minus,
+.cart-item .calc .quantity-modifier .plus {
   background-color: #d7182a;
   color: #fff;
 }
-.cart-items .cart-item .calc .quantity-modifier .minus:hover,
-.cart-items .cart-item .calc .quantity-modifier .plus:hover {
+.cart-item .calc .quantity-modifier .minus:hover,
+.cart-item .calc .quantity-modifier .plus:hover {
   color: #000;
 }
-.cart-items .cart-item .delete-btn {
+.cart-item .delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,11 +237,11 @@ a:hover {
   border-left: 1px solid #ebebeb;
   padding-left: 20px;
 }
-.cart-items .cart-item .delete-btn i {
+.cart-item .delete-btn i {
   display: inline-block;
   font-size: 20px;
 }
-.cart-items .cart-item .delete-btn i:hover {
+.cart-item .delete-btn i:hover {
   color: #c01526;
   cursor: pointer;
 }
@@ -253,132 +251,128 @@ a:hover {
   margin-left: -15px;
 }
 
-.wrapper .delivery {
-  display: flex;
-}
-.wrapper .delivery-method {
+.delivery-method {
+  user-select: none;
   width: 33.3333333333%;
   margin-right: 15px;
 }
-.wrapper .delivery-method .card-label {
+.delivery-method .card-label {
   border-radius: 20px;
 }
-.wrapper .delivery-method .card-label .label-wrapper {
+.delivery-method .card-label .label-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-top i,
-.wrapper .delivery-method .card-label .label-wrapper .delivery-top h2 {
+.delivery-method .card-label .label-wrapper .delivery-top i,
+.delivery-method .card-label .label-wrapper .delivery-top h2 {
   margin-bottom: 15px;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-top i {
+.delivery-method .card-label .label-wrapper .delivery-top i {
   font-size: 50px;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-top p {
+.delivery-method .card-label .label-wrapper .delivery-top p {
   font-size: 16px;
   color: #7d7d7d;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom {
+.delivery-method .card-label .label-wrapper .delivery-bottom {
   margin-top: auto;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p {
+.delivery-method .card-label .label-wrapper .delivery-bottom p {
   font-size: 14px;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
+.delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
   margin-bottom: 0;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
+.delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
   font-size: 24px;
 }
-.wrapper .delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
+.delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
   font-size: 30px;
   font-weight: 500;
   color: #d7182a;
 }
 
-.wrapper .payment {
-  margin-left: 0;
-}
-.wrapper .payment-method {
+.payment-method {
   margin-bottom: 15px;
 }
-.wrapper .payment-method input:checked ~ .extended {
+.payment-method input:checked ~ .extended {
   display: block;
 }
-.wrapper .payment .card-label {
+
+.card-label {
   margin: 0;
   padding: 0 15px;
 }
-.wrapper .payment .card-label i {
+.card-label i {
   font-size: 30px;
   margin-right: 15px;
   line-height: 60px;
 }
-.wrapper .payment .extended {
+
+.extended {
   display: none;
   width: 420px;
   background-color: #fff;
   padding: 20px;
   margin: 15px 0;
 }
-.wrapper .payment .extended .form-group .label {
+.extended .form-group .label {
   display: inline-block;
   min-width: 120px;
 }
-.wrapper .payment .extended div:nth-child(3) .form-group {
+.extended div:nth-child(3) .form-group {
   margin-bottom: 0;
 }
-.wrapper .payment .extended div:nth-child(3) .form-group input {
+.extended div:nth-child(3) .form-group input {
   width: 50px;
   text-align: center;
 }
-.wrapper .payment .extended input {
+.extended input {
   padding: 5px;
   flex: 1;
 }
 
 .rightside {
-  width: 25%;
   height: 330px;
 }
-.rightside .total-price .form-coupon {
+.rightside .form-coupon {
   border: 1px solid #000;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.rightside .total-price .form-coupon form .form-group {
+.rightside .form-coupon form .form-group {
   display: flex;
   margin-bottom: 0;
   padding-left: 10px;
 }
-.rightside .total-price .form-coupon form .form-group input {
+.rightside .form-coupon form .form-group input {
   background-color: #fff;
   font-size: 14px;
   border: none;
   outline: none;
   line-height: 44px;
 }
-.rightside .total-price .form-coupon form .form-group input[type=text] {
+.rightside .form-coupon form .form-group input[type=text] {
   width: calc(100% - 39.7px);
 }
-.rightside .total-price .form-coupon form .form-group input[type=submit] {
+.rightside .form-coupon form .form-group input[type=submit] {
   padding-right: 10px;
 }
-.rightside .total-price .subtotal,
-.rightside .total-price .total,
-.rightside .total-price .surcharge div {
+.rightside .subtotal,
+.rightside .total,
+.rightside .surcharge div {
   display: flex;
   justify-content: space-between;
 }
-.rightside .total-price .subtotal {
+.rightside .subtotal {
   margin-bottom: 16px;
 }
-.rightside .total-price .subtotal span {
+.rightside .subtotal span {
   font-weight: 500;
   font-size: 18px;
 }
-.rightside .total-price .total span {
+.rightside .total span {
   font-size: 20px;
   font-weight: 700;
 }

@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/lightslider.css">
     <link rel="stylesheet" href="../css/product.css">
 </head>
 
 <body>
-    <div data-include="header"></div>
+    <!-- <div data-include="header"></div> -->
 
     <main>
         <div class="container">
@@ -38,6 +39,10 @@
             </div>
             <div class="main-content">
                 <div class="leftside">
+                    <label for="cate-check" class="check-btn">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <input type="checkbox" id="cate-check" class="d-none">
                     <div class="leftside-categories">
                         <div class="leftside-title">
                             <h2><i class="far fa-gem"></i>Categories</h2>
@@ -71,7 +76,7 @@
                                 <div class="item-content">                           
                                     <a href="#"><img src="../image/Featured_Products/img2.jpg" width="100px" height="100px" alt="" class="thumbnail"></a>
                                     <div class="item-info">
-                                        <a href="#" title="Product 2"><h4>Product 2</h4></a>
+                                        <a href="#" title="Product 2"><h4>Product 2 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4></a>
                                         <span class="new-price">&euro; 18</span>
                                     </div>
                                 </div>
@@ -212,16 +217,168 @@
                             </div>
                         </div>
                     </div>
-                    <div class="related-products"></div>
+                    <div class="related-products">
+                        <h3 class="title">Related Products</h3>
+                        <hr>
+                        <ul id="autoWidth" class="cs-hidden">
+                            <li class="item-a">
+                                <div class="box">
+                                    <div class="slider">
+                                        <img src="../image/Featured_Products/img-test.jpg" alt="">
+                                        <div class="view">
+                                            <a href="#" class="view-icon"><i class="far fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-detail">
+                                        <div class="box-detail__top">
+                                            <a href="#">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                        </div>
+                                        <div class="box-detail__bottom">
+                                            <div class="new-price">&euro; 18</div>
+                                            <div class="buttons">
+                                                <div class="addcart">
+                                                    <button type="submit">Add to cart</button>
+                                                </div>
+                                                <div class="wishlist">
+                                                    <i class="far fa-heart"></i>
+                                                </div>
+                                                <div class="compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-b">
+                                <div class="box">
+                                    <div class="slider">
+                                        <img src="../image/Featured_Products/img-test.jpg" alt="">
+                                        <div class="view">
+                                            <a href="#" class="view-icon"><i class="far fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-detail">
+                                        <div class="box-detail__top">
+                                            <a href="#">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                        </div>
+                                        <div class="box-detail__bottom">
+                                            <div class="new-price">&euro; 18</div>
+                                            <div class="buttons">
+                                                <div class="addcart">
+                                                    <button type="submit">Add to cart</button>
+                                                </div>
+                                                <div class="wishlist">
+                                                    <i class="far fa-heart"></i>
+                                                </div>
+                                                <div class="compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-c">
+                                <div class="box">
+                                    <div class="slider">
+                                        <img src="../image/Featured_Products/img-test.jpg" alt="">
+                                        <div class="view">
+                                            <a href="#" class="view-icon"><i class="far fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-detail">
+                                        <div class="box-detail__top">
+                                            <a href="#">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                        </div>
+                                        <div class="box-detail__bottom">
+                                            <div class="new-price">&euro; 18</div>
+                                            <div class="buttons">
+                                                <div class="addcart">
+                                                    <button type="submit">Add to cart</button>
+                                                </div>
+                                                <div class="wishlist">
+                                                    <i class="far fa-heart"></i>
+                                                </div>
+                                                <div class="compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-d">
+                                <div class="box">
+                                    <div class="slider">
+                                        <img src="../image/Featured_Products/img-test.jpg" alt="">
+                                        <div class="view">
+                                            <a href="#" class="view-icon"><i class="far fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-detail">
+                                        <div class="box-detail__top">
+                                            <a href="#">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                        </div>
+                                        <div class="box-detail__bottom">
+                                            <div class="new-price">&euro; 18</div>
+                                            <div class="buttons">
+                                                <div class="addcart">
+                                                    <button type="submit">Add to cart</button>
+                                                </div>
+                                                <div class="wishlist">
+                                                    <i class="far fa-heart"></i>
+                                                </div>
+                                                <div class="compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-e">
+                                <div class="box">
+                                    <div class="slider">
+                                        <img src="../image/Featured_Products/img-test.jpg" alt="">
+                                        <div class="view">
+                                            <a href="#" class="view-icon"><i class="far fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-detail">
+                                        <div class="box-detail__top">
+                                            <a href="#">Product1</a>
+                                        </div>
+                                        <div class="box-detail__bottom">
+                                            <div class="new-price">&euro; 18</div>
+                                            <div class="buttons">
+                                                <div class="addcart">
+                                                    <button type="submit">Add to cart</button>
+                                                </div>
+                                                <div class="wishlist">
+                                                    <i class="far fa-heart"></i>
+                                                </div>
+                                                <div class="compare">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div data-include="footer"></div>
+    <!-- <div data-include="footer"></div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/components.js"></script>
+    <script src="../js/lightslider.js"></script>
+    <script type="module" src="../js/product.js"></script>
 </body>
 </html>
