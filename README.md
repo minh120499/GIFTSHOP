@@ -128,21 +128,21 @@ BỔ SUNG:
 # ----- Chia file FE ----
 
 FE
-| css
-| |--- responsive
-| |--- rpTenFile.css
-| |---(các file css)
-| js
-| |--- module
-| |--- (các file js)
-| image
-| |--- header
-| |--- footer
-| |--- products
-| |--- (mỗi file 1 folder (nếu có))
-| layout
-| |--- chứa các file html
-| index.html
+|-- css <br>
+|-- |-- responsive <br>
+|-- |-- |--- rpTenFile.css <br>
+|-- |---(các file css) <br>
+|-- js <br>
+|-- |--- module <br>
+|-- |--- (các file js) <br>
+|-- image <br>
+|-- |--- header <br>
+|-- |--- footer <br>
+|-- |--- products <br>
+|-- |--- (mỗi file 1 folder (nếu có)) <br>
+|-- layout <br>
+|-- |--- chứa các file html <br>
+|-- index.html <br>
 
 # Anh em có ý tưởng gì mới thì note dưới này nhé
 
