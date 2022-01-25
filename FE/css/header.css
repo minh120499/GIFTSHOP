@@ -1,10 +1,72 @@
 @import "general.css";
+@import "./responsive/rpHeader.css";
+
+#btnScrollTop,
+.call,
+.contact {
+  z-index: 500;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgb(217, 34, 51);
+  background: linear-gradient(
+    135deg,
+    rgba(217, 34, 51, 1) 0%,
+    rgba(254, 37, 94, 1) 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#btnScrollTop {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+}
+
+#btnScrollTop i,
+.call i,
+.contact i {
+  font-size: 20px;
+}
+
+.call,
+.contact {
+  margin: 10px 0;
+}
+
+.left {
+  z-index: 500;
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+}
+
+.contact span {
+  color: #fff;
+  font-size: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnScrollTop:active {
+  background-color: var(--primary_color);
+}
+
 /*--------------------------------------------------------------------- TOP ----------------------------------------------------------------------*/
 .top {
   width: 100%;
   height: 40px;
   position: relative;
-  background-image: url(../image/top/top.png);
+  background-image: url(../image/header/top/top.png);
   color: #fff;
   font-size: 12px;
 }
@@ -19,6 +81,12 @@
 .top-right {
   height: 100%;
   width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.top-left li:nth-child(1) {
+  height: 100%;
   display: flex;
   align-items: center;
 }
@@ -39,8 +107,8 @@
   cursor: default;
 }
 
-.top-left li:nth-child(2),
-.top-right li:nth-child(2) {
+.top-left > li:nth-child(2),
+.top-right > li:nth-child(2) {
   padding-left: 15px;
   cursor: pointer;
 }
@@ -51,8 +119,6 @@
 }
 
 .top-left > li:nth-child(1) {
-  height: 100%;
-  margin-top: 4.5%;
   position: relative;
 }
 
@@ -81,7 +147,7 @@
   background: #fff;
   width: 170px;
   box-shadow: 5px 5px 5px 0px rgba(171, 171, 171, 1);
-  top: 25px;
+  top: 38px;
   animation: topLeftAni linear 0.4s;
   display: none;
 }
@@ -139,8 +205,51 @@
   width: 70px;
 }
 
-/*----------------------------------------------------------------- NAV
------------------------------------------------------------------*/
+/*----------------------------------------------------------------- NAV -----------------------------------------------------------------*/
+.nav-right {
+  width: 350px;
+}
+
+/*--------------------------------------- CSS cho nút search -----------------------------------*/
+.search_box {
+  overflow: hidden;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.5s ease;
+  margin: 0 15px;
+}
+
+.search_box_input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #000;
+  font-size: 14px;
+  padding: 0 50px 0 20px;
+}
+
+.search_box button {
+  position: absolute;
+  border: none;
+  outline: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+}
+
+.search_box.open {
+  width: 200px;
+  border: 1px solid #ccc;
+}
 .nav {
   width: 100%;
   height: 75px;
@@ -163,6 +272,7 @@
 }
 
 .nav-left img {
+  width: 100%;
   object-fit: fill;
   object-position: center;
   cursor: pointer;
@@ -196,7 +306,6 @@
 }
 
 .nav-right {
-  width: 15%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -236,6 +345,10 @@
   position: relative;
 }
 
+.nav a:hover {
+  text-decoration: none !important;
+}
+
 .nav-mid > ul > li:hover {
   color: var(--primary_color);
 }
@@ -251,12 +364,8 @@
   }
 }
 
-.Home,
-.shop,
 .promotion,
-.blog,
-.portfolios,
-.pages {
+.blog {
   z-index: 2;
   position: absolute;
   background: #fff;
@@ -271,17 +380,11 @@
   color: rgb(148, 148, 148);
 }
 
-.Home > ul,
-.shop > ul,
 .promotion > ul,
-.blog > ul,
-.portfolios > ul,
-.pages > ul {
+.blog > ul {
   padding: 0 10px 0 20px;
 }
 
-.Home > ul > li:nth-child(1),
-.shop > ul > li:nth-child(1),
 .promotion > ul > li:nth-child(2),
 .blog > ul > li:nth-child(1) {
   font-size: 14px;
@@ -291,59 +394,32 @@
   color: #000;
 }
 
-.nav-mid > ul > li:nth-child(1):hover .Home,
-.nav-mid > ul > li:nth-child(2):hover .shop,
-.nav-mid > ul > li:nth-child(3):hover .promotion,
-.nav-mid > ul > li:nth-child(4):hover .blog,
-.nav-mid > ul > li:nth-child(5):hover .portfolios,
-.nav-mid > ul > li:nth-child(6):hover .pages {
+.nav-mid > ul > li:nth-child(2):hover .promotion,
+.nav-mid > ul > li:nth-child(3):hover .blog {
   display: flex;
 }
 
-.Home > ul > li,
-.shop > ul > li,
 .promotion > ul > li,
-.blog > ul > li,
-.portfolios > ul > li,
-.pages > ul > li {
+.blog > ul > li {
   padding: 10px 0;
   font-size: 13px;
   font-weight: normal;
 }
 
-.Home > ul > li:hover,
-.shop > ul > li:hover,
 .promotion > ul > li:hover,
-.blog > ul > li:hover,
-.portfolios > ul > li:hover,
-.pages > ul > li:hover {
+.blog > ul > li:hover {
   color: var(--primary_color);
 }
 
-.Home > ul > li:nth-child(1):hover,
-.shop > ul > li:nth-child(1):hover,
 .promotion > ul > li:nth-child(2):hover,
 .blog > ul > li:nth-child(1):hover {
   color: #000;
 }
 
-/*------------------- HOME -------------------*/
-.Home {
-  left: -100px;
-}
-
-/*------------------------- SHOP ----------------------*/
-.shop {
-  left: -300px;
-}
-.shop > ul > li,
-.blog > ul > li {
-  width: 180px;
-}
-
 /*----------------------  PROMOTION ----------------------------*/
 .promotion {
   left: -450px;
+  z-index: 1000;
 }
 
 .promotion > ul > li:nth-child(1) {
@@ -353,27 +429,16 @@
 .promotion > ul > li:nth-child(1) img {
   object-fit: fill;
   object-position: center;
+  transition: all 0.3s;
+}
+
+.promotion > ul > li:nth-child(1) img:hover {
+  transform: scale(0.8); /* zoom to ra khoảng 1.2 lần*/
 }
 
 /*------------------- BLOG ------------------------*/
 .blog {
-  left: -450px;
-}
-
-/*---------------- PORTFOLIOS ------------------------*/
-.portfolios {
-  left: -50px;
-}
-
-.portfolios > ul > li {
-  width: 150px;
-}
-
-/*------------ PAGES -------------------*/
-.pages {
-  left: -50px;
-}
-
-.pages > ul > li {
-  width: 120px;
+  z-index: 1000;
+  width: 630px;
+  left: -250px;
 }

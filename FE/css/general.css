@@ -2,6 +2,7 @@
 :root {
   --primary_color: #d7182a;
   --line_color: #cccccc;
+  --text_color: #7d7d7d;
 }
 
 * {
@@ -13,6 +14,7 @@
 body {
   width: 100%;
   font-family: "Poppins";
+  position: relative;
 }
 
 ul li,
@@ -22,6 +24,17 @@ li {
 
 ul {
   margin-bottom: 0 !important;
+}
+
+a {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000 !important;
+}
+
+a:hover {
+  color: var(--primary_color) !important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

@@ -1,4 +1,66 @@
-<!-- Header -->
+<!-- Menu nav left-->
+<div class="Menu_nav">
+    <div class="Menu_nav_content">
+        <ul>
+            <li class="menu_close"><i class="fas fa-times"></i></li>
+            <li class="menu_search">
+                <input type="text" placeholder="Search item...">
+                <i class="fas fa-search"></i>
+            </li>
+            <li class="option">
+                <button class="Menu_nav_btn">MENU</button>
+                <button class="Categories_nav_btn">CATEGORIES</button>
+            </li>
+            <div class="option_menu">
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li><a href="">Products</a></li>
+                <li>
+                    <button class="dropdown-toggle Promotion_btn">Promotion</button>
+                    <ul class="Promotion_drop">
+                        <li><a href="">Accessories</a></li>
+                        <li><a href="">Accessories</a></li>
+                        <li><a href="">Accessories</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle Blog_btn">Blog</button>
+                    <ul class="Blog_drop">
+                        <li><a href="">Blog Layout 1</a></li>
+                        <li><a href="">Blog Layout 2</a></li>
+                        <li><a href="">Blog Layout 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </div>
+            <div class="option_categories">
+                <li><a href="">Christmas</a></li>
+                <li><a href="">Birthday</a></li>
+                <li><a href="">Anniver</a></li>
+                <li><a href="">Jewellery</a></li>
+                <li><a href="">Wedding</a></li>
+                <li><a href="">Easter</a></li>
+            </div>
+        </ul>
+    </div>
+</div>
+
+<button id="btnScrollTop">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="left">
+    <button class="call">
+        <i class="fas fa-phone-alt"></i>
+    </button>
+    <button class="contact">
+        <i class="fas fa-comments"></i>
+        <span>Contact Us</span>
+    </button>
+</div>
+
 <!-- Top -->
 <div class="top">
     <div class="container">
@@ -13,7 +75,7 @@
                     <li>My Account</li>
                 </ul>
             </li>
-            <li>
+            <li class="login_open">
                 <i class="fas fa-lock"></i>
                 <span>Login</span>
             </li>
@@ -21,20 +83,20 @@
         <div class="top-right">
             <li class="top-right-language">
                 <div class="top-right-language-img">
-                    <img src="../image/top/Anh.png" alt="">
+                    <img src="../image/header/top/Anh.png">
                 </div>
                 <span>English</span>
                 <i class="fas fa-angle-down"></i>
                 <ul class="top-right-language_dropdown">
                     <li>
                         <div class="top-right-language-img">
-                            <img src="../image/top/Anh.png" alt="">
+                            <img src="../image/header/top/Anh.png">
                         </div>
                         <span>English</span>
                     </li>
                     <li>
                         <div class="top-right-language-img">
-                            <img src="../image/top/vietnam.png" alt="">
+                            <img src="../image/header/top/vietnam.png">
                         </div>
                         <span>Việt Nam</span>
                     </li>
@@ -56,82 +118,22 @@
 <div class="nav">
     <div class="container">
         <div class="nav-left">
-            <img src="../image/logo.png" alt="">
+            <a href="./index.html"><img src="../image/header/logo.png" alt=""></a>
+            <div class="nav-mid_rp">
+                <button><i class="fas fa-bars"></i></button>
+            </div>
         </div>
         <div class="nav-mid">
             <ul>
-                <li class="red">
-                    <span>HOME</span>
-                    <i class="fas fa-sort-down"></i>
-                    <div class="Home">
-                        <ul>
-                            <li>HOMEPAGELAYOUTS</li>
-                            <li class="red"><a href="index.html">Home</a></li>
-                            <li>Home Page 2</li>
-                            <li>Home Page 3</li>
-                            <li></li>
-                        </ul>
-                        <ul>
-                            <li>HOMEPAGELAYOUTS</li>
-                            <li>Home Page LTR</li>
-                            <li>Home Page RTL</li>
-                            <li>Home Page Boxed</li>
-                            <li>Home Page Full</li>
-                        </ul>
-                    </div>
-                </li>
                 <li>
-                    <span>SHOP</span>
-                    <i class="fas fa-sort-down"></i>
-                    <div class="shop">
-                        <ul>
-                            <li>
-                                <p>SHOP LAYOUTS</p>
-                            </li>
-                            <li><span>Left Sidebar Grid</span></li>
-                            <li><span>Right Sidebar Grid</span></li>
-                            <li><span>Full Width Grid</span></li>
-                            <li><span>2 Columns Grid</span></li>
-                            <li><span>3 Columns Grid</span></li>
-                            <li><span>4 Columns Grid</span></li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>SHOP PAGES</p>
-                            </li>
-                            <li>Shop</li>
-                            <li>Cart</li>
-                            <li>Wishlist</li>
-                            <li>Checkout</li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>PRODUCT TYPES</p>
-                            </li>
-                            <li><span>Simple Product</span></li>
-                            <li><span>Variable Product</span></li>
-                            <li><span>Group Product</span></li>
-                            <li><span>External & Affiliate Product</span></li>
-                            <li><span>Swatch Variation Image</span></li>
-                            <li><span>Bundle Products</span></li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>PRODUCT PAGES</p>
-                            </li>
-                            <li><span>Full Width</span></li>
-                            <li><span>Left Sidebar</span></li>
-                            <li><span>Right Sidebar</span></li>
-                            <li><span>Featured Video</span></li>
-                        </ul>
-                    </div>
+                    <a href="./HTML/Products.html"><span>PRODUCTS</span></a>
                 </li>
                 <li>
                     <span>PROMOTION</span>
                     <i class="fas fa-sort-down"></i>
                     <div class="promotion">
                         <ul>
-                            <li><img src="../image/nav/img1.jpg" alt=""></li>
+                            <li><img src="../image/header/nav/img1.jpg" alt=""></li>
                             <li><span>ACCESSORIES</span></li>
                             <li><span>Maybellin Face Power</span></li>
                             <li><span>Chanel Mascara</span></li>
@@ -141,7 +143,7 @@
                             <li><span>Lady Dior Mascara</span></li>
                         </ul>
                         <ul>
-                            <li><img src="../image/nav/img2.jpg" alt=""></li>
+                            <li><img src="../image/header/nav/img2.jpg" alt=""></li>
                             <li><span>ACCESSORIES</span></li>
                             <li><span>Maybellin Face Power</span></li>
                             <li><span>Chanel Mascara</span></li>
@@ -151,7 +153,7 @@
                             <li><span>Lady Dior Mascara</span></li>
                         </ul>
                         <ul>
-                            <li><img src="../image/nav/img3.jpg" alt=""></li>
+                            <li><img src="../image/header/nav/img3.jpg" alt=""></li>
                             <li><span>ACCESSORIES</span></li>
                             <li><span>Maybellin Face Power</span></li>
                             <li><span>Chanel Mascara</span></li>
@@ -161,7 +163,7 @@
                             <li><span>Lady Dior Mascara</span></li>
                         </ul>
                         <ul>
-                            <li><img src="../image/nav/img4.jpg" alt=""></li>
+                            <li><img src="../image/header/nav/img4.jpg" alt=""></li>
                             <li><span>ACCESSORIES</span></li>
                             <li><span>Maybellin Face Power</span></li>
                             <li><span>Chanel Mascara</span></li>
@@ -216,32 +218,18 @@
                     </div>
                 </li>
                 <li>
-                    <span>PORTFOLIOS</span>
-                    <i class="fas fa-sort-down"></i>
-                    <div class="portfolios">
-                        <ul>
-                            <li>Portfolio 2 Columns</li>
-                            <li>Portfolio 3 Columns</li>
-                            <li>Portfolio 4 Columns</li>
-                            <li>Portfolio Masonry</li>
-                        </ul>
-                    </div>
+                    <a href="#"><span>ABOUT US</span></a>
                 </li>
                 <li>
-                    <span>PAGES</span>
-                    <i class="fas fa-sort-down"></i>
-                    <div class="pages">
-                        <ul>
-                            <li>404 Page</li>
-                            <li><span>Contact US</span></li>
-                            <li><a href="aboutus.html">About US</a></li>
-                        </ul>
-                    </div>
+                    <a href="#"><span>CONTACT US</span></a>
                 </li>
             </ul>
         </div>
         <div class="nav-right">
-            <li><i class="fas fa-search"></i></li>
+            <div class="search_box">
+                <input type="text" class="search_box_input">
+                <button class="search_box_btn"><i class="fas fa-search"></i></button>
+            </div>
             <li class="cart">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="cart_noti">
@@ -251,4 +239,3 @@
         </div>
     </div>
 </div>
-<!-- End Header -->

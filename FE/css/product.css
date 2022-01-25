@@ -68,7 +68,8 @@ a:hover {
   display: block;
   line-height: 30px;
 }
-.leftside-categories, .leftside-bestsellers {
+.leftside-categories,
+.leftside-bestsellers {
   margin-bottom: 40px;
   border: solid 1px #ebebeb;
 }
@@ -171,7 +172,8 @@ a:hover {
   background-color: #c01526;
   transition: all 0.3s;
 }
-.rightside .wishlist, .rightside .compare {
+.rightside .wishlist,
+.rightside .compare {
   border: 1px solid #d7182a;
   border-radius: 50%;
   width: 30px;
@@ -181,19 +183,23 @@ a:hover {
   align-items: center;
   background-color: #fff;
 }
-.rightside .wishlist i, .rightside .compare i {
+.rightside .wishlist i,
+.rightside .compare i {
   display: block;
   color: #d7182a;
 }
-.rightside .wishlist:hover, .rightside .compare:hover {
+.rightside .wishlist:hover,
+.rightside .compare:hover {
   background-color: #c01526;
   transition: all 0.3s;
   cursor: pointer;
 }
-.rightside .wishlist:hover i, .rightside .compare:hover i {
+.rightside .wishlist:hover i,
+.rightside .compare:hover i {
   color: #fff;
 }
-.rightside .social-link, .rightside .view-icon {
+.rightside .social-link,
+.rightside .view-icon {
   text-decoration: none;
   border: 1px solid #d7182a;
   border-radius: 50%;
@@ -204,16 +210,19 @@ a:hover {
   align-items: center;
   background-color: #d7182a;
 }
-.rightside .social-link i, .rightside .view-icon i {
+.rightside .social-link i,
+.rightside .view-icon i {
   display: block;
   color: #fff;
 }
-.rightside .social-link:hover, .rightside .view-icon:hover {
+.rightside .social-link:hover,
+.rightside .view-icon:hover {
   background-color: #c01526;
   transition: all 0.3s;
   cursor: pointer;
 }
-.rightside .social-link:hover i, .rightside .view-icon:hover i {
+.rightside .social-link:hover i,
+.rightside .view-icon:hover i {
   color: #fff;
 }
 .rightside .product-detail {
@@ -291,24 +300,58 @@ a:hover {
 .rightside .product-detail .product-info-body .addcart-wrapper > div {
   margin-right: 10px;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier {
   font-size: 16px;
   display: flex;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .quantity {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .quantity {
   font-weight: 600;
   background-color: #f2f2f2;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .minus,
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .plus {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .minus,
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .plus {
   background-color: #d7182a;
   color: #fff;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .minus:hover,
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier .plus:hover {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .minus:hover,
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  .plus:hover {
   color: #000;
 }
-.rightside .product-detail .product-info-body .addcart-wrapper .quantity-modifier input {
+.rightside
+  .product-detail
+  .product-info-body
+  .addcart-wrapper
+  .quantity-modifier
+  input {
   width: 30px;
   height: 30px;
   border: none;
@@ -319,7 +362,8 @@ a:hover {
   display: flex;
   margin-top: 20px;
 }
-.rightside .product-detail .product-info-body .social-link, .rightside .product-detail .product-info-body .view-icon,
+.rightside .product-detail .product-info-body .social-link,
+.rightside .product-detail .product-info-body .view-icon,
 .rightside .product-detail .product-info-body .social .title {
   margin-right: 15px;
 }
@@ -347,10 +391,10 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
 }
-.rightside .tabs input[type=radio] {
+.rightside .tabs input[type="radio"] {
   display: none;
 }
-.rightside .tabs input[type=radio]:checked + label {
+.rightside .tabs input[type="radio"]:checked + label {
   background-color: #d7182a;
   color: #fff;
 }
@@ -408,7 +452,7 @@ a:hover {
   padding: 10px;
   border: 1px solid #ebebeb;
 }
-.rightside .tabs .tab .existed-review #form-review input[type=submit] {
+.rightside .tabs .tab .existed-review #form-review input[type="submit"] {
   text-transform: uppercase;
   font-weight: 500;
   background-color: #000;
@@ -418,10 +462,10 @@ a:hover {
   padding: 10px 20px;
   margin-top: 20px;
 }
-.rightside .tabs .tab .existed-review #form-review input[type=submit]:hover {
+.rightside .tabs .tab .existed-review #form-review input[type="submit"]:hover {
   background-color: #c01526;
 }
-.rightside input[type=radio]:checked + label + .tab {
+.rightside input[type="radio"]:checked + label + .tab {
   display: block;
 }
 .rightside .related-products h3 {
