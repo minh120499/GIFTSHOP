@@ -1,29 +1,32 @@
 # Về Axios
-  Link file
+
+Link file
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  Cách lấy data từ Server:
+Cách lấy data từ Server:
 <br />
 function showData() {<br />
-    axios.get('./add.php') -> link của Server<br />
-    .then(e => e.data)<br />
-    .then(e => {<br />
-        document.querySelector('#html').innerHTML = e<br />
-    })<br />
+axios.get('./add.php') -> link của Server<br />
+.then(e => e.data)<br />
+.then(e => {<br />
+document.querySelector('#html').innerHTML = e<br />
+})<br />
 }
 
- Cách gửi data lên Server
+Cách gửi data lên Server
 <br />
 function postData() { <br />
-    let datalist = new FormData();<br />
-    let text = document.getElementById('text').value<br />
-    let number = document.getElementById('number').value<br />
-    datalist.append('text',text);<br />
-    datalist.append('number', text);<br />
-    axios.post('http://localhost/be/add.php', datalist)<br />
-    .then(e => console.log(e.data))<br />
-    return false;<br />
+let datalist = new FormData();<br />
+let text = document.getElementById('text').value<br />
+let number = document.getElementById('number').value<br />
+datalist.append('text',text);<br />
+datalist.append('number', text);<br />
+axios.post('http://localhost/be/add.php', datalist)<br />
+.then(e => console.log(e.data))<br />
+return false;<br />
 }
+
 # Về công việc
 
 Nam:
@@ -121,6 +124,25 @@ BỔ SUNG:
   js
   main.js
   validation.js
+
+# ----- Chia file FE ----
+
+FE
+| css
+| |--- responsive
+| |--- rpTenFile.css
+| |---(các file css)
+| js
+| |--- module
+| |--- (các file js)
+| image
+| |--- header
+| |--- footer
+| |--- products
+| |--- (mỗi file 1 folder (nếu có))
+| layout
+| |--- chứa các file html
+| index.html
 
 # Anh em có ý tưởng gì mới thì note dưới này nhé
 
