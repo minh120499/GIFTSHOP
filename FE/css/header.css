@@ -1,0 +1,443 @@
+@import 'general.css';
+
+#btnScrollTop,
+.call,
+.contact {
+  z-index: 500;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgb(217, 34, 51);
+  background: linear-gradient(
+    135deg,
+    rgba(217, 34, 51, 1) 0%,
+    rgba(254, 37, 94, 1) 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#btnScrollTop {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+}
+
+#btnScrollTop i,
+.call i,
+.contact i {
+  font-size: 20px;
+}
+
+.call,
+.contact {
+  margin: 10px 0;
+}
+
+.left {
+  z-index: 500;
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+}
+
+.contact span {
+  color: #fff;
+  font-size: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnScrollTop:active {
+  background-color: var(--primary_color);
+}
+
+/*--------------------------------------------------------------------- TOP ----------------------------------------------------------------------*/
+.top {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  background-image: url(../image/header/top/top.png);
+  color: #fff;
+  font-size: 12px;
+}
+
+.top .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.top-left,
+.top-right {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.top-left li:nth-child(1) {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.top-right {
+  width: 50%;
+  justify-content: right;
+}
+
+.top-left li:nth-child(1) span,
+.top-right li:nth-child(1) i {
+  border-right: 1px solid #fff;
+  padding-right: 15px;
+}
+
+.top-left li:nth-child(1),
+.top-right li:nth-child(1) {
+  cursor: default;
+}
+
+.top-left > li:nth-child(2),
+.top-right > li:nth-child(2) {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.top-left li i,
+.top-right li i {
+  margin: 0 5px;
+}
+
+.top-left > li:nth-child(1) {
+  position: relative;
+}
+
+@keyframes topLeftAni {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.top-left li:nth-child(1):hover .My-Account,
+.top-right-currency:hover .top-right-currency-dropdown {
+  display: flex;
+}
+
+.My-Account,
+.top-right-language_dropdown,
+.top-right-currency-dropdown {
+  z-index: 2;
+  position: absolute;
+  color: #000;
+  flex-direction: column;
+  justify-content: left;
+  background: #fff;
+  width: 170px;
+  box-shadow: 5px 5px 5px 0px rgba(171, 171, 171, 1);
+  top: 38px;
+  animation: topLeftAni linear 0.4s;
+  display: none;
+}
+
+.My-Account li,
+.top-right-currency-dropdown li {
+  width: 100%;
+  padding: 10px;
+}
+
+.My-Account li:hover,
+.top-right-language_dropdown li:hover,
+.top-right-currency-dropdown li:hover {
+  background: rgb(240, 239, 239);
+  color: #d7182a;
+}
+
+.top-right-language,
+.top-right-currency {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.top-right-language:hover .top-right-language_dropdown {
+  display: flex;
+}
+
+.top-right-language-img {
+  margin-right: 10px;
+  height: 12px;
+  margin-bottom: 5px;
+}
+
+.top-right-language-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.top-right-language_dropdown,
+.top-right-currency-dropdown {
+  width: 150px;
+  top: 38px;
+}
+
+.top-right-language_dropdown li {
+  display: flex;
+  padding: 10px;
+}
+
+.top-right-currency-dropdown {
+  width: 70px;
+}
+
+/*----------------------------------------------------------------- NAV -----------------------------------------------------------------*/
+.nav-right {
+  width: 350px;
+}
+
+/*--------------------------------------- CSS cho nút search -----------------------------------*/
+.search_box {
+  overflow: hidden;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.5s ease;
+  margin: 0 15px;
+}
+
+.search_box_input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #000;
+  font-size: 14px;
+  padding: 0 50px 0 20px;
+}
+
+.search_box button {
+  position: absolute;
+  border: none;
+  outline: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+}
+
+.search_box.open {
+  width: 200px;
+  border: 1px solid #ccc;
+}
+.nav {
+  width: 100%;
+  height: 75px;
+  border-bottom: 1px solid var(--line_color);
+}
+
+.nav .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-left {
+  width: 15%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav-left img {
+  width: 100%;
+  object-fit: fill;
+  object-position: center;
+  cursor: pointer;
+}
+
+.nav-mid {
+  width: 75%;
+  height: 100%;
+}
+
+.nav-mid > ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-mid > ul > li {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 15px;
+  cursor: pointer;
+  height: 70%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-mid > ul > li > i {
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+.nav-right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.nav-right li {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.nav-right li:nth-child(1) {
+  margin: 0 15px;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart_noti {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary_color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  top: -30%;
+  right: -30%;
+}
+
+/*--------------------------------------------------------- Drop down nav ----------------------------------------------------------*/
+.nav-mid > ul > li {
+  position: relative;
+}
+
+.nav a:hover {
+  text-decoration: none !important;
+}
+
+.nav-mid > ul > li:hover {
+  color: var(--primary_color);
+}
+
+@keyframes navAni {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.promotion,
+.blog {
+  z-index: 2;
+  position: absolute;
+  background: #fff;
+  box-shadow: 5px -3px 5px 0px rgba(171, 171, 171, 0.5);
+  padding: 15px;
+  justify-content: center;
+  color: #000;
+  border: 0.5px solid var(--line_color);
+  top: 50px;
+  animation: navAni linear 0.3s;
+  display: none;
+  color: rgb(148, 148, 148);
+}
+
+.promotion > ul,
+.blog > ul {
+  padding: 0 10px 0 20px;
+}
+
+.promotion > ul > li:nth-child(2),
+.blog > ul > li:nth-child(1) {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line_color);
+  color: #000;
+}
+
+.nav-mid > ul > li:nth-child(2):hover .promotion,
+.nav-mid > ul > li:nth-child(3):hover .blog {
+  display: flex;
+}
+
+.promotion > ul > li,
+.blog > ul > li {
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.promotion > ul > li:hover,
+.blog > ul > li:hover {
+  color: var(--primary_color);
+}
+
+.promotion > ul > li:nth-child(2):hover,
+.blog > ul > li:nth-child(1):hover {
+  color: #000;
+}
+
+/*----------------------  PROMOTION ----------------------------*/
+.promotion {
+  left: -450px;
+  z-index: 1000;
+}
+
+.promotion > ul > li:nth-child(1) {
+  overflow: hidden;
+}
+
+.promotion > ul > li:nth-child(1) img {
+  object-fit: fill;
+  object-position: center;
+  transition: all 0.3s;
+}
+
+.promotion > ul > li:nth-child(1) img:hover {
+  transform: scale(0.8); /* zoom to ra khoảng 1.2 lần*/
+}
+
+/*------------------- BLOG ------------------------*/
+.blog {
+  z-index: 1000;
+  width: 630px;
+  left: -250px;
+}
