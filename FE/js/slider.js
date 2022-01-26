@@ -2,7 +2,7 @@ export function slider() {
     $(document).ready(function() {
         $('#autoWidth').lightSlider({
             autoWidth:true,
-            loop:true,
+            loop:false,
             onSliderLoad: function() {
                 $('#autoWidth').removeClass('cS-hidden');
             } 
