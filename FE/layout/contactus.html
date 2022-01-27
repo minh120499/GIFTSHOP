@@ -37,21 +37,15 @@
             <div class="contacts">
                 <div class="contacts-email">
                     <i class="far fa-envelope"></i>
-                    <span class="contacts-content">
-                        support@example.com
-                    </span>
+                    <span class="contacts-content" id="con-email"></span>
                 </div>
                 <div class="contacts-phone">
                     <i class="far fa-phone"></i>
-                    <span class="contacts-content">
-                        (+84) 0123456789
-                    </span>
+                    <span class="contacts-content" id="con-phone"></span>
                 </div>
                 <div class="contacts-address">
                     <i class="fas fa-map-marked-alt"></i>
-                    <span class="contacts-content">
-                        123 Suspendis mattis, Sollicitudin District, Accums Fringilla
-                    </span>
+                    <span class="contacts-content" id="con-address"></span>
                 </div>
             </div>
             <div class="wrapper">
@@ -61,8 +55,9 @@
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="form">
-                    <h2 class="form-title">send your comments</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates sapiente nobis, quos, porro placeat, similique est consequuntur officia voluptatibus itaque soluta deleniti aliquam dolorum amet repellendus modi! Consequatur, delectus quidem.</p>
+                    <h2 class="form-title">send your feedback</h2>
+                    <p>Would you be willing to write us a review? It should only take a couple minutes and would make an immense
+                    difference to our Shop.</p>
                     <form id="message-form" action="" method="post">
                         <div class="form-group">
                             <input type="text" placeholder="Your name*">
@@ -97,6 +92,14 @@
     <script type="module">
         import { componentHTML } from '../js/components.js'
         componentHTML();
+
+        $.ajax("http://localhost:8080/BE/AboutUs/AboutUs.php")
+                .done(function (data) {
+                    console.log($.parseJSON(data))
+                    $('#con-email').text($.parseJSON(data).email);
+                    $('#con-phone').text($.parseJSON(data).phone);
+                    $('#con-address').text($.parseJSON(data).address);
+                })
     </script>
 </body>
 </html>

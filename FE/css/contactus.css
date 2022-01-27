@@ -56,6 +56,7 @@ ul {
 .contacts div .contacts-content {
   font-size: 16px;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .wrapper {
@@ -85,7 +86,7 @@ ul {
 .wrapper p {
   text-align: justify;
   color: #7d7d7d;
-  font-size: 14px;
+  font-size: 18px;
 }
 .wrapper input,
 .wrapper textarea {
