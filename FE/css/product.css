@@ -38,10 +38,15 @@ ul {
   margin-right: 10px;
   text-transform: uppercase;
 }
-.bread-crumb ul li span,
-.bread-crumb ul li i {
+.bread-crumb ul li a,
+.bread-crumb ul li i,
+.bread-crumb ul li span {
   color: #7d7d7d;
+  text-decoration: none;
   font-weight: 500;
+}
+.bread-crumb ul li a:hover {
+  color: #d7182a;
 }
 
 .main-content {

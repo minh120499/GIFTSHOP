@@ -2,6 +2,10 @@
 @import 'header.css';
 @import './responsive/rpHeader.css';
 @import 'footer.css';
+ul {
+  padding-left: 0;
+}
+
 .bread-crumb {
   margin: 30px 0;
 }

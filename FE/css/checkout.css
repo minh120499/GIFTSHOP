@@ -1,14 +1,13 @@
-@import "general.css";
-@import "header.css";
-@import "footer.css";
-a {
-  color: #7d7d7d;
-  text-decoration: none;
-  font-weight: 500;
+@import 'general.css';
+@import 'header.css';
+@import './responsive/rpHeader.css';
+@import 'footer.css';
+ul {
+  padding-left: 0;
 }
-a:hover {
-  color: #d7182a;
-  text-decoration: none;
+
+input {
+  border-radius: 5px;
 }
 
 .bread-crumb {
@@ -19,10 +18,15 @@ a:hover {
   margin-right: 10px;
   text-transform: uppercase;
 }
-.bread-crumb ul li span,
-.bread-crumb ul li i {
+.bread-crumb ul li a,
+.bread-crumb ul li i,
+.bread-crumb ul li span {
   color: #7d7d7d;
+  text-decoration: none;
   font-weight: 500;
+}
+.bread-crumb ul li a:hover {
+  color: #d7182a;
 }
 
 .bar-progress {
@@ -97,34 +101,12 @@ a:hover {
   color: #000;
 }
 
-.card-label {
-  display: block;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  margin-left: 15px;
-  border: solid 2px #b7b7b7;
-  padding: 15px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.card-input {
-  display: none;
-}
-.card-input:checked + label {
-  border: solid 2px green;
-}
-.card-input:checked + label i,
-.card-input:checked + label h2 {
-  color: green;
-}
-
 .wrapper {
   background-color: #f2f2f2;
   margin-left: 30px;
   margin-bottom: 30px;
   padding: 20px;
+  border-radius: 10px;
 }
 .wrapper div h2 {
   font-size: 20px;
@@ -133,103 +115,135 @@ a:hover {
   margin-bottom: 0;
 }
 
-#form-info div:not(:last-child) {
+.leftside {
+  width: 75%;
+}
+.leftside .card-label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: solid 2px #b7b7b7;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.leftside .card-input {
+  display: none;
+}
+.leftside .card-input:checked + label {
+  border: solid 2px green;
+}
+.leftside .card-input:checked + label i,
+.leftside .card-input:checked + label h2 {
+  color: green;
+}
+.leftside #form-info div:not(:last-child) {
   margin-left: -15px;
 }
-#form-info div:not(:last-child) div {
+.leftside #form-info div:not(:last-child) div {
+  margin-bottom: 20px;
   margin-left: 15px;
 }
-#form-info label {
+.leftside #form-info div:not(:last-child) .w50p {
+  width: 50%;
+}
+.leftside #form-info label {
   min-width: 100px;
 }
-#form-info input {
+.leftside #form-info input {
   padding: 5px;
   flex-grow: 1;
 }
-
-.wrapper a {
+.leftside .wrapper a {
   background-color: #000;
   color: #fff;
+  color: #fff !important;
 }
-.wrapper a:hover {
+.leftside .wrapper a:hover {
   background-color: #c01526;
   color: #000;
 }
-
-.or {
+.leftside .wrapper a:hover {
+  color: #000 !important;
+}
+.leftside .or {
   margin-left: 15px;
 }
-
-.item-price {
+.leftside .item-price {
   font-size: 20px;
   font-weight: 700;
 }
-
-.cart-item {
+.leftside .cart-item {
+  border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
   background-color: #fff;
   padding: 20px;
 }
-.cart-item .image-item {
+.leftside .cart-item .image-item {
   display: inline-block;
 }
-.cart-item .image-item img {
+.leftside .cart-item .image-item img {
   width: 100px;
   height: 100px;
   margin-right: 20px;
 }
-.cart-item .item-info {
+.leftside .cart-item .item-info {
   flex-grow: 1;
 }
-.cart-item .item-info .item-title {
+.leftside .cart-item .item-info .item-title {
   font-size: 18px;
   font-weight: 500;
 }
-.cart-item .calc {
+.leftside .cart-item .calc {
   flex-shrink: 0;
   width: 140px;
   position: relative;
 }
-.cart-item .calc .item-price {
+.leftside .cart-item .calc .item-price {
   position: absolute;
   right: 20px;
   top: 0;
 }
-.cart-item .calc .quantity-modifier {
-  border: 1px solid #d7182a;
+.leftside .cart-item .calc .quantity-modifier {
   font-size: 16px;
-  display: inline-block;
+  display: flex;
   position: absolute;
   right: 20px;
   bottom: 0px;
   border: none;
 }
-.cart-item .calc .quantity-modifier .quantity {
+.leftside .cart-item .calc .quantity-modifier .quantity {
   font-weight: 600;
+  background-color: #f2f2f2;
 }
-.cart-item .calc .quantity-modifier input {
+.leftside .cart-item .calc .quantity-modifier .minus,
+.leftside .cart-item .calc .quantity-modifier .plus {
+  background-color: #d7182a;
+  color: #fff;
+}
+.leftside .cart-item .calc .quantity-modifier .minus:hover,
+.leftside .cart-item .calc .quantity-modifier .plus:hover {
+  color: #000;
+}
+.leftside .cart-item .calc .quantity-modifier input {
   width: 32px;
   height: 32px;
   border: none;
   outline: none;
-  background-color: white;
   text-align: center;
 }
-.cart-item .calc .quantity-modifier .minus:hover,
-.cart-item .calc .quantity-modifier .plus:hover {
-  color: #c01526;
-}
-.cart-item .calc .quantity-modifier .minus,
-.cart-item .calc .quantity-modifier .plus {
+.leftside .cart-item .calc .quantity-modifier .minus,
+.leftside .cart-item .calc .quantity-modifier .plus {
   background-color: #d7182a;
   color: #fff;
 }
-.cart-item .calc .quantity-modifier .minus:hover,
-.cart-item .calc .quantity-modifier .plus:hover {
+.leftside .cart-item .calc .quantity-modifier .minus:hover,
+.leftside .cart-item .calc .quantity-modifier .plus:hover {
   color: #000;
 }
-.cart-item .delete-btn {
+.leftside .cart-item .delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,57 +251,26 @@ a:hover {
   border-left: 1px solid #ebebeb;
   padding-left: 20px;
 }
-.cart-item .delete-btn i {
+.leftside .cart-item .delete-btn i {
   display: inline-block;
   font-size: 20px;
 }
-.cart-item .delete-btn i:hover {
+.leftside .cart-item .delete-btn i:hover {
   color: #c01526;
   cursor: pointer;
 }
-
-.delivery,
-.payment {
-  margin-left: -15px;
-}
-
-.delivery-method {
+.leftside .delivery-method {
   user-select: none;
-  width: 33.3333333333%;
-  margin-right: 15px;
+  margin-bottom: 20px;
 }
-.delivery-method .card-label {
-  border-radius: 20px;
+.leftside .delivery-method .card-label i {
+  font-size: 40px;
 }
-.delivery-method .card-label .label-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.delivery-method .card-label .label-wrapper .delivery-top i,
-.delivery-method .card-label .label-wrapper .delivery-top h2 {
-  margin-bottom: 15px;
-}
-.delivery-method .card-label .label-wrapper .delivery-top i {
-  font-size: 50px;
-}
-.delivery-method .card-label .label-wrapper .delivery-top p {
+.leftside .delivery-method .card-label .desc {
   font-size: 16px;
   color: #7d7d7d;
 }
-.delivery-method .card-label .label-wrapper .delivery-bottom {
-  margin-top: auto;
-}
-.delivery-method .card-label .label-wrapper .delivery-bottom p {
-  font-size: 14px;
-}
-.delivery-method .card-label .label-wrapper .delivery-bottom p:last-child {
-  margin-bottom: 0;
-}
-.delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price {
-  font-size: 24px;
-}
-.delivery-method .card-label .label-wrapper .delivery-bottom .delivery-price span {
+.leftside .delivery-method .card-label .delivery-price {
   font-size: 30px;
   font-weight: 500;
   color: #d7182a;
@@ -307,26 +290,34 @@ a:hover {
 .card-label i {
   font-size: 30px;
   margin-right: 15px;
-  line-height: 60px;
 }
 
 .extended {
+  border-radius: 10px;
   display: none;
   width: 420px;
   background-color: #fff;
   padding: 20px;
   margin: 15px 0;
 }
+.extended .form-group {
+  margin-bottom: 20px;
+}
 .extended .form-group .label {
   display: inline-block;
   min-width: 120px;
 }
-.extended div:nth-child(3) .form-group {
+.extended .last-row .form-group {
   margin-bottom: 0;
 }
-.extended div:nth-child(3) .form-group input {
+.extended .last-row .form-group:first-child input {
+  width: 100px;
+}
+.extended .last-row .form-group:nth-child(2) .label {
+  min-width: 46px;
+}
+.extended .last-row .form-group:nth-child(2) input {
   width: 50px;
-  text-align: center;
 }
 .extended input {
   padding: 5px;
@@ -334,47 +325,70 @@ a:hover {
 }
 
 .rightside {
-  height: 330px;
+  width: 25%;
 }
-.rightside .form-coupon {
+.rightside .wrapper .form-coupon {
   border: 1px solid #000;
   background-color: #fff;
   margin-bottom: 15px;
+  border-radius: 5px;
 }
-.rightside .form-coupon form .form-group {
+.rightside .wrapper .form-coupon form .form-group {
   display: flex;
   margin-bottom: 0;
   padding-left: 10px;
 }
-.rightside .form-coupon form .form-group input {
+.rightside .wrapper .form-coupon form .form-group input {
   background-color: #fff;
   font-size: 14px;
   border: none;
   outline: none;
   line-height: 44px;
 }
-.rightside .form-coupon form .form-group input[type=text] {
+.rightside .wrapper .form-coupon form .form-group input[type=text] {
   width: calc(100% - 39.7px);
 }
-.rightside .form-coupon form .form-group input[type=submit] {
+.rightside .wrapper .form-coupon form .form-group input[type=submit] {
   padding-right: 10px;
 }
-.rightside .subtotal,
-.rightside .total,
-.rightside .surcharge div {
+.rightside .wrapper .subtotal,
+.rightside .wrapper .total,
+.rightside .wrapper .surcharge div {
   display: flex;
   justify-content: space-between;
 }
-.rightside .subtotal {
+.rightside .wrapper .subtotal {
   margin-bottom: 16px;
 }
-.rightside .subtotal span {
+.rightside .wrapper .subtotal span {
   font-weight: 500;
   font-size: 18px;
 }
-.rightside .total span {
-  font-size: 20px;
+.rightside .wrapper .total .title {
+  line-height: 36px;
+}
+.rightside .wrapper .total span {
+  font-size: 24px;
   font-weight: 700;
+}
+
+/* Responsive */
+@media only screen and (max-width: 991px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .main-content .leftside,
+.main-content .rightside {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #form-info > div:not(:last-child) {
+    margin-right: 15px;
+  }
+  #form-info > div:not(:last-child) .w50p {
+    width: 100% !important;
+  }
 }
 
 /*# sourceMappingURL=checkout.css.map */
