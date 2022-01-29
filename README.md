@@ -5,26 +5,25 @@ Link file
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 Cách lấy data từ Server:
-<br />
-function showData() {<br />
-axios.get('./add.php') -> link của Server<br />
-.then(e => e.data)<br />
-.then(e => {<br />
-document.querySelector('#html').innerHTML = e<br />
-})<br />
+function showData() {
+  axios.get('./add.php') -> link của Server
+    .then(e => e.data)
+    .then(e => {
+    document.querySelector('#html').innerHTML = e
+  })
 }
 
 Cách gửi data lên Server
-<br />
-function postData() { <br />
-let datalist = new FormData();<br />
-let text = document.getElementById('text').value<br />
-let number = document.getElementById('number').value<br />
-datalist.append('text',text);<br />
-datalist.append('number', text);<br />
-axios.post('http://localhost/be/add.php', datalist)<br />
-.then(e => console.log(e.data))<br />
-return false;<br />
+
+function postData() { 
+  let datalist = new FormData();
+  let text = document.getElementById('text').value
+  let number = document.getElementById('number').value
+  datalist.append('text',text);
+  datalist.append('number', text);
+  axios.post('http://localhost/be/add.php', datalist)
+    console.log(e.data))
+  return false;
 }
 
 # Về công việc
