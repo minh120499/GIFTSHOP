@@ -58,18 +58,22 @@
                     <h2 class="form-title">send your feedback</h2>
                     <p>Would you be willing to write us a review? It should only take a couple minutes and would make an immense
                     difference to our Shop.</p>
-                    <form id="message-form" action="" method="post">
+                    <form id="form-feedback" action="" method="post">
                         <div class="form-group">
-                            <input type="text" placeholder="Your name*">
+                            <input type="text" id="name" placeholder="Your name *" required>
+                            <small></small>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Your email*">
+                            <input type="text" id="email" placeholder="Your email *" required>
+                            <small></small>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Your subject*">
+                            <input type="text" id="subject" placeholder="Your subject *" maxlength="100" required>
+                            <small></small>
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" placeholder="Your message*"></textarea>
+                            <textarea name="" id="feedback" placeholder="Your feedback *" required></textarea>
+                            <small></small>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="send message">
@@ -91,15 +95,32 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="module">
         import { componentHTML } from '../js/components.js'
+        import * as validateForm from '../js/validation.js'
         componentHTML();
+        
+        const btnSubmit = document.querySelector('input[type="submit"]')
+        const listInput = ['#name', '#subject', '#feedback'];
+        validateForm.uppercase('#subject');
+        for (const input of listInput) {
+            validateForm.onBlur (input, 'This field is required!');
+        }
+        validateForm.onBlurEmail('#email', 'This field is required!', 'Email is not valid!');
 
+        btnSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
+            for (const input of listInput) {
+                validateForm.checkRequired(input, 'This field is required!');
+            }
+            validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
+        })
+        
         $.ajax("http://localhost:8080/BE/AboutUs/AboutUs.php")
-                .done(function (data) {
-                    console.log($.parseJSON(data))
-                    $('#con-email').text($.parseJSON(data).email);
-                    $('#con-phone').text($.parseJSON(data).phone);
-                    $('#con-address').text($.parseJSON(data).address);
-                })
+        .done(function (data) {
+            // console.log($.parseJSON(data))
+            $('#con-email').text($.parseJSON(data).email);
+            $('#con-phone').text($.parseJSON(data).phone);
+            $('#con-address').text($.parseJSON(data).address);
+        });
     </script>
 </body>
 </html>
