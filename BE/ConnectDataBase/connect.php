@@ -5,7 +5,7 @@ class Database {
     private $username;
     private $servername;
 
-    function __construct($dbname = 'GIFTSHOP', $ps = '', $username = 'root', $servername = 'localhost')
+    function __construct($dbname = 'abc', $ps = '', $username = 'root', $servername = 'localhost')
     {
         $this->dbname = $dbname;
         $this->ps = $ps;
