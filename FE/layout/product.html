@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"
         integrity="sha512-yJHCxhu8pTR7P2UgXFrHvLMniOAL5ET1f5Cj+/dzl+JIlGTh5Cz+IeklcXzMavKvXP8vXqKMQyZjscjf3ZDfGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="../css/product.css">
     <link rel="stylesheet" href="../css/compare.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -434,7 +435,8 @@
     </main>
 
     <div class="compare-product">
-        <div>
+        <p></p>
+        <div style="padding-left: 15px;">
             <div></div>
             <div>Name:</div>
             <div>Img:</div>
@@ -448,18 +450,18 @@
         </div>
         <div class="compare-left">
             <div class="minhi">
-                <input type="text">
+                <input type="text" class="product-compare-left" id="datalist-left">
                 <button>Search</button>
             </div>
         </div>
         <div class="compare-right">
             <div class="minhi">
-                <input type="text">
+                <input type="text" class="product-compare-right">
                 <button>Search</button>
             </div>
         </div>
 
-        <div class="compare-close">X</div>
+        <div class="compare-close"></div>
     </div>
     <!-- <div data-include="footer"></div> -->
 
@@ -475,7 +477,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="../js/product.js"></script>
     <script src="../js/compare.js"></script>
-    
+
 </body>
 
 </html>
