@@ -114,7 +114,7 @@
             validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
         })
         
-        $.ajax("http://localhost:8080/BE/AboutUs/AboutUs.php")
+        $.ajax("http://localhost/BE/AboutUs/AboutUs.php")
         .done(function (data) {
             // console.log($.parseJSON(data))
             $('#con-email').text($.parseJSON(data).email);
