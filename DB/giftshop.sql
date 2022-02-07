@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 29, 2022 lúc 01:41 PM
+-- Thời gian đã tạo: Th2 04, 2022 lúc 03:07 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -508,13 +508,13 @@ INSERT INTO `feedback` (`id`, `fullname`, `email`, `title`, `content`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `date` varchar(10) DEFAULT NULL,
-  `toname` varchar(25) DEFAULT NULL,
-  `toemail` varchar(50) DEFAULT NULL,
-  `tophone` varchar(15) DEFAULT NULL,
-  `toaddress` varchar(100) DEFAULT NULL,
-  `payment` varchar(25) DEFAULT NULL,
-  `status` varchar(25) DEFAULT 'unpaid',
+  `date` text DEFAULT NULL,
+  `toname` text DEFAULT NULL,
+  `toemail` text DEFAULT NULL,
+  `tophone` text DEFAULT NULL,
+  `toaddress` text DEFAULT NULL,
+  `payment` text DEFAULT NULL,
+  `status` text DEFAULT 'unpaid',
   `userid` int(11) DEFAULT NULL,
   `total` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
