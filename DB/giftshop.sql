@@ -870,7 +870,8 @@ CREATE TABLE `products` (
   `brand` int(11) DEFAULT NULL,
   `view` int(11) DEFAULT NULL,
   `sold` int(11) DEFAULT NULL,
-  `rating` float DEFAULT NULL
+  `rating` float DEFAULT NULL,
+  `status` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
