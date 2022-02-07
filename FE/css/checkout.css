@@ -9,6 +9,9 @@ ul {
 input {
   border-radius: 5px;
 }
+input[type=text] {
+  border: 1px solid #b7b7b7;
+}
 
 .bread-crumb {
   margin: 30px 0;
@@ -37,6 +40,24 @@ input {
   width: 100%;
   position: relative;
 }
+.bar-progress .step.active {
+  color: #d7182a;
+}
+.bar-progress .step.active .bullet {
+  background-color: #d7182a;
+}
+.bar-progress .step.active .bullet span {
+  display: none;
+}
+.bar-progress .step.active .bullet::after {
+  background: #d7182a;
+  animation: animate 0.3s linear forwards;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.bar-progress .step.active .check {
+  display: block;
+}
 .bar-progress .step .bullet {
   width: 34px;
   height: 34px;
@@ -47,6 +68,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
 }
 .bar-progress .step .bullet::before, .bar-progress .step .bullet::after {
   height: 3px;
@@ -56,12 +78,6 @@ input {
   bottom: 14px;
   content: "";
   background: #000;
-}
-.bar-progress .step .bullet::after {
-  background: #d7182a;
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: animate 0.3s linear forwards;
 }
 @keyframes animate {
   100% {
@@ -78,13 +94,57 @@ input {
 .bar-progress .step .check {
   position: absolute;
   left: 47%;
-  bottom: 2%;
+  bottom: 5%;
   color: #fff;
   display: none;
 }
 
+.popup {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  opacity: 0;
+}
+.popup .wrapper {
+  width: 50%;
+  margin: 20% auto;
+  border-radius: 6px;
+  opacity: 0;
+  transition: 0.3s ease-in-out opacity;
+}
+.popup .wrapper a {
+  background-color: #000;
+  color: #fff;
+  color: #fff !important;
+}
+.popup .wrapper a:hover {
+  background-color: #c01526;
+  color: #000;
+}
+.popup .wrapper a:hover {
+  color: #000 !important;
+}
+.popup .wrapper button {
+  background-color: #000;
+  color: #fff;
+  margin-left: 15px;
+}
+.popup .wrapper button:hover {
+  background-color: #c01526;
+  color: #000;
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translateY(0%) !important;
+}
+
 .main-content {
-  margin: 30px 0 30px -30px;
+  margin: 30px 0 30px 0;
+  height: 130vh;
 }
 .main-content .buttons {
   display: flex;
@@ -103,10 +163,10 @@ input {
 
 .wrapper {
   background-color: #f2f2f2;
-  margin-left: 30px;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
 }
 .wrapper div h2 {
   font-size: 20px;
@@ -117,6 +177,23 @@ input {
 
 .leftside {
   width: 75%;
+  display: flex;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.leftside .wrapper {
+  align-self: flex-start;
+  position: absolute;
+  transition: 0.5s ease-in-out;
+}
+.leftside .wrapper.current-step {
+  left: 0;
+  right: 0;
+}
+.leftside .wrapper.next-step {
+  left: calc(100% + 30px);
+  right: -100%;
 }
 .leftside .card-label {
   display: block;
@@ -167,9 +244,6 @@ input {
 .leftside .wrapper a:hover {
   color: #000 !important;
 }
-.leftside .or {
-  margin-left: 15px;
-}
 .leftside .item-price {
   font-size: 20px;
   font-weight: 700;
@@ -217,6 +291,7 @@ input {
 .leftside .cart-item .calc .quantity-modifier .quantity {
   font-weight: 600;
   background-color: #f2f2f2;
+  width: 50px;
 }
 .leftside .cart-item .calc .quantity-modifier .minus,
 .leftside .cart-item .calc .quantity-modifier .plus {
@@ -325,6 +400,7 @@ input {
 }
 
 .rightside {
+  margin-left: 30px;
   width: 25%;
 }
 .rightside .wrapper .form-coupon {
