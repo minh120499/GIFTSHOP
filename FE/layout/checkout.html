@@ -91,28 +91,33 @@
                         </div>
                         <form method="get" id="form-info">
                             <div class="d-md-flex justify-content-between d-sm-block">
-                                <div class="w50p d-flex align-items-center">
+                                <div class="w50p d-flex align-items-center form-ctrl">
                                     <label class="mb-0" for="name">Name:</label>
                                     <input type="text" name="name" id="name">
+                                    <small></small>
                                 </div>
-                                <div class="w50p d-flex align-items-center">
+                                <div class="w50p d-flex align-items-center form-ctrl">
                                     <label class="mb-0" for="lastname">Last Name:</label>
                                     <input type="text" name="lastname" id="lastname">
+                                    <small></small>
                                 </div>
                             </div>
                             <div class="d-md-flex justify-content-between d-sm-block">
-                                <div class="w50p d-flex align-items-center">
+                                <div class="w50p d-flex align-items-center form-ctrl">
                                     <label class="mb-0" for="email">Email:</label>
                                     <input class="mb-0" type="text" name="email" id="email">
+                                    <small></small>
                                 </div>
-                                <div class="w50p d-flex align-items-center">
+                                <div class="w50p d-flex align-items-center form-ctrl">
                                     <label for="phone">Phone:</label>
                                     <input type="text" name="phone" id="phone">
+                                    <small></small>
                                 </div>
                             </div>
-                            <div class="form-group mb-0 d-flex align-items-center">
+                            <div class="form-group mb-0 d-flex align-items-center form-ctrl">
                                 <label class="mb-0" for="address">Address:</label>
                                 <input type="text" name="address" id="address">
+                                <small></small>
                             </div>
                         </form>
                         <div class="buttons">
@@ -294,6 +299,7 @@
     <script type="module">
         import { componentHTML } from '../js/components.js'
         import * as checkout from '../js/checkout.js';
+        import * as validateForm from '../js/validation.js'
         componentHTML();
         
         //Show Popup
@@ -312,6 +318,7 @@
         .done(function (data) {
                 var html = '';
                 var items = $.parseJSON(data);
+                // console.log(items);
                 $.each(items, function (i, item) {
                     html = `
                     <div class="cart-item">
@@ -345,6 +352,66 @@
                 checkout.counter();
                 checkout.delProduct();
             });
-        checkout.multiStep();
+
+        // Đổ dữ liệu người dùng
+        $.post("http://localhost/BE/Users/GetInfo.php",
+        {
+            userid: 1
+        }, 
+        function(data) {
+            var dataneh = $.parseJSON(data)[0];
+            // console.log(data)
+
+        })
+
+        // Validate Form dữ liệu người dùng
+        const formInfo = document.querySelector('#form-info');
+        const nextBtn1 = formInfo.parentElement.querySelector('.btn-next');
+        var listInput = ['#name', '#lastname', '#phone', '#address'];
+        var parentEles = Array.from(formInfo.querySelectorAll('.form-ctrl'));
+        validateForm.uppercase('#name');
+        validateForm.uppercase('#lastname');
+        nextBtn1.addEventListener('click', () => {            
+            console.log(parentEles);
+            for (const input of listInput) {
+                validateForm.checkRequired(input, 'This field is required!');
+                validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
+            }    
+            if (parentEles.every((parentEle) => parentEle.classList.contains('valid'))) {
+                checkout.multiStep();
+                console.log(0);
+            } else {
+                console.log(1);
+            }; 
+            checkout.multiStep();
+        });
+        // Xóa dữ liệu sản phẩm
+        // $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
+        // {
+        //     userid: 1,
+        //     productid: 2
+        // },
+        // function (data) {
+        //     console.log(data);
+        //     // var dataneh = $.parseJSON(data)[0];
+
+        // })
+
+        //Cộng trừ số lượng
+
+        $.post("http://localhost/BE/Checkout/AddToCart.php",
+        {
+            userid: 1,
+            productid: 2,
+            quantity: 3,
+            price: 300,
+            // minus: 1
+        },
+        function (data) {
+            // console.log(data);
+            // var dataneh = $.parseJSON(data)[0];
+
+        })
+
     </script>
 </body>

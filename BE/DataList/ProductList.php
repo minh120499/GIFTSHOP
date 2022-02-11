@@ -3,29 +3,45 @@ require_once '../ConnectDataBase/connect.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 
-$stmt = $conn->prepare("SELECT * FROM `products` 
-                            INNER JOIN `productdetails` 
-                            INNER JOIN (SELECT `src`,`productid` FROM `img` GROUP BY `productid`) as a 
-                        WHERE `products`.`id` = `productdetails`.`productid` 
-                          AND `products`.`id` = `a`.`productid`;");
+$sql = "SELECT `products`.`id`,
+               `products`.`name` as `name`,
+               `brand`.`name` as `brand`,
+               `price`,
+               `quantity`,
+               `rating`,
+               `date`,
+               `detail`,
+               `anniversary`,
+               `sold`,
+               `view`,
+               `src`,
+               `country`
+          FROM `products` INNER JOIN `productimg` 
+                          INNER JOIN `brand` 
+          WHERE `products`.`brand` = `brand`.`id` 
+            AND `products`.`id` = `productimg`.`productid`";
+
+$stmt = $conn->prepare("$sql");
 $stmt->execute();
-$conn = NULL;
+
 $data = [];
 
 foreach ($stmt->fetchAll() as $key => $value) {
-    $data[$value['id']]['id'] = $value['id'];
-    $data[$value['id']]['name'] = $value['productname'];
-    // $data[$value['id']]['brand'] = $value['brand'];
-    $data[$value['id']]['price'] = $value['price'];
-    $data[$value['id']]['quantity'] = $value['quantity'];
-    $data[$value['id']]['rating'] = $value['rating'];
-    // $data[$value['id']]['size'] = $value['size'];
-    // $data[$value['id']]['date'] = $value['date'];
-    // $data[$value['id']]['content'] = $value['content'];
-    // $data[$value['id']]['anniversary'] = $value['anniversary'];
-    $data[$value['id']]['sold'] = $value['sold'];
-    $data[$value['id']]['view'] = $value['view'];
-    $data[$value['id']]['src'] = $value['src'];
+    $data[] = array(
+        'id' => $value['id'],
+        'name' => $value['name'],
+        'price' => $value['price'],
+        'quantity' => $value['quantity'],
+        'rating' => $value['rating'],
+        'date' => $value['date'],
+        'detail' => $value['detail'],
+        'anniversary' => $value['anniversary'],
+        'sold' => $value['sold'],
+        'view' => $value['view'],
+        'src' => $value['src'],
+        'brand' => $value['brand'],
+        'country' => $value['country'],
+    );
 }
 
-echo json_encode($data);
+die(json_encode($data));

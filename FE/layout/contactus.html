@@ -112,15 +112,24 @@
                 validateForm.checkRequired(input, 'This field is required!');
             }
             validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
+            $.post('http://localhost/BE/ContactUs/ContactUs.php', {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                subject: $('#subject').val(),
+                message: $('#feedback').val()
+            }, function (data) {
+                console.log(data);
+            })
         })
         
         $.ajax("http://localhost/BE/AboutUs/AboutUs.php")
         .done(function (data) {
             // console.log($.parseJSON(data))
-            $('#con-email').text($.parseJSON(data).email);
-            $('#con-phone').text($.parseJSON(data).phone);
-            $('#con-address').text($.parseJSON(data).address);
+            $('#con-email').text($.parseJSON(data)[0].email);
+            $('#con-phone').text($.parseJSON(data)[0].phone);
+            $('#con-address').text($.parseJSON(data)[0].address);
         });
+
     </script>
 </body>
 </html>

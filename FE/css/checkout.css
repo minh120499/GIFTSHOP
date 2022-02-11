@@ -232,6 +232,20 @@ input[type=text] {
   padding: 5px;
   flex-grow: 1;
 }
+.leftside .invalid input,
+.leftside .invalid textarea {
+  border: 1px solid red;
+}
+.leftside .invalid small {
+  display: block;
+  padding-top: 10px;
+  font-style: italic;
+  color: red;
+}
+.leftside .valid input,
+.leftside .valid textarea {
+  border: 1px solid green;
+}
 .leftside .wrapper a {
   background-color: #000;
   color: #fff;

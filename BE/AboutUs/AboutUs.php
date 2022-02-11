@@ -6,14 +6,16 @@ require_once '../ConnectDataBase/connect.php';
 
 $stmt = $conn->prepare('SELECT * FROM `administrator`');
 $stmt->execute();
-$conn = null; 
+$conn = null;
 $list = $stmt->fetchAll();
 $data = [];
-foreach( $list as $key=>$value) {
-    $data['aboutus'] = $value['aboutus'];
-    $data['address'] = $value['address'];
-    $data['email'] = $value['email'];
-    $data['phone'] = $value['phone'];
-    $data['logo'] = $value['logo'];
+foreach ($list as $key => $value) {
+    $data[] = array(
+        'aboutus' => $value['aboutus'],
+        'address' => $value['address'],
+        'email' => $value['email'],
+        'phone' => $value['phone'],
+        'logo' => $value['logo'],
+    );
 }
 die(json_encode($data));
