@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"
         integrity="sha512-yJHCxhu8pTR7P2UgXFrHvLMniOAL5ET1f5Cj+/dzl+JIlGTh5Cz+IeklcXzMavKvXP8vXqKMQyZjscjf3ZDfGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../css/compare.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -58,29 +61,32 @@
                             <li><a href="#" class="product-link">Category 7</a></li>
                         </ul>
                     </div>
-    
+
                     <div class="leftside-bestsellers">
                         <div class="leftside-title">
                             <h2><i class="far fa-gem"></i>Best Sellers</h2>
                         </div>
                         <ul>
                             <li>
-                                <div class="item-content">                           
-                                    <a href="#"><img src="../image/products/img1.jpg" width="100px" height="100px" alt="" class="thumbnail"></a>
+                                <div class="item-content">
+                                    <a href="#"><img src="../image/products/img1.jpg" width="100px" height="100px"
+                                            alt="" class="thumbnail"></a>
                                     <div class="item-info">
                                         <a href="#" title="Product 1" class="product-link">Product 1</a>
-                                    <div class="prices">
-                                        <span class="old-price">$ 60</span>
-                                        <span class="new-price">$ 50</span>
-                                    </div>
+                                        <div class="prices">
+                                            <span class="old-price">$ 60</span>
+                                            <span class="new-price">$ 50</span>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <div class="item-content">                           
-                                    <a href="#"><img src="../image/products/img2.jpg" width="100px" height="100px" alt="" class="thumbnail"></a>
+                                <div class="item-content">
+                                    <a href="#"><img src="../image/products/img2.jpg" width="100px" height="100px"
+                                            alt="" class="thumbnail"></a>
                                     <div class="item-info">
-                                        <a href="#" title="Product 2" class="product-link">Product 2 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+                                        <a href="#" title="Product 2" class="product-link">Product 2 Lorem ipsum dolor
+                                            sit amet, consectetur adipisicing elit.</a>
                                         <div class="prices">
                                             <span class="new-price">$ 40</span>
                                         </div>
@@ -88,8 +94,9 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="item-content">                           
-                                    <a href="#"><img src="../image/products/img3.jpg" width="100px" height="100px" alt="" class="thumbnail"></a>
+                                <div class="item-content">
+                                    <a href="#"><img src="../image/products/img3.jpg" width="100px" height="100px"
+                                            alt="" class="thumbnail"></a>
                                     <div class="item-info">
                                         <a href="#" title="Product 3" class="product-link">Product 3</a>
                                         <div class="prices">
@@ -99,8 +106,9 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="item-content">                           
-                                    <a href="#"><img src="../image/products/img4.jpg" width="100px" height="100px" alt="" class="thumbnail"></a>
+                                <div class="item-content">
+                                    <a href="#"><img src="../image/products/img4.jpg" width="100px" height="100px"
+                                            alt="" class="thumbnail"></a>
                                     <div class="item-info">
                                         <a href="#" title="Product 4" class="product-link">Product 4</a>
                                         <div class="prices">
@@ -133,7 +141,8 @@
                         <div class="product-info">
                             <div class="product-info__top">
                                 <div class="product-info__top-head">
-                                    <h1 class="title">Product 1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                                    <h1 class="title">Product 1 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    </h1>
                                     <div class="rating">
                                         <i class="fa fa-star checked"></i>
                                         <i class="fa fa-star checked"></i>
@@ -149,11 +158,14 @@
                                 </div>
                                 <div class="social">
                                     <span class="title">Share</span>
-                                    <a href="https://www.facebook.com/" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://twitter.com/" class="social-link"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/" class="social-link"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a href="https://twitter.com/" class="social-link"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/" class="social-link"><i
+                                            class="fab fa-instagram"></i></a>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="product-info__bottom">
                                 <div class="addcart-wrapper">
                                     <div class="quantity-modifier">
@@ -173,7 +185,7 @@
                                     <div class="compare">
                                         <i class="fas fa-retweet"></i>
                                     </div>
-                                </div>                              
+                                </div>
                                 <div class="categories-tag">
                                     <span class="title">Categories: </span>
                                     <a href="#" class="product-link fst-italic">Birthday</a>,
@@ -192,7 +204,15 @@
                         <label for="description-tab">Description</label>
                         <div class="tab">
                             <h2>Description</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, error, delectus suscipit tempore tenetur odio maxime quasi sunt aliquam vitae rem veniam debitis nam illum distinctio provident molestiae. Nulla, autem! Expedita, recusandae labore quos deserunt soluta tempora optio illo? Tempore id magnam ea possimus quae nam suscipit, aliquam recusandae dolor nostrum pariatur illo fugiat fugit doloribus sit culpa corrupti odit expedita a, dolorem vitae nesciunt. In iure labore laborum a ipsa aperiam dolore! Consectetur assumenda autem deserunt aut? Rem, debitis. Sit, reiciendis libero! Fuga atque, culpa totam ea error obcaecati perferendis voluptatem expedita odit dolore excepturi nemo dolorem quod! Cumque!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, error, delectus suscipit
+                                tempore tenetur odio maxime quasi sunt aliquam vitae rem veniam debitis nam illum
+                                distinctio provident molestiae. Nulla, autem! Expedita, recusandae labore quos deserunt
+                                soluta tempora optio illo? Tempore id magnam ea possimus quae nam suscipit, aliquam
+                                recusandae dolor nostrum pariatur illo fugiat fugit doloribus sit culpa corrupti odit
+                                expedita a, dolorem vitae nesciunt. In iure labore laborum a ipsa aperiam dolore!
+                                Consectetur assumenda autem deserunt aut? Rem, debitis. Sit, reiciendis libero! Fuga
+                                atque, culpa totam ea error obcaecati perferendis voluptatem expedita odit dolore
+                                excepturi nemo dolorem quod! Cumque!</p>
                         </div>
 
                         <input type="radio" name="tabs" id="review-tab">
@@ -218,7 +238,10 @@
                                             <i class="fa fa-star checked"></i>
                                         </div>
                                     </div>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati veritatis consectetur voluptate illo aspernatur? Ipsum facilis laboriosam mollitia atque, esse eligendi perferendis quae deleniti dolorum nesciunt voluptatem? Cumque, nihil modi?</p>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati veritatis
+                                        consectetur voluptate illo aspernatur? Ipsum facilis laboriosam mollitia atque,
+                                        esse eligendi perferendis quae deleniti dolorum nesciunt voluptatem? Cumque,
+                                        nihil modi?</p>
                                 </div>
                                 <p>Add a review</p>
                                 <b>Your rating</b>
@@ -250,7 +273,8 @@
                                     </div>
                                     <div class="box-detail">
                                         <div class="box-detail__top">
-                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.</a>
                                         </div>
                                         <div class="box-detail__bottom">
                                             <div class="prices">
@@ -282,7 +306,8 @@
                                     </div>
                                     <div class="box-detail">
                                         <div class="box-detail__top">
-                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.</a>
                                         </div>
                                         <div class="box-detail__bottom">
                                             <div class="prices">
@@ -314,7 +339,8 @@
                                     </div>
                                     <div class="box-detail">
                                         <div class="box-detail__top">
-                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.</a>
                                         </div>
                                         <div class="box-detail__bottom">
                                             <div class="prices">
@@ -346,7 +372,8 @@
                                     </div>
                                     <div class="box-detail">
                                         <div class="box-detail__top">
-                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                            <a href="#" class="product-link">Product1 Lorem ipsum dolor sit amet
+                                                consectetur adipisicing elit.</a>
                                         </div>
                                         <div class="box-detail__bottom">
                                             <div class="prices">
@@ -407,6 +434,35 @@
         </div>
     </main>
 
+    <div class="compare-product">
+        <p></p>
+        <div style="padding-left: 15px;">
+            <div></div>
+            <div>Name:</div>
+            <div>Img:</div>
+            <div>Brand:</div>
+            <div>Made in:</div>
+            <div>Date:</div>
+            <div>Price:</div>
+            <div>Size:</div>
+            <div>Rate:</div>
+            <div>Anniversary:</div>
+        </div>
+        <div class="compare-left">
+            <div class="minhi">
+                <input type="text" class="product-compare-left" id="datalist-left">
+                <button>Search</button>
+            </div>
+        </div>
+        <div class="compare-right">
+            <div class="minhi">
+                <input type="text" class="product-compare-right">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <div class="compare-close"></div>
+    </div>
     <!-- <div data-include="footer"></div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -420,5 +476,8 @@
         integrity="sha512-Gfrxsz93rxFuB7KSYlln3wFqBaXUc1jtt3dGCp+2jTb563qYvnUBM/GP2ZUtRC27STN/zUamFtVFAIsRFoT6/w=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="../js/product.js"></script>
+    <script src="../js/compare.js"></script>
+
 </body>
+
 </html>
