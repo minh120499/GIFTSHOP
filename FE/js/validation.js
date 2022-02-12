@@ -1,4 +1,4 @@
-function sanitizeValue(selector) {
+export function sanitizeValue(selector) {
     let inputElement = document.querySelector(selector);
     const regexSanitization = /^[^a-zA-Z0-9]/g;
     inputElement.addEventListener('input', () => {
@@ -36,7 +36,6 @@ export function uppercase (selector) {
 }
 
 export function checkRequired(selector, message) {
-    sanitizeValue(selector);
     let inputElement = document.querySelector(selector);
         if (!inputElement.value) {
             showError(selector, message);
@@ -63,6 +62,20 @@ export function checkEmail(selector, message1, message2) {
         })
     }
 
+export function checkPhoneNumber(selector, message1, message2) {
+    let inputElement = document.querySelector(selector);
+    const regexPhone = /^\d{10}$/g;
+    if (!inputElement.value) {
+        showError(selector, message1);
+    } else if (!regexPhone.test(inputElement.value)) {
+        showError(selector, message2);
+    } else {
+        hideError(selector);
+    }
+    inputElement.addEventListener('input', () => {
+        hideError(selector);
+    })
+}
 
 export function onBlur (selector, message) {
     let inputElement = document.querySelector(selector);

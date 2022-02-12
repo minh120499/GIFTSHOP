@@ -230,7 +230,7 @@ input[type=text] {
 }
 .leftside #form-info input {
   padding: 5px;
-  flex-grow: 1;
+  width: 100%;
 }
 .leftside .invalid input,
 .leftside .invalid textarea {
@@ -369,9 +369,19 @@ input[type=text] {
   margin-bottom: 15px;
 }
 .payment-method input:checked ~ .extended {
+  animation: showExtends 0.5s;
   display: block;
 }
 
+@keyframes showExtends {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .card-label {
   margin: 0;
   padding: 0 15px;
