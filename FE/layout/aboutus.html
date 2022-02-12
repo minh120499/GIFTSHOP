@@ -56,8 +56,8 @@
 
         $.ajax("http://localhost/BE/AboutUs/AboutUs.php")
         .done(function (data) {
-            console.log($.parseJSON(data))
-                var html = `<p>${$.parseJSON(data).aboutus}</p>`;
+            console.log($.parseJSON(data)[0].aboutus)
+                var html = `<p>${$.parseJSON(data)[0].aboutus}</p>`;
                 $('.content').append(html);
               })
     </script>
