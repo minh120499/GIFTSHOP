@@ -42,7 +42,7 @@
             </div>
             <!-- Steps-nav -->
             <div class="bar-progress d-flex">
-                <div class="step">
+                <div class="step step1">
                     <p>Details</p>
                     <div class="bullet">
                         <span>1</span>
@@ -51,7 +51,7 @@
                         <i class="fas fa-check"></i>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step step2">
                     <p>Delivery</p>
                     <div class="bullet">
                         <span>2</span>
@@ -60,7 +60,7 @@
                         <i class="fas fa-check"></i>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step step3">
                     <p>Payment</p>
                     <div class="bullet">
                         <span>3</span>
@@ -69,7 +69,7 @@
                         <i class="fas fa-check"></i>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step step4">
                     <p>Confirmation</p>
                     <div class="bullet">
                         <span class="legend-step">4</span>
@@ -91,37 +91,32 @@
                         </div>
                         <form method="get" id="form-info">
                             <div class="d-md-flex justify-content-between d-sm-block">
-                                <div class="w50p d-flex align-items-center form-ctrl">
-                                    <label class="mb-0" for="name">Name:</label>
-                                    <input type="text" name="name" id="name">
+                                <div class="w50p form-ctrl">
+                                    <input type="text" name="name" id="name" placeholder="First Name">
                                     <small></small>
                                 </div>
-                                <div class="w50p d-flex align-items-center form-ctrl">
-                                    <label class="mb-0" for="lastname">Last Name:</label>
-                                    <input type="text" name="lastname" id="lastname">
+                                <div class="w50p form-ctrl">
+                                    <input type="text" name="lastname" id="lastname" placeholder="Last Name">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="d-md-flex justify-content-between d-sm-block">
-                                <div class="w50p d-flex align-items-center form-ctrl">
-                                    <label class="mb-0" for="email">Email:</label>
-                                    <input class="mb-0" type="text" name="email" id="email">
+                                <div class="w50p form-ctrl">
+                                    <input class="mb-0" type="text" name="email" id="email" placeholder="Email">
                                     <small></small>
                                 </div>
-                                <div class="w50p d-flex align-items-center form-ctrl">
-                                    <label for="phone">Phone:</label>
-                                    <input type="text" name="phone" id="phone">
+                                <div class="w50p form-ctrl">
+                                    <input type="text" name="phone" id="phone" placeholder="Phone Number">
                                     <small></small>
                                 </div>
                             </div>
-                            <div class="form-group mb-0 d-flex align-items-center form-ctrl">
-                                <label class="mb-0" for="address">Address:</label>
-                                <input type="text" name="address" id="address">
+                            <div class="form-group mb-0 form-ctrl">
+                                <input type="text" name="address" id="address" placeholder="Address">
                                 <small></small>
                             </div>
                         </form>
                         <div class="buttons">
-                            <button class="btn btn-next">Next</button>
+                            <button class="btn btn-next1">Next</button>
                         </div>
                     </div>
                     <!-- Details -->
@@ -146,7 +141,7 @@
                         <div class="delivery">
                             <div class="delivery-method">
                                 <input class="card-input" type="radio" name="delivery" id="carryout">
-                                <label class="card-label d-flex" for="carryout">
+                                <label class="card-label d-flex carryout" for="carryout">
                                     <div class="d-flex">
                                         <i class="fas fa-store d-flex align-items-center"></i>
                                         <div class="d-flex flex-column justify-content-center">
@@ -158,7 +153,7 @@
                             </div>
                             <div class="delivery-method">
                                 <input class="card-input" type="radio" name="delivery" id="standard">
-                                <label class="card-label d-flex justify-content-between" for="standard">
+                                <label class="card-label d-flex justify-content-between standard" for="standard">
                                     <div class="d-flex">
                                         <i class="fas fa-truck d-flex align-items-center"></i>
                                         <div class="d-flex flex-column justify-content-center">
@@ -167,7 +162,8 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <span class="fw-bold h5 mb-0 me-2">From</span><span class="delivery-price">3$</span> 
+                                        <span class="fw-bold h5 mb-0 me-2">From</span>
+                                        <span class="delivery-price">3$</span> 
                                     </div>
                                 </label>
                             </div>
@@ -195,7 +191,7 @@
                             </div>
                             <div class="payment-method">
                                 <input class="card-input" type="radio" name="payment" id="visa-master">
-                                <label class="card-label" for="visa-master">
+                                <label class="card-label cards-method" for="visa-master">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <i class="far fa-credit-card"></i>
@@ -208,19 +204,23 @@
                                     <div class="form-group d-flex align-items-center">
                                         <span class="label">Card Owner:</span>
                                         <input type="text" id="cardowner">
+                                        <small></small>
                                     </div>
                                     <div class="form-group d-flex align-items-center">
                                         <span class="label">Card Number:</span>
                                         <input type="text" id="cardnum">
+                                        <small></small>
                                     </div>
                                     <div class="last-row d-flex justify-content-between">
                                         <div class="form-group d-flex align-items-center">
                                             <span class="label">Expired Date:</span>
                                             <input type="text" id="expmonth">
+                                            <small></small>
                                         </div>
                                         <div class="form-group d-flex align-items-center">
                                             <span class="label">CVV:</span>
                                             <input type="text" id="cvvcode">
+                                            <small></small>
                                         </div>
                                     </div>
                                 </div>
@@ -245,7 +245,7 @@
                         </div>
                         <div class="buttons">
                             <button class="btn btn-prev">Previous</button>
-                            <button class="btn">Confirm</button>
+                            <button class="btn btn-cf">Confirm</button>
                         </div>
                     </div>
                 </div>
@@ -270,15 +270,15 @@
                                     <p>Coupon:</p>
                                     <span>-$ 0</span>
                                 </div>
-                                <div class="shipping">
+                                <div class="deli">
                                     <p>Delivery:</p>
-                                    <span>$ 0</span>
+                                    <span></span>
                                 </div>
                             </div>
                             <hr>
                             <div class="total">
                                 <h2 class="title">Total</h2>
-                                <span class="item-price">$ 120</span>
+                                <span class="item-price"></span>
                             </div>
                         </div>
                     </div>
@@ -349,6 +349,7 @@
                         return false;
                     };
                 })
+                checkout.updateCart();
                 checkout.counter();
                 checkout.delProduct();
             });
@@ -356,35 +357,52 @@
         // Đổ dữ liệu người dùng
         $.post("http://localhost/BE/Users/GetInfo.php",
         {
-            userid: 1
+            userid: 3
         }, 
         function(data) {
             var dataneh = $.parseJSON(data)[0];
-            // console.log(data)
+            console.log(dataneh);
 
         })
 
         // Validate Form dữ liệu người dùng
         const formInfo = document.querySelector('#form-info');
-        const nextBtn1 = formInfo.parentElement.querySelector('.btn-next');
-        var listInput = ['#name', '#lastname', '#phone', '#address'];
+        const nextBtn = formInfo.parentElement.querySelector('.btn-next1');
+        const listInput = ['#name', '#lastname', '#phone', '#email', '#address'];
         var parentEles = Array.from(formInfo.querySelectorAll('.form-ctrl'));
+        listInput.forEach(input => {
+            validateForm.sanitizeValue(input);
+        });
         validateForm.uppercase('#name');
         validateForm.uppercase('#lastname');
-        nextBtn1.addEventListener('click', () => {            
-            console.log(parentEles);
-            for (const input of listInput) {
+        nextBtn.addEventListener('click', (e) => {            
+            listInput.forEach(input => {
                 validateForm.checkRequired(input, 'This field is required!');
                 validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
-            }    
+                validateForm.checkPhoneNumber('#phone', 'This field is required!', 'Phone number is not valid!');
+            });
             if (parentEles.every((parentEle) => parentEle.classList.contains('valid'))) {
-                checkout.multiStep();
-                console.log(0);
-            } else {
-                console.log(1);
-            }; 
-            checkout.multiStep();
+                let progressStep = document.querySelector('.step1');
+                let currentStep = e.target.parentElement.parentElement;
+                let nextStep = currentStep.nextElementSibling;
+                currentStep.style.left = '-100%';
+                currentStep.style.right = 'calc(100% + 30px)';
+                nextStep.style.left = '0';
+                nextStep.style.right = '0';
+                progressStep.classList.add('active');
+            }
         });
+        checkout.multiStep();
+
+        const confirmBtn = document.querySelector('.btn-cf');
+        confirmBtn.addEventListener('click', () => {
+            const finalStep = document.querySelector('.step4');
+            finalStep.classList.add('active');
+            setTimeout(() => {
+                alert('Your order is confirmed!!!');
+                window.location = 'http://127.0.0.1:5500/FE/index.html'
+            }, 1000);
+        })
         // Xóa dữ liệu sản phẩm
         // $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
         // {
