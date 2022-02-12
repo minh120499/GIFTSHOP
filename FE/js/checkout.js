@@ -33,6 +33,15 @@ export function delProduct () {
         const delBtn = delBtns[i];
         delBtn.addEventListener('click', (e) => {
             e.target.parentElement.parentElement.remove();
+            $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
+        {
+            userid: 1,
+            productid: 5
+        },
+        function (data) {
+            console.log(data);
+
+        })
             updateCart();
         })
     }

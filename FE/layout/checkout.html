@@ -403,16 +403,17 @@
             }, 1000);
         })
         // Xóa dữ liệu sản phẩm
-        // $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
-        // {
-        //     userid: 1,
-        //     productid: 2
-        // },
-        // function (data) {
-        //     console.log(data);
-        //     // var dataneh = $.parseJSON(data)[0];
 
-        // })
+        $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
+        {
+            userid: 1,
+            productid: 2
+        },
+        function (data) {
+            console.log(data);
+            // var dataneh = $.parseJSON(data)[0];
+
+        })
 
         //Cộng trừ số lượng
 

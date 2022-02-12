@@ -31,7 +31,6 @@ try {
     $stmt->bindParam('total', $total);
     $stmt->execute();
 
-    die($total);
     die('Delete success');
 } catch (PDOException $e) {
     die($e);
