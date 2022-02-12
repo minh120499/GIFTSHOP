@@ -3,7 +3,14 @@ var data = []
 axios.get('http://localhost/be/DataList/ProductList.php')
     .then(e => { data = e.data })
 
+// Left button
+// document.querySelector('.product-compare-left').addEventListener('keyup', (e) => {
+//     console.log(e.target.value)
 
+    document.querySelector
+// })
+
+// Right button
 // document.querySelector('.product-compare-right').addEventListener('keyup', (e) => {
 //     console.log(e.target.value)
 // })
