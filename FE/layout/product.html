@@ -435,9 +435,25 @@
     </main>
 
     <div class="compare-product">
-        <p></p>
-        <div style="padding-left: 15px;">
-            <div></div>
+        <p>a</p>
+        <div class="minhi"></div>
+        <div class="minhi">
+            <div style="position: relative;">
+                <input type="text" class="product-compare-left" onclick="showSuggetsLeft()" onkeyup="getSearchValueLeft(this)">
+                <div id="list-compare-left"></div>
+            </div>
+            <button class="button-compare-left" onclick="searchForCompareLeft()">Search</button>
+        </div>
+
+        <div class="minhi">
+            <div style="position: relative;">
+                <input type="text" class="product-compare-right" onkeyup="getSearchValueRight(this)" onclick="showSuggetsRight()">
+                <div id="list-compare-right"></div>
+            </div>
+            <button class="button-compare-right" onclick="searchForCompareRight()">Search</button>
+        </div>
+
+        <div class="compare-left-1" style="padding-left: 15px;">
             <div>Name:</div>
             <div>Img:</div>
             <div>Brand:</div>
@@ -448,18 +464,13 @@
             <div>Rate:</div>
             <div>Anniversary:</div>
         </div>
+
         <div class="compare-left">
-            <div class="minhi">
-                <input type="text" class="product-compare-left" id="datalist-left">
-                <button class="button-compare-left">Search</button>
-            </div>
+
         </div>
 
         <div class="compare-right">
-            <div class="minhi">
-                <input type="text" class="product-compare-right">
-                <button class="button-compare-right">Search</button>
-            </div>
+
         </div>
         <div class="compare-close"></div>
     </div>
