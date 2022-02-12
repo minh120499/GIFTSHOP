@@ -9,7 +9,7 @@ $conn = NULL;
 
 $data = [];
 
-foreach($stmt->fetchAll() as $key => $value) {
+foreach ($stmt->fetchAll() as $key => $value) {
     $data[] = array(
         'id' => $value['id'],
         'name' => $value['name'],
