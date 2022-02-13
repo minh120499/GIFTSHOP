@@ -1,15 +1,17 @@
 import { componentHTML } from './components.js';
 import { slider } from './slider.js';
+import { compare } from './compare.js';
 
 // ----------------------------------
 
 componentHTML();
 slider();
 
+//Render chi tiết sản phẩm
 $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
   var product = [];
   $.parseJSON(data).map((item) => {
-    if (item.id == '2') {
+    if (item.id == '1') {
       product = [...product, ...[item]];
     }
   });
@@ -24,18 +26,7 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
         <div class="sub-images">
     `;
   product.map((item) => {
-    // html += `<img src="${item.src}" id="${item.src}">`;
-    let subImages = document.querySelector('.sub-images');
-    console.log(subImages);
-    let img = subImages.createElement('img');
-    // img.innerHTML = `<img src="${item.src}" id="${item.src}">`;
-    img.setAttribute('src', item.src);
-    img.setAttribute('id', item.src);
-    console.log(img);
-    img.addEventListener('click', (e) => {
-      console.log(e.target);
-    });
-    $('.product-detail').append(img);
+    html += `<img src="${item.src}">`;
   });
   html += `</div>
     </div>
@@ -45,16 +36,23 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
                 <h1 class="title">${product[0].name}
                 </h1>
                 <div class="rating"> `;
-  for (let i = 0; i < product[0].rating; ++i) {
+  for (let i = 0; i < Math.round(product[0].rating); ++i) {
     html += `<i class="fa fa-star checked"></i>`;
+  }
+  for (let i = 0; i < 5 - Math.round(product[0].rating); ++i) {
+    html += `<i class="fa fa-star"></i>`;
   }
   html += `</div>
                 <div class="prices">
                     <span class="old-price">$ ${product[0].price}</span>
                     <span class="new-price">$ ${product[0].price}</span>
-                </div>
-                <div class="status green">In Stock</div>
-            </div>
+                </div>`;
+  if (product[0].quantity > product[0].sold) {
+    html += `<div class="status green">In Stock</div>`;
+  } else {
+    html += `<div class="status red">Out Of Stock</div>`;
+  }
+  html += `</div>
             <div class="social">
                 <span class="title">Share</span>
                 <a href="https://www.facebook.com/" class="social-link"><i
@@ -69,7 +67,7 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
             <div class="addcart-wrapper">
                 <div class="quantity-modifier">
                     <input type="button" value="-" class="minus">
-                    <input type="number" value="1" class="quantity" min="1" step="1">
+                    <input type="number" value="1" class="quantity">
                     <input type="button" value="+" class="plus">
                 </div>
                 <div class="addcart">
@@ -93,7 +91,63 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
                 <span><i>Made In: </i></span>
                 <b>${product[0].country}</b>
             </small>
+            <div class="download">
+                <a href="#" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
+                
+            </div>
         </div>
     </div>`;
   $('.product-detail').append(html);
+
+  // Thêm Description
+  let description = product[0].detail;
+  $('.desc-text').text(description);
 });
+
+// Kiểm tra DOM đã được render hay chưa
+function docReady(fn) {
+  if (
+    document.readyState === 'complete' ||
+    document.readyState === 'interactive'
+  ) {
+    setTimeout(fn, 1);
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+// Hiển thị ảnh to khi bấm vào ảnh nhỏ
+docReady(() => {
+  const subImgs = document.querySelectorAll('.sub-images img');
+  subImgs.forEach((subImg) => {
+    subImg.addEventListener('click', () => {
+      let bigImg = document.querySelector('.image img');
+      bigImg.src = subImg.src;
+    });
+  });
+});
+
+// Thêm số lượng sản phẩm
+docReady(() => {
+  const plusBtn = document.querySelector('.plus');
+  const minusBtn = document.querySelector('.minus');
+  const quantityInput = document.querySelector('.quantity');
+  plusBtn.addEventListener('click', (e) => {
+    let quantity = e.target.previousElementSibling;
+    let newValue = parseInt(quantity.value) + 1;
+    quantity.value = newValue;
+  });
+  minusBtn.addEventListener('click', (e) => {
+    let quantity = e.target.nextElementSibling;
+    let newValue = parseInt(quantity.value) - 1;
+    if (newValue > 0) {
+      quantity.value = newValue;
+    }
+  });
+  quantityInput.addEventListener('input', (e) => {
+    e.target.value;
+  });
+});
+
+// So sánh sản phẩm
+docReady(compare());

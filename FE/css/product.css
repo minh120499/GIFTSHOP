@@ -227,6 +227,7 @@ ul {
   margin-right: 30px;
 }
 .rightside .product-detail .images .image {
+  width: inherit;
   position: relative;
 }
 .rightside .product-detail .images .image img {
@@ -261,6 +262,7 @@ ul {
   width: 90px;
   margin-right: 10px;
   border: 1px solid #ebebeb;
+  cursor: pointer;
 }
 .rightside .product-detail .images .sub-images img:hover {
   border: 1px solid #d7182a;
@@ -309,6 +311,7 @@ ul {
 .rightside .product-detail .product-info__bottom .addcart-wrapper .quantity-modifier .quantity {
   font-weight: 600;
   background-color: #f2f2f2;
+  width: 50px;
 }
 .rightside .product-detail .product-info__bottom .addcart-wrapper .quantity-modifier .minus,
 .rightside .product-detail .product-info__bottom .addcart-wrapper .quantity-modifier .plus {
@@ -320,8 +323,8 @@ ul {
   color: #000;
 }
 .rightside .product-detail .product-info__bottom .addcart-wrapper .quantity-modifier input {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border: none;
   outline: none;
   text-align: center;
@@ -333,6 +336,26 @@ ul {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 35px;
+}
+.rightside .product-detail .product-info__bottom .download {
+  margin-top: 20px;
+}
+.rightside .product-detail .product-info__bottom .download .download-btn {
+  border: none;
+  outline: none;
+  height: 30px;
+  line-height: 30px;
+  text-transform: capitalize;
+  background-color: #d7182a;
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.rightside .product-detail .product-info__bottom .download .download-btn:hover {
+  background-color: #c01526;
+  transition: all 0.3s;
 }
 .rightside .tabs {
   display: flex;
