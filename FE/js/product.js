@@ -11,7 +11,7 @@ slider();
 $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
   var product = [];
   $.parseJSON(data).map((item) => {
-    if (item.id == '1') {
+    if (item.id == '40') {
       product = [...product, ...[item]];
     }
   });
@@ -19,9 +19,6 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
   let html = `<div class="images">
         <div class="image">
             <img src="${product[0].src}">
-            <div class="expend">
-                <i class="fas fa-expand-arrows-alt"></i>
-            </div>
         </div> 
         <div class="sub-images">
     `;
@@ -47,7 +44,7 @@ $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
                     <span class="old-price">$ ${product[0].price}</span>
                     <span class="new-price">$ ${product[0].price}</span>
                 </div>`;
-  if (product[0].quantity > product[0].sold) {
+  if (parseInt(product[0].quantity) > parseInt(product[0].sold)) {
     html += `<div class="status green">In Stock</div>`;
   } else {
     html += `<div class="status red">Out Of Stock</div>`;
