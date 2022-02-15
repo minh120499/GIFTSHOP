@@ -9,10 +9,12 @@ $conn = NULL;
 
 $data = [];
 
-foreach($stmt->fetchAll() as $key => $value) {
-    $data[$value['id']]['id'] = $value['id'];
-    $data[$value['id']]['name'] = $value['name'];
-    $data[$value['id']]['img'] = $value['img'];
+foreach ($stmt->fetchAll() as $key => $value) {
+    $data[] = array(
+        'id' => $value['id'],
+        'name' => $value['name'],
+        'img' => $value['img']
+    );
 }
 
 die(json_encode($data));

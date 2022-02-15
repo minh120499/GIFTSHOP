@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        function resolveAfter2Seconds() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log(12)
+                    resolve();
+                }, 1000);
+            });
+        }
+        function resolveAfter1Seconds() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log(11)
+                    resolve();
+                }, 1000);
+            });
+        }
+        let a = new Promise(rs => {
+            setTimeout(()=>{
+                console.log(999)
+                rs()
+            },1000)
+        })
+        async function asyncCall() {
+            // await resolveAfter2Seconds()
+            // await resolveAfter1Seconds()
+            // await a
+            // console.log('calling');
+            // console.log(result);
+
+            // expected output: "resolved"
+        }
+
+        // asyncCall();
+        a = `<h1>${localStorage.getItem('wl')}</h1>`
+        document.write(a)
+    </script>
+</body>
+
+</html>
