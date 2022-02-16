@@ -1,24 +1,19 @@
 @media screen and (min-width: 993px) {
-  .nav-mid_rp {
-    display: none;
-  }
-
-  .Menu_nav {
-    display: none;
-  }
-
+  .nav-mid_rp,
+  .Menu_nav,
   .search_item {
-    display: none;
+    display: none !important;
   }
-
-  /* .search_box{
-        display: none;
-    } */
 }
 
 @media screen and (max-width: 992px) {
+  #btnScrollTop,
+  .call,
+  .contact {
+    width: 40px;
+    height: 40px;
+  }
   /*------------------------------------------------------------*/
-
   .search_item {
     display: none;
   }
@@ -108,6 +103,8 @@
     padding: 3px 10px;
     background-color: transparent;
     border-radius: 30px;
+    border: 1px solid #ccc;
+    outline: none;
   }
 
   .menu_search i {
@@ -150,6 +147,13 @@
     border-bottom: 1px solid #ccc;
   }
 
+  .option_menu > li:nth-child(3),
+  .option_menu > li:nth-child(4) {
+    overflow: hidden;
+    height: 22px;
+    transition: all 0.5s ease;
+  }
+
   .option_menu > li button {
     width: 100%;
     display: flex;
@@ -160,20 +164,8 @@
   }
 
   .option_menu > li ul {
-    display: none;
+    display: flex;
     flex-direction: column;
-    animation: dropdownAni 0.3s linear;
-  }
-
-  @keyframes dropdownAni {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   .option_menu > li ul li {
@@ -212,7 +204,11 @@
 
   .contact span {
     color: #fff;
-    font-size: 8px;
+    font-size: 6px;
+  }
+
+  .show_drop {
+    height: 115px !important;
   }
 }
 
@@ -234,4 +230,12 @@
     color: #fff;
     font-size: 6px;
   }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }

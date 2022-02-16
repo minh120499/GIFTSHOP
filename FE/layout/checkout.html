@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/checkout.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -287,149 +294,7 @@
         </div>
     </main>
 
-    <!-- <div data-include="footer"></div> -->
+    <div data-include="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="module">
-        import { componentHTML } from '../js/components.js'
-        import * as checkout from '../js/checkout.js';
-        import * as validateForm from '../js/validation.js'
-        componentHTML();
-        
-        //Show Popup
-        const popup = document.querySelector('.popup')
-        const btnGuest = document.querySelector('.btn-guest')
-        window.addEventListener('load', () => {
-            popup.classList.add('show');
-            popup.childNodes[1].classList.add('show');
-        })
-        btnGuest.addEventListener('click', () => {
-            popup.remove();
-        })
-
-        //Cart Summary
-        $.ajax("http://localhost/BE/DataList/ProductList.php")
-        .done(function (data) {
-                var html = '';
-                var items = $.parseJSON(data);
-                // console.log(items);
-                $.each(items, function (i, item) {
-                    html = `
-                    <div class="cart-item">
-                        <div class="image-item">
-                            <img src="${item.src}">
-                        </div>
-                        <div class="item-info">
-                            <h3 class="item-title">${item.name}</h3>
-                        </div>
-                        <div class="calc">
-                            <div class="item-price">
-                                <span>$ ${item.price}</span>
-                            </div>
-                            <div class="quantity-modifier">
-                                <input type="button" value="-" class="minus">
-                                <input type="number" value="1" class="quantity">
-                                <input type="button" value="+" class="plus">
-                            </div>
-                        </div>
-                        <div class="delete-btn">
-                            <i class="far fa-trash-alt delbtn"></i>
-                        </div>
-                    </div>
-                    `;
-                    $('.cart-items').append(html);
-                    // console.log(i)
-                    if (i > 4) {
-                        return false;
-                    };
-                })
-                checkout.updateCart();
-                checkout.counter();
-                checkout.delProduct();
-            });
-
-        // Đổ dữ liệu người dùng
-        $.post("http://localhost/BE/Users/GetInfo.php",
-        {
-            userid: 3
-        }, 
-        function(data) {
-            var dataneh = $.parseJSON(data)[0];
-            console.log(dataneh);
-        })
-
-        // Validate Form dữ liệu người dùng
-        const formInfo = document.querySelector('#form-info');
-        const nextBtn = formInfo.parentElement.querySelector('.btn-next1');
-        const listInput = ['#name', '#lastname', '#phone', '#email', '#address'];
-        var parentEles = Array.from(formInfo.querySelectorAll('.form-ctrl'));
-        listInput.forEach(input => {
-            validateForm.sanitizeValue(input);
-        });
-        validateForm.uppercase('#name');
-        validateForm.uppercase('#lastname');
-        nextBtn.addEventListener('click', (e) => {            
-            listInput.forEach(input => {
-                validateForm.checkRequired(input, 'This field is required!');
-                validateForm.checkEmail('#email', 'This field is required!', 'Email is not valid!');
-                validateForm.checkPhoneNumber('#phone', 'This field is required!', 'Phone number is not valid!');
-            });
-            if (parentEles.every((parentEle) => parentEle.classList.contains('valid'))) {
-                let progressStep = document.querySelector('.step1');
-                let currentStep = e.target.parentElement.parentElement;
-                let nextStep = currentStep.nextElementSibling;
-                currentStep.style.left = '-100%';
-                currentStep.style.right = 'calc(100% + 30px)';
-                nextStep.style.left = '0';
-                nextStep.style.right = '0';
-                progressStep.classList.add('active');
-            }
-        });
-        checkout.multiStep();
-
-        const confirmBtn = document.querySelector('.btn-cf');
-        confirmBtn.addEventListener('click', () => {
-            const finalStep = document.querySelector('.step4');
-            finalStep.classList.add('active');
-            setTimeout(() => {
-                alert('Your order is confirmed!!!');
-                window.location = 'http://127.0.0.1:5500/FE/index.html'
-            }, 1000);
-        })
-        // Xóa dữ liệu sản phẩm
-
-        $.post("http://localhost/BE/Checkout/RemoveFromCart.php",
-        {
-            userid: 1,
-            productid: 2
-        },
-        function (data) {
-            console.log(data);
-            // var dataneh = $.parseJSON(data)[0];
-
-        })
-
-        //Cộng trừ số lượng
-
-        $.post("http://localhost/BE/Checkout/AddToCart.php",
-        {
-            userid: 1,
-            productid: 2,
-            quantity: 3,
-            price: 300,
-            // minus: 1
-        },
-        function (data) {
-            // console.log(data);
-            // var dataneh = $.parseJSON(data)[0];
-
-        })
-
-    </script>
+    <script type="module" src="../js/checkout.js"></script>
 </body>

@@ -1,4 +1,4 @@
-import { componentHTML } from './components.js';
+import { componentHTML } from './module/components.js';
 import { slider } from './slider.js';
 import { compare } from './compare.js';
 

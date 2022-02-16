@@ -1,4 +1,4 @@
-@import 'general.css';
+@import '../css/general.css';
 
 #btnScrollTop,
 .call,
@@ -46,7 +46,7 @@
 
 .contact span {
   color: #fff;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 .contact {
@@ -130,6 +130,14 @@
   }
 }
 
+.login_open span a {
+  color: #fff !important;
+}
+
+.login_open span a:hover {
+  text-decoration: none;
+}
+
 .top-left li:nth-child(1):hover .My-Account,
 .top-right-currency:hover .top-right-currency-dropdown {
   display: flex;
@@ -162,6 +170,7 @@
 .top-right-currency-dropdown li:hover {
   background: rgb(240, 239, 239);
   color: #d7182a;
+  cursor: pointer;
 }
 
 .top-right-language,
@@ -253,6 +262,7 @@
   width: 100%;
   height: 75px;
   border-bottom: 1px solid var(--line_color);
+  background-color: #fff;
 }
 
 .nav .container {
@@ -263,7 +273,6 @@
 }
 
 .nav-left {
-  width: 15%;
   height: 50%;
   display: flex;
   align-items: center;
@@ -322,6 +331,9 @@
 
 .cart {
   position: relative;
+  height: 60%;
+  align-items: center;
+  display: flex;
 }
 
 .cart_noti {
@@ -335,8 +347,49 @@
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  top: -30%;
+  top: 0%;
   right: -30%;
+}
+
+.cart_content {
+  position: absolute;
+  top: 95%;
+  right: 0;
+  width: 350px;
+  height: 200px;
+  z-index: 1000;
+  background-color: #fff;
+  transform-origin: calc(100% - 20px) top;
+  animation: cart_contentAni ease-in 0.22s;
+  border: 1px solid #ccc;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: none;
+}
+
+@keyframes cart_contentAni {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cart:hover .cart_content {
+  display: flex;
+}
+
+.cart_content img {
+  width: 40%;
+}
+
+.cart_content_zero p {
+  font-size: 15px;
 }
 
 /*--------------------------------------------------------- Drop down nav ----------------------------------------------------------*/
@@ -417,7 +470,7 @@
 
 /*----------------------  PROMOTION ----------------------------*/
 .promotion {
-  left: -450px;
+  left: -400px;
   z-index: 1000;
 }
 
@@ -432,7 +485,7 @@
 }
 
 .promotion > ul > li:nth-child(1) img:hover {
-  transform: scale(0.8); /* zoom to ra khoảng 1.2 lần*/
+  transform: scale(0.9); /* zoom to ra khoảng 1.2 lần*/
 }
 
 /*------------------- BLOG ------------------------*/
@@ -440,4 +493,18 @@
   z-index: 1000;
   width: 630px;
   left: -250px;
+}
+
+/*--------------------------------------------------------------------- link ----------------------------------------------------------------------*/
+.link {
+  margin: 30px 0;
+}
+
+.link span a,
+.link i {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text_color);
+  margin-right: 10px;
+  color: #7d7d7d !important;
 }
