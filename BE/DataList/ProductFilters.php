@@ -3,51 +3,153 @@ require_once '../ConnectDataBase/connect.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 
-// Search by Categories
+# Handling Request
+$a = '';
+isset($_POST['cateid']) && !empty($_POST['cateid']) ? $a = 1 : '';
+isset($_POST['productName']) && !empty($_POST['productName']) ? $a = 2 : '';
+isset($_POST['minPrice']) && isset($_POST['maxPrice']) ? $a = 3 : '';
+isset($_POST['brand']) && !empty($_POST['brand']) ? $a = 4 : '';
 
-// $id = $_POST['id'];
-$cateid = 2;
-
-$sql = "SELECT * FROM `products` 
-            INNER JOIN `productdetails` 
-            INNER JOIN (SELECT `src`,`productid` 
-                            FROM `img` GROUP BY `productid`) as a 
-            INNER JOIN (SELECT `products`.`id` as c 
-                            FROM `products`, `catepro`,`categories` 
-                        WHERE `products`.`id` = `catepro`.`proid` 
-                          AND `categories`.`id` = `catepro`.`cateid` 
-                          AND `catepro`.`cateid` = $cateid) as b 
-        WHERE `products`.`id` = `productdetails`.`productid` 
-          AND `products`.`id` = `a`.`productid` 
-          AND `b`.`c` = `products`.`id`";
-
+switch ($a) {
+  case 1:
+    searchByCategories();
+    break;
+  case 2:
+    searchByName();
+    break;
+  case 3:
+    searchByPrice();
+    break;
+  case 4:
+    searchByBrand();
+    break;
+  default:
+    die('Syntax Error, Can\'t Search');
+}
 $stmt = $conn->prepare("$sql");
 $stmt->execute();
 
 $data = [];
-
 foreach ($stmt->fetchAll() as $key => $value) {
-  $data[$value['id']]['id'] = $value['id'];
-  $data[$value['id']]['name'] = $value['productname'];
-  // $data[$value['id']]['brand'] = $value['brand'];
-  $data[$value['id']]['price'] = $value['price'];
-  $data[$value['id']]['quantity'] = $value['quantity'];
-  $data[$value['id']]['rating'] = $value['rating'];
-  // $data[$value['id']]['size'] = $value['size'];
-  // $data[$value['id']]['date'] = $value['date'];
-  // $data[$value['id']]['content'] = $value['content'];
-  // $data[$value['id']]['anniversary'] = $value['anniversary'];
-  $data[$value['id']]['sold'] = $value['sold'];
-  $data[$value['id']]['view'] = $value['view'];
-  $data[$value['id']]['src'] = $value['src'];
+  $data[] = array(
+    'id' => $value['id'],
+    'name' => $value['name'],
+    'price' => $value['price'],
+    'quantity' => $value['quantity'],
+    'rating' => $value['rating'],
+    'date' => $value['date'],
+    'detail' => $value['detail'],
+    'anniversary' => $value['anniversary'],
+    'sold' => $value['sold'],
+    'view' => $value['view'],
+    'src' => $value['src']
+  );
 }
 
 die(json_encode($data));
 
-// Search by Price 
+# -----------------------------------------------------
+# -------------------------
+# -----
 
-// Search by Name 
+# Search by Categories
 
-// Search by Brand
+function searchByCategories()
+{
+  $cateid = $_POST['cateid'];
+  is_numeric($cateid) ? $option = "`categories`.`id` = $cateid" : $option = "`categories`.`name` = '$cateid'";
+  $GLOBALS['sql'] = "SELECT 
+            `products`.`id`,
+            `products`.`name` as `name`,
+            `price`,
+            `quantity`,
+            `rating`,
+            `date`,
+            `detail`,
+            `anniversary`,
+            `sold`,
+            `view`,
+            `src`
+          FROM `products`
+            INNER JOIN `productimg`
+            INNER JOIN (SELECT `products`.`id` as `id` FROM `products` 
+  						            INNER JOIN `catepro`
+                          INNER JOIN `categories`
+  					            WHERE `products`.`id` = `catepro`.`proid` 
+                          AND `categories`.`id` = `catepro`.`cateid`
+                          AND $option )as `a`
+          WHERE `products`.`id` = `productimg`.`productid`
+            AND `products`.`id` = `a`.`id`
+            GROUP BY `productimg`.`productid`;";
+}
 
-// Search by 
+# -----
+# -------------------------
+# -----------------------------------------------------
+
+# -----------------------------------------------------
+# -------------------------
+# -----
+
+# Search by Name
+
+function searchByName()
+{
+  $productname = $_POST['productName'];
+  $GLOBALS['sql'] = "SELECT * FROM `products`
+             INNER JOIN `productimg`
+            WHERE `products`.`id` = `productimg`.`productid` 
+             AND  `name` LIKE '%$productname%'
+            GROUP BY `productimg`.`productid`;";
+}
+
+# -----
+# -------------------------
+# -----------------------------------------------------
+
+# -----------------------------------------------------
+# -------------------------
+# -----
+
+# Search by Price 
+
+function searchByPrice()
+{
+  $min = $_POST['minPrice'];
+  $max = $_POST['maxPrice'];
+  if($min > $max) {
+    $min = $_POST['maxPrice'];
+    $max = $_POST['minPrice'];
+  }
+  $GLOBALS['sql'] = "SELECT * FROM `products`
+             INNER JOIN `productimg`
+            WHERE `products`.`id` = `productimg`.`productid` 
+             AND  `price` >= $min AND `price` <= $max
+            GROUP BY `productimg`.`productid`
+            ORDER BY `price` DESC;";
+}
+# -----
+# -------------------------
+# -----------------------------------------------------
+
+# -----------------------------------------------------
+# -------------------------
+# -----
+
+# Search by Brand
+
+function searchByBrand()
+{
+  $brand = $_POST['brand'];
+  $GLOBALS['sql'] = "SELECT `products`.*,`productimg`.src,`brand`.`name` as 'brand' FROM `products`
+             INNER JOIN `productimg`
+             INNER JOIN `brand`
+            WHERE `products`.`id` = `productimg`.`productid` 
+             AND `products`.`brand` = `brand`.`id`
+             AND  `brand`.`id` = '$brand'
+            GROUP BY `productimg`.`productid`";
+}
+
+# -----
+# -------------------------
+# -----------------------------------------------------

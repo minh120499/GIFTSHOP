@@ -1,0 +1,123 @@
+@media screen and (max-width: 992px) {
+    .SideBar{
+        width: 30%;
+    }
+
+    .content_container{
+        width: 68%;
+    }
+
+    .SideBar_price li:nth-child(4)>span{
+        display: none;
+    }
+
+    .SideBar_bestseller>li{
+        height: 100px;
+    }
+
+    .SideBar_bestseller>li .col-8{
+        justify-content: space-evenly;
+    }
+
+    .SideBar_bestseller>li .col-8 p{
+        font-size: 12px;
+    }
+    
+    .content_container_item_show_infor{
+        padding: 5px 0;
+    }
+
+    .content_container_item_pillar_img{
+        width: 100%;
+    }
+
+    .content_container_item_pillar_content h2 a{
+        font-size: 16px;
+    }
+
+    .content_container_item_pillar_star i{
+        font-size: 12px;
+    }
+
+    .content_container_item_pillar_price{
+        margin: 0;
+    }
+
+    .content_container_item_pillar_content_title {
+        font-size: 12px;
+    }
+
+    .content_container_item_pillar_content_btn{
+        margin: 0;
+    }
+    
+    .add_cart{
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .add_view, .add_share, .add_tym{
+        font-size: 12px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .SideBar_bestseller{
+        display: none;
+    }
+
+    .link{
+        margin: 20px 0;
+    }
+
+    .SideBar>button{
+        display: flex;
+        margin-bottom: 15px;
+        background-color:transparent;
+        border: 1px solid var(--primary_color);
+        color: #000;
+        width: 180px;
+        padding: 2px 20px;
+        font-size: 15px;
+    }
+
+    .SideBar>button span{
+        margin-right: 10px;
+    }
+
+    .SideBar {
+        height: 40px;
+        overflow: hidden;
+        transition: all 0.5s ease;
+    }
+
+    .filter_show{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .content_container_main{
+        display: none;
+    }
+
+    .content_container_main_pillar{
+        display: flex;
+    }
+
+    .col-sm-3{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+

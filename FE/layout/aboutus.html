@@ -54,10 +54,17 @@
         import { componentHTML } from '../js/components.js'
         componentHTML();
 
+<<<<<<< HEAD
         $.ajax("http://localhost:8080/BE/AboutUs/AboutUs.php")
         .done(function (data) {
             console.log($.parseJSON(data))
                 var html = `<p>${$.parseJSON(data).aboutus}</p>`;
+=======
+        $.ajax("http://localhost/BE/AboutUs/AboutUs.php")
+        .done(function (data) {
+            console.log($.parseJSON(data)[0].aboutus)
+                var html = `<p>${$.parseJSON(data)[0].aboutus}</p>`;
+>>>>>>> 61ca91b287c672521bdf49ad49f78e84263b6d7d
                 $('.content').append(html);
               })
     </script>
