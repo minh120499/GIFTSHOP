@@ -76,6 +76,23 @@ ul {
 }
 .wrapper .form-group:not(:last-child) {
   margin-bottom: 20px;
+<<<<<<< HEAD:FE/css/contactus.css
+=======
+}
+.wrapper .invalid input,
+.wrapper .invalid textarea {
+  border: 1px solid red;
+}
+.wrapper .invalid small {
+  display: block;
+  padding-top: 10px;
+  font-style: italic;
+  color: red;
+}
+.wrapper .valid input,
+.wrapper .valid textarea {
+  border: 1px solid green;
+>>>>>>> 61ca91b287c672521bdf49ad49f78e84263b6d7d:FE/HomePage/css/contactus.css
 }
 .wrapper .invalid input,
 .wrapper .invalid textarea {
@@ -106,9 +123,19 @@ ul {
 .wrapper textarea {
   width: 100%;
   padding: 10px;
+<<<<<<< HEAD
   border: #b7b7b7 solid 1px;
   border-radius: 5px;
   resize: none;
+=======
+<<<<<<< HEAD:FE/css/contactus.css
+  border-radius: 5px;
+=======
+  border: #b7b7b7 solid 1px;
+  border-radius: 5px;
+  resize: none;
+>>>>>>> 61ca91b287c672521bdf49ad49f78e84263b6d7d:FE/HomePage/css/contactus.css
+>>>>>>> master
 }
 .wrapper [type=submit] {
   background-color: #d7182a;

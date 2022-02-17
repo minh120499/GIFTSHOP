@@ -1,96 +1,94 @@
-@import "../css/general.css";
-@import "../css/footer.css";
-@import "../css/header.css";
-@import "../css/ressponesive/rpHeader.css";
-
+@import '../css/general.css';
+@import '../css/footer.css';
+@import '../css/header.css';
+@import '../css/responsive/rpHeader.css';
 
 /*----------------------------------------------Header --------------------------------*/
-header{
-    background-color: #fff;
-    height: 80px;
-    width: 100%;
+header {
+  background-color: #fff;
+  height: 80px;
+  width: 100%;
 }
 
-header .container, .header_left,.header_left li:nth-child(2),.header_right{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+header .container,
+.header_left,
+.header_left li:nth-child(2),
+.header_right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-header .container{
-    justify-content: space-between;
+header .container {
+  justify-content: space-between;
 }
 
-.header_left li:nth-child(2) span{
-    margin-left: 30px;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: cursive;
+.header_left li:nth-child(2) span {
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: cursive;
 }
 
-.header_right{
-    justify-content: right;
+.header_right {
+  justify-content: right;
 }
 
-.header_right span{
-    font-size: 15px;
-    color: var(--primary_color) !important;
+.header_right span {
+  font-size: 15px;
+  color: var(--primary_color) !important;
 }
 
 /*---------------------------------------------- Form đăng ký Registration  --------------------------------*/
 .content {
-    margin: 50px 0;
+  margin: 50px 0;
 }
 
-.content .col-6 h2{
-    font-size: 24px;
-    padding-bottom: 10px;
-    font-weight: bold;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
- 
-.content label{
-    font-size: 14px;
-    color: #7d7d7d;
-    padding-left: 10px;
+.content .col-6 h2 {
+  font-size: 24px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
-.content button{
-    background-color: #333;
-    border-radius: 0%;
-    border: none;
-    font-size: 14px;
-    margin: 10px 0;
-    padding: 5px 20px;
+.content label {
+  font-size: 14px;
+  color: #7d7d7d;
+  padding-left: 10px;
 }
 
-.content button:hover{
-    background-color: var(--primary_color);
+.content button {
+  background-color: #333;
+  border-radius: 0%;
+  border: none;
+  font-size: 14px;
+  margin: 10px 0;
+  padding: 5px 20px;
 }
 
-.content input{
-    background-color: #EEEE;
-    border: none;
-    border-radius: 0;
+.content button:hover {
+  background-color: var(--primary_color);
 }
 
-.form_check_btn{
-    display: flex;
-    justify-content: right;
+.content input {
+  background-color: #eeee;
+  border: none;
+  border-radius: 0;
 }
 
-.form-group{
-    display: flex;
-    flex-direction: column;
+.form_check_btn {
+  display: flex;
+  justify-content: right;
 }
 
-.form-group label span{
-    color: var(--primary_color);
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-
+.form-group label span {
+  color: var(--primary_color);
+}

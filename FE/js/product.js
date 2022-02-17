@@ -1,23 +1,26 @@
-import { componentHTML } from './components.js';
+import { componentHTML } from './module/components.js';
+import { header } from './module/header.js';
 import { slider } from './slider.js';
-import { compare } from './compare.js';
-import { alert } from './alert.js';
+import { compare } from './module/compare.js';
+// import { alert } from './module/alert.js';
 
 // ----------------------------------
 
 componentHTML();
 var product = [];
-var totalquantity = 1
+var totalquantity = 1;
 function getDataFromServer() {
   //Render chi tiết sản phẩm
   $.ajax('http://localhost/BE/DataList/Product.php').done(function (data) {
+    // console.log(data);
     $.parseJSON(data).map((item) => {
       if (item.id == localStorage.getItem('productid')) {
         product = [...product, ...[item]];
       }
     });
     // Product-detail
-    document.querySelector('.bread-crumb__productname').innerHTML = product[0].name
+    document.querySelector('.bread-crumb__productname').innerHTML =
+      product[0].name;
 
     let html = `<div class="images">
           <div class="image">
@@ -42,7 +45,7 @@ function getDataFromServer() {
     for (let i = 0; i < 5 - Math.round(product[0].rating); ++i) {
       html += `<i class="fa fa-star"></i>`;
     }
-    html += `<span style='margin-left: 25px; font-weight:300; font-size: 12px'><i>${product[0].view} views</i></span>`
+    html += `<span style='margin-left: 25px; font-weight:300; font-size: 12px'><i>${product[0].view} views</i></span>`;
     html += `</div>
                   <div class="prices">
                       <span class="old-price">$ ${product[0].price}</span>
@@ -76,52 +79,58 @@ function getDataFromServer() {
                           <span>Add to cart</span>
                           <i class="fas fa-shopping-cart"></i>
                       </button>
-                  </div>`
-    if (!localStorage.getItem('wishlist').split(',').includes(product[0].id.toString())) {
-      html +=
-        `<div class="wishlist" productid="${product[0].id}">
+                  </div>`;
+    if (
+      !localStorage
+        .getItem('wishlist')
+        .split(',')
+        .includes(product[0].id.toString())
+    ) {
+      html += `<div class="wishlist" productid="${product[0].id}">
         <i class="far fa-heart" productid="${product[0].id}"></i>
-      </div>`
+      </div>`;
     } else {
-      html +=
-        `<div class="wishlist clicked-wishlist" productid="${product[0].id}">
+      html += `<div class="wishlist clicked-wishlist" productid="${product[0].id}">
                      <i class="far fa-heart" style='color:white' productid="${product[0].id}"></i>
-                   </div>`
+                   </div>`;
     }
-    html +=
-      `<div class="compare" productid="${product[0].id}">
+    html += `<div class="compare" productid="${product[0].id}">
                       <i class="fas fa-retweet"></i>
                   </div>
               </div>
               <div class="categories-tag">
-                  <span class="title">Categories: </span>`
-    product[0].anniversary.split(',').map(item => {
-      html += `<a href="./products.html" class="product-link product-cate-link fst-italic">${item}</a>,`
-    })
-    html +=
-      `</div>
+                  <span class="title">Categories: </span>`;
+    product[0].anniversary.split(',').map((item) => {
+      html += `<a href="./products.html" class="product-link product-cate-link fst-italic">${item}</a>,`;
+    });
+    html += `</div>
               <small>
                   <span><i>Made In: </i></span>
                   <b><i>${product[0].country}</i></b>
               </small>
               <div class="download">
-                  <a href="http://localhost/document/wine/${product[0].name.split(' ').join('%20')}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
+                  <a href="http://localhost/document/${product[0].name
+                    .split(' ')
+                    .join(
+                      '%20'
+                    )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
               </div>
           </div>
       </div>`;
     $('.product-detail').append(html);
 
     // Related-products
-    let relatedProduct = new FormData()
-    relatedProduct.append('productid', localStorage.getItem('productid'))
-    axios.post('http://localhost/be/DataList/Related.php', relatedProduct)
-      .then(e => e.data)
-      .then(e => {
+    let relatedProduct = new FormData();
+    relatedProduct.append('productid', localStorage.getItem('productid'));
+    axios
+      .post('http://localhost/be/DataList/Related.php', relatedProduct)
+      .then((e) => e.data)
+      .then((e) => {
         let html = `<h3 class="title">Related Products</h3>
                       <hr>
-                      <ul id="autoWidth" class="cs-hidden">`
-        e.map(item => {
-          if (Math.random() < 0.5) return
+                      <ul id="autoWidth" class="cs-hidden">`;
+        e.map((item) => {
+          if (Math.random() < 0.5) return;
           html += `<li class="item-a">
                                 <div class="box">
                                     <div class="slider">
@@ -142,43 +151,46 @@ function getDataFromServer() {
                                             <div class="buttons">
                                                 <div class="addcart">
                                                     <button type="submit">Add to cart</button>
-                                                </div>`
-          if (!localStorage.getItem('wishlist').split(',').includes(item.id.toString())) {
-            html +=
-              `<div class="wishlist" productid="${item.id}">
+                                                </div>`;
+          if (
+            !localStorage
+              .getItem('wishlist')
+              .split(',')
+              .includes(item.id.toString())
+          ) {
+            html += `<div class="wishlist" productid="${item.id}">
                 <i class="far fa-heart" productid="${item.id}"></i>
-              </div>`
+              </div>`;
           } else {
-            html +=
-              `<div class="wishlist clicked-wishlist" productid="${item.id}">
+            html += `<div class="wishlist clicked-wishlist" productid="${item.id}">
                      <i class="far fa-heart" style='color:white' productid="${item.id}"></i>
-                   </div>`
+                   </div>`;
           }
-          html +=
-            `<div class="compare" productid="${item.id}">
+          html += `<div class="compare" productid="${item.id}">
                                                     <i class="fas fa-retweet"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </li>`
-        })
-        html += `</ul>`
-        document.querySelector('.related-products').innerHTML = html
-      })
+                            </li>`;
+        });
+        html += `</ul>`;
+        document.querySelector('.related-products').innerHTML = html;
+      });
     // Thêm Description
     let description = product[0].detail;
     $('.desc-text').text(description);
   });
 }
 function RenderBestSale() {
-  axios.get('http://localhost/be/DataList/TopSales.php')
-    .then(e => e.data)
-    .then(e => {
-      let html = ''
-      document.querySelector('#render-leftside-bestsellers').innerHTML = ''
-      e.forEach(item => {
+  axios
+    .get('http://localhost/be/DataList/TopSales.php')
+    .then((e) => e.data)
+    .then((e) => {
+      let html = '';
+      document.querySelector('#render-leftside-bestsellers').innerHTML = '';
+      e.forEach((item) => {
         html += `<li>
                   <div class="item-content">
                       <a href="./product.html" class="product-name-link" productid="${item.id}"><img src="${item.src}" width="100px" height="100px"
@@ -186,27 +198,27 @@ function RenderBestSale() {
                       <div class="item-info">
                           <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>
                           <div class="prices">
-                              <span class="old-price">$ ${item.price}</span>
                               <span class="new-price">$ ${item.price}</span>
                           </div>
                       </div>
                   </div>
-              </li>`
-      })
-      document.querySelector('#render-leftside-bestsellers').innerHTML += html
-    })
+              </li>`;
+      });
+      document.querySelector('#render-leftside-bestsellers').innerHTML += html;
+    });
 }
 
 function RenderCategories() {
-  axios.get("http://localhost/BE/DataList/Categories.php")
+  axios
+    .get('http://localhost/BE/DataList/Categories.php')
     .then((e) => e.data)
-    .then(e => {
-      let html = ''
-      e.forEach(item => {
+    .then((e) => {
+      let html = '';
+      e.forEach((item) => {
         html += `<li><a href="./products.html" class="product-link product-cate-link">${item.name}</a></li>`;
-      })
-      document.querySelector("#render-leftside-categories").innerHTML = html;
-    })
+      });
+      document.querySelector('#render-leftside-categories').innerHTML = html;
+    });
 }
 function abc() {
   // Kiểm tra DOM đã được render hay chưa
@@ -221,13 +233,15 @@ function abc() {
     }
   }
 
+  docReady(header);
+
   // Go to categories
-  let gotoCate = document.querySelectorAll('.product-cate-link')
-  gotoCate.forEach(item => {
+  let gotoCate = document.querySelectorAll('.product-cate-link');
+  gotoCate.forEach((item) => {
     item.onclick = () => {
-      localStorage.setItem('cateid', item.textContent)
-    }
-  })
+      localStorage.setItem('cateid', item.textContent);
+    };
+  });
 
   // Thêm số lượng sản phẩm
   docReady(() => {
@@ -238,7 +252,7 @@ function abc() {
       let quantity = e.target.previousElementSibling;
       let newValue = parseInt(quantity.value) + 1;
       quantity.value = newValue;
-      totalquantity = newValue
+      totalquantity = newValue;
     });
     minusBtn.addEventListener('click', (e) => {
       let quantity = e.target.nextElementSibling;
@@ -246,32 +260,33 @@ function abc() {
       if (newValue > 0) {
         quantity.value = newValue;
       }
-      totalquantity = newValue
+      totalquantity = newValue;
     });
     quantityInput.addEventListener('input', (e) => {
-      e.target.value == '' ? e.target.value = 1 : '';
-      quantity = e.target.value
+      e.target.value == '' ? (e.target.value = 1) : '';
+      quantity = e.target.value;
     });
   });
   // So sánh sản phẩm
   docReady(compare);
   // Slider
-  docReady(slider)
+  docReady(slider);
   // Add to cart button
   docReady(() => {
     document.querySelector('.addcart').onclick = () => {
       let data = new FormData();
-      data.append('userid', localStorage.getItem('userid'))
-      data.append('productid', product[0].id)
-      data.append('quantity', totalquantity)
-      data.append('price', product[0].price)
-      axios.post('http://localhost/be/Checkout/AddToCart.php', data)
-        .then(e => e.data)
-        .then(e => {
-          e == 'Add Success' ? alert(e) : alert('Erros')
-        })
-    }
-  })
+      data.append('userid', localStorage.getItem('userid'));
+      data.append('productid', product[0].id);
+      data.append('quantity', totalquantity);
+      data.append('price', product[0].price);
+      axios
+        .post('http://localhost/be/Checkout/AddToCart.php', data)
+        .then((e) => e.data)
+        .then((e) => {
+          // e == 'Add Success' ? alert(e) : alert('Erros');
+        });
+    };
+  });
   // Hiển thị ảnh to khi bấm vào ảnh nhỏ
   docReady(() => {
     const subImgs = document.querySelectorAll('.sub-images img');
@@ -284,74 +299,61 @@ function abc() {
   });
   // Button Whishlist
   let wl = document.querySelectorAll('.wishlist');
-  wl.forEach(item => {
+  wl.forEach((item) => {
     item.onclick = (e) => {
-      let data = new FormData()
-      data.append('userid', localStorage.getItem('userid'))
-      data.append('productid', e.target.getAttribute('productid'))
+      let data = new FormData();
+      console.log(123);
+      data.append('userid', localStorage.getItem('userid'));
+      data.append('productid', e.target.getAttribute('productid'));
       if (item.className.includes('clicked-wishlist')) {
-        axios.post('http://localhost/be/Wishlist/delete.php', data)
-          .then(e => {
+        axios
+          .post('http://localhost/be/Wishlist/delete.php', data)
+          .then((e) => {
             if (e.data == 'Delete Succes') {
-              item.className = item.className.replace('clicked-wishlist', '')
-              let b = item.childNodes
-              b[1].style.color = '#d7182a'
+              item.className = item.className.replace('clicked-wishlist', '');
+              let b = item.childNodes;
+              b[1].style.color = '#d7182a';
             }
-          })
+          });
       } else {
-        axios.post('http://localhost/be/Wishlist/Add.php', data)
-          .then(e => {
-            if (e.data == 'Add Succes') {
-              item.className += ' clicked-wishlist'
-              let b = item.childNodes
-              b[1].style.color = 'white'
-            }
-          })
+        axios.post('http://localhost/be/Wishlist/Add.php', data).then((e) => {
+          if (e.data == 'Add Succes') {
+            item.className += ' clicked-wishlist';
+            let b = item.childNodes;
+            b[1].style.color = 'white';
+          }
+        });
       }
-    }
-  })
+    };
+  });
 
   // Button product-name-link
-  let productnamelink = document.querySelectorAll('.product-name-link')
-  productnamelink.forEach(item => {
+  let productnamelink = document.querySelectorAll('.product-name-link');
+  productnamelink.forEach((item) => {
     item.onclick = () => {
-      localStorage.setItem('productid', item.getAttribute('productid'))
-      location.reload()
-    }
-  })
-
+      localStorage.setItem('productid', item.getAttribute('productid'));
+      location.reload();
+    };
+  });
 }
 
 setTimeout(() => {
   // GET WISHLIST (LOCAL STORAGE)
   function getWishlist() {
-    let data = new FormData()
-    data.append('userid', localStorage.getItem('userid'))
-    axios.post('http://localhost/be/Wishlist/list.php', data)
-      .then(e => e.data)
-      .then(e => {
-        localStorage.setItem('wishlist', e)
-      })
+    let data = new FormData();
+    data.append('userid', localStorage.getItem('userid'));
+    axios
+      .post('http://localhost/be/Wishlist/list.php', data)
+      .then((e) => e.data)
+      .then((e) => {
+        localStorage.setItem('wishlist', e);
+      });
   }
   // RenderCategories()
-  RenderBestSale()
+  RenderBestSale();
   getWishlist();
-  getDataFromServer()
+  getDataFromServer();
   setTimeout(() => {
-    abc()
-  }, 1000)
-}, 1000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    abc();
+  }, 1000);
+}, 1000);
