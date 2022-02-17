@@ -14,12 +14,18 @@
         integrity="sha512-yJHCxhu8pTR7P2UgXFrHvLMniOAL5ET1f5Cj+/dzl+JIlGTh5Cz+IeklcXzMavKvXP8vXqKMQyZjscjf3ZDfGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="../css/alert.css">
     <link rel="stylesheet" href="../css/product.css">
     <link rel="stylesheet" href="../css/compare.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
+<div id="alert-all-message">
+    <div>mess</div>
+    <div>x</div>
+</div>
+
     <div data-include="header"></div>
 
     <main>
@@ -33,13 +39,13 @@
                         <i class="fas fa-chevron-right"></i>
                     </li>
                     <li>
-                        <a href="#" class="product-link">Category 1</a>
+                        <a href="./products.html" class="product-link">Product</a>
                     </li>
                     <li>
                         <i class="fas fa-chevron-right"></i>
                     </li>
                     <li>
-                        <span>Product</span>
+                        <span class="bread-crumb__productname"></span>
                     </li>
                 </ul>
             </div>
@@ -47,82 +53,30 @@
 
                 <!-- Leftside -->
                 <div class="leftside">
-                    <div class="leftside-categories">
-                        <div class="leftside-title">
-                            <h2><i class="far fa-gem"></i>Categories</h2>
-                        </div>
-                        <ul>
-                            <li><a href="#" class="product-link">Category 1</a></li>
-                            <li><a href="#" class="product-link">Category 2</a></li>
-                            <li><a href="#" class="product-link">Category 3</a></li>
-                            <li><a href="#" class="product-link">Category 4</a></li>
-                            <li><a href="#" class="product-link">Category 5</a></li>
-                            <li><a href="#" class="product-link">Category 6</a></li>
-                            <li><a href="#" class="product-link">Category 7</a></li>
-                        </ul>
-                    </div>
-
                     <div class="leftside-bestsellers">
                         <div class="leftside-title">
                             <h2><i class="far fa-gem"></i>Best Sellers</h2>
+                            <ul id="render-leftside-bestsellers">
+                    
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <div class="item-content">
-                                    <a href="#"><img src="../image/products/img1.jpg" width="100px" height="100px"
-                                            alt="" class="thumbnail"></a>
-                                    <div class="item-info">
-                                        <a href="#" title="Product 1" class="product-link">Product 1</a>
-                                        <div class="prices">
-                                            <span class="old-price">$ 60</span>
-                                            <span class="new-price">$ 50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <a href="#"><img src="../image/products/img2.jpg" width="100px" height="100px"
-                                            alt="" class="thumbnail"></a>
-                                    <div class="item-info">
-                                        <a href="#" title="Product 2" class="product-link">Product 2 Lorem ipsum dolor
-                                            sit amet, consectetur adipisicing elit.</a>
-                                        <div class="prices">
-                                            <span class="new-price">$ 40</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <a href="#"><img src="../image/products/img3.jpg" width="100px" height="100px"
-                                            alt="" class="thumbnail"></a>
-                                    <div class="item-info">
-                                        <a href="#" title="Product 3" class="product-link">Product 3</a>
-                                        <div class="prices">
-                                            <span class="new-price">$ 58</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <a href="#"><img src="../image/products/img4.jpg" width="100px" height="100px"
-                                            alt="" class="thumbnail"></a>
-                                    <div class="item-info">
-                                        <a href="#" title="Product 4" class="product-link">Product 4</a>
-                                        <div class="prices">
-                                            <span class="new-price">$ 62</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                     </div>
+
+                    <!-- <div class="leftside-categories">
+                        <div class="leftside-title">
+                            <h2><i class="far fa-gem"></i>Categories</h2>
+                        </div>
+                        <ul id="render-leftside-categories">
+                           
+                        </ul>
+                    </div> -->
                 </div>
 
                 <!-- Rightside -->
                 <div class="rightside">
-                    <div class="product-detail"></div>
+                    <div class="product-detail">
+                        
+                    </div>
                     <div class="tabs">
                         <input type="radio" name="tabs" id="description-tab" checked="checked">
                         <label for="description-tab">Description</label>
@@ -176,7 +130,7 @@
                         </div>
                     </div>
                     <div class="related-products">
-                        <h3 class="title">Related Products</h3>
+                        <!-- <h3 class="title">Related Products</h3>
                         <hr>
                         <ul id="autoWidth" class="cs-hidden">
                             <li class="item-a">
@@ -343,7 +297,7 @@
                                     </div>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
@@ -352,8 +306,24 @@
 
     <div class="compare-product">
         <p></p>
-        <div style="padding-left: 15px;">
-            <div></div>
+        <div class="minhi"></div>
+        <div class="minhi">
+            <div style="position: relative;">
+                <input type="text" class="product-compare-left">
+                <div id="list-compare-left"></div>
+            </div>
+            <button class="button-compare-left">Search</button>
+        </div>
+    
+        <div class="minhi">
+            <div style="position: relative;">
+                <input type="text" class="product-compare-right">
+                <div id="list-compare-right"></div>
+            </div>
+            <button class="button-compare-right">Search</button>
+        </div>
+    
+        <div class="compare-left-1" style="padding-left: 15px;">
             <div>Name:</div>
             <div>Img:</div>
             <div>Brand:</div>
@@ -364,18 +334,13 @@
             <div>Rate:</div>
             <div>Anniversary:</div>
         </div>
+    
         <div class="compare-left">
-            <div class="minhi">
-                <input type="text" class="product-compare-left" id="datalist-left">
-                <button class="button-compare-left">Search</button>
-            </div>
+    
         </div>
-
+    
         <div class="compare-right">
-            <div class="minhi">
-                <input type="text" class="product-compare-right">
-                <button class="button-compare-right">Search</button>
-            </div>
+    
         </div>
         <div class="compare-close"></div>
     </div>

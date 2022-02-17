@@ -18,7 +18,6 @@ export function compare() {
 
   // Bắt đầu so sánh
   document.querySelector('.compare').addEventListener('click', () => {
-    console.log(123);
     document.querySelector('.compare-product').style.display = 'grid';
     document.querySelector('.compare-product').style.animationName = 'popup';
     console.log(data);
