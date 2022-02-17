@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./style.css" />
+  <!-- <link rel="stylesheet" href="./owlCarousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./owlCarousel/owl.theme.default.min.css" /> -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <!-- Top -->
+  <div class="top">
+    <div class="container">
+      <div class="top-left">
+        <li>
+          <i class="fas fa-user"></i>
+          <span>My Account</span>
+          <ul class="My-Account">
+            <li>Cart</li>
+            <li>Wishlist</li>
+            <li>Checkout</li>
+            <li>My Account</li>
+          </ul>
+        </li>
+        <li>
+          <i class="fas fa-lock"></i>
+          <span>Login</span>
+        </li>
+      </div>
+      <div class="top-right">
+        <li class="top-right-language">
+          <div class="top-right-language-img">
+            <img src="./image/top/Anh.png" alt="" />
+          </div>
+          <span>English</span>
+          <i class="fas fa-angle-down"></i>
+          <ul class="top-right-language_dropdown">
+            <li>
+              <div class="top-right-language-img">
+                <img src="./image/top/Anh.png" alt="" />
+              </div>
+              <span>English</span>
+            </li>
+            <li>
+              <div class="top-right-language-img">
+                <img src="./image/top/vietnam.png" alt="" />
+              </div>
+              <span>Việt Nam</span>
+            </li>
+          </ul>
+        </li>
+        <li class="top-right-currency">
+          <span>USD</span>
+          <i class="fas fa-angle-down"></i>
+          <ul class="top-right-currency-dropdown">
+            <li>USD</li>
+            <li>VND</li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav-->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-left">
+        <img src="./image/logo.png" alt="" />
+      </div>
+      <div class="nav-mid">
+        <ul>
+          <li class="red">
+            <span>HOME</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="Home">
+              <ul>
+                <li>HOMEPAGELAYOUTS</li>
+                <li class="red">Home</li>
+                <li>Home Page 2</li>
+                <li>Home Page 3</li>
+                <li></li>
+              </ul>
+              <ul>
+                <li>HOMEPAGELAYOUTS</li>
+                <li>Home Page LTR</li>
+                <li>Home Page RTL</li>
+                <li>Home Page Boxed</li>
+                <li>Home Page Full</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span>SHOP</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="shop">
+              <ul>
+                <li>
+                  <p>SHOP LAYOUTS</p>
+                </li>
+                <li><span>Left Sidebar Grid</span></li>
+                <li><span>Right Sidebar Grid</span></li>
+                <li><span>Full Width Grid</span></li>
+                <li><span>2 Columns Grid</span></li>
+                <li><span>3 Columns Grid</span></li>
+                <li><span>4 Columns Grid</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <p>SHOP PAGES</p>
+                </li>
+                <li>Shop</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+                <li>Checkout</li>
+              </ul>
+              <ul>
+                <li>
+                  <p>PRODUCT TYPES</p>
+                </li>
+                <li><span>Simple Product</span></li>
+                <li><span>Variable Product</span></li>
+                <li><span>Group Product</span></li>
+                <li><span>External & Affiliate Product</span></li>
+                <li><span>Swatch Variation Image</span></li>
+                <li><span>Bundle Products</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <p>PRODUCT PAGES</p>
+                </li>
+                <li><span>Full Width</span></li>
+                <li><span>Left Sidebar</span></li>
+                <li><span>Right Sidebar</span></li>
+                <li><span>Featured Video</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span>PROMOTION</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="promotion">
+              <ul>
+                <li><img src="./image/nav/img1.jpg" alt="" /></li>
+                <li><span>ACCESSORIES</span></li>
+                <li><span>Maybellin Face Power</span></li>
+                <li><span>Chanel Mascara</span></li>
+                <li><span>Mascara For Full Lashes Mascara</span></li>
+                <li><span>Offical Cosme-Decom Maybellin Face</span></li>
+                <li><span>Offical Cosme-Decom</span></li>
+                <li><span>Lady Dior Mascara</span></li>
+              </ul>
+              <ul>
+                <li><img src="./image/nav/img2.jpg" alt="" /></li>
+                <li><span>ACCESSORIES</span></li>
+                <li><span>Maybellin Face Power</span></li>
+                <li><span>Chanel Mascara</span></li>
+                <li><span>Mascara For Full Lashes Mascara</span></li>
+                <li><span>Offical Cosme-Decom Maybellin Face</span></li>
+                <li><span>Offical Cosme-Decom</span></li>
+                <li><span>Lady Dior Mascara</span></li>
+              </ul>
+              <ul>
+                <li><img src="./image/nav/img3.jpg" alt="" /></li>
+                <li><span>ACCESSORIES</span></li>
+                <li><span>Maybellin Face Power</span></li>
+                <li><span>Chanel Mascara</span></li>
+                <li><span>Mascara For Full Lashes Mascara</span></li>
+                <li><span>Offical Cosme-Decom Maybellin Face</span></li>
+                <li><span>Offical Cosme-Decom</span></li>
+                <li><span>Lady Dior Mascara</span></li>
+              </ul>
+              <ul>
+                <li><img src="./image/nav/img4.jpg" alt="" /></li>
+                <li><span>ACCESSORIES</span></li>
+                <li><span>Maybellin Face Power</span></li>
+                <li><span>Chanel Mascara</span></li>
+                <li><span>Mascara For Full Lashes Mascara</span></li>
+                <li><span>Offical Cosme-Decom Maybellin Face</span></li>
+                <li><span>Offical Cosme-Decom</span></li>
+                <li><span>Lady Dior Mascara</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span>BLOG</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="blog">
+              <ul>
+                <li>
+                  <p>BLOG LAYOUTS 1</p>
+                </li>
+                <li><span>Left Sidebar Grid</span></li>
+                <li><span>Right Sidebar Grid</span></li>
+                <li><span>Full Width Grid</span></li>
+                <li><span>Left Sidebar List</span></li>
+                <li><span>Right Sidebar List</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <p>BLOG LAYOUTS 2</p>
+                </li>
+                <li><span>2 Columns Grid</span></li>
+                <li><span>3 Columns Grid</span></li>
+                <li><span>4 Columns Grid</span></li>
+                <li><span>Masonry Grid</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <p>POST FORMATS</p>
+                </li>
+                <li><span>Post Formats Image</span></li>
+                <li><span>Post Formats Video</span></li>
+                <li><span>Post Formats Audio</span></li>
+                <li><span>Post Formats Gallery</span></li>
+                <li><span>Post Format Quote</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <p>POST LAYOUTS</p>
+                </li>
+                <li><span>Full Width</span></li>
+                <li><span>Left Sidebar</span></li>
+                <li><span>Right Sidebar</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span>PORTFOLIOS</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="portfolios">
+              <ul>
+                <li>Portfolio 2 Columns</li>
+                <li>Portfolio 3 Columns</li>
+                <li>Portfolio 4 Columns</li>
+                <li>Portfolio Masonry</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span>PAGES</span>
+            <i class="fas fa-sort-down"></i>
+            <div class="pages">
+              <ul>
+                <li>404 Page</li>
+                <li><span>Contact US</span></li>
+                <li><span>About US</span></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <li><i class="fas fa-search"></i></li>
+        <li class="cart">
+          <i class="fas fa-shopping-cart"></i>
+          <div class="cart_noti">
+            <span>0</span>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
+  <!--------------------------------- Section -------------------------------------->
+  <div class="section">
+
+    <!-- bread-crumb -->
+    <div class="bread-crumb">
+      <ul>
+        <li>
+          <a href="index.html" class="checkout-link">home</a>
+        </li>
+        <li>
+          <i class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+          <span>wishlist</span>
+        </li>
+      </ul>
+    </div>
+    <div class="wrapper">
+      <div class="wishlist-main-content ">
+        <div id="contents">
+          <table border="1">
+            <tr>
+              <th>Product Picture</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Stock Tatus</th>
+              <th>Delete</th>
+            </tr>
+            <tr>
+              <td id="no-wishlist" colspan="6"></td>
+              <script>
+                var data = new FormData()
+                data.append('userid', localStorage.getItem('userid'))
+                axios
+                  .post(
+                    "http://localhost/BE/Wishlist/wishlist.php", data
+                  )
+                  .then((e) => {
+                    return e.data;
+                  })
+                  .then(e => {
+                    console.log(e)
+                    if (e.length == []) {
+                      document.getElementById('no-wishlist').textContent = 'No products were added to wishlist'
+                    } else {
+                      document.getElementById('no-wishlist').textContent = ''
+                    }
+                  })
+
+              </script>
+            </tr>
+            <div id="wishlist-list"></div>
+
+            <script>
+              axios
+                .post(
+                  "http://localhost/BE/Wishlist/wishlist.php", data
+                )
+                .then((e) => {
+                  return e.data;
+                })
+                .then((e) => {
+                  for (let value of e) {
+                    let stock
+                    if (value.quantity == 0) {
+                      stock = "Sold out"
+                    } else {
+                      stock = "In stock"
+                    }
+                    let node = document.createElement("tr");
+                    node.innerHTML = `
+                            <td></td>
+                            <td>${value.productname}</td>
+                            <td>${value.price}</td>
+                            <td>${stock}</td> 
+                            <td id="btn-delete" style= "text-align:center">
+                                <button id="${value.productid}"  type="button" class="close" aria-label="Close" >
+                                    <span style="color:red"   aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
+                            `;
+                    document.querySelector("table").appendChild(node);
+                  }
+                  button = document.querySelectorAll("button");
+                  for (let x of button) {
+                    x.onclick = function () {
+                      let id = this.getAttribute("id");
+                      console.log(this)
+                      let form = new FormData();
+                      form.append("delete", id);
+
+                      console.log(this.parentNode.parentNode)
+                      axios
+                        .post(
+                          "http://localhost/BE/Wishlist/delete.php",
+                          form
+                        )
+                        .then((e) => {
+                          console.log(e.data)
+                          this.parentNode.parentNode.innerHTML = ''
+                          axios
+                            .post(
+                              "http://localhost/BE/Wishlist/wishlist.php", data
+                            )
+                            .then((e) => {
+                              return e.data;
+                            })
+                            .then(e => {
+                              console.log(e)
+                              if (e.length == []) {
+                                document.getElementById('no-wishlist').textContent = 'No products were added to wishlist'
+                              } else {
+                                document.getElementById('no-wishlist').textContent = ''
+                              }
+                            })
+                        })
+                    };
+                  }
+                });
+            </script>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer-->
+  <!-- <footer>
+    <div class="footer_img">
+      <img src="./image/footer.png" alt="" />
+    </div>
+    <div class="container">
+      <div class="footer_container row">
+        <div class="col-lg">
+          <h3>ABOUT US</h3>
+          <span>Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s</span>
+        </div>
+        <div class="col-lg">
+          <h3>INFORMATION</h3>
+          <li><a href="#">Product Support</a></li>
+          <li><a href="#">PC setup & Support</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Extended Service Plans</a></li>
+          <li><a href="#">Community</a></li>
+        </div>
+        <div class="col-lg">
+          <h3>CUSTOMER SERVICE</h3>
+          <li><a href="#">Shipping guide</a></li>
+          <li><a href="#">Store location</a></li>
+          <li><a href="#">Affiliate</a></li>
+          <li><a href="#">Customer point policy</a></li>
+          <li><a href="#">Customer point policy</a></li>
+        </div>
+        <div class="col-lg">
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">F.A.Q</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Help Center</a></li>
+        </div>
+        <div class="col-lg">
+          <h3>CONTACT US</h3>
+          <li>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> No 40 Baria Sreet 133/2
+              NewYork City,NY,United States</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-mobile-alt"></i>0123456789</a>
+          </li>
+          <li>
+            <a href="#"><i class="far fa-envelope"></i>contact@example.com</a>
+          </li>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <span>@2022 WordPress Theme SW 9Merry. All Rights Reserved. Dessigned by <a href="#">PTN</a> </span>
+        </div>
+        <div class="col-lg-6 nam">
+          <li><i class="fab fa-cc-paypal"></i></li>
+          <li><i class="fab fa-cc-visa"></i></li>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+</body>
+
+</html>

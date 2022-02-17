@@ -58,7 +58,11 @@ header .container{
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 .content form button{
+=======
+.content button{
+>>>>>>> master
     background-color: #333;
     border-radius: 0%;
     border: none;
@@ -67,17 +71,41 @@ header .container{
     padding: 5px 20px;
 }
 
+<<<<<<< HEAD
 .content form button:hover{
     background-color: var(--primary_color);
 }
 
 .content form input{
+=======
+.content button:hover{
+    background-color: var(--primary_color);
+}
+
+.content input{
+>>>>>>> master
     background-color: #EEEE;
     border: none;
     border-radius: 0;
 }
 
+<<<<<<< HEAD
 
+=======
+.form_check_btn{
+    display: flex;
+    justify-content: right;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label span{
+    color: var(--primary_color);
+}
+>>>>>>> master
 
 
 

@@ -20,7 +20,8 @@ $sql = "SELECT `products`.`id`,
                           INNER JOIN `brand` 
           WHERE `products`.`brand` = `brand`.`id` 
             AND `products`.`id` = `productimg`.`productid`
-        GROUP BY `products`.`id`";
+        GROUP BY `products`.`id`
+        ORDER BY `sold` DESC LIMIT 5";
 
 $stmt = $conn->prepare("$sql");
 $stmt->execute();
