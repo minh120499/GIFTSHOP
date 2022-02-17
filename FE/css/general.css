@@ -35,6 +35,7 @@ a {
 
 a:hover {
   color: var(--primary_color) !important;
+  text-decoration: none;
 }
 
 input::-webkit-outer-spin-button,

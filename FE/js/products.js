@@ -1,107 +1,116 @@
-var btn_square = document.querySelector(".square");
-var btn_pillar = document.querySelector(".pillar");
+import { componentHTML } from './module/components.js';
+import { header } from './module/header.js';
+
+var btn_square = document.querySelector('.square');
+var btn_pillar = document.querySelector('.pillar');
 
 let idPage = 1;
 let start = 0;
 
-btn_pillar.addEventListener("click", function () {
-  document.querySelector(".content_container_main").classList.add("hide");
+var productList = [];
+btn_pillar.addEventListener('click', function () {
+  document.querySelector('.content_container_main').classList.add('hide');
   document
-    .querySelector(".content_container_main_pillar")
-    .classList.add("show");
-  if (btn_square.classList.contains("active")) {
-    btn_square.classList.remove("active");
-    btn_pillar.classList.add("active");
+    .querySelector('.content_container_main_pillar')
+    .classList.add('show');
+  if (btn_square.classList.contains('active')) {
+    btn_square.classList.remove('active');
+    btn_pillar.classList.add('active');
   }
 });
 
-btn_square.addEventListener("click", function () {
-  document.querySelector(".content_container_main").classList.remove("hide");
+btn_square.addEventListener('click', function () {
+  document.querySelector('.content_container_main').classList.remove('hide');
   document
-    .querySelector(".content_container_main_pillar")
-    .classList.remove("show");
-  if (btn_pillar.classList.contains("active")) {
-    btn_square.classList.add("active");
-    btn_pillar.classList.remove("active");
+    .querySelector('.content_container_main_pillar')
+    .classList.remove('show');
+  if (btn_pillar.classList.contains('active')) {
+    btn_square.classList.add('active');
+    btn_pillar.classList.remove('active');
   }
 });
 
-var show_filter = document.querySelector(".show_filter");
-show_filter.addEventListener("click", function () {
-  document.querySelector(".SideBar").classList.toggle("filter_show");
+var show_filter = document.querySelector('.show_filter');
+show_filter.addEventListener('click', function () {
+  document.querySelector('.SideBar').classList.toggle('filter_show');
 });
 
 //search filter làm nút tìm kiếm giống W3 school chỉ search được trong 1 trang
 function search() {
   // Declare variables
   var input, filter, main, infor, p, i, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
-  if (btn_square.classList.contains("active")) {
-    main = document.querySelector(".content_container_main");
-    infor = main.getElementsByClassName("content_container_item");
+  if (btn_square.classList.contains('active')) {
+    main = document.querySelector('.content_container_main');
+    infor = main.getElementsByClassName('content_container_item');
     for (i = 0; i < infor.length; i++) {
-      p = infor[i].getElementsByClassName("title")[0];
+      p = infor[i].getElementsByClassName('title')[0];
       txtValue = p.textContent || p.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        infor[i].style.display = "";
+        infor[i].style.display = '';
       } else {
-        infor[i].style.display = "none";
+        infor[i].style.display = 'none';
       }
     }
   } else {
-    main = document.querySelector(".content_container_main_pillar");
-    infor = main.getElementsByClassName("content_container_item_pillar");
+    main = document.querySelector('.content_container_main_pillar');
+    infor = main.getElementsByClassName('content_container_item_pillar');
 
     for (i = 0; i < infor.length; i++) {
-      p = infor[i].getElementsByClassName("title")[0];
+      p = infor[i].getElementsByClassName('title')[0];
       txtValue = p.textContent || p.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        infor[i].style.display = "";
+        infor[i].style.display = '';
       } else {
-        infor[i].style.display = "none";
+        infor[i].style.display = 'none';
       }
     }
   }
 }
 
 // Làm 2 nút chuyển trang
-var check = false;
-const previousBtn = document.querySelector(".previousbtn");
-const nextBtn = document.querySelector(".nextbtn");
-nextBtn.addEventListener("click", () => {
+var check = 0;
+const previousBtn = document.querySelector('.previousbtn');
+const nextBtn = document.querySelector('.nextbtn');
+nextBtn.addEventListener('click', () => {
   idPage++;
-  if(check == true){
+  if (check == 1) {
     renderProduct();
-  }else {
-    renderContent();
+  } else if (check == 2) {
+    renderProductBrand();
+  } else {
+    asyncCall();
   }
 });
 
-previousBtn.addEventListener("click", () => {
+previousBtn.addEventListener('click', () => {
   idPage--;
-  if(check == true){
+  if (check == 1) {
     renderProduct();
-  }else {
-    renderContent();
+  } else if (check == 2) {
+    renderProductBrand();
+  } else {
+    asyncCall();
   }
 });
-
 
 // Hàm đổ dữ liệu ra khi load trang
-function renderContent() {
+function renderContent(listProducts = 'empty') {
   axios
-    .get("http://localhost/BE/DataList/ProductList.php")
+    .get('http://localhost/BE/DataList/ProductList.php')
     .then((e) => e.data)
     .then((e) => {
-      var html2 = "";
-      var html3 = "";
-      var html5 = "";
-      var select = document.getElementById("show_items");
+      productList = e;
+      listProducts == 'empty' ? (listProducts = e) : '';
+      var html2 = '';
+      var html3 = '';
+      var html5 = '';
+      var select = document.getElementById('show_items');
       var perPage = select.options[select.selectedIndex].value;
-      end = perPage * idPage;
+      let end = perPage * idPage;
       start = (idPage - 1) * perPage;
-      totalPages = Math.ceil(e.length / perPage);
+      let totalPages = Math.ceil(e.length / perPage);
 
       if (idPage === totalPages) {
         nextBtn.disabled = true;
@@ -113,76 +122,92 @@ function renderContent() {
       } else {
         previousBtn.disabled = false;
       }
-      
-      e.map((item, i) => {
+      listProducts.forEach((item, i) => {
         if (i >= start && i < end) {
           html2 += `<div class="col-6 col-lg-4 content_container_item">
               <div class="content_container_item_border">
                   <div class="content_container_item_show">
-                      <img src=${e[i].src} alt="">
+                      <img src=${listProducts[i].src} alt="">
                       <div class="content_container_item_show_infor">
-                          <p class="title">${e[i].name}</p>
-                          <p>$<span>${e[i].price}</span></p>
+                          <p class="title">${listProducts[i].name}</p>
+                          <p>$<span>${listProducts[i].price}</span></p>
                       </div>
                   </div>
                   <div class="content_container_item_hover">
                       <li>
-                          <button class="add_view"><i class="far fa-eye"></i></button>
+                          <button class="add_view" productid="${item.id}"><i class="far fa-eye"></i></button>
                       </li>
                       <li>
-                          <button class="add_cart">Add to cart</button>
-                          <button class="add_tym"><i class="far fa-heart"></i></button>
-                      </li>
+                          <button class="add_cart" productid="${item.id}">Add to cart</button>`;
+          if (
+            !localStorage
+              .getItem('wishlist')
+              .split(',')
+              .includes(item.id.toString())
+          ) {
+            html2 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+          } else {
+            html2 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+          }
+          html2 += `</li>
                   </div>
               </div>
           </div>`;
           let stringdetail = '';
-          if(e[i].detail.length > 150){
-            stringdetail =  e[i].detail.slice(0, 150)+' ...';
-          }else{
-            stringdetail =  e[i].detail;
+          if (e[i].detail.length > 150) {
+            stringdetail = e[i].detail.slice(0, 150) + ' ...';
+          } else {
+            stringdetail = e[i].detail;
           }
 
           html3 += `<div class="content_container_item_pillar ">
             <div class="content_container_item_pillar_img">
-            <img src=${e[i].src} alt="">
-                <button class="add_view"><i class="far fa-eye"></i></button>
+            <img src=${listProducts[i].src} alt="">
+                <button class="add_view" productid="${item.id}"><i class="far fa-eye"></i></button>
             </div>
             <div class="content_container_item_pillar_content">
-                <h2><a class="title" href="">${e[i].name}</a></h2>
-                <div class="content_container_item_pillar_star">
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
+                <h2><div class="title" productid="${item.id}" >${listProducts[i].name}</div></h2>
+                
+                <div class="content_container_item_pillar_star">`;
+          for (let i = 0; i < Math.floor(item.rating); i++) {
+            html3 += `<i class="far fa-star"></i>`;
+          }
+          html3 += `</div>
                 <div class="content_container_item_pillar_price">
-                    <span>$</span><span>${e[i].price}</span>
+                    <span>$</span><span>${listProducts[i].price}</span>
                 </div>
                 <div class="content_container_item_pillar_content_title">
                     <span>${stringdetail}</span>
                 </div>
                 <div class="content_container_item_pillar_content_btn">
-                    <button class="add_cart">Add to cart</button>
-                    <button class="add_tym"><i class="far fa-heart"></i></button>
-                </div>
+                    <button class="add_cart" productid="${item.id}">Add to cart</button>`;
+          if (
+            !localStorage
+              .getItem('wishlist')
+              .split(',')
+              .includes(item.id.toString())
+          ) {
+            html3 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+          } else {
+            html3 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+          }
+          html3 += `</div>
             </div>
           </div>`;
         }
       });
 
-      for(var i=0 ; i < 4 ; i++){
+      for (var i = 0; i < 4; i++) {
         html5 += `<li class="row">
             <div class="col-4">
                 <img src="${e[i].src}" alt="">
             </div>
             <div class="col-8">
-                <p><a href="#">${e[i].name}</a></p>
+                <p><div >${e[i].name}</div></p>
                 <p>$<span>${e[i].price}</span></p>
             </div>
         </li>`;
-      };
+      }
 
       var html4 = ``;
       for (var i = 1; i <= totalPages; i++) {
@@ -193,142 +218,184 @@ function renderContent() {
         }
       }
 
-      document.querySelector(".content_container_main").innerHTML = html2;
-      document.querySelector(".content_container_main_pillar").innerHTML = html3;
-      document.querySelector(".content_container_title_right").innerHTML = html4;
+      document.querySelector('.content_container_main').innerHTML = html2;
+      document.querySelector('.content_container_main_pillar').innerHTML =
+        html3;
+      document.querySelector('.content_container_title_right').innerHTML =
+        html4;
       document.querySelector('.SideBar_bestseller_content').innerHTML = html5;
     });
 }
-renderContent();
 
-// Hiển thị dữ liệu ra theo loại sản phẩm và theo thương hiệu
-axios
-  .get("http://localhost/BE/DataList/ProductList.php")
-  .then((e) => e.data)
-  .then((e) => {
-    //Lay va in ra categories
-    var html = "";
-    var categories = [];
-
-    for (var i = 0; i < e.length; i++) {
-      if (categories.includes(e[i].anniversary) === false) {
-        categories = [...categories, e[i].anniversary];
-      }
-    }
-    for (var i = 0; i < categories.length; i++){
-      html += `<li onclick="producttype('${categories[i]}');" class="${categories[i]}"><span>${categories[i]}</span></li>`;
-    }
-    document.querySelector(".SideBar_Category").outerHTML = html;
-
-    //Lay va in ra brand
-    var html1 = "";
-    var brands = [];
-
-    for (var i = 0; i < e.length ; i++) {
-      if (brands.includes(e[i].brand) === false) {
-        brands = [...brands, e[i].brand];
-      }
-    }
-    for (var i = 0; i < brands.length; i++) {
-      html1 += `<li onclick="producttype('${brands[i]}');" class="${brands[i]}"><span>${brands[i]}</span><span>(1)</span></li>`;
-
-    }
-    document.querySelector(".SideBar_Color").outerHTML = html1;
-  });
-
-// Hàm gọi ra danh sách sản phẩm theo tên danh mục và tên thương hiệu
-var product = [];
-function producttype(classname) {
-  axios.get("http://localhost/BE/DataList/ProductList.php")
-  .then((e) => e.data)
-  .then((e) => {
-    check = true;
-    product = [];
-    idPage = 1;
-    e.map((item, i) => {
-      if (e[i].anniversary == classname) {
-        product = [...product, e[i]];
-      }
-      if (e[i].brand == classname ){
-        product = [...product, e[i]];
-      }
+// Hiển thị dữ liệu ra theo loại sản phẩm
+function RenderCategories() {
+  axios
+    .get('http://localhost/BE/DataList/Categories.php')
+    .then((e) => e.data)
+    .then((e) => {
+      let html = '';
+      e.forEach((item) => {
+        html += `<li onclick="renderProductsByCategories('${item.id}');" class="${item.name}"><span>${item.name}</span></li>`;
+      });
+      document.querySelector('.SideBar_Category').outerHTML = html;
     });
-    renderProduct();
-  });
 }
 
-// Hàm gọi ra danh sách sản phẩm theo tên sản phẩm
-function renderProduct(){
-  var html10 = "";
-  var html11 = "";
-  var select = document.getElementById("show_items");
+//Lay va in ra brand
+function RenderBrand() {
+  axios
+    .get('http://localhost/BE/DataList/Brands.php')
+    .then((e) => e.data)
+    .then((e) => {
+      var html1 = '';
+      // var brands = [];
+
+      // for (var i = 0; i < e.length; i++) {
+      //   if (brands.includes(e[i].name) === false) {
+      //     brands = [...brands, e[i].name];
+      //   }
+      // }
+
+      // for (var i = 0; i < brands.length; i++) {
+      //   html1 += `<li onclick="renderProductsByBrands('${brands[i]}');" class="${brands[i]}"><span>${brands[i]}</span><span>(1)</span></li>`;
+      // }
+      // document.querySelector(".SideBar_Color").outerHTML = html1;
+      e.forEach((item) => {
+        html1 += `<li onclick="renderProductsByBrands('${item.id}');" class="${item.name}"><span>${item.name}</span><span>(${item.quantity})</span></li>`;
+      });
+      document.querySelector('.SideBar_Color').outerHTML = html1;
+    });
+}
+
+// Hàm gọi ra danh sách sản phẩm theo tên danh mục
+var product = [];
+// function producttype(classname) {
+//   console.log(classname)
+//   // axios
+//   //   .get("http://localhost/BE/DataList/ProductList.php")
+//   //   .then((e) => e.data)
+//   //   .then((e) => {
+//   //     check = 1;
+//   //     product = [];
+//   //     idPage = 1;
+//   //     e.map((item, i) => {
+//   //       if (e[i].anniversary.includes(classname)) {
+//   //         product = [...product, e[i]];
+//   //       }
+//   //     });
+//   //     renderProduct();
+//   //   });
+// }
+
+//Hàm gọi ra danh sách sản phẩm theo tên thương hiệu
+var productBrand = [];
+// function productbrand(classname) {
+//   axios
+//     .get("http://localhost/BE/DataList/ProductList.php")
+//     .then((e) => e.data)
+//     .then((e) => {
+//       check = 2;
+//       productBrand = [];
+//       idPage = 1;
+//       e.map((item, i) => {
+//         if (e[i].anniversary == classname) {
+//           productBrand = [...productBrand, e[i]];
+//         }
+//       });
+//       renderProductBrand();
+//     });
+// }
+
+//Hàm gọi ra ra danh sách sản phẩm theo thương hiệu
+function renderProductBrand() {
+  var html10 = '';
+  var html11 = '';
+  var select = document.getElementById('show_items');
   var perPage = select.options[select.selectedIndex].value;
   end = perPage * idPage;
   start = (idPage - 1) * perPage;
-  
-  for(let i= 0 ; i< product.length ; i++){
-    if (i >= start && i < end ) {
+
+  for (let i = 0; i < productBrand.length; i++) {
+    if (i >= start && i < end) {
       html10 += `<div class="col-6 col-lg-4 content_container_item">
         <div class="content_container_item_border">
             <div class="content_container_item_show">
-                <img src=${product[i].src} alt="">
+                <img src=${productBrand[i].src} alt="">
                 <div class="content_container_item_show_infor">
-                    <p class="title">${product[i].name}</p>
-                    <p>$<span>${product[i].price}</span></p>
+                    <p class="title">${productBrand[i].name}</p>
+                    <p>$<span>${productBrand[i].price}</span></p>
                 </div>
             </div>
             <div class="content_container_item_hover">
                 <li>
-                    <button class="add_view"><i class="far fa-eye"></i></button>
+                    <button class="add_view" productid="${product[i].id}"><i class="far fa-eye"></i></button>
                 </li>
                 <li>
-                    <button class="add_cart">Add to cart</button>
-                    <button class="add_tym"><i class="far fa-heart"></i></button>
-                    <button class="add_share"><i class="fas fa-retweet"></i></button>
+                    <button class="add_cart" productid="${product[i].id}">Add to cart</button>`;
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(item.id.toString())
+      ) {
+        html10 += `<button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html10 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      }
+      // <button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>
+      html10 += `<button class="add_share"><i class="fas fa-retweet"></i></button>
                 </li>
             </div>
         </div>
       </div>`;
 
       let stringdetail = '';
-      if(product[i].detail.length > 150){
-        stringdetail =  product[i].detail.slice(0, 150)+' ...';
-      }else{
-        stringdetail =  product[i].detail;
+      if (productBrand[i].detail.length > 150) {
+        stringdetail = productBrand[i].detail.slice(0, 150) + ' ...';
+      } else {
+        stringdetail = productBrand[i].detail;
       }
-      
+
       html11 += `<div class="content_container_item_pillar ">
         <div class="content_container_item_pillar_img">
-        <img src=${product[i].src} alt="">
-            <button class="add_view"><i class="far fa-eye"></i></button>
+        <img src=${productBrand[i].src} alt="">
+            <button class="add_view" productid="${product[i].id}"><i class="far fa-eye"></i></button>
         </div>
         <div class="content_container_item_pillar_content">
-            <h2><a class="title" href="">${product[i].name}</a></h2>
-            <div class="content_container_item_pillar_star">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
+            <h2><div class="title" >${productBrand[i].name}</div></h2>
+            <div class="content_container_item_pillar_star">`;
+      for (let i = 0; i < Math.floor(product[i].rating); i++) {
+        html11 += `<i class="far fa-star"></i>`;
+      }
+      html11 += `</div>
             <div class="content_container_item_pillar_price">
-                <span>$</span><span>${product[i].price}</span>
+                <span>$</span><span>${productBrand[i].price}</span>
             </div>
             <div class="content_container_item_pillar_content_title">
                 <span>${stringdetail}</span>
             </div>
             <div class="content_container_item_pillar_content_btn">
-                <button class="add_cart">Add to cart</button>
-                <button class="add_tym"><i class="far fa-heart"></i></button>
-                <button class="add_share"><i class="fas fa-retweet"></i></button>
+                <button class="add_cart" productid="${product[i].id}">Add to cart</button>`;
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(item.id.toString())
+      ) {
+        html11 += `<button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html11 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      }
+      // <button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>
+      html11 += `<button class="add_share"><i class="fas fa-retweet"></i></button>
             </div>
         </div>
       </div>`;
     }
-  };
+  }
 
-  document.querySelector(".content_container_main").innerHTML = html10;
-  document.querySelector(".content_container_main_pillar").innerHTML = html11;
+  document.querySelector('.content_container_main').innerHTML = html10;
+  document.querySelector('.content_container_main_pillar').innerHTML = html11;
 
   totalPages = Math.ceil(product.length / perPage);
 
@@ -351,42 +418,310 @@ function renderProduct(){
       html4 += `<p><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
     }
   }
-  document.querySelector(".content_container_title_right").innerHTML =html4;
+  document.querySelector('.content_container_title_right').innerHTML = html4;
+}
+
+// Hàm gọi ra danh sách sản phẩm theo loại sản phẩm
+function renderProduct() {
+  var html10 = '';
+  var html11 = '';
+  var select = document.getElementById('show_items');
+  var perPage = select.options[select.selectedIndex].value;
+  end = perPage * idPage;
+  start = (idPage - 1) * perPage;
+
+  for (let i = 0; i < product.length; i++) {
+    if (i >= start && i < end) {
+      html10 += `<div class="col-6 col-lg-4 content_container_item">
+        <div class="content_container_item_border">
+            <div class="content_container_item_show">
+                <img src=${product[i].src} alt="">
+                <div class="content_container_item_show_infor">
+                    <p class="title">${product[i].name}</p>
+                    <p>$<span>${product[i].price}</span></p>
+                </div>
+            </div>
+            <div class="content_container_item_hover">
+                <li>
+                    <button class="add_view" productid="${product[i].id}"><i class="far fa-eye"></i></button>
+                </li>
+                <li>
+                    <button class="add_cart productid="${product[i].id}"">Add to cart</button>`;
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(product[i].id.toString())
+      ) {
+        html10 += `<button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html10 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      }
+      // <button class="add_tym"><i class="far fa-heart"></i></button>
+      html10 += `<button class="add_share"><i class="fas fa-retweet"></i></button>
+                </li>
+            </div>
+        </div>
+      </div>`;
+
+      let stringdetail = '';
+      if (product[i].detail.length > 150) {
+        stringdetail = product[i].detail.slice(0, 150) + ' ...';
+      } else {
+        stringdetail = product[i].detail;
+      }
+
+      html11 += `<div class="content_container_item_pillar ">
+        <div class="content_container_item_pillar_img">
+        <img src=${product[i].src} alt="">
+            <button class="add_view" productid="${product[i].id}"><i class="far fa-eye"></i></button>
+        </div>
+        <div class="content_container_item_pillar_content">
+            <h2><div class="title" >${product[i].name}</div></h2>
+            <div class="content_container_item_pillar_star">`;
+      for (let i = 0; i < Math.floor(product[i].rating); i++) {
+        html11 += `<i class="far fa-star"></i>`;
+      }
+      html11 += `</div>
+            <div class="content_container_item_pillar_price">
+                <span>$</span><span>${product[i].price}</span>
+            </div>
+            <div class="content_container_item_pillar_content_title">
+                <span>${stringdetail}</span>
+            </div>
+            <div class="content_container_item_pillar_content_btn">
+                <button class="add_cart">Add to cart</button>`;
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(product[i].id.toString())
+      ) {
+        html11 += `<button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html11 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
+      }
+      // <button class="add_tym"><i class="far fa-heart"></i></button>
+      html11 += ` <button class="add_share"><i class="fas fa-retweet"></i></button>
+            </div>
+        </div>
+      </div>`;
+    }
+  }
+
+  document.querySelector('.content_container_main').innerHTML = html10;
+  document.querySelector('.content_container_main_pillar').innerHTML = html11;
+
+  totalPages = Math.ceil(product.length / perPage);
+
+  if (idPage === totalPages) {
+    nextBtn.disabled = true;
+  } else {
+    nextBtn.disabled = false;
+  }
+  if (start === 0) {
+    previousBtn.disabled = true;
+  } else {
+    previousBtn.disabled = false;
+  }
+
+  var html4 = ``;
+  for (var i = 1; i <= totalPages; i++) {
+    if (idPage === i) {
+      html4 += `<p class='active'><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
+    } else {
+      html4 += `<p><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
+    }
+  }
+  document.querySelector('.content_container_title_right').innerHTML = html4;
 }
 
 // Làm sự kiện click vào chọn trang
-function clickBtnChoosePage(e){
+function clickBtnChoosePage(e) {
   idPage = parseInt(e.target.textContent);
-  if(check == true){
+  if (check == 1) {
     renderProduct();
-  }else{
-    renderContent();
+  } else if (check == 2) {
+    renderProductBrand();
+  } else {
+    // renderContent();
+    asyncCall();
   }
 }
-
 
 // Làm nút tìm kiếm the giá sản phẩm Filter
-function priceSearch(price1,price2){
+function priceSearch() {
   let low_price = document.getElementById('low_price').value;
   let expensive = document.getElementById('expensive').value;
-  
-  if(parseInt(low_price) > parseInt(expensive)){
-    alert('vui lòng nhập giá trước nhỏ hơn giá sau');
-    return false;
-  }else {
-    price1 = parseInt(low_price);
-    price2 = parseInt(expensive);
-  }
-
+  let data = new FormData();
+  data.append('minPrice', low_price);
+  data.append('maxPrice', expensive);
+  axios
+    .post('http://localhost/be/DataList/ProductFilters.php', data)
+    .then((e) => {
+      document.querySelector('.content_container_main').innerHTML = '';
+      document.querySelector('.content_container_main_pillar').innerHTML = '';
+      document.querySelector('.content_container_title_right').innerHTML = '';
+      document.querySelector('.SideBar_bestseller_content').innerHTML = '';
+      renderContent(e.data);
+    });
 }
 
+// Nut chuyen huong den product.html
+function viewButton() {
+  return new Promise((rs) => {
+    setTimeout(() => {
+      // click view button to product
+      let viewButton = document.querySelectorAll('.add_view');
+      viewButton.forEach((item) => {
+        item.onclick = () => {
+          localStorage.setItem('productid', item.getAttribute('productid'));
+          window.location = './product.html';
+        };
+      });
 
+      // click name to product
+      let nameButton = document.querySelectorAll('.title');
+      nameButton.forEach((item) => {
+        item.onclick = () => {
+          window.location = './product.html';
+          localStorage.setItem('productid', item.getAttribute('productid'));
+        };
+      });
 
+      //. Add to cart
+      let addCart = document.querySelectorAll('.add_cart');
+      addCart.forEach((item) => {
+        item.onclick = () => {
+          productList.filter((i) => {
+            if (i.id == item.getAttribute('productid')) {
+              let data = new FormData();
+              data.append('userid', localStorage.getItem('userid'));
+              data.append('productid', i.id);
+              data.append('quantity', 1);
+              data.append('price', i.price);
+              axios
+                .post('http://localhost/be/Checkout/AddToCart.php', data)
+                .then((e) => e.data)
+                .then((e) => {
+                  e == 'Add Success' ? alert(e) : alert('Erros');
+                });
+              return;
+            }
+          });
+        };
+      });
+      //. Wishlist
+      let addWishlist = document.querySelectorAll('.add_tym');
+      addWishlist.forEach((item) => {
+        item.onclick = () => {
+          let data = new FormData();
+          data.append('userid', localStorage.getItem('userid'));
+          data.append('productid', item.getAttribute('productid'));
+          console.log(item.getAttribute('productid'));
+          if (item.className.includes('clicked-wishlist')) {
+            axios
+              .post('http://localhost/be/Wishlist/delete.php', data)
+              .then((e) => {
+                console.log(e.data);
+                if (e.data == 'Delete Succes') {
+                  item.className = item.className.replace(
+                    'clicked-wishlist',
+                    ''
+                  );
+                }
+              });
+          } else {
+            axios
+              .post('http://localhost/be/Wishlist/Add.php', data)
+              .then((e) => {
+                console.log(e.data);
+                if (e.data == 'Add Succes') {
+                  item.className += ' clicked-wishlist';
+                }
+              });
+          }
+        };
+      });
 
+      rs();
+    }, 1000);
+  });
+}
 
+// Xu li bat dong bo
+function render() {
+  return new Promise((rs) => {
+    setTimeout(() => {
+      componentHTML();
+      renderContent();
+      rs('ok chay xong');
+    }, 1000);
+  });
+}
 
+async function asyncCall() {
+  await render();
+  await viewButton();
+  await header();
+}
+let data = new FormData();
+data.append('userid', localStorage.getItem('userid'));
+axios
+  .post('http://localhost/be/Wishlist/list.php', data)
+  .then((e) => e.data)
+  .then((e) => {
+    localStorage.setItem('wishlist', e);
+  });
 
+RenderBrand();
+RenderCategories();
 
+if (localStorage.getItem('brandid')) {
+  renderProductsByBrands(localStorage.getItem('brandid'));
+  setTimeout(() => {
+    viewButton();
+  }, 1000);
+  localStorage.removeItem('brandid');
+} else if (localStorage.getItem('cateid')) {
+  renderProductsByCategories(localStorage.getItem('cateid'));
+  setTimeout(() => {
+    viewButton();
+  }, 1000);
+  console.log(localStorage.getItem('cateid'));
+  localStorage.removeItem('cateid');
+} else {
+  asyncCall();
+}
 
+// Render product by Categories
+function renderProductsByCategories(cateid) {
+  let data = new FormData();
+  data.append('cateid', cateid);
+  axios
+    .post('http://localhost/be/DataList/ProductFilters.php', data)
+    .then((e) => {
+      console.log(e.data);
+      document.querySelector('.content_container_main').innerHTML = '';
+      document.querySelector('.content_container_main_pillar').innerHTML = '';
+      document.querySelector('.content_container_title_right').innerHTML = '';
+      document.querySelector('.SideBar_bestseller_content').innerHTML = '';
+      renderContent(e.data);
+    });
+}
 
-
+// Render Prodcut by Brand
+function renderProductsByBrands(brandid) {
+  let data = new FormData();
+  data.append('brand', brandid);
+  axios
+    .post('http://localhost/be/DataList/ProductFilters.php', data)
+    .then((e) => {
+      console.log(e.data);
+      document.querySelector('.content_container_main').innerHTML = '';
+      document.querySelector('.content_container_main_pillar').innerHTML = '';
+      document.querySelector('.content_container_title_right').innerHTML = '';
+      document.querySelector('.SideBar_bestseller_content').innerHTML = '';
+      renderContent(e.data);
+    });
+}

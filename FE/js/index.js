@@ -1,3 +1,32 @@
+import { indexComponentHTML } from './module/components.js';
+import { header } from './module/header.js';
+
+function render() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      indexComponentHTML();
+      showData();
+      resolve();
+    }, 1000);
+  });
+}
+render().then(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      header();
+      let bgImgsHeader = document.querySelectorAll('#header img');
+      bgImgsHeader.forEach((img) => {
+        img.src = img.getAttribute('src').slice(1);
+      });
+      let linkHeader = document.querySelectorAll('#header a');
+      linkHeader.forEach((link) => {
+        link.href = link.getAttribute('href').slice(1);
+      });
+      resolve();
+    }, 1000);
+  });
+});
+
 // Đổ dữ liệu từ API vào dùng axios
 function showData() {
   axios

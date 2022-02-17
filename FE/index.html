@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body onload="showData();">
+<body>
 
 <div data-include="header" id="header"></div>
 
@@ -234,37 +234,6 @@
 
 
 </body>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
     <script src="./js/login.js"></script>
-    <script type="module">
-        import { header } from './js/header.js';
-        import { indexComponentHTML } from './js/components.js';
-        // header();
-        // indexComponentHTML();
-        function render() {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    indexComponentHTML();
-                    resolve();
-                }, 1000);
-            })
-        }
-        render()
-        .then(() => {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    header();
-                    let bgImgsHeader = document.querySelectorAll('#header img');
-                    bgImgsHeader.forEach(img => {
-                        img.src = img.getAttribute('src').slice(1);
-                    })
-                    let linkHeader = document.querySelectorAll('#header a');
-                    linkHeader.forEach(link => {
-                        link.href = link.getAttribute('href').slice(1);
-                    })
-                    resolve();
-                }, 1000);
-            })
-        })
-    </script>
 </html>

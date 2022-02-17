@@ -494,17 +494,3 @@
   width: 630px;
   left: -250px;
 }
-
-/*--------------------------------------------------------------------- link ----------------------------------------------------------------------*/
-.link {
-  margin: 30px 0;
-}
-
-.link span a,
-.link i {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--text_color);
-  margin-right: 10px;
-  color: #7d7d7d !important;
-}
