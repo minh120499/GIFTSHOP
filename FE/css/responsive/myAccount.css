@@ -1,0 +1,154 @@
+@media screen and (min-width: 993px) {
+
+}
+
+@media screen and (max-width: 992px) {
+    .Order_Purchase_content_item{
+        margin: 10px 0 !important;
+    }
+
+    .myAccount .row{
+        margin: 0 ;
+    }
+
+    .account_Left{
+        border-bottom: 1px solid #ccc;
+    }
+
+    .infor_img {
+        display: flex;
+        align-items: center;
+    }
+
+    .infor{
+        border: none;
+    }
+
+    .my_Profile {
+        padding: 30px 10px;
+    }
+
+    .my_Profile_Title{
+        text-align: center;
+    }
+
+    .my_Profile_content_left input{
+        font-size: 10px;
+    }
+
+    .my_Profile_content_left p{
+        font-size: 14px;
+    }
+
+    
+    .Order_Purchase_content{
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .my_Profile_Img{
+        margin: 20px 0;
+    }
+
+    .my_Profile_Img{
+        width: 100%;
+    }
+
+    .my_Profile_content_left input {
+        font-size: 7px;
+    }
+
+    .my_Profile_content_left p{
+        font-size: 11px;
+    }
+
+    .form-group label span {
+        font-size: 14px;
+    }
+    
+    .form-group input{
+        height: 30px;
+    }
+    
+    .form-group  textarea{
+        height: 80px;
+    }
+
+    .form-group{
+        display: flex;
+    }
+
+    .Order_Purchase_content_item_title h2 {
+        font-size: 18px;
+    }
+
+    .Order_Purchase_content_item_title span:nth-child(2) {
+        font-size: 12px;
+    }
+
+    .Order_Purchase_content_item_price{
+        font-size: 15px;
+    }
+
+    .Order_Purchase_content_item_delivery,.Order_Purchase_content_item_time {
+        font-size: 14px;
+    }
+
+    .Order_Purchase_content_item_total_money_price {
+        font-size: 16px;
+    }
+
+    .Order_Purchase_content_item_img{
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .infor_img img, .my_Profile_Img img{
+        width: 100%;
+    }
+
+    .form-group{
+        margin: 20px 0 0 0;
+    }
+
+    .form-group input{
+        width: 170px !important;
+    }
+
+    .form-group textarea{
+        width: 220px !important;
+    }
+
+    .email{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

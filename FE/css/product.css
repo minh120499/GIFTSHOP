@@ -296,6 +296,7 @@ ul {
   margin-right: 10px;
   border: 1px solid #ebebeb;
   cursor: pointer;
+  object-fit: contain;
 }
 
 .rightside .product-detail .images .sub-images img:hover {

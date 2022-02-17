@@ -10,7 +10,7 @@ var product = [];
 var totalquantity = 1
 function getDataFromServer() {
   //Render chi tiết sản phẩm
-  $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
+  $.ajax('http://localhost/BE/DataList/Product.php').done(function (data) {
     $.parseJSON(data).map((item) => {
       if (item.id == localStorage.getItem('productid')) {
         product = [...product, ...[item]];
@@ -25,6 +25,7 @@ function getDataFromServer() {
           </div> 
           <div class="sub-images">
       `;
+    console.log(product)
     product.map((item) => {
       html += `<img src="${item.src}">`;
     });
@@ -96,7 +97,7 @@ function getDataFromServer() {
               <div class="categories-tag">
                   <span class="title">Categories: </span>`
     product[0].anniversary.split(',').map(item => {
-      html += `<a href="#" class="product-link fst-italic">${item},</a>`
+      html += `<a href="./products.html" class="product-link product-cate-link fst-italic">${item}</a>,`
     })
     html +=
       `</div>
@@ -113,7 +114,7 @@ function getDataFromServer() {
 
     // Related-products
     axios.get('http://localhost/be/DataList/ProductList.php')
-      .then(e => e.data.splice(85))
+      .then(e => e.data.splice(86))
       .then(e => {
         let html = `<h3 class="title">Related Products</h3>
                       <hr>
@@ -130,7 +131,7 @@ function getDataFromServer() {
                                     </div>
                                     <div class="box-detail">
                                         <div class="box-detail__top">
-                                            <a href="#" class="product-link product-name-link" productid="${item.id}">${item.name }</a>
+                                            <a href="#" class="product-link product-name-link" productid="${item.id}">${item.name}</a>
                                         </div>
                                         <div class="box-detail__bottom">
                                             <div class="prices">
@@ -184,6 +185,17 @@ function abc() {
       document.addEventListener('DOMContentLoaded', fn);
     }
   }
+
+  // Go to categories
+  let gotoCate = document.querySelectorAll('.product-cate-link')
+  gotoCate.forEach(item => {
+    item.onclick = () => {
+      console.log(item.textContent)
+      localStorage.setItem('cateid', item.textContent)
+      console.log(localStorage.getItem('cateid'))
+    }
+  })
+
   // Thêm số lượng sản phẩm
   docReady(() => {
     const plusBtn = document.querySelector('.plus');
@@ -216,7 +228,7 @@ function abc() {
   docReady(() => {
     document.querySelector('.addcart').onclick = () => {
       let data = new FormData();
-      data.append('userid', 1)
+      data.append('userid', localStorage.getItem('userid'))
       data.append('productid', product[0].id)
       data.append('quantity', totalquantity)
       data.append('price', product[0].price)
@@ -243,7 +255,7 @@ function abc() {
   wl.forEach(item => {
     item.onclick = (e) => {
       let data = new FormData()
-      data.append('userid', 1)
+      data.append('userid', localStorage.getItem('userid'))
       data.append('productid', e.target.getAttribute('productid'))
       console.log(e.target.getAttribute('productid'))
       if (item.className.includes('clicked-wishlist')) {
@@ -278,20 +290,23 @@ function abc() {
       location.reload()
     }
   })
-  
+
 }
 
 setTimeout(() => {
   // GET WISHLIST (LOCAL STORAGE)
-  let data = new FormData()
-  data.append('userid', 1)
-  axios.post('http://localhost/be/Wishlist/list.php', data)
-    .then(e => e.data)
-    .then(e => {
-      console.log(e)
-      localStorage.setItem('wishlist', e)
-    })
+  function getWishlist() {
+    let data = new FormData()
+    data.append('userid', localStorage.getItem('userid'))
+    axios.post('http://localhost/be/Wishlist/list.php', data)
+      .then(e => e.data)
+      .then(e => {
+        console.log(e)
+        localStorage.setItem('wishlist', e)
+      })
+  }
 
+  getWishlist();
   getDataFromServer()
   setTimeout(() => {
     abc()
