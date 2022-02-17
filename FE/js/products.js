@@ -1,6 +1,7 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 
+componentHTML();
 var btn_square = document.querySelector('.square');
 var btn_pillar = document.querySelector('.pillar');
 
@@ -133,9 +134,9 @@ function renderContent(listProducts = 'empty') {
       var html5 = '';
       var select = document.getElementById('show_items');
       var perPage = select.options[select.selectedIndex].value;
-      end = perPage * idPage;
+      let end = perPage * idPage;
       start = (idPage - 1) * perPage;
-      totalPages = Math.ceil(e.length / perPage);
+      let totalPages = Math.ceil(e.length / perPage);
 
       if (idPage === totalPages) {
         nextBtn.disabled = true;
@@ -596,6 +597,8 @@ function priceSearch() {
 function viewButton() {
   return new Promise((rs) => {
     setTimeout(() => {
+      // Render header.js
+      header();
       // click best sale to product
       let a = document.querySelectorAll('.go-to-product');
       a.forEach((item) => {
