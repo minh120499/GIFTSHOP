@@ -109,7 +109,7 @@ function getDataFromServer() {
                   <b><i>${product[0].country}</i></b>
               </small>
               <div class="download">
-                  <a href="http://localhost/document/wine/${product[0].name
+                  <a href="http://localhost/document/${product[0].name
                     .split(' ')
                     .join(
                       '%20'
@@ -198,7 +198,6 @@ function RenderBestSale() {
                       <div class="item-info">
                           <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>
                           <div class="prices">
-                              <span class="old-price">$ ${item.price}</span>
                               <span class="new-price">$ ${item.price}</span>
                           </div>
                       </div>
@@ -303,6 +302,7 @@ function abc() {
   wl.forEach((item) => {
     item.onclick = (e) => {
       let data = new FormData();
+      console.log(123);
       data.append('userid', localStorage.getItem('userid'));
       data.append('productid', e.target.getAttribute('productid'));
       if (item.className.includes('clicked-wishlist')) {

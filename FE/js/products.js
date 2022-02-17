@@ -596,9 +596,8 @@ function priceSearch() {
 // Nut chuyen huong den product.html
 function viewButton() {
   return new Promise((rs) => {
+    header();
     setTimeout(() => {
-      // Render header.js
-      header();
       // click best sale to product
       let a = document.querySelectorAll('.go-to-product');
       a.forEach((item) => {
