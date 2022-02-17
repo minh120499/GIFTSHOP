@@ -5,6 +5,7 @@ let idPage = 1;
 let start = 0;
 
 var productList = []
+var productListToFliter = []
 btn_pillar.addEventListener("click", function () {
   document.querySelector(".content_container_main").classList.add("hide");
   document
@@ -66,6 +67,28 @@ function search() {
   }
 }
 
+// Render Best Sale
+function RenderBestSale() {
+  axios.get('http://localhost/be/DataList/TopSales.php')
+    .then(e => e.data)
+    .then(e => {
+      let html = ''
+      document.querySelector('.SideBar_bestseller_content').innerHTML = ''
+      e.forEach(item => {
+        html += `<li class="row">
+                            <div class="col-4">
+                                <a href="./product.html" class="go-to-product" productid="${item.id}"><img src="${item.src}" alt=""></a>
+                            </div>
+                            <div class="col-8">
+                                <p><a href="./product.html" class="go-to-product" productid="${item.id}">${item.name}</a></p>
+                                <p>$<span>${item.price}</span></p>
+                            </div>
+                        </li>`
+      })
+      document.querySelector('.SideBar_bestseller_content').innerHTML += html
+    })
+}
+
 // Làm 2 nút chuyển trang
 var check = 0;
 const previousBtn = document.querySelector(".previousbtn");
@@ -100,6 +123,7 @@ function renderContent(listProducts = 'empty') {
     .then((e) => {
       productList = e
       listProducts == 'empty' ? listProducts = e : ''
+      listProducts == 'empty' ? '' : productListToFliter = listProducts
       var html2 = "";
       var html3 = "";
       var html5 = "";
@@ -188,17 +212,17 @@ function renderContent(listProducts = 'empty') {
         }
       });
 
-      for (var i = 0; i < 4; i++) {
-        html5 += `<li class="row">
-            <div class="col-4">
-                <img src="${e[i].src}" alt="">
-            </div>
-            <div class="col-8">
-                <p><div >${e[i].name}</div></p>
-                <p>$<span>${e[i].price}</span></p>
-            </div>
-        </li>`;
-      }
+      // for (var i = 0; i < 4; i++) {
+      //   html5 += `<li class="row">
+      //       <div class="col-4">
+      //           <img src="${e[i].src}" alt="">
+      //       </div>
+      //       <div class="col-8">
+      //           <p><div >${e[i].name}</div></p>
+      //           <p>$<span>${e[i].price}</span></p>
+      //       </div>
+      //   </li>`;
+      // }
 
       var html4 = ``;
       for (var i = 1; i <= totalPages; i++) {
@@ -212,13 +236,12 @@ function renderContent(listProducts = 'empty') {
       document.querySelector(".content_container_main").innerHTML = html2;
       document.querySelector(".content_container_main_pillar").innerHTML = html3;
       document.querySelector(".content_container_title_right").innerHTML = html4;
-      document.querySelector(".SideBar_bestseller_content").innerHTML = html5;
+      // document.querySelector(".SideBar_bestseller_content").innerHTML = html5;
     });
 }
 
 // Hiển thị dữ liệu ra theo loại sản phẩm
 function RenderCategories() {
-
   axios.get("http://localhost/BE/DataList/Categories.php")
     .then((e) => e.data)
     .then(e => {
@@ -538,7 +561,7 @@ function priceSearch() {
       document.querySelector(".content_container_main").innerHTML = '';
       document.querySelector(".content_container_main_pillar").innerHTML = '';
       document.querySelector(".content_container_title_right").innerHTML = '';
-      document.querySelector(".SideBar_bestseller_content").innerHTML = '';
+      // document.querySelector(".SideBar_bestseller_content").innerHTML = '';
       renderContent(e.data)
     })
 }
@@ -547,6 +570,43 @@ function priceSearch() {
 function viewButton() {
   return new Promise(rs => {
     setTimeout(() => {
+      // click best sale to product
+      let a = document.querySelectorAll('.go-to-product')
+      a.forEach(item => {
+        item.onclick = () => {
+          localStorage.setItem('productid', item.getAttribute('productid'))
+        }
+      })
+      // click render by top
+      document.querySelector('.filterTop').onclick = () => {
+        let array = []
+        let sortedArry = []
+        productListToFliter.forEach(item => {
+          array.push(item.name)
+        })
+        array.sort().forEach(name => {
+          productListToFliter.filter(item => {
+            if (item.name == name) { sortedArry = [...sortedArry,...[item]]}
+          })
+        })
+        renderContent(sortedArry)
+      }
+
+      // click render by botton
+      document.querySelector('.filterBottom').onclick = () => {
+        let array = []
+        let reSortedArry = []
+        productListToFliter.forEach(item => {
+          array.push(item.name)
+        })
+        array.reverse().forEach(name => {
+          productListToFliter.filter(item => {
+            if (item.name == name) { reSortedArry = [...reSortedArry, ...[item]] }
+          })
+        })
+        renderContent(reSortedArry)
+      }
+
       // click view button to product
       let viewButton = document.querySelectorAll('.add_view')
       viewButton.forEach(item => {
@@ -593,11 +653,9 @@ function viewButton() {
           let data = new FormData()
           data.append('userid', localStorage.getItem('userid'))
           data.append('productid', item.getAttribute('productid'))
-          console.log(item.getAttribute('productid'))
           if (item.className.includes('clicked-wishlist')) {
             axios.post('http://localhost/be/Wishlist/delete.php', data)
               .then(e => {
-                console.log(e.data)
                 if (e.data == 'Delete Succes') {
                   item.className = item.className.replace('clicked-wishlist', '')
                 }
@@ -605,7 +663,6 @@ function viewButton() {
           } else {
             axios.post('http://localhost/be/Wishlist/Add.php', data)
               .then(e => {
-                console.log(e.data)
                 if (e.data == 'Add Succes') {
                   item.className += ' clicked-wishlist'
                 }
@@ -641,6 +698,7 @@ axios.post('http://localhost/be/Wishlist/list.php', data)
     localStorage.setItem('wishlist', e)
   })
 
+RenderBestSale()
 RenderBrand()
 RenderCategories()
 
@@ -655,7 +713,6 @@ if (localStorage.getItem('brandid')) {
   setTimeout(() => {
     viewButton()
   }, 1000)
-  console.log(localStorage.getItem('cateid'))
   localStorage.removeItem('cateid')
 } else {
   asyncCall()
@@ -667,11 +724,10 @@ function renderProductsByCategories(cateid) {
   data.append('cateid', cateid)
   axios.post('http://localhost/be/DataList/ProductFilters.php', data)
     .then(e => {
-      console.log(e.data)
       document.querySelector(".content_container_main").innerHTML = '';
       document.querySelector(".content_container_main_pillar").innerHTML = '';
       document.querySelector(".content_container_title_right").innerHTML = '';
-      document.querySelector(".SideBar_bestseller_content").innerHTML = '';
+      // document.querySelector(".SideBar_bestseller_content").innerHTML = '';
       renderContent(e.data)
     })
 }
@@ -682,11 +738,10 @@ function renderProductsByBrands(brandid) {
   data.append('brand', brandid)
   axios.post('http://localhost/be/DataList/ProductFilters.php', data)
     .then(e => {
-      console.log(e.data)
       document.querySelector(".content_container_main").innerHTML = '';
       document.querySelector(".content_container_main_pillar").innerHTML = '';
       document.querySelector(".content_container_title_right").innerHTML = '';
-      document.querySelector(".SideBar_bestseller_content").innerHTML = '';
+      // document.querySelector(".SideBar_bestseller_content").innerHTML = '';
       renderContent(e.data)
     })
 }

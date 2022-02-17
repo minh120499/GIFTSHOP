@@ -3,7 +3,7 @@ require_once '../ConnectDataBase/connect.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 
-$sql = "SELECT * FROM `brand`";
+$sql = "SELECT `brand`.*,COUNT(1) AS `quantity` FROM `brand` INNER JOIN `products` WHERE `brand`.`id` = `products`.`brand` GROUP BY `brand`.`id`;";
 $stmt = $conn->prepare("$sql");
 $stmt->execute();
 
@@ -14,7 +14,8 @@ foreach( $stmt->fetchAll() as $key => $value) {
         'id' => $value['id'],
         'name' => $value['name'],
         'img' => $value['img'],
-        'id' => $value['id']
+        'id' => $value['id'],
+        'quantity' => $value['quantity']
     );
 }
 

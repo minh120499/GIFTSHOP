@@ -25,7 +25,6 @@ function getDataFromServer() {
           </div> 
           <div class="sub-images">
       `;
-    console.log(product)
     product.map((item) => {
       html += `<img src="${item.src}">`;
     });
@@ -113,14 +112,16 @@ function getDataFromServer() {
     $('.product-detail').append(html);
 
     // Related-products
-    axios.get('http://localhost/be/DataList/ProductList.php')
-      .then(e => e.data.splice(86))
+    let relatedProduct = new FormData()
+    relatedProduct.append('productid', localStorage.getItem('productid'))
+    axios.post('http://localhost/be/DataList/Related.php', relatedProduct)
+      .then(e => e.data)
       .then(e => {
         let html = `<h3 class="title">Related Products</h3>
                       <hr>
                       <ul id="autoWidth" class="cs-hidden">`
         e.map(item => {
-
+          if (Math.random() < 0.5) return
           html += `<li class="item-a">
                                 <div class="box">
                                     <div class="slider">
@@ -171,8 +172,42 @@ function getDataFromServer() {
     $('.desc-text').text(description);
   });
 }
+function RenderBestSale() {
+  axios.get('http://localhost/be/DataList/TopSales.php')
+    .then(e => e.data)
+    .then(e => {
+      let html = ''
+      document.querySelector('#render-leftside-bestsellers').innerHTML = ''
+      e.forEach(item => {
+        html += `<li>
+                  <div class="item-content">
+                      <a href="./product.html" class="product-name-link" productid="${item.id}"><img src="${item.src}" width="100px" height="100px"
+                              alt="" class="thumbnail"></a>
+                      <div class="item-info">
+                          <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>
+                          <div class="prices">
+                              <span class="old-price">$ ${item.price}</span>
+                              <span class="new-price">$ ${item.price}</span>
+                          </div>
+                      </div>
+                  </div>
+              </li>`
+      })
+      document.querySelector('#render-leftside-bestsellers').innerHTML += html
+    })
+}
 
-
+function RenderCategories() {
+  axios.get("http://localhost/BE/DataList/Categories.php")
+    .then((e) => e.data)
+    .then(e => {
+      let html = ''
+      e.forEach(item => {
+        html += `<li><a href="./products.html" class="product-link product-cate-link">${item.name}</a></li>`;
+      })
+      document.querySelector("#render-leftside-categories").innerHTML = html;
+    })
+}
 function abc() {
   // Kiểm tra DOM đã được render hay chưa
   function docReady(fn) {
@@ -190,9 +225,7 @@ function abc() {
   let gotoCate = document.querySelectorAll('.product-cate-link')
   gotoCate.forEach(item => {
     item.onclick = () => {
-      console.log(item.textContent)
       localStorage.setItem('cateid', item.textContent)
-      console.log(localStorage.getItem('cateid'))
     }
   })
 
@@ -235,7 +268,6 @@ function abc() {
       axios.post('http://localhost/be/Checkout/AddToCart.php', data)
         .then(e => e.data)
         .then(e => {
-          console.log(e)
           e == 'Add Success' ? alert(e) : alert('Erros')
         })
     }
@@ -257,11 +289,9 @@ function abc() {
       let data = new FormData()
       data.append('userid', localStorage.getItem('userid'))
       data.append('productid', e.target.getAttribute('productid'))
-      console.log(e.target.getAttribute('productid'))
       if (item.className.includes('clicked-wishlist')) {
         axios.post('http://localhost/be/Wishlist/delete.php', data)
           .then(e => {
-            console.log(e.data)
             if (e.data == 'Delete Succes') {
               item.className = item.className.replace('clicked-wishlist', '')
               let b = item.childNodes
@@ -271,7 +301,6 @@ function abc() {
       } else {
         axios.post('http://localhost/be/Wishlist/Add.php', data)
           .then(e => {
-            console.log(e.data)
             if (e.data == 'Add Succes') {
               item.className += ' clicked-wishlist'
               let b = item.childNodes
@@ -301,11 +330,11 @@ setTimeout(() => {
     axios.post('http://localhost/be/Wishlist/list.php', data)
       .then(e => e.data)
       .then(e => {
-        console.log(e)
         localStorage.setItem('wishlist', e)
       })
   }
-
+  // RenderCategories()
+  RenderBestSale()
   getWishlist();
   getDataFromServer()
   setTimeout(() => {

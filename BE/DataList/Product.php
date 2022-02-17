@@ -19,8 +19,7 @@ $sql = "SELECT `products`.`id`,
           FROM `products` INNER JOIN `productimg` 
                           INNER JOIN `brand` 
           WHERE `products`.`brand` = `brand`.`id` 
-            AND `products`.`id` = `productimg`.`productid`
-        GROUP BY `products`.`id`";
+            AND `products`.`id` = `productimg`.`productid`";
 
 $stmt = $conn->prepare("$sql");
 $stmt->execute();

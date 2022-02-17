@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: *");
 
 # Handling Request
 $a = '';
-isset($_POST['cateID']) && !empty($_POST['cateID']) ? $a = 1 : '';
+isset($_POST['cateid']) && !empty($_POST['cateid']) ? $a = 1 : '';
 isset($_POST['productName']) && !empty($_POST['productName']) ? $a = 2 : '';
 isset($_POST['minPrice']) && isset($_POST['maxPrice']) ? $a = 3 : '';
 isset($_POST['brand']) && !empty($_POST['brand']) ? $a = 4 : '';
@@ -56,7 +56,8 @@ die(json_encode($data));
 
 function searchByCategories()
 {
-  $cateid = $_POST['cateID'];
+  $cateid = $_POST['cateid'];
+  is_numeric($cateid) ? $option = "`categories`.`id` = $cateid" : $option = "`categories`.`name` = '$cateid'";
   $GLOBALS['sql'] = "SELECT 
             `products`.`id`,
             `products`.`name` as `name`,
@@ -73,8 +74,10 @@ function searchByCategories()
             INNER JOIN `productimg`
             INNER JOIN (SELECT `products`.`id` as `id` FROM `products` 
   						            INNER JOIN `catepro`
+                          INNER JOIN `categories`
   					            WHERE `products`.`id` = `catepro`.`proid` 
-                          AND `catepro`.`cateid` = $cateid) as `a`
+                          AND `categories`.`id` = `catepro`.`cateid`
+                          AND $option )as `a`
           WHERE `products`.`id` = `productimg`.`productid`
             AND `products`.`id` = `a`.`id`
             GROUP BY `productimg`.`productid`;";
@@ -114,6 +117,10 @@ function searchByPrice()
 {
   $min = $_POST['minPrice'];
   $max = $_POST['maxPrice'];
+  if($min > $max) {
+    $min = $_POST['maxPrice'];
+    $max = $_POST['minPrice'];
+  }
   $GLOBALS['sql'] = "SELECT * FROM `products`
              INNER JOIN `productimg`
             WHERE `products`.`id` = `productimg`.`productid` 
@@ -134,11 +141,13 @@ function searchByPrice()
 function searchByBrand()
 {
   $brand = $_POST['brand'];
-  $GLOBALS['sql'] = "SELECT * FROM `products`
+  $GLOBALS['sql'] = "SELECT `products`.*,`productimg`.src,`brand`.`name` as 'brand' FROM `products`
              INNER JOIN `productimg`
+             INNER JOIN `brand`
             WHERE `products`.`id` = `productimg`.`productid` 
-             AND  `brand` = $brand
-            GROUP BY `productimg`.`productid`;";
+             AND `products`.`brand` = `brand`.`id`
+             AND  `brand`.`id` = '$brand'
+            GROUP BY `productimg`.`productid`";
 }
 
 # -----
