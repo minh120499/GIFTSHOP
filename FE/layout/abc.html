@@ -12,45 +12,45 @@
 <body>
     <div></div>
     <script>
-        function resolveAfter2Seconds() {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    console.log(12)
-                    resolve();
-                }, 1000);
-            });
-        }
-        function resolveAfter1Seconds() {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    console.log(11)
-                    resolve();
-                }, 1000);
-            });
-        }
-        let a = new Promise(rs => {
-            setTimeout(()=>{
-                console.log(999)
-                rs()
-            },1000)
-        })
-        async function asyncCall() {
-            // await resolveAfter2Seconds()
-            // await resolveAfter1Seconds()
-            // await a
-            // console.log('calling');
-            // console.log(result);
+        // function resolveAfter2Seconds() {
+        //     return new Promise(resolve => {
+        //         setTimeout(() => {
+        //             console.log(12)
+        //             resolve();
+        //         }, 1000);
+        //     });
+        // }
+        // function resolveAfter1Seconds() {
+        //     return new Promise(resolve => {
+        //         setTimeout(() => {
+        //             console.log(11)
+        //             resolve();
+        //         }, 1000);
+        //     });
+        // }
+        // let a = new Promise(rs => {
+        //     setTimeout(()=>{
+        //         console.log(999)
+        //         rs()
+        //     },1000)
+        // })
+        // async function asyncCall() {
+        //     // await resolveAfter2Seconds()
+        //     // await resolveAfter1Seconds()
+        //     // await a
+        //     // console.log('calling');
+        //     // console.log(result);
 
-            // expected output: "resolved"
-        }
+        //     // expected output: "resolved"
+        // }
 
-        // asyncCall();
-        a = `<h1>${localStorage.getItem('wl')}</h1>`
-        document.write(a)
+        // // asyncCall();
+        // a = `<h1>${localStorage.getItem('wl')}</h1>`
+        // document.write(a)
 
         let data = new FormData()
-            data.append('brand', 1)
-            axios.post('http://localhost/be/DataList/ProductFilters.php', data)
+            data.append('userid', 2)
+            axios.post('http://localhost/be/Users/GetOrders.php', data)
                 .then(e => {
                     console.log(e)
                 })
