@@ -2,6 +2,7 @@
 @import 'header.css';
 @import './responsive/rpHeader.css';
 @import 'footer.css';
+@import 'alert.css';
 
 .product-link {
   color: #7d7d7d !important;
