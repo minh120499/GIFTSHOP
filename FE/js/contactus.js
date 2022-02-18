@@ -2,10 +2,10 @@ import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 import * as validateForm from './module/validation.js';
 
+componentHTML();
 function render() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      componentHTML();
       renderAPI();
       resolve();
     }, 1000);
