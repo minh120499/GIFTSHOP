@@ -1,5 +1,5 @@
 // API
-// var api = "http://localhost/BE/Users/GetInfo.php";
+var api = "http://localhost/BE/Users/GetInfo.php";
 
 // Hàm lấy giá trị trong API
 function getAPI(callback){

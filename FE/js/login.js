@@ -1,6 +1,6 @@
 //Đổ dữ liệu xuống để so sánh
 // API
-var api = 'http://localhost/BE/Users/GetInfo.php';
+var api = 'http://localhost/be/Admin/GetUsers.php';
 
 // Hàm lấy giá trị trong API
 function getAPI(callback) {

@@ -14,7 +14,6 @@ $stmt = $conn->prepare("SELECT `products`.* , `productimg`.`src`,`brand`.`name` 
 $stmt->bindParam('id', $_POST['id']);
 $stmt->execute();
 
-// $data == [] ? $data = [] : '';
 $data = [];
 $stmt->rowCount() == 0 ? die('Not found') : '';
 foreach ($stmt->fetchAll() as $key => $value) {

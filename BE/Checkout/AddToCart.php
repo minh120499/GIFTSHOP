@@ -7,6 +7,7 @@ isset($_POST['userid']) && !empty($_POST['userid']) ? '' : die('invalid userid')
 isset($_POST['productid']) && !empty($_POST['productid']) ? '' : die('invalid productid');
 isset($_POST['quantity']) && !empty($_POST['quantity']) ? '' : die('invalid quantity');
 isset($_POST['price']) && !empty($_POST['price']) ? '' : die('invalid price');
+isset($_POST['img']) && !empty($_POST['img']) ? '' : die('invalid img');
 $userid = $_POST['userid'];
 
 
@@ -47,11 +48,12 @@ if ($stmt->rowCount() == 0) {
         $orderid = $data['id'];
 
         // INSERT INTO ordersdetail
-        $stmt = $conn->prepare("INSERT INTO `ordersdetail`(productid, orderid, quantity, price, coupon) VALUES (:productid, :orderid, :quantity, :price, :coupon)");
+        $stmt = $conn->prepare("INSERT INTO `ordersdetail`(img, productid, orderid, quantity, price, coupon) VALUES (:img, :productid, :orderid, :quantity, :price, :coupon)");
         $stmt->bindParam('productid', $_POST['productid']);
         $stmt->bindParam('quantity', $_POST['quantity']);
         $stmt->bindParam('price', $_POST['price']);
         $stmt->bindParam('coupon', $_POST['coupon']);
+        $stmt->bindParam('img', $_POST['img']);
         $stmt->bindParam('orderid', $orderid);
         $stmt->execute();
 

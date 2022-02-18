@@ -56,12 +56,8 @@ die(json_encode($data));
 
 function searchByCategories()
 {
-<<<<<<< HEAD
-  $cateid = $_POST['cateID'];
-=======
   $cateid = $_POST['cateid'];
   is_numeric($cateid) ? $option = "`categories`.`id` = $cateid" : $option = "`categories`.`name` = '$cateid'";
->>>>>>> master
   $GLOBALS['sql'] = "SELECT 
             `products`.`id`,
             `products`.`name` as `name`,
@@ -78,15 +74,10 @@ function searchByCategories()
             INNER JOIN `productimg`
             INNER JOIN (SELECT `products`.`id` as `id` FROM `products` 
   						            INNER JOIN `catepro`
-<<<<<<< HEAD
-  					            WHERE `products`.`id` = `catepro`.`proid` 
-                          AND `catepro`.`cateid` = $cateid) as `a`
-=======
                           INNER JOIN `categories`
   					            WHERE `products`.`id` = `catepro`.`proid` 
                           AND `categories`.`id` = `catepro`.`cateid`
                           AND $option )as `a`
->>>>>>> master
           WHERE `products`.`id` = `productimg`.`productid`
             AND `products`.`id` = `a`.`id`
             GROUP BY `productimg`.`productid`;";
@@ -126,13 +117,10 @@ function searchByPrice()
 {
   $min = $_POST['minPrice'];
   $max = $_POST['maxPrice'];
-<<<<<<< HEAD
-=======
   if($min > $max) {
     $min = $_POST['maxPrice'];
     $max = $_POST['minPrice'];
   }
->>>>>>> master
   $GLOBALS['sql'] = "SELECT * FROM `products`
              INNER JOIN `productimg`
             WHERE `products`.`id` = `productimg`.`productid` 
@@ -153,13 +141,6 @@ function searchByPrice()
 function searchByBrand()
 {
   $brand = $_POST['brand'];
-<<<<<<< HEAD
-  $GLOBALS['sql'] = "SELECT * FROM `products`
-             INNER JOIN `productimg`
-            WHERE `products`.`id` = `productimg`.`productid` 
-             AND  `brand` = $brand
-            GROUP BY `productimg`.`productid`;";
-=======
   $GLOBALS['sql'] = "SELECT `products`.*,`productimg`.src,`brand`.`name` as 'brand' FROM `products`
              INNER JOIN `productimg`
              INNER JOIN `brand`
@@ -167,7 +148,6 @@ function searchByBrand()
              AND `products`.`brand` = `brand`.`id`
              AND  `brand`.`id` = '$brand'
             GROUP BY `productimg`.`productid`";
->>>>>>> master
 }
 
 # -----
