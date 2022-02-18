@@ -26,8 +26,11 @@ ul {
 }
 
 .image img {
-  width: 100%;
-  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  box-shadow: 2px 0px 4px rgb(0 0 0 / 20%);
+  margin: 0 auto;
+  display: block;
+  border: 5px solid pink;
 }
 
 .content {

@@ -1,6 +1,7 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 import { multiStep } from './module/multistep.js';
+import { geolocation } from './module/geolocation.js';
 import * as validateForm from './module/validation.js';
 
 function render() {
@@ -59,6 +60,7 @@ function renderAPI() {
     delProduct();
   });
 }
+multiStep();
 
 // Render header.js
 render().then(() => {
@@ -200,9 +202,9 @@ nextBtn.addEventListener('click', (e) => {
     nextStep.style.left = '0';
     nextStep.style.right = '0';
     progressStep.classList.add('active');
+    geolocation();
   }
 });
-multiStep();
 
 // Submit form
 const confirmBtn = document.querySelector('.btn-cf');
