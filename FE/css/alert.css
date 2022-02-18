@@ -1,5 +1,4 @@
 #alert-all-message {
-<<<<<<< HEAD
   position: absolute;
   z-index: 999;
   left: 50%;
@@ -36,41 +35,3 @@
     top: 20px;
   }
 }
-=======
-    position: absolute;
-    z-index: 999;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    height: max-content;
-    padding: 15px;
-    text-align: center;
-    color: white;
-
-    background-color: #04AA6D;
-    border-radius: 25px;
-    display: grid;
-    grid-template-columns: auto max-content;
-    visibility: hidden;
-    animation: showup 1s ease-in forwards;
-}
-
-#alert-all-message>div:first-child {
-    text-align: left;
-}
-
-#alert-all-message>div:last-child:hover {
-    cursor: pointer;
-    color: black;
-}
-
-@keyframes showup {
-    from {
-        top: -250px;
-    }
-
-    to {
-        top: 20px;
-    }
-}
->>>>>>> master
