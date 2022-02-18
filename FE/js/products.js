@@ -1,7 +1,11 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
+import { multiPageItem } from './module/multipage.js'
 
 componentHTML();
+// multiPageItem();
+
+
 var btn_square = document.querySelector('.square');
 var btn_pillar = document.querySelector('.pillar');
 
@@ -10,6 +14,7 @@ let start = 0;
 
 var productList = [];
 var productListToFliter = [];
+
 btn_pillar.addEventListener('click', function () {
   document.querySelector('.content_container_main').classList.add('hide');
   document
@@ -38,7 +43,7 @@ show_filter.addEventListener('click', function () {
 });
 
 //search filter làm nút tìm kiếm giống W3 school chỉ search được trong 1 trang
-function search() {
+document.querySelector('#myInput').onkeyup = function search() {
   // Declare variables
   var input, filter, main, infor, p, i, txtValue;
   input = document.getElementById('myInput');
@@ -95,62 +100,56 @@ function RenderBestSale() {
 }
 
 // Làm 2 nút chuyển trang
-var check = 0;
-const previousBtn = document.querySelector('.previousbtn');
-const nextBtn = document.querySelector('.nextbtn');
-nextBtn.addEventListener('click', () => {
-  idPage++;
-  if (check == 1) {
-    renderProduct();
-  } else if (check == 2) {
-    renderProductBrand();
-  } else {
-    asyncCall();
-  }
-});
+// var check = 0;
+// const previousBtn = document.querySelector('.previousbtn');
+// const nextBtn = document.querySelector('.nextbtn');
+// nextBtn.addEventListener('click', () => {
+//   idPage++;
+//   if (check == 1) {
+//     renderProduct();
+//   } else if (check == 2) {
+//     renderProductBrand();
+//   } else {
+//     asyncCall();
+//   }
+// });
 
-previousBtn.addEventListener('click', () => {
-  idPage--;
-  if (check == 1) {
-    renderProduct();
-  } else if (check == 2) {
-    renderProductBrand();
-  } else {
-    asyncCall();
-  }
-});
+// previousBtn.addEventListener('click', () => {
+//   idPage--;
+//   if (check == 1) {
+//     renderProduct();
+//   } else if (check == 2) {
+//     renderProductBrand();
+//   } else {
+//     asyncCall();
+//   }
+// });
 
 // Hàm đổ dữ liệu ra khi load trang
 function renderContent(listProducts = 'empty') {
-  axios
-    .get('http://localhost/BE/DataList/ProductList.php')
-    .then((e) => e.data)
-    .then((e) => {
-      productList = e;
-      listProducts == 'empty' ? (listProducts = e) : '';
-      listProducts == 'empty' ? '' : (productListToFliter = listProducts);
-      var html2 = '';
-      var html3 = '';
-      var html5 = '';
-      var select = document.getElementById('show_items');
-      var perPage = select.options[select.selectedIndex].value;
-      let end = perPage * idPage;
-      start = (idPage - 1) * perPage;
-      let totalPages = Math.ceil(e.length / perPage);
+  if (listProducts == 'empty') {
 
-      if (idPage === totalPages) {
-        nextBtn.disabled = true;
-      } else {
-        nextBtn.disabled = false;
-      }
-      if (start === 0) {
-        previousBtn.disabled = true;
-      } else {
-        previousBtn.disabled = false;
-      }
-      listProducts.forEach((item, i) => {
-        if (i >= start && i < end) {
-          html2 += `<div class="col-6 col-lg-4 content_container_item">
+    axios
+      .get('http://localhost/BE/DataList/ProductList.php')
+      .then((e) => e.data)
+      .then((e) => {
+        productList = e;
+        listProducts = e
+        listProducts == 'empty' ? '' : (productListToFliter = listProducts);
+      });
+  }
+  console.log(liss)
+  var html2 = '';
+  var html3 = '';
+  var select = document.getElementById('show_items');
+  var perPage = select.options[select.selectedIndex].value;
+  let end = perPage * idPage;
+  start = (idPage - 1) * perPage;
+  let totalPages = Math.ceil(listProducts.length / perPage);
+
+  listProducts.forEach((item, i) => {
+    if (i >= start && i < end) {
+      html2 += `<div class="col-6 col-lg-4 content_container_item">
               <div class="content_container_item_border">
                   <div class="content_container_item_show">
                       <img src=${listProducts[i].src} alt="">
@@ -165,28 +164,28 @@ function renderContent(listProducts = 'empty') {
                       </li>
                       <li>
                           <button class="add_cart" productid="${item.id}">Add to cart</button>`;
-          if (
-            !localStorage
-              .getItem('wishlist')
-              .split(',')
-              .includes(item.id.toString())
-          ) {
-            html2 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
-          } else {
-            html2 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
-          }
-          html2 += `</li>
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(item.id.toString())
+      ) {
+        html2 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html2 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+      }
+      html2 += `</li>
                   </div>
               </div>
           </div>`;
-          let stringdetail = '';
-          if (e[i].detail.length > 150) {
-            stringdetail = e[i].detail.slice(0, 150) + ' ...';
-          } else {
-            stringdetail = e[i].detail;
-          }
+      let stringdetail = '';
+      if (listProducts[i].detail.length > 150) {
+        stringdetail = listProducts[i].detail.slice(0, 150) + ' ...';
+      } else {
+        stringdetail = listProducts[i].detail;
+      }
 
-          html3 += `<div class="content_container_item_pillar ">
+      html3 += `<div class="content_container_item_pillar ">
             <div class="content_container_item_pillar_img">
             <img src=${listProducts[i].src} alt="">
                 <button class="add_view" productid="${item.id}"><i class="far fa-eye"></i></button>
@@ -195,10 +194,10 @@ function renderContent(listProducts = 'empty') {
                 <h2><div class="title" productid="${item.id}" >${listProducts[i].name}</div></h2>
                 
                 <div class="content_container_item_pillar_star">`;
-          for (let i = 0; i < Math.floor(item.rating); i++) {
-            html3 += `<i class="far fa-star"></i>`;
-          }
-          html3 += `</div>
+      for (let i = 0; i < Math.floor(item.rating); i++) {
+        html3 += `<i class="far fa-star"></i>`;
+      }
+      html3 += `</div>
                 <div class="content_container_item_pillar_price">
                     <span>$</span><span>${listProducts[i].price}</span>
                 </div>
@@ -207,50 +206,36 @@ function renderContent(listProducts = 'empty') {
                 </div>
                 <div class="content_container_item_pillar_content_btn">
                     <button class="add_cart" productid="${item.id}">Add to cart</button>`;
-          if (
-            !localStorage
-              .getItem('wishlist')
-              .split(',')
-              .includes(item.id.toString())
-          ) {
-            html3 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
-          } else {
-            html3 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
-          }
-          html3 += `</div>
+      if (
+        !localStorage
+          .getItem('wishlist')
+          .split(',')
+          .includes(item.id.toString())
+      ) {
+        html3 += `<button class="add_tym" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+      } else {
+        html3 += `<button class="add_tym clicked-wishlist" productid="${item.id}"><i class="far fa-heart"></i></button>`;
+      }
+      html3 += `</div>
             </div>
           </div>`;
-        }
-      });
+    }
+  });
 
-      // for (var i = 0; i < 4; i++) {
-      //   html5 += `<li class="row">
-      //       <div class="col-4">
-      //           <img src="${e[i].src}" alt="">
-      //       </div>
-      //       <div class="col-8">
-      //           <p><div >${e[i].name}</div></p>
-      //           <p>$<span>${e[i].price}</span></p>
-      //       </div>
-      //   </li>`;
-      // }
+  var html4 = ``;
+  for (var i = 1; i <= totalPages; i++) {
+    if (idPage === i) {
+      html4 += `<p class='active'><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
+    } else {
+      html4 += `<p><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
+    }
+  }
 
-      var html4 = ``;
-      for (var i = 1; i <= totalPages; i++) {
-        if (idPage === i) {
-          html4 += `<p class='active'><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
-        } else {
-          html4 += `<p><span onclick="clickBtnChoosePage(event);">${i}</span></p>`;
-        }
-      }
-
-      document.querySelector('.content_container_main').innerHTML = html2;
-      document.querySelector('.content_container_main_pillar').innerHTML =
-        html3;
-      document.querySelector('.content_container_title_right').innerHTML =
-        html4;
-      // document.querySelector(".SideBar_bestseller_content").innerHTML = html5;
-    });
+  document.querySelector('.content_container_main').innerHTML = html2;
+  document.querySelector('.content_container_main_pillar').innerHTML =
+    html3;
+  document.querySelector('.content_container_title_right').innerHTML =
+    html4;
 }
 
 // Hiển thị dữ liệu ra theo loại sản phẩm
@@ -261,9 +246,15 @@ function RenderCategories() {
     .then((e) => {
       let html = '';
       e.forEach((item) => {
-        html += `<li onclick="renderProductsByCategories('${item.id}');" class="${item.name}"><span>${item.name}</span></li>`;
+        html += `<li cateid="${item.id}" class="${item.name}"><span>${item.name}</span></li>`;
       });
       document.querySelector('.SideBar_Category').outerHTML = html;
+      let dom = document.querySelectorAll('li[cateid]')
+      dom.forEach(item => {
+        item.onclick = () => {
+          renderProductsByCategories(item.getAttribute('cateid'))
+        }
+      })
     });
 }
 
@@ -274,63 +265,21 @@ function RenderBrand() {
     .then((e) => e.data)
     .then((e) => {
       var html1 = '';
-      // var brands = [];
-
-      // for (var i = 0; i < e.length; i++) {
-      //   if (brands.includes(e[i].name) === false) {
-      //     brands = [...brands, e[i].name];
-      //   }
-      // }
-
-      // for (var i = 0; i < brands.length; i++) {
-      //   html1 += `<li onclick="renderProductsByBrands('${brands[i]}');" class="${brands[i]}"><span>${brands[i]}</span><span>(1)</span></li>`;
-      // }
-      // document.querySelector(".SideBar_Color").outerHTML = html1;
       e.forEach((item) => {
-        html1 += `<li onclick="renderProductsByBrands('${item.id}');" class="${item.name}"><span>${item.name}</span><span>(${item.quantity})</span></li>`;
+        html1 += `<li brandid="${item.id}" class="${item.name}"><span>${item.name}</span><span>(${item.quantity})</span></li>`;
       });
       document.querySelector('.SideBar_Color').outerHTML = html1;
+      let dom = document.querySelectorAll('li[brandid]')
+      dom.forEach(item => {
+        item.onclick = () => {
+          renderProductsByBrands(item.getAttribute('brandid'))
+        }
+      })
     });
 }
 
-// Hàm gọi ra danh sách sản phẩm theo tên danh mục
 var product = [];
-// function producttype(classname) {
-//   console.log(classname)
-//   // axios
-//   //   .get("http://localhost/BE/DataList/ProductList.php")
-//   //   .then((e) => e.data)
-//   //   .then((e) => {
-//   //     check = 1;
-//   //     product = [];
-//   //     idPage = 1;
-//   //     e.map((item, i) => {
-//   //       if (e[i].anniversary.includes(classname)) {
-//   //         product = [...product, e[i]];
-//   //       }
-//   //     });
-//   //     renderProduct();
-//   //   });
-// }
-
-//Hàm gọi ra danh sách sản phẩm theo tên thương hiệu
 var productBrand = [];
-// function productbrand(classname) {
-//   axios
-//     .get("http://localhost/BE/DataList/ProductList.php")
-//     .then((e) => e.data)
-//     .then((e) => {
-//       check = 2;
-//       productBrand = [];
-//       idPage = 1;
-//       e.map((item, i) => {
-//         if (e[i].anniversary == classname) {
-//           productBrand = [...productBrand, e[i]];
-//         }
-//       });
-//       renderProductBrand();
-//     });
-// }
 
 //Hàm gọi ra ra danh sách sản phẩm theo thương hiệu
 function renderProductBrand() {
@@ -368,7 +317,6 @@ function renderProductBrand() {
       } else {
         html10 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
       }
-      // <button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>
       html10 += `<button class="add_share"><i class="fas fa-retweet"></i></button>
                 </li>
             </div>
@@ -412,7 +360,6 @@ function renderProductBrand() {
       } else {
         html11 += `<button class="add_tym clicked-wishlist" productid="${product[i].id}"><i class="far fa-heart"></i></button>`;
       }
-      // <button class="add_tym" productid="${product[i].id}"><i class="far fa-heart"></i></button>
       html11 += `<button class="add_share"><i class="fas fa-retweet"></i></button>
             </div>
         </div>
@@ -576,7 +523,7 @@ function clickBtnChoosePage(e) {
 }
 
 // Làm nút tìm kiếm the giá sản phẩm Filter
-function priceSearch() {
+document.querySelector('.searchPrice').onclick = function priceSearch() {
   let low_price = document.getElementById('low_price').value;
   let expensive = document.getElementById('expensive').value;
   let data = new FormData();

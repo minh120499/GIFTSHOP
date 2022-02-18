@@ -11,17 +11,23 @@
     <input type="file" name="" id="">
     <button>ok</button>
     <script>
-        let a = document.querySelector('input')
-        document.querySelector('button').onclick = () => {
-            console.log(a.files[0])
-            let form = new FormData()
-            form.append('fileupload', a.files[0])
-            axios.post('http://localhost/be/Admin/add.php',form)
-            .then(e => e.data)
-            // .then(e => {
-            //     console.log(e)
-            // })
-        }
+        // let a = document.querySelector('input')
+        // document.querySelector('button').onclick = () => {
+        //     console.log(a.files[0])
+        //     let form = new FormData()
+        //     form.append('fileupload', a.files[0])
+        //     axios.post('http://localhost/be/Admin/add.php',form)
+        //     .then(e => e.data)
+        //     // .then(e => {
+        //     //     console.log(e)
+        //     // })
+        // }
+        let data = new FormData();
+        data.append('userid','nam')
+        axios.post('',)
+        .then(e => {
+            
+        })
     </script>
 </body>
 </html>
