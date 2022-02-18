@@ -8,39 +8,199 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   </head>
   <body>
+    <!-- Delivery -->
     <div class="wrapper next-step">
-      <div class="cart-header">
-        <h2 class="title">Purchase Summary</h2>
+      <div class="delivery-header">
+        <h2 class="title">Delivery</h2>
         <hr />
       </div>
-      <div class="cart-items">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-        <div>15</div>
-        <div>16</div>
-      </div>
-      <div class="multipage-items">
-        <i class="fas fa-caret-left"></i>
-        <i class="fas fa-caret-right"></i>
+      <small></small>
+      <div class="delivery">
+        <div class="delivery-method">
+          <input
+            class="card-input"
+            type="radio"
+            name="delivery"
+            id="carryout"
+          />
+          <label class="card-label d-flex carryout" for="carryout">
+            <div class="d-flex">
+              <i class="fas fa-store d-flex align-items-center"></i>
+              <div class="d-flex flex-column justify-content-center">
+                <h2>Carry Out</h2>
+                <span class="desc">Collect your order at Merry's Shop</span>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="delivery-method">
+          <input
+            class="card-input"
+            type="radio"
+            name="delivery"
+            id="standard"
+          />
+          <label
+            class="card-label d-flex justify-content-between standard"
+            for="standard"
+          >
+            <div class="d-flex">
+              <i class="fas fa-truck d-flex align-items-center"></i>
+              <div class="d-flex flex-column justify-content-center">
+                <h2>Standard Delivery</h2>
+                <span class="desc">Estimated 1-2 days</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="fw-bold h5 mb-0 me-2">From</span>
+              <span class="delivery-price">5$</span>
+            </div>
+          </label>
+        </div>
       </div>
       <div class="buttons">
-        <button class="btn btn-prev prev">Previous</button>
-        <button class="btn btn-next next">Next</button>
+        <button class="btn btn-prev">Previous</button>
+        <button class="btn btn-next">Next</button>
+      </div>
+    </div>
+    <!-- Payment -->
+    <div class="wrapper next-step">
+      <div class="payment-header">
+        <h2 class="title">Payment</h2>
+        <hr />
+      </div>
+      <small></small>
+      <div class="payment ml-0">
+        <div class="payment-method">
+          <input class="card-input" type="radio" name="payment" id="cod" />
+          <label class="card-label" for="cod">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-money-bill-wave"></i>
+              <span>Cash On Delivery</span>
+            </div>
+          </label>
+        </div>
+        <div class="payment-method">
+          <input
+            class="card-input"
+            type="radio"
+            name="payment"
+            id="visa-master"
+          />
+          <label class="card-label cards-method" for="visa-master">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                <i class="far fa-credit-card"></i>
+                <span>Visa, Mastercard</span>
+              </div>
+              <i class="fas fa-caret-down mr-0"></i>
+            </div>
+          </label>
+          <div class="extended text-left">
+            <div class="form-group d-flex align-items-center">
+              <span class="label">Card Owner:</span>
+              <input type="text" id="cardowner" />
+              <small></small>
+            </div>
+            <div class="form-group d-flex align-items-center">
+              <span class="label">Card Number:</span>
+              <input type="text" id="cardnum" />
+              <small></small>
+            </div>
+            <div class="last-row d-flex justify-content-between">
+              <div class="form-group d-flex align-items-center">
+                <span class="label">Expired Date:</span>
+                <input type="text" id="expmonth" />
+                <small></small>
+              </div>
+              <div class="form-group d-flex align-items-center">
+                <span class="label">CVV:</span>
+                <input type="text" id="cvvcode" />
+                <small></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <input class="card-input" type="radio" name="payment" id="qrcode" />
+          <label class="card-label" for="qrcode">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-qrcode"></i>
+                <span>QR Code (MoMo, ZaloPay)</span>
+              </div>
+              <i class="fas fa-caret-down mr-0"></i>
+            </div>
+          </label>
+          <div class="extended text-left w-100">
+            <p>
+              Please scan this QR code with
+              <span class="fst-italic fw-bold">Momo</span> or
+              <span class="fst-italic fw-bold">ZaloPay</span> to complete your
+              checkout.
+            </p>
+            <img
+              src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://momo.vn/chuyen-tien/"
+            />
+            <img
+              src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://zalopay.vn/"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-prev">Previous</button>
+        <button class="btn btn-cf">Confirm</button>
       </div>
     </div>
     <script>
+      const nextBtns = document.querySelectorAll('.btn-next');
+      const prevBtns = document.querySelectorAll('.btn-prev');
+      // const progressStep = document.querySelectorAll('.step');
+      for (let i = 0; i < prevBtns.length; i++) {
+        const prevBtn = prevBtns[i];
+        prevBtn.addEventListener('click', (e) => {
+          let currentStep = e.target.parentElement.parentElement;
+          let prevStep = currentStep.previousElementSibling;
+          // console.log(prevStep)
+          currentStep.style.left = 'calc(100% + 30px)';
+          currentStep.style.right = '-100%';
+          prevStep.style.left = '0';
+          prevStep.style.right = '0';
+          // progressStep[i].classList.remove('active');
+        });
+      }
+      for (let i = 0; i < nextBtns.length; i++) {
+        const nextBtn = nextBtns[i];
+        nextBtn.addEventListener('click', (e) => {
+          let currentStep = e.target.parentElement.parentElement;
+          let nextStep = currentStep.nextElementSibling;
+          // console.log(nextStep)
+          currentStep.style.left = '-100%';
+          currentStep.style.right = 'calc(100% + 30px)';
+          nextStep.style.left = '0';
+          nextStep.style.right = '0';
+          let j = i + 1;
+          // progressStep[j].classList.add('active');
+          // Kiểm tra người dùng đã chọn method hay chưa
+          console.log(currentStep);
+          let inputRadio = Array.from(
+            currentStep.querySelectorAll('input[type="radio"]')
+          );
+          let smallTag = currentStep.querySelector('small');
+          console.log(inputRadio);
+          if (inputRadio.length !== 0) {
+            console.log(!inputRadio.every((input) => input.checked));
+            if (!inputRadio.every((input) => input.checked)) {
+              smallTag.innerText = 'Please choose one of these methods below!';
+              smallTag.style.color = 'red';
+            }
+            if (inputRadio.some((input) => input.checked)) {
+              smallTag.innerText = '';
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>
