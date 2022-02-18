@@ -60,16 +60,3 @@ footer .container {
   justify-content: right;
   font-size: 30px;
 }
-
-.active_1 {
-  border: 2px solid var(--primary_color) !important;
-  color: var(--primary_color) !important;
-}
-
-.red {
-  color: var(--primary_color);
-}
-
-a:hover {
-  text-decoration: none;
-}
