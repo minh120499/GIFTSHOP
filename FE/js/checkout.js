@@ -1,13 +1,15 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 import { multiStep } from './module/multistep.js';
-import { geolocation } from './module/geolocation.js';
+import { multiPageItem } from './module/multipage.js';
+import { updateCart } from './module/updatecart.js';
 import * as validateForm from './module/validation.js';
+
+componentHTML();
 
 function render() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      componentHTML();
       renderAPI();
       resolve();
     }, 1000);
@@ -16,7 +18,7 @@ function render() {
 
 // Render giỏ hàng
 function renderAPI() {
-  //Cart Summary
+  // Cart Summary
   $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
     var html = '';
     var items = $.parseJSON(data);
@@ -61,16 +63,19 @@ function renderAPI() {
   });
 }
 multiStep();
-
 // Render header.js
-render().then(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      header();
-      resolve();
-    }, 1000);
+render()
+  .then(() => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        header();
+        resolve();
+      }, 1000);
+    });
+  })
+  .then(() => {
+    multiPageItem();
   });
-});
 
 // Show Popup
 const popup = document.querySelector('.popup');
@@ -135,40 +140,6 @@ function delProduct() {
   }
 }
 
-// Update giỏ hàng
-function updateCart() {
-  const cartContainer = document.querySelector('.cart-items');
-  const cartItemsList = cartContainer.querySelectorAll('.cart-item');
-  let subTotal = 0;
-  let total = 0;
-  for (let i = 0; i < cartItemsList.length; i++) {
-    const cartItem = cartItemsList[i];
-    let price = cartItem.querySelector('.item-price span');
-    let quantity = cartItem.querySelector('.quantity');
-    price = parseFloat(price.innerText.replace('$ ', ''));
-    quantity = parseInt(quantity.value);
-    subTotal += price * quantity;
-  }
-
-  document.querySelector('.subtotal span').innerText = `$ ${subTotal}`;
-  document.querySelector('.total span').innerText = `$ ${subTotal}`;
-
-  //delivery
-  const carryOut = document.querySelector('.carryout');
-  const standardDeli = document.querySelector('.standard');
-  let deliPrice = document.querySelector('.deli span');
-  carryOut.addEventListener('click', () => {
-    deliPrice.innerText = '$ 0';
-    total = subTotal + 0;
-    document.querySelector('.total span').innerText = `$ ${total}`;
-  });
-  standardDeli.addEventListener('click', () => {
-    deliPrice.innerText = '$ 3';
-    total = subTotal + 3;
-    document.querySelector('.total span').innerText = `$ ${total}`;
-  });
-}
-
 // Validate Form dữ liệu người dùng
 const formInfo = document.querySelector('#form-info');
 const nextBtn = formInfo.parentElement.querySelector('.btn-next1');
@@ -202,7 +173,6 @@ nextBtn.addEventListener('click', (e) => {
     nextStep.style.left = '0';
     nextStep.style.right = '0';
     progressStep.classList.add('active');
-    geolocation();
   }
 });
 

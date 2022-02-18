@@ -1,158 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-
-<body>
-    <div></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper next-step">
+      <div class="cart-header">
+        <h2 class="title">Purchase Summary</h2>
+        <hr />
+      </div>
+      <div class="cart-items">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+      </div>
+      <div class="multipage-items">
+        <i class="fas fa-caret-left"></i>
+        <i class="fas fa-caret-right"></i>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-prev prev">Previous</button>
+        <button class="btn btn-next next">Next</button>
+      </div>
+    </div>
     <script>
-        // function resolveAfter2Seconds() {
-        //     return new Promise(resolve => {
-        //         setTimeout(() => {
-        //             console.log(12)
-        //             resolve();
-        //         }, 1000);
-        //     });
-        // }
-        // function resolveAfter1Seconds() {
-        //     return new Promise(resolve => {
-        //         setTimeout(() => {
-        //             console.log(11)
-        //             resolve();
-        //         }, 1000);
-        //     });
-        // }
-        // let a = new Promise(rs => {
-        //     setTimeout(()=>{
-        //         console.log(999)
-        //         rs()
-        //     },1000)
-        // })
-        // async function asyncCall() {
-        //     // await resolveAfter2Seconds()
-        //     // await resolveAfter1Seconds()
-        //     // await a
-        //     // console.log('calling');
-        //     // console.log(result);
-
-        //     // expected output: "resolved"
-        // }
-
-        // // asyncCall();
-        // a = `<h1>${localStorage.getItem('wl')}</h1>`
-        // document.write(a)
-
-        let data = new FormData()
-            data.append('userid', 2)
-            axios.post('http://localhost/be/Users/GetOrders.php', data)
-                .then(e => {
-                    console.log(e)
-                })
     </script>
-</body> -->
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div id="map"></div>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpuhPAXBFKTzK1P7n9vSW87mZtZBSG408&libraries=places&callback=showMap"></script>
-  <script>
-    let map;
-    let marker;
-    let geocoder;
-    let responseDiv;
-    let response;
-
-    function showMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: { lat: -34.397, lng: 150.644 },
-        mapTypeControl: false,
-      });
-      geocoder = new google.maps.Geocoder();
-
-      const inputText = document.createElement("input");
-
-      inputText.type = "text";
-      inputText.placeholder = "Enter a location";
-
-      const submitButton = document.createElement("input");
-
-      submitButton.type = "button";
-      submitButton.value = "Geocode";
-      submitButton.classList.add("button", "button-primary");
-
-      const clearButton = document.createElement("input");
-
-      clearButton.type = "button";
-      clearButton.value = "Clear";
-      clearButton.classList.add("button", "button-secondary");
-      response = document.createElement("pre");
-      response.id = "response";
-      response.innerText = "";
-      responseDiv = document.createElement("div");
-      responseDiv.id = "response-container";
-      responseDiv.appendChild(response);
-
-      const instructionsElement = document.createElement("p");
-
-      instructionsElement.id = "instructions";
-      instructionsElement.innerHTML =
-        "<strong>Instructions</strong>: Enter an address in the textbox to geocode or click on the map to reverse geocode.";
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-      map.controls[google.maps.ControlPosition.LEFT_TOP].push(instructionsElement);
-      map.controls[google.maps.ControlPosition.LEFT_TOP].push(responseDiv);
-      marker = new google.maps.Marker({
-        map,
-      });
-      map.addListener("click", (e) => {
-        geocode({ location: e.latLng });
-      });
-      submitButton.addEventListener("click", () =>
-        geocode({ address: inputText.value })
-      );
-      clearButton.addEventListener("click", () => {
-        clear();
-      });
-      clear();
-    }
-
-    function clear() {
-      marker.setMap(null);
-      responseDiv.style.display = "none";
-    }
-
-    function geocode(request) {
-      clear();
-      geocoder
-        .geocode(request)
-        .then((result) => {
-          const { results } = result;
-
-          map.setCenter(results[0].geometry.location);
-          marker.setPosition(results[0].geometry.location);
-          marker.setMap(map);
-          responseDiv.style.display = "block";
-          response.innerText = JSON.stringify(result, null, 2);
-          return results;
-        })
-        .catch((e) => {
-          alert("Geocode was not successful for the following reason: " + e);
-        });
-    }
-  </script>
-</body>
+  </body>
 </html>

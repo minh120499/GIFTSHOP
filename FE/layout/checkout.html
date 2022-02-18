@@ -20,6 +20,7 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -136,7 +137,10 @@
                             <h2 class="title">Purchase Summary</h2>
                             <hr>
                         </div>
-                        <div class="cart-items">
+                        <div class="cart-items"></div>
+                        <div class="multipage-items">
+                            <i class="fas fa-caret-left prev"></i>
+                            <i class="fas fa-caret-right next"></i>
                         </div>
                         <div class="buttons">
                             <button class="btn btn-prev">Previous</button>
@@ -174,7 +178,7 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <span class="fw-bold h5 mb-0 me-2">From</span>
-                                        <span class="delivery-price">3$</span> 
+                                        <span class="delivery-price">5$</span> 
                                     </div>
                                 </label>
                             </div>
