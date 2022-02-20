@@ -121,12 +121,31 @@
   }
 }
 
+.login_open .show-login {
+  display: inline-block;
+}
+.login_open .show-logout:hover {
+  color: #000 !important;
+  cursor: pointer;
+}
+.login_open .username {
+  font-weight: bold;
+}
+
+.login_open .show-welcome,
+.login_open .show-logout {
+  display: none;
+}
+.login_open span {
+  margin-right: 10px;
+}
 .login_open span a {
   color: #fff !important;
 }
 
 .login_open span a:hover {
   text-decoration: none;
+  color: #000 !important;
 }
 
 .top-left li:nth-child(1):hover .My-Account {

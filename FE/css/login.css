@@ -3,46 +3,8 @@
 @import '../css/header.css';
 @import '../css/responsive/rpHeader.css';
 
-/*----------------------------------------------Header --------------------------------*/
-header {
-  background-color: #fff;
-  height: 80px;
-  width: 100%;
-}
-
-header .container,
-.header_left,
-.header_left li:nth-child(2),
-.header_right {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-header .container {
-  justify-content: space-between;
-}
-
-.header_left li:nth-child(2) span {
-  margin-left: 30px;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: cursive;
-}
-
-.header_right {
-  justify-content: right;
-}
-
-.header_right span {
-  font-size: 15px;
-  color: var(--primary_color) !important;
-}
-
 /*---------------------------------------------- Login  --------------------------------*/
 .login {
-  width: 100%;
   background-image: url('../image/login/background.png');
   height: 600px;
   margin-bottom: 50px;
@@ -54,7 +16,6 @@ header .container {
 
 .login .container {
   height: 100%;
-  width: 100%;
   position: relative;
 }
 
@@ -71,8 +32,6 @@ header .container {
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  height: 500px;
-  width: 400px;
   padding: 30px;
 }
 
@@ -86,6 +45,12 @@ header .container {
 .login_form_item {
   display: flex;
   flex-direction: column;
+}
+
+.loginError_item {
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #ee4d2d;
 }
 
 .login_form_top > span {
@@ -127,7 +92,7 @@ header .container {
 }
 
 .form-group {
-  margin: 30px 0;
+  margin: 30px 0 20px;
 }
 
 .form-group input {
