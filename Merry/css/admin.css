@@ -1,7 +1,41 @@
-@import "../css/general.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap");
+:root {
+  --primary_color: #d7182a;
+  --line_color: #cccccc;
+  --text_color: #7D7D7D;
+}
 
-body{
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    width: 100%;
+    font-family: 'Poppins';
+    position: relative; 
     background-color: #001C41;
+}
+
+ul li,
+li {
+    list-style: none;
+}
+
+ul {
+    margin-bottom: 0 !important;
+}
+
+a{
+    border:none;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000 !important; 
+}
+
+a:hover{
+    color: var(--primary_color) !important;
 }
 
 .nav_left{
@@ -568,6 +602,7 @@ body{
     align-items: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .bill_Management_container_content_item_date span:nth-child(1){
@@ -619,6 +654,8 @@ body{
     align-items: center;
     font-size: 16px;
     color: var(--primary_color);
+    height: 150px;
+    overflow: hidden;
 }
 
 .bill_Management_container_content_item_add{
