@@ -1,0 +1,312 @@
+@import "../css/header.css";
+@import "../css/footer.css";
+@import "../css/general.css";
+@import "../css/ressponesive/rpHeader.css";
+@import "../css/login.css";
+
+/*--------------------------------------------------------------------- Nội dung bên trong trang ----------------------------------------------------------------------*/
+.myAccount {
+    background-color: #f5f5f5;
+    padding-bottom: 50px;
+}
+
+.link{
+    margin: 0;
+    padding: 30px 0 15px 0;
+}
+
+.content {
+    background-color: #fff;
+}
+
+.infor{
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.infor_img{
+    width: 100%;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.infor_img img,.my_Profile_Img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.infor>.col-8{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.infor>.col-8 p{
+    margin-bottom: 3px;    
+}
+
+.infor>.col-8 p:nth-child(1){
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.infor>.col-8 p:nth-child(2){
+    color: #999;
+    font-size: 12px;
+}
+
+.infor>.col-8 p:nth-child(2):hover{
+    color: var(--primary_color);
+    cursor: pointer;
+}
+
+.infor>.col-8 i{
+    margin-right: 5px;
+}
+
+/*--------------------------------------------------------------------- Nội dung bên dưới ----------------------------------------------------------------------*/
+.account_Left {
+    height: fit-content;
+}
+
+.account_Left>ul{
+    margin-top: 30px;
+}
+
+.account_Left>ul>li{
+    height: 35px;
+    margin: 5px 0;
+}
+
+.account{
+    overflow: hidden;
+}
+
+.account_Left>ul>li:hover{
+    cursor: pointer;
+    color: var(--primary_color);
+}
+
+.account_Left>ul>li p i{
+    margin-right: 10px;
+    color: var(--primary_color);
+}
+
+.account_Content{
+    padding-left: 25px; 
+    margin: 5px 0;
+}
+
+.account_show{
+    height: 100px;
+}
+
+/*--------------------------------------------------------------------- my_Profile ----------------------------------------------------------------------*/
+.my_Profile {
+    padding: 10px 10px;
+    background-color: #f5f5f5 ;
+}
+
+.my_Profile_container{
+    padding: 0px 20px;
+    background-color: #fff;
+}
+
+
+.my_Profile_Title{
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.my_Profile_Title h2{
+    font-size: 22px;
+    font-family: 'fangsong';
+    margin-bottom: 0;
+}
+
+.my_Profile_Title p{
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 0;   
+}
+
+.form-inline{
+    margin-bottom: 30px;
+}
+
+.form-group{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-group label{
+    width: 130px;
+}
+
+.form-group label span{
+    width: 100%;
+    font-size: 15px;
+    color: #7b7b7b;
+}
+
+.form-group input{
+    height: 35px;
+}
+
+.form-group input, .form-group textarea{
+    width: 250px !important;
+}
+
+.email_text, .phone_number_text{
+    font-size: 15px;
+    margin-right: 30px;
+}
+
+.phone_number_edit, .email_edit{
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--primary_color);
+}
+
+.form-group button{
+    background-color: var(--primary_color);
+    border: none;
+    font-size: 15px;
+}
+
+.my_Profile_Img{
+    width: 100%;
+    height: 250px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.my_Profile_content_left input{
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.my_Profile_content_left p{
+    font-size: 15px;
+    color: #7b7b7b;
+}
+
+/*--------------------------------------------------------------------- Order_Purchase ----------------------------------------------------------------------*/
+.Order_Purchase{
+    padding: 0 15px;
+    background-color: #f5f5f5;
+    display: none;
+    flex-direction: column;
+}
+
+.Order_Purchase_input{
+    position: relative;
+    margin: 10px 0;
+}
+
+.Order_Purchase_input i{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #666;
+}
+
+.Order_Purchase_input input{
+    width: 100%;
+    padding: 10px 50px;
+    background-color: #eaeaea;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.Order_Purchase_content{
+    padding: 0 15px;
+}
+
+.Order_Purchase_content_item{
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 15px 0 25px 0;
+}
+
+/*--------------------------------------------------------------------- Order_Purchase_content_item ----------------------------------------------------------------------*/
+.Order_Purchase_content_item_time{
+    margin: 0 0 10px 0 !important;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.Order_Purchase_content_item_time span:nth-child(1){
+    color: var(--primary_color);
+}
+
+.Order_Purchase_content_item_img img{
+    width: 100%;
+}
+
+.Order_Purchase_content_item_title h2{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: '-webkit-body';
+}
+
+.Order_Purchase_content_item_title{
+    display: flex;
+    flex-direction: column;
+}
+
+.Order_Purchase_content_item_title span:nth-child(2){
+    font-size: 15px;
+    color: #757575;
+}
+
+.Order_Purchase_content_item_price{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Order_Purchase_content_item .col-12{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    align-items: center;
+}
+
+.Order_Purchase_content_item_delivery{
+    color: #26AA99;
+}
+
+.Order_Purchase_content_item_total_money_price{
+    color: var(--primary_color);
+    font-size: 20px;
+}
+
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
