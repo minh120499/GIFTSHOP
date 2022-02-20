@@ -7,7 +7,7 @@ isset($_POST['userid']) && !empty($_POST['userid']) ? '' : die('invalid userid')
 isset($_POST['productid']) && !empty($_POST['productid']) ? '' : die('invalid productid');
 isset($_POST['quantity']) && !empty($_POST['quantity']) ? '' : die('invalid quantity');
 isset($_POST['price']) && !empty($_POST['price']) ? '' : die('invalid price');
-isset($_POST['img']) && !empty($_POST['img']) ? '' : die('invalid img');
+// isset($_POST['img']) && !empty($_POST['img']) ? '' : die('invalid img');
 
 $stmt = $conn->prepare("SELECT `id` FROM `users` WHERE `username` = :userid ");
 $stmt->bindParam('userid', $_POST['userid']);

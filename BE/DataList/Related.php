@@ -22,7 +22,8 @@ foreach ($stmt->fetchAll() as $key => $value) {
         'id' => $value['id'],
         'name' => $value['name'],
         'price' => $value['price'],
-        'src' => $value['src']
+        'src' => $value['src'],
+        'sale' => $value['sale']
     );
 }
 
@@ -43,7 +44,8 @@ foreach ($stmt->fetchAll() as $key => $value) {
         'id' => $value['id'],
         'name' => $value['name'],
         'price' => $value['price'],
-        'src' => $value['src']
+        'src' => $value['src'],
+        'sale' => $value['sale']
     );
 }
 
