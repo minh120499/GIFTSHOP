@@ -1,7 +1,7 @@
-@import '../css/header.css';
-@import '../css/footer.css';
-@import '../css/general.css';
-@import '../css/responsive/rpHeader.css';
+@import './header.css';
+@import './footer.css';
+@import './general.css';
+@import './responsive/rpHeader.css';
 /* @import "../css/login.css"; */
 
 /*--------------------------------------------------------------------- Bread-crumb ----------------------------------------------------------------------*/
@@ -44,7 +44,7 @@
 .SideBar_price,
 .SideBar_bestseller {
   border: 1px solid #ebebeb;
-  border-radius: 3px;
+  border-radius: 5px;
   margin-bottom: 30px !important;
 }
 
@@ -101,25 +101,9 @@
     background-color: var(--primary_color);
 } */
 
-.SideBar_price li:nth-child(2) input {
-  width: 48%;
-}
-
-.SideBar_price li:nth-child(4) > button {
-  width: 65px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 0;
-  background-color: #191919;
-}
-
-.SideBar_price li:nth-child(4) > span {
-  font-size: 11px;
-  color: var(--text_color);
+.SideBar_price div:nth-child(2) input {
+  width: 100px;
+  padding: 5px;
 }
 
 .SideBar_bestseller_content .row {
@@ -299,6 +283,7 @@
   margin: 20px 0px;
   overflow: hidden;
   height: 330px;
+  border-radius: 10px;
 }
 
 .content_container_item_border:hover .content_container_item_hover li {
@@ -393,9 +378,9 @@
 .add_view:hover,
 .add_tym:hover,
 .add_cart:hover {
-  color: var(--primary_color);
-  background-color: #fff;
-  border: 1px solid var(--primary_color);
+  color: #fff;
+  background-color: #c01526;
+  /* border: 1px solid var(--primary_color); */
   cursor: pointer;
 }
 
@@ -435,7 +420,7 @@
   display: grid;
   width: 100%;
   margin: 20px 0;
-  height: 280px;
+  height: 300px;
   overflow: hidden;
   grid-template-columns: 40% 60%;
 }
@@ -446,10 +431,13 @@
   overflow: hidden;
   margin-right: 20px;
   /* width: 60%; */
+  height: 300px;
 }
 
 .content_container_item_pillar_img img {
   width: 100%;
+  object-fit: contain;
+  height: 100%;
 }
 
 .content_container_item_pillar_img button {
@@ -470,8 +458,8 @@
   text-decoration: none;
 }
 
-.content_container_item_pillar_star i {
-  color: #ff7b31;
+.content_container_item_pillar_star i.checked {
+  color: orange;
 }
 
 .content_container_item_pillar_price {
@@ -484,10 +472,6 @@
   font-size: 15px;
   color: var(--text_color);
   margin: 10px 0;
-}
-
-.content_container_item_pillar_content_btn {
-  margin-top: 40px;
 }
 
 .content_container_item_pillar_content_btn button {

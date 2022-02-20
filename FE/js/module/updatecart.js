@@ -28,7 +28,6 @@ export function updateCart() {
   standardDeli.addEventListener('click', () => {
     let deliFeeTxt = document.querySelector('.delivery-price').innerText;
     let deliFeeNum = parseInt(deliFeeTxt.slice(0, -1));
-    console.log(deliFeeNum);
     deliFee.innerText = `$ ${deliFeeNum}`;
     total = subTotal + deliFeeNum;
     document.querySelector('.total span').innerText = `$ ${total}`;

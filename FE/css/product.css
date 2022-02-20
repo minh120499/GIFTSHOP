@@ -1,8 +1,8 @@
-@import 'general.css';
-@import 'header.css';
+@import './general.css';
+@import './header.css';
 @import './responsive/rpHeader.css';
-@import 'footer.css';
-@import 'alert.css';
+@import './footer.css';
+@import './alert.css';
 
 .product-link {
   color: #7d7d7d !important;
@@ -51,6 +51,10 @@ ul {
   color: #7d7d7d;
   text-decoration: none;
   font-weight: 500;
+}
+
+.bread-crumb ul li:first-child a {
+  color: #000 !important;
 }
 
 .bread-crumb ul li a:hover {
@@ -109,7 +113,7 @@ ul {
 .leftside-bestsellers {
   margin-bottom: 40px;
   border: solid 1px #ebebeb;
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
 }
 

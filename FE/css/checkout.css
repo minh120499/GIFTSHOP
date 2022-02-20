@@ -9,7 +9,7 @@ ul {
 input {
   border-radius: 5px;
 }
-input[type=text] {
+input[type='text'] {
   border: 1px solid #b7b7b7;
 }
 
@@ -70,13 +70,14 @@ input[type=text] {
   justify-content: center;
   transition: 0.3s;
 }
-.bar-progress .step .bullet::before, .bar-progress .step .bullet::after {
+.bar-progress .step .bullet::before,
+.bar-progress .step .bullet::after {
   height: 3px;
   width: calc(100% - 34px);
   position: absolute;
   left: calc(50% + 17px);
   bottom: 14px;
-  content: "";
+  content: '';
   background: #000;
 }
 @keyframes animate {
@@ -88,7 +89,8 @@ input[type=text] {
   font-size: 18px;
   font-weight: 500;
 }
-.bar-progress .step:last-child .bullet::before, .bar-progress .step:last-child .bullet::after {
+.bar-progress .step:last-child .bullet::before,
+.bar-progress .step:last-child .bullet::after {
   display: none;
 }
 .bar-progress .step .check {
@@ -351,6 +353,14 @@ input[type=text] {
   color: #c01526;
   cursor: pointer;
 }
+.leftside .multipage-items i {
+  margin-left: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.leftside .multipage-items i:hover {
+  color: #c01526;
+}
 .leftside .delivery-method {
   user-select: none;
   margin-bottom: 20px;
@@ -448,10 +458,10 @@ input[type=text] {
   outline: none;
   line-height: 44px;
 }
-.rightside .wrapper .form-coupon form .form-group input[type=text] {
+.rightside .wrapper .form-coupon form .form-group input[type='text'] {
   width: calc(100% - 39.7px);
 }
-.rightside .wrapper .form-coupon form .form-group input[type=submit] {
+.rightside .wrapper .form-coupon form .form-group input[type='submit'] {
   padding-right: 10px;
 }
 .rightside .wrapper .subtotal,
@@ -481,7 +491,7 @@ input[type=text] {
     flex-direction: column;
   }
   .main-content .leftside,
-.main-content .rightside {
+  .main-content .rightside {
     width: 100%;
   }
 }

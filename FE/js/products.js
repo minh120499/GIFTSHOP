@@ -182,19 +182,25 @@ function renderContent(listProducts = 'empty', productsPerPage = 'empty') {
             <img src=${listProducts[i].src} alt="">
                 <button class="add_view" productid="${item.id}"><i class="far fa-eye"></i></button>
             </div>
-            <div class="content_container_item_pillar_content">
-                <h2><div class="title" productid="${item.id}" >${listProducts[i].name}</div></h2>
-                
-                <div class="content_container_item_pillar_star">`;
-          for (let i = 0; i < Math.floor(item.rating); i++) {
-            html3 += `<i class="far fa-star"></i>`;
+                <div class="content_container_item_pillar_content d-flex flex-column justify-content-between">
+                    <div>
+                    <h2><div class="h3" productid="${item.id}" >${listProducts[i].name}</div></h2>
+                    
+                    <div class="content_container_item_pillar_star">`;
+          for (let i = 0; i < Math.round(item.rating); ++i) {
+            html3 += `<i class="fa fa-star checked"></i>`;
           }
+          for (let i = 0; i < 5 - Math.round(item.rating); ++i) {
+            html3 += `<i class="fa fa-star"></i>`;
+          }
+
           html3 += `</div>
-                <div class="content_container_item_pillar_price">
-                    <span>$</span><span>${listProducts[i].price}</span>
-                </div>
-                <div class="content_container_item_pillar_content_title">
-                    <span>${stringdetail}</span>
+                    <div class="content_container_item_pillar_price">
+                        <span>$</span><span>${listProducts[i].price}</span>
+                    </div>
+                    <div class="content_container_item_pillar_content_title">
+                        <span>${stringdetail}</span>
+                    </div>
                 </div>
                 <div class="content_container_item_pillar_content_btn">
                     <button class="add_cart" productid="${item.id}">Add to cart</button>`;

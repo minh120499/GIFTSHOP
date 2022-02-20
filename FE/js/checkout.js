@@ -1,6 +1,6 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
-import { multiStep } from './module/multistep.js';
+import { multiStep, nextStep } from './module/multistep.js';
 import { multiPageItem } from './module/multipage.js';
 import { updateCart } from './module/updatecart.js';
 import * as validateForm from './module/validation.js';
@@ -22,7 +22,7 @@ function renderAPI() {
   $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
     var html = '';
     var items = $.parseJSON(data);
-    console.log(items);
+    // console.log(items);
     $.each(items, function (i, item) {
       html = `
                     <div class="cart-item">
@@ -52,18 +52,12 @@ function renderAPI() {
                     </div>
                     `;
       $('.cart-items').append(html);
-      // console.log(i)
-      if (i > 4) {
-        return false;
-      }
     });
     updateCart();
     counter();
     delProduct();
   });
 }
-multiStep();
-// Render header.js
 render()
   .then(() => {
     return new Promise((resolve) => {
@@ -76,6 +70,9 @@ render()
   .then(() => {
     multiPageItem();
   });
+
+// Chuyển Step khi ấn Next hoặc Previous
+multiStep();
 
 // Show Popup
 const popup = document.querySelector('.popup');
@@ -165,26 +162,48 @@ nextBtn.addEventListener('click', (e) => {
     );
   });
   if (parentEles.every((parentEle) => parentEle.classList.contains('valid'))) {
-    let progressStep = document.querySelector('.step1');
-    let currentStep = e.target.parentElement.parentElement;
-    let nextStep = currentStep.nextElementSibling;
-    currentStep.style.left = '-100%';
-    currentStep.style.right = 'calc(100% + 30px)';
-    nextStep.style.left = '0';
-    nextStep.style.right = '0';
-    progressStep.classList.add('active');
+    let progressStep = document.querySelectorAll('.step');
+    nextStep(e, progressStep, -1);
   }
+});
+
+//Khi chọn method thông báo lỗi sẽ mất
+const inputRadioDivs = document.querySelectorAll('.input-radio');
+console.log(inputRadioDivs[1]);
+Array.from(inputRadioDivs).forEach((div) => {
+  let smallTag = div.querySelector('small');
+  console.log(smallTag);
+  let inputRadio = Array.from(div.querySelectorAll('input[type="radio"]'));
+  inputRadio.forEach((input) => {
+    input.addEventListener('change', () => {
+      smallTag.innerText = '';
+    });
+  });
 });
 
 // Submit form
 const confirmBtn = document.querySelector('.btn-cf');
-confirmBtn.addEventListener('click', () => {
+confirmBtn.addEventListener('click', (e) => {
+  // Kiểm tra người dùng đã chọn method hay chưa
   const finalStep = document.querySelector('.step4');
-  finalStep.classList.add('active');
-  setTimeout(() => {
-    alert('Your order is confirmed!!!');
-    window.location = 'http://127.0.0.1:5500/FE/index.html';
-  }, 1000);
+  const inputRadioLastDiv = document.querySelectorAll('.input-radio')[1];
+  let inputRadio = Array.from(
+    inputRadioLastDiv.querySelectorAll('input[type="radio"]')
+  );
+  let smallTag = inputRadioLastDiv.querySelector('small');
+  if (!inputRadio.every((input) => input.checked)) {
+    smallTag.innerText = 'Please choose one of these methods below!';
+    smallTag.style.color = 'red';
+  }
+
+  if (inputRadio.some((input) => input.checked)) {
+    smallTag.innerText = '';
+    finalStep.classList.add('active');
+    setTimeout(() => {
+      alert('Your order is confirmed!!!');
+      window.location = 'http://127.0.0.1:5500/FE/index.html';
+    }, 1000);
+  }
 });
 
 // Đổ dữ liệu người dùng

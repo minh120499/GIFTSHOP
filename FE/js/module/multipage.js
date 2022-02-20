@@ -1,8 +1,6 @@
 export function multiPageItem() {
   const cartItems = Array.from(document.querySelectorAll('.cart-item'));
-  console.log(cartItems);
   const nextPage = document.querySelector('.next');
-  console.log(nextPage);
   const prevPage = document.querySelector('.prev');
   const limitSize = 5;
   let slice = [0, limitSize];

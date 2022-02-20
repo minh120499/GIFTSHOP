@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 require_once '../ConnectDataBase/connect.php';
 
-$stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = :id;");
+$stmt = $conn->prepare("SELECT * FROM `users` WHERE `id` = :id;");
 $stmt->bindParam('id', $_POST['userid']);
 $stmt->execute();
 
@@ -17,7 +17,8 @@ foreach($stmt->fetchAll() as $key => $value) {
         'email' => $value['email'],
         'phone' => $value['phone'],
         'avatar' => $value['avatar'],
-        'birthday' => $value['birthday']
+        'birthday' => $value['birthday'],
+        'password' => $value['password']
     );
 }
 
