@@ -526,6 +526,10 @@ ul {
   justify-content: space-between;
 }
 
+.rightside .username-wrapper .username {
+  color: green;
+}
+
 .rightside .tabs .tab .already-logged-in p {
   margin-top: 20px;
 }

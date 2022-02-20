@@ -8,7 +8,7 @@ import { alertMess } from './module/alert.js';
 
 componentHTML();
 var product = [];
-var productAddCart = []
+var productAddCart = [];
 var totalquantity = 1;
 function getDataFromServer() {
   //Render chi tiết sản phẩm
@@ -107,7 +107,6 @@ function getDataFromServer() {
               </div>
               <div class="categories-tag">
                   <span class="title">Categories: </span>`;
-    console.log(product[0].anniversary)
     product[0].anniversary.split(',').map((item) => {
       html += `<a href="./products.html" class="product-link product-cate-link fst-italic">${item}</a>,`;
     });
@@ -134,7 +133,7 @@ function getDataFromServer() {
       .post('http://localhost/be/DataList/Related.php', relatedProduct)
       .then((e) => e.data)
       .then((e) => {
-        productAddCart = e
+        productAddCart = e;
         let html = `<h3 class="title">Related Products</h3>
                       <hr>
                       <ul id="autoWidth" class="cs-hidden">`;
@@ -236,12 +235,12 @@ function RenderBestSale() {
 }
 
 function addDOMEvent() {
-  let dom = document.querySelectorAll('.addcart2')
-  dom.forEach(item => {
+  let dom = document.querySelectorAll('.addcart2');
+  dom.forEach((item) => {
     item.onclick = () => {
-      let product = productAddCart.filter(i => {
-        return i.id == item.getAttribute('productid')
-      })
+      let product = productAddCart.filter((i) => {
+        return i.id == item.getAttribute('productid');
+      });
       let data = new FormData();
       data.append('userid', localStorage.getItem('userid'));
       data.append('productid', product[0].id);
@@ -255,8 +254,8 @@ function addDOMEvent() {
           e == 'Add Success' ? alertMess(e) : alertMess('Error', 'Error');
           countItemCart();
         });
-    }
-  })
+    };
+  });
   // Kiểm tra DOM đã được render hay chưa
   function docReady(fn) {
     if (
@@ -364,7 +363,7 @@ function addDOMEvent() {
     };
   });
 
-  // Đánh giá, rating về sản phẩm
+  // Đánh giá, rating về sản phẩm (post comment vào db)
   docReady(() => {
     if (localStorage.userid) {
       document.querySelector('.no-login').style.display = 'none';
@@ -389,7 +388,7 @@ function addDOMEvent() {
         e.preventDefault();
         let data = new FormData();
         data.append('productid', localStorage.getItem('productid'));
-        data.append('userid', localStorage.userid);
+        data.append('userid', localStorage.getItem('userid'));
         data.append('content', document.querySelector('#review-text').value);
         data.append('rating', checked.length);
         axios
@@ -402,6 +401,40 @@ function addDOMEvent() {
           });
       });
     }
+  });
+
+  // Lấy data về client
+  docReady(() => {
+    let data = new FormData();
+    data.append('productid', localStorage.getItem('productid'));
+    axios.post('http://localhost/be/Comment/GetComment.php', data).then((e) => {
+      console.log(e.data);
+      if (e.data !== []) {
+        document.querySelector('.no-review').style.display = 'none';
+        const reviews = document.querySelector('.reviews');
+        let html = '';
+        for (let i = 0; i < e.data.length; i++) {
+          html += `<div class="review">
+                        <div class="username-wrapper">
+                        <span class="username">${e.data[i].firstname} ${e.data[i].lastname}</span>
+                        <div class="rating">`;
+          console.log(e.data[i].rating);
+          for (let j = 0; j < parseInt(e.data[i].rating); ++j) {
+            html += `<i class="fa fa-star checked"></i>`;
+          }
+          for (let j = 0; j < 5 - parseInt(e.data[i].rating); ++j) {
+            html += `<i class="fa fa-star"></i>`;
+          }
+          html += `</div>
+          </div>
+          <p>
+            ${e.data[i].content}
+          </p>
+          </div>`;
+        }
+        reviews.innerHTML = html;
+      }
+    });
   });
 
   // Button product-name-link

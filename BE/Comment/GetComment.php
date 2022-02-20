@@ -15,8 +15,8 @@ $stmt = $conn->prepare("SELECT
                             `lastname`
                              FROM `comment` 
                                 INNER JOIN `users`
-                            WHERE `productid` = 12
-                              AND `users`.`id` = `comment`.`userid");
+                            WHERE `productid` = :productid
+                              AND `users`.`id` = `comment`.`userid`");
 $stmt->bindParam('productid', $_POST['productid']);
 $stmt->execute();
 $data = [];
