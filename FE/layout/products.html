@@ -112,101 +112,55 @@
           </ul>
         </div>
 
-        <!-- Nội dung bên trong trang -->
-        <div class="content row">
-
-            <!--Phần Left SideBar Grid-->
-            <div class="SideBar col-12 col-md-4 col-lg-3">
-                <button class="show_filter"><span>Product Filter</span><i class="fas fa-caret-down"></i></button>
-                <ul class="SideBar_price">
-                    <div class="SideBar_title">
-                        <i class="far fa-gem"></i>
-                        <span>PRICE</span>
-                    </div>
-                    <li>
-                        <input type="number" id="low_price" placeholder=" Min">
-                        <!-- <span><i class="fa-solid fa-arrow-right"></i></span> -->
-                        <input type="number" id="expensive" placeholder=" Max">
-                    </li>
-                    <li>
-                        <button class="btn btn-dark searchPrice">FILTER</button>
-                    </li>
-                </ul>
-                <ul class="SideBar_content">
-                    <div class="SideBar_title">
-                        <i class="far fa-gem"></i>
-                        <span>CATEGORIES</span>
-                    </div>
-                    <div class="SideBar_Category">
-
-                    </div>
-                </ul>
-                <ul class="SideBar_content">
-                    <div class="SideBar_title">
-                        <i class="far fa-gem"></i>
-                        <span>BRAND</span>
-                    </div>
-                    <div class="SideBar_Color"></div>
-                </ul>
-                <ul class="SideBar_bestseller">
-                    <div class="SideBar_title">
-                        <i class="far fa-gem"></i>
-                        <span>BEST SELLER</span>
-                    </div>
-                    <ul class="SideBar_bestseller_content">
-                        <li class="row">
-                            <div class="col-4">
-                                <img src="../image/products/products/img1.jpg" alt="">
-                            </div>
-                            <div class="col-8">
-                                <p><a href="#">Si Non Gravida Tristique</a></p>
-                                <p>$<span>48</span></p>
-                            </div>
-                        </li>
-                    </ul>
-                </ul>
-            </div>
-
-            <!-- Phần Thông tin các sản phẩm -->
-            <div class="content_container col-12 col-md-8 col-lg-9">
-                <div class="content_container_slider">
-                    <img src="../image/products/slider.jpg" alt="">
+        <!-- Phần Thông tin các sản phẩm -->
+        <div class="content_container col-12 col-md-8 col-lg-9">
+          <div class="content_container_slider">
+            <img src="../image/products/slider.jpg" alt="" />
+          </div>
+          <div class="content_container_search">
+            <input
+              type="text"
+              id="myInput"
+              onkeyup="search()"
+              placeholder="Search with Merry ....."
+            />
+          </div>
+          <ul class="content_container_title">
+            <li>
+              <span>SHOP</span>
+            </li>
+            <li class="row">
+              <div class="col-sm-3">
+                <button class="square active">
+                  <i class="fas fa-th-large"></i>
+                </button>
+                <button class="pillar"><i class="fas fa-bars"></i></button>
+              </div>
+              <div class="col-sm-6 content_container_title_mid">
+                <div class="content_container_title_mid_left">
+                  <span>
+                    <i class="fas fa-arrow-down filterTop"></i>
+                  </span>
+                  <span>
+                    <i class="fas fa-arrow-up filterBottom"></i>
+                  </span>
                 </div>
-                <div class="content_container_search">
-                    <input type="text" id="myInput" placeholder="Search with Merry .....">
+                <div class="content_container_title_mid_left_right">
+                  <span> Show </span>
+                  <select
+                    id="show_items"
+                    class="dropdown"
+                    onchange="asyncCall();"
+                  >
+                    <option value="12">12</option>
+                    <option value="15">15</option>
+                    <option value="18">18</option>
+                    <option value="21">21</option>
+                  </select>
                 </div>
-                <ul class="content_container_title">
-                    <li>
-                        <span>SHOP</span>
-                    </li>
-                    <li class="row">
-                        <div class="col-sm-3">
-                            <button class="square active"><i class="fas fa-th-large"></i></button>
-                            <button class="pillar"><i class="fas fa-bars"></i></button>
-                        </div>
-                        <div class="col-sm-6 content_container_title_mid">
-                            <div class="content_container_title_mid_left">
-                                <span>
-                                    <i class="fas fa-arrow-down filterTop"></i>
-                                </span>
-                                <span>
-                                    <i class="fas fa-arrow-up filterBottom"></i>
-                                </span>
-                            </div>
-                            <div class="content_container_title_mid_left_right">
-                                <span> Show </span>
-                                <select id="show_items" class="dropdown">
-                                    <option value="12">12</option>
-                                    <option value="15">15</option>
-                                    <option value="18">18</option>
-                                    <option value="21">21</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="content_container_main row"></div>
+              </div>
+            </li>
+          </ul>
 
           <div class="content_container_main row"></div>
 
