@@ -222,7 +222,6 @@ confirmBtn.addEventListener('click', (e) => {
   }
 });
 
-
 var firstNameVal = document.querySelector('#firstname').value;
 var lastNameVal = document.querySelector('#lastname').value;
 var emailVal = document.querySelector('#email').value;

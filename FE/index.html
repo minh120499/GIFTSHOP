@@ -1,242 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HomePage Merry</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js" data-auto-replace-svg="nest"></script>
-    <link rel="stylesheet" href="./css/homepage.css">
-    <link rel="stylesheet" href="./css/responsive/rpHomepage.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <script
+      src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
+    <link rel="stylesheet" href="./css/homepage.css" />
+    <link rel="stylesheet" href="./css/responsive/rpHomepage.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div id="alert-all-message"></div>
+  </head>
+  <body>
+    <div id="alert-all-message"></div>
 
-<div data-include="header" id="header"></div>
+    <div data-include="header" id="header"></div>
 
-<!-- Slider -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
+    <!-- Slider -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+      </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
         <div class="item active">
-            <img src="./image/homepage/slider/slider_1.png" alt="" style="width:100%;">
-            <div class="carousel-caption slider_1">
-                <span>WISH YOU A</span>
-                <h2>Merry</h2>
-                <h3>Christmas</h3>
-                <h4>& HAPPY NEW YEAR</h4>
-                <p>2021</p>
-            </div>
-        </div> 
+          <img
+            src="./image/homepage/slider/slider_1.png"
+            alt=""
+            style="width: 100%"
+          />
+          <div class="carousel-caption slider_1">
+            <span>WISH YOU A</span>
+            <h2>Merry</h2>
+            <h3>Christmas</h3>
+            <h4>& HAPPY NEW YEAR</h4>
+            <p>2021</p>
+          </div>
+        </div>
 
         <div class="item">
-            <img src="./image/homepage/slider/slider_2.png" alt="" style="width:100%;">
-            <div class="carousel-caption slider_2">
-                <p>Special Offer</p>
-                <h2>NEW YEAR GIFT SALE <span>50%</span></h2>
-                <button><span>SHOP NOW</span></button>
-            </div>
+          <img
+            src="./image/homepage/slider/slider_2.png"
+            alt=""
+            style="width: 100%"
+          />
+          <div class="carousel-caption slider_2">
+            <p>Special Offer</p>
+            <h2>NEW YEAR GIFT SALE <span>50%</span></h2>
+            <button><span>SHOP NOW</span></button>
+          </div>
         </div>
-    
-        <div class="item">
-            <img src="./image/homepage/slider/slider_3.png" alt="" style="width:100%;">
-            <div class="carousel-caption slider_3">
-                <P>Merry Christmas <span>2021</span></P>
-                <h2>BUY FIRST GIFT & GET 50% COUPON</h2>
-                <p>Merry Christmas & Happy New Year</p>
-                <button>SHOP NOW</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Product -->
-<div class="product">
-    <div class="product_bg">
-        <img src="./image/homepage/products/background.png" alt="">
+        <div class="item">
+          <img
+            src="./image/homepage/slider/slider_3.png"
+            alt=""
+            style="width: 100%"
+          />
+          <div class="carousel-caption slider_3">
+            <p>Merry Christmas <span>2021</span></p>
+            <h2>BUY FIRST GIFT & GET 50% COUPON</h2>
+            <p>Merry Christmas & Happy New Year</p>
+            <button>SHOP NOW</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container">
+
+    <!-- Product -->
+    <div class="product">
+      <div class="product_bg">
+        <img src="./image/homepage/products/background.png" alt="" />
+      </div>
+      <div class="container">
         <div class="product_content">
-            <div class="product_top">
-                <img src="./image/homepage/products/img1.png" alt="">
-                <img src="./image/homepage/products/img2.png" alt="">
-                <div class="product_top_left">
-                    <ul>
-                        <li>
-                            <span>00</span>
-                            <p>Days</p>
-                        </li>
-                        <li>
-                            <span>00</span>
-                            <p>Hours</p>
-                        </li>
-                        <li>
-                            <span>00</span>
-                            <p>Mins</p>
-                        </li>
-                        <li>
-                            <span>00</span>
-                            <p>Secs</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product_top_mid">
-                    <div class="product_top_mid_center">
-                    </div>
-                </div>
-                <div class="product_top_right">
-                    <div class="product_top_right_content">
-                    </div>
-                    <div class="product_top_right_btn">
-                        <button><a href="">READ MODE</a></button>
-                        <button><a href=""><i class="fas fa-heart"></i></a></button>
-                    </div>
-                </div>
-            </div>
-            <div class="product_bottom">
-                <div class="product_bottom_content">
-
-                </div>
-                <i class="fas fa-chevron-circle-left product_bottom_left_btn"></i>
-                <i class="fas fa-chevron-circle-right product_bottom_right_btn"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- banner -->
-<div class="banner">
-    <div class="container">
-        <div class="banner_content">
-            <img src="./image/homepage/adds/img1.jpg" alt="">
-        </div>
-    </div>
-</div>
-
-<!-- FEATURED PRODUCTS -->
-<div class="featured_products">
-    <div class="container">
-        <div class="featured_products_content">
-            <div class="featured_products_content_top">
+          <div class="product_top">
+            <img src="./image/homepage/products/img1.png" alt="" />
+            <img src="./image/homepage/products/img2.png" alt="" />
+            <div class="product_top_left">
+              <ul>
                 <li>
-                    <h2>FEATURED PRODUCTS</h2>
+                  <span>00</span>
+                  <p>Days</p>
                 </li>
+                <li>
+                  <span>00</span>
+                  <p>Hours</p>
+                </li>
+                <li>
+                  <span>00</span>
+                  <p>Mins</p>
+                </li>
+                <li>
+                  <span>00</span>
+                  <p>Secs</p>
+                </li>
+              </ul>
             </div>
-            <div class="flash_sale">
-                <div class="container">
-                    <div class="flash_sale_content">
-                        <div class="flash_sale_content_container">
-                            
-                        </div>
-                        <div class="flash_sale_content_btn_left">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </div>
-                        <div class="flash_sale_content_btn_right">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                    </div>
+            <div class="product_top_mid">
+              <div class="product_top_mid_center"></div>
+            </div>
+            <div class="product_top_right">
+              <div class="product_top_right_content"></div>
+              <div class="product_top_right_btn">
+                <button><a href="">READ MODE</a></button>
+                <button>
+                  <a href=""><i class="fas fa-heart"></i></a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="product_bottom">
+            <div class="product_bottom_content"></div>
+            <i class="fas fa-chevron-circle-left product_bottom_left_btn"></i>
+            <i class="fas fa-chevron-circle-right product_bottom_right_btn"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- banner -->
+    <div class="banner">
+      <div class="container">
+        <div class="banner_content">
+          <img src="./image/homepage/adds/img1.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED PRODUCTS -->
+    <div class="featured_products">
+      <div class="container">
+        <div class="featured_products_content">
+          <div class="featured_products_content_top">
+            <li>
+              <h2>FEATURED PRODUCTS</h2>
+            </li>
+          </div>
+          <div class="flash_sale">
+            <div class="container">
+              <div class="flash_sale_content">
+                <div class="flash_sale_content_container"></div>
+                <div class="flash_sale_content_btn_left">
+                  <i class="fa-solid fa-chevron-left"></i>
                 </div>
+                <div class="flash_sale_content_btn_right">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<div class="banner">
-    <div class="container">
+    <div class="banner">
+      <div class="container">
         <div class="banner_content_1">
-            <img src="./image/homepage/adds/img2.jpg" alt="">
-            <img src="./image/homepage/adds/img3.jpg" alt="">
+          <img src="./image/homepage/adds/img2.jpg" alt="" />
+          <img src="./image/homepage/adds/img3.jpg" alt="" />
         </div>
+      </div>
     </div>
-</div>
 
-<!--NEW ARRIVALS-->
-<div class="new_arrivals">
-    <div class="container">
+    <!--NEW ARRIVALS-->
+    <div class="new_arrivals">
+      <div class="container">
         <div class="new_arrivals_container">
-            <h3>NEW ARRIVALS</h3>
-            <div class="row new_Arrivals">
-            </div>
+          <h3>NEW ARRIVALS</h3>
+          <div class="row new_Arrivals"></div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Add -->
-<div class="add">
-    <div class="container">
+    <!-- Add -->
+    <div class="add">
+      <div class="container">
         <div class="add_container">
-            <div class="add_container_img">
-                <img src="./image/homepage/posterAdd/img1.jpg" alt="">
-            </div>
-            <div class="add_container_img">
-                <img src="./image/homepage/posterAdd/img2.jpg" alt="">
-            </div>            
-            <div class="add_container_img">
-                <img src="./image/homepage/posterAdd/img3.jpg" alt="">
-            </div>
+          <div class="add_container_img">
+            <img src="./image/homepage/posterAdd/img1.jpg" alt="" />
+          </div>
+          <div class="add_container_img">
+            <img src="./image/homepage/posterAdd/img2.jpg" alt="" />
+          </div>
+          <div class="add_container_img">
+            <img src="./image/homepage/posterAdd/img3.jpg" alt="" />
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- FROM THE BLOG -->
-<div class="the_blog">
-    <div class="container">
+    <!-- FROM THE BLOG -->
+    <div class="the_blog">
+      <div class="container">
         <h2>FROM THE BLOG</h2>
         <div class="blog_container row">
-            <div class="col-lg-4">
-                <img src="./image/homepage/blog/poster_blog.jpg" alt="">
-            </div>
-            <div class="col-sm-6 col-lg-4 blog_container_item">
-                <li><img src="./image/homepage/blog/img1.jpg" alt=""></li>
-                <li>
-                    <p><a href=""> ULLAMCO LABORIS NISI UT ALIQUIP EX</a></p>
-                    <p class="comment">
-                        <span><i class="fas fa-comments"></i> 0 Comment</span>
-                        <span><i class="fas fa-tags"></i> Fashion, New</span>
-                    </p>
-                </li>
-                <li>
-                    <i class="fas fa-caret-right"></i>
-                    <span><a href="">Read More</a></span>
-                </li>
-            </div>
-            <div class="col-sm-6 col-lg-4 blog_container_item">
-                <li><img src="./image/homepage/blog/img2.jpg" alt=""></li>
-                <li>
-                    <p><a href=""> ULLAMCO LABORIS NISI UT ALIQUIP EX</a></p>
-                    <p class="comment">
-                        <span><i class="fas fa-comments"></i> 0 Comment</span>
-                        <span><i class="fas fa-tags"></i> Fashion, New</span>
-                    </p>
-                </li>
-                <li>
-                    <i class="fas fa-caret-right"></i>
-                    <span><a href="">Read More</a></span>
-                </li>
-            </div>
+          <div class="col-lg-4">
+            <img src="./image/homepage/blog/poster_blog.jpg" alt="" />
+          </div>
+          <div class="col-sm-6 col-lg-4 blog_container_item">
+            <li><img src="./image/homepage/blog/img1.jpg" alt="" /></li>
+            <li>
+              <p><a href=""> ULLAMCO LABORIS NISI UT ALIQUIP EX</a></p>
+              <p class="comment">
+                <span><i class="fas fa-comments"></i> 0 Comment</span>
+                <span><i class="fas fa-tags"></i> Fashion, New</span>
+              </p>
+            </li>
+            <li>
+              <i class="fas fa-caret-right"></i>
+              <span><a href="">Read More</a></span>
+            </li>
+          </div>
+          <div class="col-sm-6 col-lg-4 blog_container_item">
+            <li><img src="./image/homepage/blog/img2.jpg" alt="" /></li>
+            <li>
+              <p><a href=""> ULLAMCO LABORIS NISI UT ALIQUIP EX</a></p>
+              <p class="comment">
+                <span><i class="fas fa-comments"></i> 0 Comment</span>
+                <span><i class="fas fa-tags"></i> Fashion, New</span>
+              </p>
+            </li>
+            <li>
+              <i class="fas fa-caret-right"></i>
+              <span><a href="">Read More</a></span>
+            </li>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<div data-include="footer"></div>
-
-
-</body>
-    <script type="module" src="./js/index.js"></script>
-    <script src="./js/login.js"></script>
+    <div data-include="footer"></div>
+  </body>
+  <script type="module" src="./js/index.js"></script>
+  <script src="./js/login.js"></script>
 </html>

@@ -5,265 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyAccount</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
     />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../CSS/MyAccount.css" />
-    <link rel="stylesheet" href="../css/ressponesive/myAccount.css" />
-    <link rel="stylesheet" href="../css/ressponesive/rpHeader.css" />
+    <link rel="stylesheet" href="../css/responsive/myAccount.css" />
+    <link rel="stylesheet" href="../css/responsive/rpHeader.css" />
   </head>
   <body>
-    <!-- Menu nav left-->
-    <div class="Menu_nav">
-      <div class="Menu_nav_content">
-        <ul>
-          <li class="menu_close"><i class="fas fa-times"></i></li>
-          <li class="menu_search">
-            <input type="text" placeholder="Search item..." />
-            <i class="fas fa-search"></i>
-          </li>
-          <li class="option">
-            <button class="Menu_nav_btn">MENU</button>
-            <button class="Categories_nav_btn">CATEGORIES</button>
-          </li>
-          <div class="option_menu">
-            <li>
-              <a href="../index.html">Home</a>
-            </li>
-            <li><a href="../layout/products.html">Products</a></li>
-            <li>
-              <button class="dropdown-toggle Promotion_btn">Promotion</button>
-              <ul class="Promotion_drop">
-                <li><a href="">Accessories</a></li>
-                <li><a href="">Accessories</a></li>
-                <li><a href="">Accessories</a></li>
-              </ul>
-            </li>
-            <li>
-              <button class="dropdown-toggle Blog_btn">Blog</button>
-              <ul class="Blog_drop">
-                <li><a href="#">Blog Layout 1</a></li>
-                <li><a href="#">Blog Layout 2</a></li>
-                <li><a href="#">Blog Layout 3</a></li>
-              </ul>
-            </li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </div>
-          <div class="option_categories">
-            <li><a href="#">Christmas</a></li>
-            <li><a href="#">Birthday</a></li>
-            <li><a href="#">Anniver</a></li>
-            <li><a href="#">Jewellery</a></li>
-            <li><a href="#">Wedding</a></li>
-            <li><a href="#">Easter</a></li>
-          </div>
-        </ul>
-      </div>
-    </div>
-
-    <button id="btnScrollTop">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <div class="left">
-      <button class="call">
-        <i class="fas fa-phone-alt"></i>
-      </button>
-      <button class="contact">
-        <i class="fas fa-comments"></i>
-        <span>Contact Us</span>
-      </button>
-    </div>
-
-    <!-- Top -->
-    <div class="top">
-      <div class="container">
-        <div class="top-left">
-          <li>
-            <i class="fas fa-user"></i>
-            <span>My Account</span>
-            <ul class="My-Account">
-              <li>Cart</li>
-              <li>Wishlist</li>
-              <li>Checkout</li>
-              <li>My Account</li>
-            </ul>
-          </li>
-          <li class="login_open">
-            <i class="fas fa-lock"></i>
-            <span>Login</span>
-          </li>
-        </div>
-        <div class="top-right">
-          <li class="top-right-language">
-            <div class="top-right-language-img">
-              <img src="../image/header/top/Anh.png" alt="" />
-            </div>
-            <span>English</span>
-            <i class="fas fa-angle-down"></i>
-            <ul class="top-right-language_dropdown">
-              <li>
-                <div class="top-right-language-img">
-                  <img src="../image/header/top/Anh.png" alt="" />
-                </div>
-                <span>English</span>
-              </li>
-              <li>
-                <div class="top-right-language-img">
-                  <img src="../image/header/top/vietnam.png" alt="" />
-                </div>
-                <span>Việt Nam</span>
-              </li>
-            </ul>
-          </li>
-          <li class="top-right-currency">
-            <span>USD</span>
-            <i class="fas fa-angle-down"></i>
-            <ul class="top-right-currency-dropdown">
-              <li>USD</li>
-              <li>VND</li>
-            </ul>
-          </li>
-        </div>
-      </div>
-    </div>
-
-    <!-- Nav-->
-    <div class="nav">
-      <div class="container">
-        <div class="nav-left">
-          <a href="../index.html"
-            ><img src="../image/header/logo.png" alt=""
-          /></a>
-          <div class="nav-mid_rp">
-            <button><i class="fas fa-bars"></i></button>
-          </div>
-        </div>
-        <div class="nav-mid">
-          <ul>
-            <li>
-              <a href="../layout/products.html"><span>PRODUCTS</span></a>
-            </li>
-            <li>
-              <span>PROMOTION</span>
-              <i class="fas fa-sort-down"></i>
-              <div class="promotion">
-                <ul>
-                  <li><img src="../image/header/nav/img1.jpg" alt="" /></li>
-                  <li><span>ACCESSORIES</span></li>
-                  <li><span>Maybellin Face Power</span></li>
-                  <li><span>Chanel Mascara</span></li>
-                  <li><span>Mascara For Full Lashes Mascara</span></li>
-                  <li><span>Offical Cosme-Decom Maybellin Face</span></li>
-                  <li><span>Offical Cosme-Decom</span></li>
-                  <li><span>Lady Dior Mascara</span></li>
-                </ul>
-                <ul>
-                  <li><img src="../image/header/nav/img2.jpg" alt="" /></li>
-                  <li><span>ACCESSORIES</span></li>
-                  <li><span>Maybellin Face Power</span></li>
-                  <li><span>Chanel Mascara</span></li>
-                  <li><span>Mascara For Full Lashes Mascara</span></li>
-                  <li><span>Offical Cosme-Decom Maybellin Face</span></li>
-                  <li><span>Offical Cosme-Decom</span></li>
-                  <li><span>Lady Dior Mascara</span></li>
-                </ul>
-                <ul>
-                  <li><img src="../image/header/nav/img3.jpg" alt="" /></li>
-                  <li><span>ACCESSORIES</span></li>
-                  <li><span>Maybellin Face Power</span></li>
-                  <li><span>Chanel Mascara</span></li>
-                  <li><span>Mascara For Full Lashes Mascara</span></li>
-                  <li><span>Offical Cosme-Decom Maybellin Face</span></li>
-                  <li><span>Offical Cosme-Decom</span></li>
-                  <li><span>Lady Dior Mascara</span></li>
-                </ul>
-                <ul>
-                  <li><img src="../image/header/nav/img4.jpg" alt="" /></li>
-                  <li><span>ACCESSORIES</span></li>
-                  <li><span>Maybellin Face Power</span></li>
-                  <li><span>Chanel Mascara</span></li>
-                  <li><span>Mascara For Full Lashes Mascara</span></li>
-                  <li><span>Offical Cosme-Decom Maybellin Face</span></li>
-                  <li><span>Offical Cosme-Decom</span></li>
-                  <li><span>Lady Dior Mascara</span></li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <span>BLOG</span>
-              <i class="fas fa-sort-down"></i>
-              <div class="blog">
-                <ul>
-                  <li><p>BLOG LAYOUTS 1</p></li>
-                  <li><span>Left Sidebar Grid</span></li>
-                  <li><span>Right Sidebar Grid</span></li>
-                  <li><span>Full Width Grid</span></li>
-                  <li><span>Left Sidebar List</span></li>
-                  <li><span>Right Sidebar List</span></li>
-                </ul>
-                <ul>
-                  <li><p>BLOG LAYOUTS 2</p></li>
-                  <li><span>2 Columns Grid</span></li>
-                  <li><span>3 Columns Grid</span></li>
-                  <li><span>4 Columns Grid</span></li>
-                  <li><span>Masonry Grid</span></li>
-                </ul>
-                <ul>
-                  <li><p>POST FORMATS</p></li>
-                  <li><span>Post Formats Image</span></li>
-                  <li><span>Post Formats Video</span></li>
-                  <li><span>Post Formats Audio</span></li>
-                  <li><span>Post Formats Gallery</span></li>
-                  <li><span>Post Format Quote</span></li>
-                </ul>
-                <ul>
-                  <li><p>POST LAYOUTS</p></li>
-                  <li><span>Full Width</span></li>
-                  <li><span>Left Sidebar</span></li>
-                  <li><span>Right Sidebar</span></li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="#"><span>ABOUT US</span></a>
-            </li>
-            <li>
-              <a href="#"><span>CONTACT US</span></a>
-            </li>
-          </ul>
-        </div>
-        <div class="nav-right">
-          <div class="search_box">
-            <input type="text" class="search_box_input" />
-            <button class="search_box_btn">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-          <li class="cart">
-            <i class="fas fa-shopping-cart"></i>
-            <div class="cart_noti">
-              <span>0</span>
-            </div>
-          </li>
-        </div>
-      </div>
-    </div>
+    <div data-include="header"></div>
 
     <!-- Nội dung -->
     <div class="myAccount">
       <div class="container">
-        <!-- Đường link đến trang -->
-        <div class="link">
-          <span><a href="">HOME</a></span>
-          <i class="fas fa-angle-right"></i>
-          <span><a href="">MYACCOUNT</a></span>
+        <!-- bread-crumb -->
+        <div class="bread-crumb">
+          <ul>
+            <li>
+              <a href="../index.html">home</a>
+            </li>
+            <li>
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li>
+              <span>My Account</span>
+            </li>
+          </ul>
         </div>
 
         <!--Nội dung bên trong trang-->
@@ -429,65 +223,13 @@
       </div>
     </div>
 
-    <!-- Footer-->
-    <footer>
-      <div class="footer_img">
-        <img src="../image/footer/footer.png" alt="" />
-      </div>
-      <div class="container">
-        <div class="footer_container row">
-          <div class="col-lg">
-            <h3>Flow us</h3>
-            <li><a href="#">Shipping guide</a></li>
-            <li><a href="#">Store location</a></li>
-            <li><a href="#">Affiliate</a></li>
-            <li><a href="#">Customer point policy</a></li>
-            <li><a href="#">Customer point policy</a></li>
-          </div>
-          <div class="col-lg">
-            <h3>Customer support</h3>
-            <li><a href="#">return policy</a></li>
-            <li><a href="#">Shopping guide</a></li>
-            <li><a href="#">Payment Guide</a></li>
-          </div>
-          <div class="col-lg">
-            <h3>CONTACT US</h3>
-            <li>
-              <a href="#"
-                ><i class="fas fa-map-marker-alt"></i> No 40 Baria Sreet 133/2
-                NewYork City,NY,United States</a
-              >
-            </li>
-            <li>
-              <a href="#"><i class="fas fa-mobile-alt"></i>0123456789</a>
-            </li>
-            <li>
-              <a href="#"><i class="far fa-envelope"></i>contact@example.com</a>
-            </li>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <span
-              >@2022 WordPress Theme SW 9Merry. All Rights Reserved. Dessigned
-              by <a href="#">PTN</a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div data-include="footer"></div>
   </body>
-  <script
-    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-    data-auto-replace-svg="nest"
-  ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../js/myAccount.js"></script>
   <script src="../js/login.js"></script>
   <script src="../js/header.js"></script>
+  <script type="module">
+    import { componentHTML } from '../js/module/components.js';
+    componentHTML();
+  </script>
 </html>
