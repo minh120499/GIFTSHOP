@@ -58,7 +58,14 @@ td {
   text-align: center;
 }
 
-#btn-delete > button {
+#btn-delete>button {
   border: none;
   font-size: 30px;
+}
+
+td img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: 20px;
 }

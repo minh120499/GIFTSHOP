@@ -1,5 +1,6 @@
 import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
+import { alertMess } from './module/alert.js';
 
 componentHTML();
 localStorage.setItem('currentPage', 1);
@@ -407,8 +408,8 @@ function viewButton() {
                 .post('http://localhost/be/Checkout/AddToCart.php', data)
                 .then((e) => e.data)
                 .then((e) => {
-                  console.log(e);
-                  // e == 'Add Success' ? alert(e) : alert('Erros');
+                  console.log(e)
+                  e == 'Add Success' ? alertMess(e) : alertMess('Error', 'Error');
                 });
               return;
             }
