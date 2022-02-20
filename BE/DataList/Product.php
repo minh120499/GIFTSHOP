@@ -15,7 +15,8 @@ $sql = "SELECT `products`.`id`,
                `sold`,
                `view`,
                `src`,
-               `country`
+               `country`,
+               `sale`
           FROM `products` INNER JOIN `productimg` 
                           INNER JOIN `brand` 
           WHERE `products`.`brand` = `brand`.`id` 
@@ -41,6 +42,7 @@ foreach ($stmt->fetchAll() as $key => $value) {
         'src' => $value['src'],
         'brand' => $value['brand'],
         'country' => $value['country'],
+        'sale' => $value['sale']
     );
 }
 

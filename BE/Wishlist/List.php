@@ -4,7 +4,11 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 isset($_POST['userid']) ? $userid = $_POST['userid'] : die('empty userid');
 // isset($_POST['productid']) ? '' : die('empty productid');
-
+$stmt = $conn->prepare("SELECT `id` FROM `users` WHERE `username` = :userid ");
+$stmt->bindParam('userid', $_POST['userid']);
+$stmt->execute();
+$id = $stmt->fetch();
+$userid = $id['id'] * 1;
 try {
     $stmt = $conn->prepare("SELECT * FROM `wishlists` WHERE userid = $userid");
     // $stmt->bindParam('userid', $_POST['userid']);
