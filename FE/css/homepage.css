@@ -1,8 +1,8 @@
-@import '../css/header.css';
-@import '../css/footer.css';
-@import '../css/general.css';
-@import '../css/responsive/rpHeader.css';
-@import '../css/login.css';
+@import './header.css';
+@import './footer.css';
+@import './general.css';
+@import './responsive/rpHeader.css';
+@import './login.css';
 
 body {
   background-color: #f4f4f4 !important;

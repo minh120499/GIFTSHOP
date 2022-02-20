@@ -1,7 +1,7 @@
-@import 'general.css';
-@import 'header.css';
+@import './general.css';
+@import './header.css';
 @import './responsive/rpHeader.css';
-@import 'footer.css';
+@import './footer.css';
 ul {
   padding-left: 0;
 }
