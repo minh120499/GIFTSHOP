@@ -64,16 +64,20 @@
               <i class="far fa-gem"></i>
               <span>PRICE</span>
             </div>
-            <li>
-              <input type="number" id="low_price" placeholder=" Min" />
-              <!-- <span><i class="fa-solid fa-arrow-right"></i></span> -->
-              <input type="number" id="expensive" placeholder=" Max" />
-            </li>
-            <li>
-              <button class="btn btn-dark searchPrice" onclick="priceSearch();">
-                FILTER
-              </button>
-            </li>
+            <div style="width: 85%; margin: 0 auto">
+              <div class="d-flex mt-3 justify-content-between">
+                <input type="number" id="low_price" placeholder=" Min" />
+                <input type="number" id="expensive" placeholder=" Max" />
+              </div>
+              <div class="my-3">
+                <button
+                  class="btn btn-dark searchPrice"
+                  onclick="priceSearch();"
+                >
+                  FILTER
+                </button>
+              </div>
+            </div>
           </ul>
           <ul class="SideBar_content">
             <div class="SideBar_title">

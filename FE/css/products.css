@@ -101,25 +101,9 @@
     background-color: var(--primary_color);
 } */
 
-.SideBar_price li:nth-child(2) input {
-  width: 48%;
-}
-
-.SideBar_price li:nth-child(4) > button {
-  width: 65px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 0;
-  background-color: #191919;
-}
-
-.SideBar_price li:nth-child(4) > span {
-  font-size: 11px;
-  color: var(--text_color);
+.SideBar_price div:nth-child(2) input {
+  width: 100px;
+  padding: 5px;
 }
 
 .SideBar_bestseller_content .row {
