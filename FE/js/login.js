@@ -27,13 +27,11 @@ function Loginform() {
         console.log(e.data);
         if (e.data == 'Login Success') {
           // Đẩy lên localstorage
-          var storageKey = 'userId';
-          var id = [];
-          id.push(username);
-          localStorage.setItem(storageKey, id);
+          localStorage.setItem('userid', username);
         } else {
           return false;
         }
       });
+    window.history.back();
   }
 }

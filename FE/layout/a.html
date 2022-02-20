@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <input type="file" name="" id="">
+  </head>
+  <body>
+    <input type="file" name="" id="" />
     <button>ok</button>
     <script>
-        // let a = document.querySelector('input')
-        // document.querySelector('button').onclick = () => {
-        //     console.log(a.files[0])
-        //     let form = new FormData()
-        //     form.append('fileupload', a.files[0])
-        //     axios.post('http://localhost/be/Admin/add.php',form)
-        //     .then(e => e.data)
-        //     // .then(e => {
-        //     //     console.log(e)
-        //     // })
-        // }
-        let data = new FormData();
-        data.append('userid','nam')
-        axios.post('',)
-        .then(e => {
-            
-        })
+      document.querySelector('button').addEventListener('click', () => {
+        window.history.back();
+      });
     </script>
-</body>
+  </body>
 </html>

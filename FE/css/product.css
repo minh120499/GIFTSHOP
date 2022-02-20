@@ -306,6 +306,7 @@ ul {
 
 .rightside .product-detail .images .sub-images img {
   width: 90px;
+  height: 90px;
   margin-right: 10px;
   border: 1px solid #ebebeb;
   cursor: pointer;

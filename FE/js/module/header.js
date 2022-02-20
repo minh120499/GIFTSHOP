@@ -69,67 +69,104 @@ function header() {
     });
   });
 
-  renderCategories()
-  renderBrands()
+  renderCategories();
+  renderBrands();
+  authorization();
+  countItemCart();
 }
 
-export { header };
+export { header, countItemCart };
 
 function renderCategories() {
-  axios.get('http://localhost/be/DataList/Categories.php')
-    .then(e => e.data)
-    .then(e => {
-      var html = ''
+  axios
+    .get('http://localhost/be/DataList/Categories.php')
+    .then((e) => e.data)
+    .then((e) => {
+      var html = '';
       var main = `
                 <ul>
                     <li><img src="${e[0].img}" alt=""></li>
-                    <li><span>ACCESSORIES</span></li>`
+                    <li><span>ACCESSORIES</span></li>`;
       var i = 0;
       e.forEach((item) => {
         if (i == 4) {
-          i = 1
-          main += html
+          i = 1;
+          main += html;
           main += `</ul>
                     <ul>
                       <li><img src="${item.img}" alt=""></li>
-                      <li><span>ACCESSORIES</span></li>`
-          html = `<li><span cateid=${item.id}>${item.name}</span></li>`
+                      <li><span>ACCESSORIES</span></li>`;
+          html = `<li><span cateid=${item.id}>${item.name}</span></li>`;
         } else {
-          html += `<li><span cateid=${item.id}>${item.name}</span></li>`
-          i++
+          html += `<li><span cateid=${item.id}>${item.name}</span></li>`;
+          i++;
         }
       });
-      html != '' ? main += html + `</ul>` : ''
-      document.querySelector('.promotion').innerHTML = main
-    })
+      html != '' ? (main += html + `</ul>`) : '';
+      document.querySelector('.promotion').innerHTML = main;
+    });
   setTimeout(() => {
-    let cateSpan = document.querySelectorAll('span[cateid]')
-    cateSpan.forEach(item => {
+    let cateSpan = document.querySelectorAll('span[cateid]');
+    cateSpan.forEach((item) => {
       item.onclick = () => {
-        localStorage.setItem('cateid', item.getAttribute('cateid'))
-        window.location.href.includes('layout') ? window.location.href = './products.html' : window.location.href = './layout/products.html'
-      }
-    })
-  }, 500)
+        localStorage.setItem('cateid', item.getAttribute('cateid'));
+        window.location.href.includes('layout')
+          ? (window.location.href = './products.html')
+          : (window.location.href = './layout/products.html');
+      };
+    });
+  }, 500);
 }
 
 function renderBrands() {
-  axios.get('http://localhost/be/DataList/Brands.php')
-    .then(e => e.data)
-    .then(e => {
-      let html = ''
+  axios
+    .get('http://localhost/be/DataList/Brands.php')
+    .then((e) => e.data)
+    .then((e) => {
+      let html = '';
       e.forEach((item) => {
-        html += `<div brandid=${item.id}><img src="${item.img}" alt=""></div>`
+        html += `<div brandid=${item.id}><img src="${item.img}" alt=""></div>`;
       });
-      document.querySelector('.blog').innerHTML = html
-    })
+      document.querySelector('.blog').innerHTML = html;
+    });
   setTimeout(() => {
-    let cateSpan = document.querySelectorAll('div[brandid]')
-    cateSpan.forEach(item => {
+    let cateSpan = document.querySelectorAll('div[brandid]');
+    cateSpan.forEach((item) => {
       item.onclick = () => {
-        localStorage.setItem('brandid', item.getAttribute('brandid'))
-        window.location.href.includes('layout') ? window.location.href = './products.html' : window.location.href = './layout/products.html'
-      }
-    })
-  }, 500)
+        localStorage.setItem('brandid', item.getAttribute('brandid'));
+        window.location.href.includes('layout')
+          ? (window.location.href = './products.html')
+          : (window.location.href = './layout/products.html');
+      };
+    });
+  }, 500);
+}
+
+// Login và logout
+function authorization() {
+  if (localStorage.userid) {
+    document.querySelector('.show-login').style.display = 'none';
+    document.querySelector('.show-logout').style.display = 'inline-block';
+    document.querySelector('.show-welcome').style.display = 'inline-block';
+    document.querySelector('.username').innerText = localStorage.userid;
+  }
+  let logoutBtn = document.querySelector('.show-logout');
+  logoutBtn.addEventListener('click', () => {
+    document.querySelector('.show-login').style.display = 'inline-block';
+    document.querySelector('.show-logout').style.display = 'none';
+    document.querySelector('.show-welcome').style.display = 'none';
+    localStorage.removeItem('userid');
+  });
+}
+
+function countItemCart() {
+  let data = new FormData();
+  data.append('userid', localStorage.userid);
+  axios.post('http://localhost/be/Users/GetCart.php', data).then((e) => {
+    let quantityItem = 0;
+    e.data.forEach((item) => {
+      quantityItem += parseInt(item.quantity);
+    });
+    document.querySelector('.cart_noti span').innerText = quantityItem;
+  });
 }
