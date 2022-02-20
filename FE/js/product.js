@@ -2,7 +2,7 @@ import { componentHTML } from './module/components.js';
 import { header, countItemCart } from './module/header.js';
 import { slider } from './slider.js';
 import { compare } from './module/compare.js';
-// import { alert } from './module/alert.js';
+import { alertMess } from './module/alert.js';
 
 // ----------------------------------
 
@@ -46,14 +46,16 @@ function getDataFromServer() {
       html += `<i class="fa fa-star"></i>`;
     }
     html += `<span style='margin-left: 25px; font-weight:300; font-size: 12px'><i>${product[0].view} views</i></span></div>`;
-    if (product[0].sale == "") {
+    if (product[0].sale == '') {
       html += `<div class="prices">
                         <span class="new-price">$ ${product[0].price}</span>
                     </div>`;
     } else {
       html += `<div class="prices">
                         <span class="old-price">$ ${product[0].price}</span>
-                        <span class="new-price">$ ${product[0].price * (100 - product[0].sale) / 100}</span>
+                        <span class="new-price">$ ${
+                          (product[0].price * (100 - product[0].sale)) / 100
+                        }</span>
                     </div>`;
     }
     if (parseInt(product[0].quantity) > parseInt(product[0].sold)) {
@@ -114,10 +116,10 @@ function getDataFromServer() {
               </small>
               <div class="download">
                   <a href="http://localhost/document/${product[0].name
-        .split(' ')
-        .join(
-          '%20'
-        )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
+                    .split(' ')
+                    .join(
+                      '%20'
+                    )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
               </div>
           </div>
       </div>`;
@@ -147,15 +149,17 @@ function getDataFromServer() {
                                         <div class="box-detail__top">
                                             <a href="#" class="product-link product-name-link" productid="${item.id}">${item.name}</a>
                                         </div>
-                                        <div class="box-detail__bottom"></div>`
-          if (item.sale == "") {
+                                        <div class="box-detail__bottom"></div>`;
+          if (item.sale == '') {
             html += `<div class="prices">
                         <span class="new-price">$ ${item.price}</span>
                     </div>`;
           } else {
             html += `<div class="prices">
                         <span class="old-price">$ ${item.price}</span>
-                        <span class="new-price">$ ${product[0].price * (100 - item.sale) / 100}</span>
+                        <span class="new-price">$ ${
+                          (product[0].price * (100 - item.sale)) / 100
+                        }</span>
                     </div>`;
           }
           html += `<div class="buttons">
@@ -206,8 +210,8 @@ function RenderBestSale() {
                       <a href="./product.html" class="product-name-link" productid="${item.id}"><img src="${item.src}" width="100px" height="100px"
                               alt="" class="thumbnail"></a>
                       <div class="item-info">
-                          <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>`
-        if (item.sale == "") {
+                          <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>`;
+        if (item.sale == '') {
           html += `
           <div class="prices">
             <span class="new-price">$ ${item.price}</span>
@@ -215,7 +219,9 @@ function RenderBestSale() {
         } else {
           html += `
           <div class="prices">
-            <span class="new-price">$ ${item.price * (100 - item.sale) / 100}</span>
+            <span class="new-price">$ ${
+              (item.price * (100 - item.sale)) / 100
+            }</span>
           </div>`;
         }
         html += `</div>
@@ -336,7 +342,7 @@ function addDOMEvent() {
           });
       } else {
         axios.post('http://localhost/be/Wishlist/Add.php', data).then((e) => {
-          if (e.data == 'Add Succes') {
+          if (e.data == 'Add Success') {
             item.className += ' clicked-wishlist';
             let b = item.childNodes;
             b[1].style.color = 'white';
@@ -352,13 +358,36 @@ function addDOMEvent() {
       document.querySelector('.no-login').style.display = 'none';
       document.querySelector('.already-logged-in').style.display = 'block';
       const formReview = document.querySelector('#form-review');
+      // Rating
+      let ratingStar = document.querySelectorAll('.ratable i');
+      let checked;
+      for (let i = 0; i < ratingStar.length; i++) {
+        ratingStar[i].addEventListener('click', () => {
+          for (let j = 0; j < i + 1; j++) {
+            ratingStar[j].classList.add('checked');
+          }
+          for (let j = ratingStar.length - 1; j > i; j--) {
+            ratingStar[j].classList.remove('checked');
+          }
+          checked = document.querySelectorAll('.ratable i.checked');
+        });
+      }
       let submitBtn = formReview.querySelector('input[type="submit"]');
-      submitBtn.addEventListener('click', () => {
+      submitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         let data = new FormData();
-        data.append('productid');
-        data.append('userid');
-        data.append('content');
-        data.append('rating');
+        data.append('productid', localStorage.getItem('productid'));
+        data.append('userid', localStorage.userid);
+        data.append('content', document.querySelector('#review-text').value);
+        data.append('rating', checked.length);
+        axios
+          .post('http://localhost/be/Comment/Postcomment.php', data)
+          .then((e) => {
+            console.log(e);
+            if (e.data == 'Comment success') {
+              alertMess(e.data);
+            }
+          });
       });
     }
   });

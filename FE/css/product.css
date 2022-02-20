@@ -177,7 +177,7 @@ ul {
   margin-bottom: 30px;
 }
 
-.rightside .rating .checked {
+.checked {
   color: orange;
 }
 
@@ -532,6 +532,9 @@ ul {
 
 .rightside .tabs .tab .already-logged-in .ratable {
   font-size: 14px;
+}
+.rightside .tabs .tab .already-logged-in .ratable i {
+  cursor: pointer;
 }
 
 .rightside .tabs .tab .already-logged-in #form-review {
