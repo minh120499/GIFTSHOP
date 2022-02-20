@@ -7,7 +7,13 @@ isset($_POST['userid']) && !empty($_POST['userid']) ? '' : die('invalid userid')
 isset($_POST['productid']) && !empty($_POST['productid']) ? '' : die('invalid productid');
 isset($_POST['quantity']) && !empty($_POST['quantity']) ? '' : die('invalid quantity');
 isset($_POST['price']) && !empty($_POST['price']) ? '' : die('invalid price');
-$userid = $_POST['userid'];
+// isset($_POST['img']) && !empty($_POST['img']) ? '' : die('invalid img');
+
+$stmt = $conn->prepare("SELECT `id` FROM `users` WHERE `username` = :userid ");
+$stmt->bindParam('userid', $_POST['userid']);
+$stmt->execute();
+$id = $stmt->fetch();
+$userid = $id['id'] * 1;
 
 
 // Check exist orders
@@ -28,8 +34,6 @@ if ($stmt->rowCount() == 0) {
         $tophone = $data['phone'];
         $toaddress = $data['address'];
 
-        // die("n: $toname, e: $toemail, p: $tophone, a: $toaddress");
-
         $stmt = $conn->prepare("INSERT INTO `orders`(toname, toemail, tophone, toaddress, userid) VALUES (:toname, :toemail, :tophone, :toaddress, :userid)");
         $stmt->bindParam('toname', $toname);
         $stmt->bindParam('toemail', $toemail);
@@ -47,11 +51,12 @@ if ($stmt->rowCount() == 0) {
         $orderid = $data['id'];
 
         // INSERT INTO ordersdetail
-        $stmt = $conn->prepare("INSERT INTO `ordersdetail`(productid, orderid, quantity, price, coupon) VALUES (:productid, :orderid, :quantity, :price, :coupon)");
+        $stmt = $conn->prepare("INSERT INTO `ordersdetail`(img, productid, orderid, quantity, price, coupon) VALUES (:img, :productid, :orderid, :quantity, :price, :coupon)");
         $stmt->bindParam('productid', $_POST['productid']);
         $stmt->bindParam('quantity', $_POST['quantity']);
         $stmt->bindParam('price', $_POST['price']);
         $stmt->bindParam('coupon', $_POST['coupon']);
+        $stmt->bindParam('img', $_POST['img']);
         $stmt->bindParam('orderid', $orderid);
         $stmt->execute();
 
@@ -87,21 +92,20 @@ if ($stmt->rowCount() == 0) {
 
         // INSERT INTO ordersdetail
         if ($stmt->rowCount() == 0) {
-            $stmt = $conn->prepare("INSERT INTO `ordersdetail`(productid, orderid, quantity, price, coupon) VALUES (:productid, :orderid, :quantity, :price, :coupon)");
+            $stmt = $conn->prepare("INSERT INTO `ordersdetail`(productid, orderid, quantity, price, coupon, img) VALUES (:productid, :orderid, :quantity, :price, :coupon, :img)");
             $stmt->bindParam('productid', $_POST['productid']);
             $stmt->bindParam('quantity', $_POST['quantity']);
             $stmt->bindParam('price', $_POST['price']);
             $stmt->bindParam('orderid', $orderid);
             $stmt->bindParam('coupon', $_POST['coupon']);
+            $stmt->bindParam('img', $_POST['img']);
             $stmt->execute();
         } else {
             $data = $stmt->fetch();
-            $quantity = $data['quantity'];
-            isset($_POST['minus']) ? $quantity -= $_POST['quantity']: $quantity += $_POST['quantity'];
 
             $stmt = $conn->prepare("UPDATE `ordersdetail` SET `quantity` = :quantity WHERE `productid` = :productid AND `orderid` = :orderid ;");
             $stmt->bindParam('productid', $_POST['productid']);
-            $stmt->bindParam('quantity', $quantity);
+            $stmt->bindParam('quantity', $_POST['quantity']);
             $stmt->bindParam('orderid', $orderid);
             $stmt->execute();
         }

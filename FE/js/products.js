@@ -405,11 +405,13 @@ function viewButton() {
               data.append('productid', i.id);
               data.append('quantity', 1);
               data.append('price', i.price);
+              data.append('img', i.src);
               axios
                 .post('http://localhost/be/Checkout/AddToCart.php', data)
                 .then((e) => e.data)
                 .then((e) => {
-                  e == 'Add Success' ? alert(e) : alert('Erros');
+                  console.log(e)
+                  // e == 'Add Success' ? alert(e) : alert('Erros');
                 });
               return;
             }

@@ -12,8 +12,8 @@ $phone = $_POST['phone'];
 $birthday = $_POST['birthday']; 
 
 try {
-    $stmt = $conn->prepare("INSERT INTO `user`(`username`,`password`,`firstname`,`lastname`,`address`,`email`,`phone`,`birthday`) 
-                                   VALUES (:username,:password,:firstname,:lastname,:address,:email,:phone,:birthday:)");
+    $stmt = $conn->prepare("INSERT INTO `users`(`username`,`password`,`firstname`,`lastname`,`address`,`email`,`phone`,`birthday`) 
+                                   VALUES (:username,:password,:firstname,:lastname,:address,:email,:phone,:birthday)");
 
     $stmt->bindParam('username', $username);
     $stmt->bindParam('password', $password);

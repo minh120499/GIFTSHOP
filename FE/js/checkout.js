@@ -6,7 +6,7 @@ import { updateCart } from './module/updatecart.js';
 import * as validateForm from './module/validation.js';
 
 componentHTML();
-
+var productsInOrder = []
 function render() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -19,15 +19,19 @@ function render() {
 // Render giỏ hàng
 function renderAPI() {
   // Cart Summary
-  $.ajax('http://localhost/BE/DataList/ProductList.php').done(function (data) {
-    var html = '';
-    var items = $.parseJSON(data);
-    // console.log(items);
-    $.each(items, function (i, item) {
-      html = `
+  $.post(
+    'http://localhost/BE/Users/GetCart.php',
+    {
+      userid: localStorage.getItem('userid')
+    }, function (data) {
+      var html = '';
+      var items = $.parseJSON(data);
+      productsInOrder = $.parseJSON(data);
+      $.each(items, function (i, item) {
+        html = `
                     <div class="cart-item">
                         <div class="image-item">
-                            <img src="${item.src}">
+                            <img src="${item.img}">
                         </div>
                         <div class="item-info">
                             <h3 class="item-title">${item.name}</h3>
@@ -41,22 +45,25 @@ function renderAPI() {
                                 <span>$ ${item.price}</span>
                             </div>
                             <div class="quantity-modifier">
-                                <input type="button" value="-" class="minus">
-                                <input type="number" value="1" class="quantity">
-                                <input type="button" value="+" class="plus">
+                                <input type="button" productid="${item.productid}" value="-" class="minus">
+                                <input type="number" productid="${item.productid}" value="${item.quantity}" class="quantity product${item.productid}">
+                                <input type="button" productid="${item.productid}" value="+" class="plus">
                             </div>
                         </div>
-                        <div class="delete-btn">
-                            <i class="far fa-trash-alt delbtn"></i>
+                        <div class="delete-btn" proudctid="${item.productid}">
+                            <i class="far fa-trash-alt delbtn" ></i>
                         </div>
                     </div>
                     `;
-      $('.cart-items').append(html);
+        $('.cart-items').append(html);
+      });
+      setTimeout(() => {
+        updateCart();
+        counter();
+        delProduct();
+        minusAndPlus();
+      }, 1000)
     });
-    updateCart();
-    counter();
-    delProduct();
-  });
 }
 render()
   .then(() => {
@@ -77,10 +84,14 @@ multiStep();
 // Show Popup
 const popup = document.querySelector('.popup');
 const btnGuest = document.querySelector('.btn-guest');
-window.addEventListener('load', () => {
-  popup.classList.add('show');
-  popup.childNodes[1].classList.add('show');
-});
+if (!localStorage.getItem('userid')) {
+  window.addEventListener('load', () => {
+    popup.classList.add('show');
+    popup.childNodes[1].classList.add('show');
+  });
+} else {
+  popup.remove();
+}
 btnGuest.addEventListener('click', () => {
   popup.remove();
 });
@@ -117,24 +128,24 @@ function counter() {
 
 // Xóa sản phẩm
 function delProduct() {
-  const delBtns = document.querySelectorAll('.delbtn');
-  for (let i = 0; i < delBtns.length; i++) {
-    const delBtn = delBtns[i];
-    delBtn.addEventListener('click', (e) => {
-      e.target.parentElement.parentElement.remove();
+  const delBtns = document.querySelectorAll('.delete-btn');
+  delBtns.forEach(item => {
+    item.onclick = () => {
+      item.parentElement.remove()
       $.post(
         'http://localhost/BE/Checkout/RemoveFromCart.php',
         {
-          userid: 1,
-          productid: 5,
+          userid: localStorage.getItem('userid'),
+          productid: item.getAttribute('proudctid'),
         },
         function (data) {
           console.log(data);
+          data == "Delete success" ? alert(data) : alert("Errors");
         }
       );
       updateCart();
-    });
-  }
+    }
+  })
 }
 
 // Validate Form dữ liệu người dùng
@@ -169,10 +180,8 @@ nextBtn.addEventListener('click', (e) => {
 
 //Khi chọn method thông báo lỗi sẽ mất
 const inputRadioDivs = document.querySelectorAll('.input-radio');
-console.log(inputRadioDivs[1]);
 Array.from(inputRadioDivs).forEach((div) => {
   let smallTag = div.querySelector('small');
-  console.log(smallTag);
   let inputRadio = Array.from(div.querySelectorAll('input[type="radio"]'));
   inputRadio.forEach((input) => {
     input.addEventListener('change', () => {
@@ -185,80 +194,122 @@ Array.from(inputRadioDivs).forEach((div) => {
 const confirmBtn = document.querySelector('.btn-cf');
 confirmBtn.addEventListener('click', (e) => {
   // Kiểm tra người dùng đã chọn method hay chưa
+  let payment
+  let delivery
   const finalStep = document.querySelector('.step4');
   const inputRadioLastDiv = document.querySelectorAll('.input-radio')[1];
   let inputRadio = Array.from(
     inputRadioLastDiv.querySelectorAll('input[type="radio"]')
   );
+  console.log(inputRadio)
   let smallTag = inputRadioLastDiv.querySelector('small');
   if (!inputRadio.every((input) => input.checked)) {
     smallTag.innerText = 'Please choose one of these methods below!';
     smallTag.style.color = 'red';
   }
-
+  for (let i = 2; i < 4; i++) {
+    if (document.querySelectorAll('input[type="radio"]')[i].checked) {
+      payment = document.querySelectorAll('input[type="radio"]')[i].id
+    }
+  }
+  for (let i = 0; i < 1; i++) {
+    if (document.querySelectorAll('input[type="radio"]')[i].checked) {
+      delivery = document.querySelectorAll('input[type="radio"]')[i].id
+    }
+  }
+  console.log(payment, delivery)
   if (inputRadio.some((input) => input.checked)) {
     smallTag.innerText = '';
     finalStep.classList.add('active');
     setTimeout(() => {
-      alert('Your order is confirmed!!!');
       $.post(
         'http://localhost/BE/Checkout/Checkout.php',
         {
-          userid: 1,
+          userid: localStorage.getItem('userid'),
           orderid: 2,
-          name: 3,
-          email: 3,
-          phone: 3,
-          address: 3,
-          payment: 'ssss',
+          name: document.querySelector('#firstname').value + document.querySelector('#lastname').value,
+          email: document.querySelector('#email').value,
+          phone: document.querySelector('#phone').value,
+          address: document.querySelector('#address').value,
+          delivery: delivery,
+          payment: payment,
         },
         function (data) {
-          // console.log(data);
-          // var dataneh = $.parseJSON(data)[0];
+          if (data == "Your order is confirmed") {
+            alert('Your order is confirmed!!!')
+            window.location = 'http://127.0.0.1:5500/FE/index.html';
+          }
         }
       );
-      window.location = 'http://127.0.0.1:5500/FE/index.html';
     }, 1000);
   }
 });
 
-
-var firstNameVal = document.querySelector('#firstname').value;
-var lastNameVal = document.querySelector('#lastname').value;
-var emailVal = document.querySelector('#email').value;
-var phoneVal = document.querySelector('#phone').value;
-var addressVal = document.querySelector('#address').value;
-
 // Đổ dữ liệu người dùng
-$.post(
-  'http://localhost/BE/Users/GetInfo.php',
-  {
-    userid: 3,
-  },
-  function (data) {
-    var dataUser = $.parseJSON(data)[0];
-    firstNameVal = dataUser.firstname;
-    lastNameVal = dataUser.lastname;
-    emailVal = dataUser.email;
-    phoneVal = dataUser.phone.split('-').join('');
-    addressVal = dataUser.address;
-    console.log(dataUser);
-  }
-);
+if (localStorage.getItem('userid')) {
+  $.post(
+    'http://localhost/BE/Users/GetInfo.php',
+    {
+      userid: localStorage.getItem('userid'),
+    },
+    function (data) {
+      var dataUser = $.parseJSON(data)[0];
+      document.querySelector('#firstname').value = dataUser.firstname;
+      document.querySelector('#lastname').value = dataUser.lastname;
+      document.querySelector('#email').value = dataUser.email;
+      document.querySelector('#phone').value = dataUser.phone.split('-').join('');
+      document.querySelector('#address').value = dataUser.address;
+    }
+  );
+}
 
 //Cộng trừ số lượng
 
-$.post(
-  'http://localhost/BE/Checkout/AddToCart.php',
-  {
-    userid: 1,
-    productid: 2,
-    quantity: 3,
-    price: 300,
-    // minus: 1
-  },
-  function (data) {
-    // console.log(data);
-    // var dataneh = $.parseJSON(data)[0];
-  }
-);
+function minusAndPlus() {
+  let minusButton = document.querySelectorAll('.minus')
+  minusButton.forEach(item => {
+    item.onclick = () => {
+      let a = productsInOrder.filter(i => {
+        return i.productid == item.getAttribute('productid')
+      })
+      let quantity = document.querySelector(".product" + a[0].productid).value
+      $.post(
+        'http://localhost/BE/Checkout/AddToCart.php',
+        {
+          userid: localStorage.getItem('userid'),
+          productid: a[0].productid,
+          quantity: quantity,
+          price: a[0].price,
+          img: a[0].img,
+          minus: 1
+        },
+        function (data) {
+          // var dataneh = $.parseJSON(data)[0];
+        }
+      );
+    }
+  })
+
+  let plusButton = document.querySelectorAll('.plus')
+  plusButton.forEach(item => {
+    item.onclick = () => {
+      let a = productsInOrder.filter(i => {
+        return i.productid == item.getAttribute('productid')
+      })
+      let quantity = document.querySelector(".product" + a[0].productid).value
+      $.post(
+        'http://localhost/BE/Checkout/AddToCart.php',
+        {
+          userid: localStorage.getItem('userid'),
+          productid: a[0].productid,
+          quantity: quantity,
+          price: a[0].price,
+          img: a[0].img
+        },
+        function (data) {
+          // var dataneh = $.parseJSON(data)[0];
+        }
+      );
+    }
+  })
+}

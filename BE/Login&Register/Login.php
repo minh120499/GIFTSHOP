@@ -41,4 +41,4 @@ foreach ($stmt->fetchAll() as $key => $value) {
     );
 }
 
-die(json_encode($data));
+die("Login Success");

@@ -7,8 +7,14 @@ isset($_POST['userid']) && !empty($_POST['userid']) ? '' : die('invalid userid')
 isset($_POST['productid']) && !empty($_POST['productid']) ? '' : die('invalid productid');
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM `orders` WHERE `userid` = :userid AND `status` = 'unpaid' ;");
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = :userid;");
     $stmt->bindParam('userid', $_POST['userid']);
+    $stmt->execute();
+    $id = $stmt->fetch();
+    $id = $id['id']*1;
+
+    $stmt = $conn->prepare("SELECT * FROM `orders` WHERE `userid` = :userid AND `status` = 'unpaid' ;");
+    $stmt->bindParam('userid', $id);
     $stmt->execute();
 
     $data = $stmt->fetch();
@@ -27,7 +33,7 @@ try {
     $total = $data['total'];
 
     $stmt = $conn->prepare("UPDATE `orders` SET total = :total WHERE `userid` = :userid AND `status` = 'unpaid' ");
-    $stmt->bindParam('userid', $_POST['userid']);
+    $stmt->bindParam('userid', $id);
     $stmt->bindParam('total', $total);
     $stmt->execute();
 
