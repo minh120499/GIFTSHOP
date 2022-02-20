@@ -2,6 +2,7 @@ import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 
 componentHTML();
+localStorage.setItem('currentPage', 1)
 var btn_square = document.querySelector('.square');
 var btn_pillar = document.querySelector('.pillar');
 
@@ -99,29 +100,19 @@ var check = 0;
 const previousBtn = document.querySelector('.previousbtn');
 const nextBtn = document.querySelector('.nextbtn');
 nextBtn.addEventListener('click', () => {
-  idPage++;
-  if (check == 1) {
-    renderProduct();
-  } else if (check == 2) {
-    renderProductBrand();
-  } else {
-    asyncCall();
-  }
+  let currentPage = localStorage.getItem('currentPage') * 1 + 1
+  localStorage.setItem('currentPage', currentPage)
+  clickBtnChoosePage(currentPage)
 });
 
 previousBtn.addEventListener('click', () => {
-  idPage--;
-  if (check == 1) {
-    renderProduct();
-  } else if (check == 2) {
-    renderProductBrand();
-  } else {
-    asyncCall();
-  }
+  let currentPage = localStorage.getItem('currentPage') * 1 - 1
+  localStorage.setItem('currentPage', currentPage)
+  clickBtnChoosePage(currentPage)
 });
 
 // Hàm đổ dữ liệu ra khi load trang
-function renderContent(listProducts = 'empty') {
+function renderContent(listProducts = 'empty', productsPerPage = 'empty') {
   axios
     .get('http://localhost/BE/DataList/ProductList.php')
     .then((e) => e.data)
@@ -135,8 +126,7 @@ function renderContent(listProducts = 'empty') {
       var perPage = select.options[select.selectedIndex].value;
       let end = perPage * idPage;
       start = (idPage - 1) * perPage;
-      let totalPages = Math.ceil(e.length / perPage);
-
+      let totalPages = Math.ceil(listProducts.length / perPage);
       if (idPage === totalPages) {
         nextBtn.disabled = true;
       } else {
@@ -147,6 +137,7 @@ function renderContent(listProducts = 'empty') {
       } else {
         previousBtn.disabled = false;
       }
+      productsPerPage == 'empty' ? '' : listProducts = productsPerPage
       listProducts.forEach((item, i) => {
         if (i >= start && i < end) {
           html2 += `<div class="col-6 col-lg-4 content_container_item">
@@ -241,12 +232,30 @@ function renderContent(listProducts = 'empty') {
     let dom = document.querySelectorAll('.page-number')
     dom.forEach(item => {
       item.onclick = () => {
+        localStorage.setItem('currentPage', item.textContent)
         clickBtnChoosePage(item.textContent)
       }
     })
-  },1000)
+  }, 1000)
 }
 
+// Làm sự kiện click vào chọn trang
+function clickBtnChoosePage(e) {
+  let renderList = [...productListToFliter]
+
+  let data = []
+  let productsPerPage = document.getElementById('show_items').value
+  for (let i = 0; i < e; i++) {
+    data = renderList.splice(0, productsPerPage)
+  }
+  renderContent(productListToFliter, data)
+  window.scrollTo(
+    {
+      top: 400,
+      behavior: 'smooth'
+    }
+  )
+}
 // Hiển thị dữ liệu ra theo loại sản phẩm
 function RenderCategories() {
   axios
@@ -290,19 +299,6 @@ function RenderBrand() {
         })
       }, 1000)
     });
-}
-
-// Làm sự kiện click vào chọn trang
-function clickBtnChoosePage(e) {
-  idPage = parseInt(e);
-  if (check == 1) {
-    renderProduct();
-  } else if (check == 2) {
-    renderProductBrand();
-  } else {
-    // renderContent();
-    asyncCall();
-  }
 }
 
 // Làm nút tìm kiếm the giá sản phẩm Filter
@@ -494,6 +490,8 @@ if (localStorage.getItem('brandid')) {
 
 // Render product by Categories
 function renderProductsByCategories(cateid) {
+  localStorage.setItem('currentPage', 1)
+
   let data = new FormData();
   data.append('cateid', cateid);
   axios
@@ -509,6 +507,8 @@ function renderProductsByCategories(cateid) {
 
 // Render Prodcut by Brand
 function renderProductsByBrands(brandid) {
+  localStorage.setItem('currentPage', 1)
+
   let data = new FormData();
   data.append('brand', brandid);
   axios
@@ -519,5 +519,5 @@ function renderProductsByBrands(brandid) {
       document.querySelector('.content_container_title_right').innerHTML = '';
       // document.querySelector(".SideBar_bestseller_content").innerHTML = '';
       renderContent(e.data);
-    });
+    })
 }
