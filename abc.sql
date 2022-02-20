@@ -868,7 +868,7 @@ CREATE TABLE `products` (
   `price` float DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `rating` float DEFAULT NULL,
-  `status` 
+  `status` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
