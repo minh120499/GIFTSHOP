@@ -3,6 +3,7 @@
 @import './general.css';
 @import './responsive/rpHeader.css';
 /* @import "../css/login.css"; */
+@import './alert.css';
 
 /*--------------------------------------------------------------------- Bread-crumb ----------------------------------------------------------------------*/
 .bread-crumb {

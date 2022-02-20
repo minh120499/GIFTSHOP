@@ -1,30 +1,29 @@
 #alert-all-message {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   left: 50%;
   transform: translateX(-50%);
-  width: 250px;
   height: max-content;
-  padding: 15px;
+  padding: 10px 30px;
   text-align: center;
-  color: white;
-
-  background-color: #04aa6d;
-  border-radius: 25px;
-  display: grid;
-  grid-template-columns: auto max-content;
-  visibility: hidden;
-  animation: showup 1s ease-in forwards;
+  background-color: rgb(226, 226, 226);
+  border: solid 3px;
+  border-radius: 5px;
+  animation: 0.5s ease-in forwards;
+  cursor: pointer;
+  width: 500px;
+  top: -250px;
 }
 
-#alert-all-message > div:first-child {
+#alert-all-message>div:first-child {
   text-align: left;
 }
 
-#alert-all-message > div:last-child:hover {
+#alert-all-message>div:last-child:hover {
   cursor: pointer;
   color: black;
 }
+
 
 @keyframes showup {
   from {
@@ -32,6 +31,16 @@
   }
 
   to {
-    top: 20px;
+    top: 10px;
+  }
+}
+
+@keyframes showoff {
+  from {
+    top: 10px;
+  }
+
+  to {
+    top: -250px;
   }
 }

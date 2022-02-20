@@ -2,12 +2,13 @@ import { componentHTML } from './module/components.js';
 import { header, countItemCart } from './module/header.js';
 import { slider } from './slider.js';
 import { compare } from './module/compare.js';
-// import { alert } from './module/alert.js';
+import { alertMess } from './module/alert.js';
 
 // ----------------------------------
 
 componentHTML();
 var product = [];
+var productAddCart = []
 var totalquantity = 1;
 function getDataFromServer() {
   //Render chi tiết sản phẩm
@@ -105,6 +106,7 @@ function getDataFromServer() {
               </div>
               <div class="categories-tag">
                   <span class="title">Categories: </span>`;
+    console.log(product[0].anniversary)
     product[0].anniversary.split(',').map((item) => {
       html += `<a href="./products.html" class="product-link product-cate-link fst-italic">${item}</a>,`;
     });
@@ -131,6 +133,7 @@ function getDataFromServer() {
       .post('http://localhost/be/DataList/Related.php', relatedProduct)
       .then((e) => e.data)
       .then((e) => {
+        productAddCart = e
         let html = `<h3 class="title">Related Products</h3>
                       <hr>
                       <ul id="autoWidth" class="cs-hidden">`;
@@ -160,7 +163,7 @@ function getDataFromServer() {
                     </div>`;
           }
           html += `<div class="buttons">
-                                                <div class="addcart">
+                                                <div class="addcart addcart2" productid=${item.id}>
                                                     <button type="submit">Add to cart</button>
                                                 </div>`;
           if (
@@ -227,19 +230,28 @@ function RenderBestSale() {
     });
 }
 
-function RenderCategories() {
-  axios
-    .get('http://localhost/BE/DataList/Categories.php')
-    .then((e) => e.data)
-    .then((e) => {
-      let html = '';
-      e.forEach((item) => {
-        html += `<li><a href="./products.html" class="product-link product-cate-link">${item.name}</a></li>`;
-      });
-      document.querySelector('#render-leftside-categories').innerHTML = html;
-    });
-}
 function abc() {
+  let dom = document.querySelectorAll('.addcart2')
+  dom.forEach(item => {
+    item.onclick = () => {
+      let product = productAddCart.filter(i => {
+        return i.id == item.getAttribute('productid')
+      })
+      let data = new FormData();
+      data.append('userid', localStorage.getItem('userid'));
+      data.append('productid', product[0].id);
+      data.append('quantity', 1);
+      data.append('price', product[0].price);
+      data.append('img', product[0].src);
+      axios
+        .post('http://localhost/be/Checkout/AddToCart.php', data)
+        .then((e) => e.data)
+        .then((e) => {
+          e == 'Add Success' ? alertMess(e) : alertMess('Error', 'Error');
+          countItemCart();
+        });
+    }
+  })
   // Kiểm tra DOM đã được render hay chưa
   function docReady(fn) {
     if (
@@ -303,7 +315,7 @@ function abc() {
         .post('http://localhost/be/Checkout/AddToCart.php', data)
         .then((e) => e.data)
         .then((e) => {
-          // e == 'Add Success' ? alert(e) : alert('Error');
+          e == 'Add Success' ? alertMess(e) : alertMess('Error', 'Error');
           countItemCart();
         });
     };

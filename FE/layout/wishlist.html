@@ -1,105 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"
-      integrity="sha512-yJHCxhu8pTR7P2UgXFrHvLMniOAL5ET1f5Cj+/dzl+JIlGTh5Cz+IeklcXzMavKvXP8vXqKMQyZjscjf3ZDfGA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="../css/wishlist.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
 
-  <body>
-    <div id="alert-all-message">
-      <div>mess</div>
-      <div>x</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"
+    integrity="sha512-yJHCxhu8pTR7P2UgXFrHvLMniOAL5ET1f5Cj+/dzl+JIlGTh5Cz+IeklcXzMavKvXP8vXqKMQyZjscjf3ZDfGA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/wishlist.css" />
+  <link rel="stylesheet" href="../css/alert.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="module">
+    import { componentHTML } from '../js/module/components.js';
+    import { alertMess } from '../js/module/alert.js';
+    componentHTML();
+  </script>
+</head>
+
+<body>
+
+  <div data-include="header"></div>
+
+  <div class="container">
+    <!-- bread-crumb -->
+    <div class="bread-crumb">
+      <ul>
+        <li>
+          <a href="index.html" class="checkout-link">home</a>
+        </li>
+        <li>
+          <i class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+          <span>wishlist</span>
+        </li>
+      </ul>
     </div>
-
-    <div data-include="header"></div>
-
-    <div class="container">
-      <!-- bread-crumb -->
-      <div class="bread-crumb">
-        <ul>
-          <li>
-            <a href="index.html" class="checkout-link">home</a>
-          </li>
-          <li>
-            <i class="fas fa-chevron-right"></i>
-          </li>
-          <li>
-            <span>wishlist</span>
-          </li>
-        </ul>
-      </div>
-      <div class="wrapper">
-        <div class="wishlist-main-content">
-          <div id="contents">
-            <table border="1">
-              <tr>
-                <th>Product Picture</th>
-                <th>Product Name</th>
-                <th>Unit Price</th>
-                <th>Stock Tatus</th>
-                <th>Delete</th>
-              </tr>
-              <tr>
-                <td id="no-wishlist" colspan="6"></td>
-                <script>
-                  // Check empty or not
-                  var data = new FormData();
-                  data.append('userid', 4);
-                  axios
-                    .post('http://localhost/BE/Wishlist/wishlist.php', data)
-                    .then((e) => e.data)
-                    .then((e) => {
-                      if (e.length == []) {
-                        document.getElementById('no-wishlist').textContent =
-                          'No products were added to wishlist';
-                      } else {
-                        document.getElementById('no-wishlist').textContent = '';
-                      }
-                    });
-                </script>
-              </tr>
-              <div id="wishlist-list"></div>
-
+    <div class="wrapper">
+      <div class="wishlist-main-content">
+        <div id="contents">
+          <table border="1">
+            <tr>
+              <th>Product Picture</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Stock Tatus</th>
+              <th>Delete</th>
+            </tr>
+            <tr>
+              <td id="no-wishlist" colspan="6"></td>
               <script>
+                // Check empty or not
+                var data = new FormData();
+                data.append('userid', localStorage.getItem('userid'));
                 axios
                   .post('http://localhost/BE/Wishlist/wishlist.php', data)
+                  .then((e) => e.data)
                   .then((e) => {
-                    return e.data;
-                  })
-                  .then((e) => {
-                    for (let value of e) {
-                      console.log(e);
-                      let stock;
-                      if (value.quantity == 0) {
-                        stock = 'Sold Out';
-                      } else {
-                        stock = 'In Stock';
-                      }
-                      let node = document.createElement('tr');
-                      node.innerHTML = `
+                    if (e.length == []) {
+                      document.getElementById('no-wishlist').textContent =
+                        'No products were added to wishlist';
+                    } else {
+                      document.getElementById('no-wishlist').textContent = '';
+                    }
+                  });
+              </script>
+            </tr>
+            <div id="wishlist-list"></div>
+
+            <script type="module">
+              import { alertMess } from '../js/module/alert.js';
+              axios
+                .post('http://localhost/BE/Wishlist/wishlist.php', data)
+                .then((e) => {
+                  return e.data;
+                })
+                .then((e) => {
+                  for (let value of e) {
+                    let stock;
+                    if (value.quantity == 0) {
+                      stock = 'Sold Out';
+                    } else {
+                      stock = 'In Stock';
+                    }
+                    let node = document.createElement('tr');
+                    node.innerHTML = `
                                             <td><img src="${value.src}"></td>
                                             <td>${value.name}</td>
                                             <td>${value.price}</td>
@@ -109,60 +101,49 @@
                                                     <span style="color:red"   aria-hidden="true">x</span>
                                                 </button>
                                             </td>`;
-                      document.querySelector('table').appendChild(node);
-                    }
-                    button = document.querySelectorAll('button');
-                    for (let x of button) {
-                      x.onclick = function () {
-                        let id = this.getAttribute('id');
-                        let form = new FormData();
-                        form.append('productid', id);
-                        form.append('userid', 4);
-                        axios
-                          .post('http://localhost/BE/Wishlist/delete.php', form)
-                          .then((e) => {
-                            this.parentNode.parentNode.innerHTML = '';
-                            console.log(e);
-                            axios
-                              .post(
-                                'http://localhost/BE/Wishlist/wishlist.php',
-                                data
-                              )
-                              .then((e) => e.data)
-                              .then((e) => {
-                                if (e.length == []) {
-                                  document.getElementById(
-                                    'no-wishlist'
-                                  ).textContent =
-                                    'No products were added to wishlist';
-                                } else {
-                                  document.getElementById(
-                                    'no-wishlist'
-                                  ).textContent = '';
-                                }
-                              });
-                          });
-                      };
-                    }
-                  });
-              </script>
-            </table>
-          </div>
+                    document.querySelector('table').appendChild(node);
+                  }
+                  let button = document.querySelectorAll('button');
+                  for (let x of button) {
+                    x.onclick = function () {
+                      let id = this.getAttribute('id');
+                      let form = new FormData();
+                      form.append('productid', id);
+                      form.append('userid', localStorage.getItem('userid'));
+                      axios
+                        .post('http://localhost/BE/Wishlist/delete.php', form)
+                        .then((e) => {
+                          alertMess(e.data)
+                          this.parentNode.parentNode.innerHTML = '';
+                          axios
+                            .post(
+                              'http://localhost/BE/Wishlist/wishlist.php',
+                              data
+                            )
+                            .then((e) => e.data)
+                            .then((e) => {
+                              if (e.length == []) {
+                                document.getElementById(
+                                  'no-wishlist'
+                                ).textContent =
+                                  'No products were added to wishlist';
+                              } else {
+                                document.getElementById(
+                                  'no-wishlist'
+                                ).textContent = '';
+                              }
+                            });
+                        });
+                    };
+                  }
+                });
+            </script>
+          </table>
         </div>
       </div>
     </div>
-    <div data-include="footer"></div>
+  </div>
+  <div data-include="footer"></div>
+</body>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script> -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="module">
-      import { componentHTML } from '../js/module/components.js';
-      componentHTML();
-    </script>
-  </body>
 </html>
