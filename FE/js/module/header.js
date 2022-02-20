@@ -72,9 +72,10 @@ function header() {
   renderCategories();
   renderBrands();
   authorization();
+  countItemCart();
 }
 
-export { header };
+export { header, countItemCart };
 
 function renderCategories() {
   axios
@@ -155,5 +156,17 @@ function authorization() {
     document.querySelector('.show-logout').style.display = 'none';
     document.querySelector('.show-welcome').style.display = 'none';
     localStorage.removeItem('userid');
+  });
+}
+
+function countItemCart() {
+  let data = new FormData();
+  data.append('userid', localStorage.userid);
+  axios.post('http://localhost/be/Users/GetCart.php', data).then((e) => {
+    let quantityItem = 0;
+    e.data.forEach((item) => {
+      quantityItem += parseInt(item.quantity);
+    });
+    document.querySelector('.cart_noti span').innerText = quantityItem;
   });
 }

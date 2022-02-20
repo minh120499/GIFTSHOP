@@ -1,5 +1,5 @@
 import { componentHTML } from './module/components.js';
-import { header } from './module/header.js';
+import { header, countItemCart } from './module/header.js';
 import { slider } from './slider.js';
 import { compare } from './module/compare.js';
 // import { alert } from './module/alert.js';
@@ -284,7 +284,8 @@ function abc() {
         .post('http://localhost/be/Checkout/AddToCart.php', data)
         .then((e) => e.data)
         .then((e) => {
-          // e == 'Add Success' ? alert(e) : alert('Erros');
+          // e == 'Add Success' ? alert(e) : alert('Error');
+          countItemCart();
         });
     };
   });

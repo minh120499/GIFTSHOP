@@ -2,7 +2,7 @@ import { componentHTML } from './module/components.js';
 import { header } from './module/header.js';
 
 componentHTML();
-localStorage.setItem('currentPage', 1)
+localStorage.setItem('currentPage', 1);
 var btn_square = document.querySelector('.square');
 var btn_pillar = document.querySelector('.pillar');
 
@@ -100,15 +100,15 @@ var check = 0;
 const previousBtn = document.querySelector('.previousbtn');
 const nextBtn = document.querySelector('.nextbtn');
 nextBtn.addEventListener('click', () => {
-  let currentPage = localStorage.getItem('currentPage') * 1 + 1
-  localStorage.setItem('currentPage', currentPage)
-  clickBtnChoosePage(currentPage)
+  let currentPage = localStorage.getItem('currentPage') * 1 + 1;
+  localStorage.setItem('currentPage', currentPage);
+  clickBtnChoosePage(currentPage);
 });
 
 previousBtn.addEventListener('click', () => {
-  let currentPage = localStorage.getItem('currentPage') * 1 - 1
-  localStorage.setItem('currentPage', currentPage)
-  clickBtnChoosePage(currentPage)
+  let currentPage = localStorage.getItem('currentPage') * 1 - 1;
+  localStorage.setItem('currentPage', currentPage);
+  clickBtnChoosePage(currentPage);
 });
 
 // Hàm đổ dữ liệu ra khi load trang
@@ -137,7 +137,7 @@ function renderContent(listProducts = 'empty', productsPerPage = 'empty') {
       } else {
         previousBtn.disabled = false;
       }
-      productsPerPage == 'empty' ? '' : listProducts = productsPerPage
+      productsPerPage == 'empty' ? '' : (listProducts = productsPerPage);
       listProducts.forEach((item, i) => {
         if (i >= start && i < end) {
           html2 += `<div class="col-6 col-lg-4 content_container_item">
@@ -235,32 +235,30 @@ function renderContent(listProducts = 'empty', productsPerPage = 'empty') {
         html4;
     });
   setTimeout(() => {
-    let dom = document.querySelectorAll('.page-number')
-    dom.forEach(item => {
+    let dom = document.querySelectorAll('.page-number');
+    dom.forEach((item) => {
       item.onclick = () => {
-        localStorage.setItem('currentPage', item.textContent)
-        clickBtnChoosePage(item.textContent)
-      }
-    })
-  }, 1000)
+        localStorage.setItem('currentPage', item.textContent);
+        clickBtnChoosePage(item.textContent);
+      };
+    });
+  }, 1000);
 }
 
 // Làm sự kiện click vào chọn trang
 function clickBtnChoosePage(e) {
-  let renderList = [...productListToFliter]
+  let renderList = [...productListToFliter];
 
-  let data = []
-  let productsPerPage = document.getElementById('show_items').value
+  let data = [];
+  let productsPerPage = document.getElementById('show_items').value;
   for (let i = 0; i < e; i++) {
-    data = renderList.splice(0, productsPerPage)
+    data = renderList.splice(0, productsPerPage);
   }
-  renderContent(productListToFliter, data)
-  window.scrollTo(
-    {
-      top: 400,
-      behavior: 'smooth'
-    }
-  )
+  renderContent(productListToFliter, data);
+  window.scrollTo({
+    top: 400,
+    behavior: 'smooth',
+  });
 }
 // Hiển thị dữ liệu ra theo loại sản phẩm
 function RenderCategories() {
@@ -275,14 +273,13 @@ function RenderCategories() {
       document.querySelector('.SideBar_Category').outerHTML = html;
     });
   setTimeout(() => {
-    let dom = document.querySelectorAll('li[cateid]')
-    dom.forEach(item => {
+    let dom = document.querySelectorAll('li[cateid]');
+    dom.forEach((item) => {
       item.onclick = () => {
-        renderProductsByCategories(item.getAttribute('cateid'))
-      }
-    })
-  }, 1000)
-
+        renderProductsByCategories(item.getAttribute('cateid'));
+      };
+    });
+  }, 1000);
 }
 
 //Lay va in ra brand
@@ -297,22 +294,22 @@ function RenderBrand() {
       });
       document.querySelector('.SideBar_Color').outerHTML = html1;
       setTimeout(() => {
-        let dom = document.querySelectorAll('li[brandid]')
-        dom.forEach(item => {
+        let dom = document.querySelectorAll('li[brandid]');
+        dom.forEach((item) => {
           item.onclick = () => {
-            renderProductsByBrands(item.getAttribute('brandid'))
-          }
-        })
-      }, 1000)
+            renderProductsByBrands(item.getAttribute('brandid'));
+          };
+        });
+      }, 1000);
     });
 }
 
 // Làm nút tìm kiếm the giá sản phẩm Filter
 setTimeout(() => {
   document.querySelector('.searchPrice').onclick = () => {
-    priceSearch()
-  }
-}, 1000)
+    priceSearch();
+  };
+}, 1000);
 function priceSearch() {
   let low_price = document.getElementById('low_price').value;
   let expensive = document.getElementById('expensive').value;
@@ -410,7 +407,7 @@ function viewButton() {
                 .post('http://localhost/be/Checkout/AddToCart.php', data)
                 .then((e) => e.data)
                 .then((e) => {
-                  console.log(e)
+                  console.log(e);
                   // e == 'Add Success' ? alert(e) : alert('Erros');
                 });
               return;
@@ -498,7 +495,7 @@ if (localStorage.getItem('brandid')) {
 
 // Render product by Categories
 function renderProductsByCategories(cateid) {
-  localStorage.setItem('currentPage', 1)
+  localStorage.setItem('currentPage', 1);
 
   let data = new FormData();
   data.append('cateid', cateid);
@@ -515,7 +512,7 @@ function renderProductsByCategories(cateid) {
 
 // Render Prodcut by Brand
 function renderProductsByBrands(brandid) {
-  localStorage.setItem('currentPage', 1)
+  localStorage.setItem('currentPage', 1);
 
   let data = new FormData();
   data.append('brand', brandid);
@@ -527,5 +524,5 @@ function renderProductsByBrands(brandid) {
       document.querySelector('.content_container_title_right').innerHTML = '';
       // document.querySelector(".SideBar_bestseller_content").innerHTML = '';
       renderContent(e.data);
-    })
+    });
 }
