@@ -76,8 +76,7 @@
   align-items: center;
 }
 
-.top-left,
-.top-right {
+.top-left {
   height: 100%;
   width: 50%;
   display: flex;
@@ -90,30 +89,21 @@
   align-items: center;
 }
 
-.top-right {
-  width: 50%;
-  justify-content: right;
-}
-
-.top-left li:nth-child(1) span,
-.top-right li:nth-child(1) i {
+.top-left li:nth-child(1) span {
   border-right: 1px solid #fff;
   padding-right: 15px;
 }
 
-.top-left li:nth-child(1),
-.top-right li:nth-child(1) {
+.top-left li:nth-child(1) {
   cursor: default;
 }
 
-.top-left > li:nth-child(2),
-.top-right > li:nth-child(2) {
+.top-left > li:nth-child(2) {
   padding-left: 15px;
   cursor: pointer;
 }
 
-.top-left li i,
-.top-right li i {
+.top-left li i {
   margin: 0 5px;
 }
 
@@ -139,14 +129,11 @@
   text-decoration: none;
 }
 
-.top-left li:nth-child(1):hover .My-Account,
-.top-right-currency:hover .top-right-currency-dropdown {
+.top-left li:nth-child(1):hover .My-Account {
   display: flex;
 }
 
-.My-Account,
-.top-right-language_dropdown,
-.top-right-currency-dropdown {
+.My-Account {
   z-index: 2;
   position: absolute;
   color: #000;
@@ -160,58 +147,15 @@
   display: none;
 }
 
-.My-Account li,
-.top-right-currency-dropdown li {
+.My-Account li {
   width: 100%;
   padding: 10px;
 }
 
-.My-Account li:hover,
-.top-right-language_dropdown li:hover,
-.top-right-currency-dropdown li:hover {
+.My-Account li:hover {
   background: rgb(240, 239, 239);
   color: #d7182a;
   cursor: pointer;
-}
-
-.top-right-language,
-.top-right-currency {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 100%;
-}
-
-.top-right-language:hover .top-right-language_dropdown {
-  display: flex;
-}
-
-.top-right-language-img {
-  margin-right: 10px;
-  height: 12px;
-  margin-bottom: 5px;
-}
-
-.top-right-language-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.top-right-language_dropdown,
-.top-right-currency-dropdown {
-  width: 150px;
-  top: 38px;
-}
-
-.top-right-language_dropdown li {
-  display: flex;
-  padding: 10px;
-}
-
-.top-right-currency-dropdown {
-  width: 70px;
 }
 
 /*----------------------------------------------------------------- NAV -----------------------------------------------------------------*/
