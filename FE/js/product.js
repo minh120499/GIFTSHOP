@@ -279,6 +279,7 @@ function abc() {
       data.append('productid', product[0].id);
       data.append('quantity', totalquantity);
       data.append('price', product[0].price);
+      data.append('img', product[0].src);
       axios
         .post('http://localhost/be/Checkout/AddToCart.php', data)
         .then((e) => e.data)

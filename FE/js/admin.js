@@ -929,69 +929,97 @@ function SaveInforProduct() {
 }
 
 // ------------------------------------- PHẦN 3: CÁC THAO TÁC VỚI QUẢN LÝ HÓA ĐƠN --------
-document.querySelector('.see_more').addEventListener('click', function () {
-  document.querySelector('.bill_product').classList.toggle('more_see');
-});
-
 // Hàm đổ dữ liệu ra trang danh sách hóa đơn
 function renderBills() {
   axios
     .get('http://localhost/BE/Admin/GetOrders.php')
     .then((e) => e.data)
     .then((e) => {
-      console.log(e);
+      var x = [];
+      var y = [];
+      var n = [];
       var htmlBill = '';
-      for (let i = 0; i < e.length; i++) {}
-    });
-}
-
-// Hàm tìm kiếm
-function SearchBill() {
-  var datestart = document.getElementById('datestart').value;
-  var dateend = document.getElementById('dateend').value;
-  var startdate = [];
-  var enddate = [];
-
-  let star = '<i class="fa-solid fa-star-of-life"></i>';
-  if (datestart == '') {
-    document.getElementById('datestartErr').innerHTML = star;
-    return false;
-  } else if (dateend == '') {
-    document.getElementById('dateendErr').innerHTML = star;
-    return false;
-  } else {
-    document.getElementById('datestartErr').innerHTML = '';
-    document.getElementById('dateendErr').innerHTML = '';
-  }
-
-  startdate = datestart.split('-');
-  enddate = dateend.split('-');
-
-  // Thực hiện so sánh 2 giá trị ngày tháng
-  if (startdate[0] > enddate[0]) {
-    datestart = '';
-    dateend = '';
-    document.getElementById('datestartErr').innerHTML =
-      star + 'ngày đầu nhỏ hơn';
-  } else {
-    if (startdate[1] > enddate[1]) {
-      datestart = '';
-      dateend = '';
-      document.getElementById('datestartErr').innerHTML =
-        star + 'ngày đầu nhỏ hơn';
-    } else {
-      if (startdate[2] > enddate[2]) {
-        datestart = '';
-        dateend = '';
-        document.getElementById('datestartErr').innerHTML =
-          star + 'ngày đầu nhỏ hơn';
+      var htmlBillitem = [];
+      for (let i = 0; i < e.length; i++) {
+        y.push(e[i].date);
+        x.push(e[i].id);
       }
-    }
-  }
 
-  // sau khi ngày bắt đầu đã nhỏ hơn ngày kết thúc ta thực hiện so sánh và in ra
-  if (datestart && dateend) {
-  }
+      for (let i = 0; i < unique(x).length; i++) {
+        y.push(e[i].date);
+        x.push(e[i].id);
+        n[i] = 0;
+        for (let j = 0; j < e.length; j++) {
+          if (unique(x)[i] == e[j].id) {
+            n[i] += e[j].quantity * e[j].price;
+          }
+        }
+      }
+
+      function unique(arr) {
+        return Array.from(new Set(arr));
+      }
+
+      for (let i = 0; i < unique(x).length; i++) {
+        htmlBill += `<div class="bill_Management_container_content_item">
+                <div class="bill_Management_container_content_item_date">
+                    <span>Ngày đặt hàng : </span>
+                    <span>${unique(y)[i]}</span>
+                </div>
+                <div class="bill_product">
+                    <div class="bill_product_content_item">
+                        
+                    </div>
+                </div>
+                <div class="bill_Management_container_content_item_add">
+                    <div class="line"></div>
+                    <span class="see_more">Xem thêm ...</span>
+                    <div class="line"></div>
+                </div>
+                <div class="bill_Management_container_content_item_total">
+                    <img src="./image/myAccount/tongtien.png" alt="">
+                    <span>Tổng tiền hóa đơn</span>
+                    <span class="total_money_bill">${n[i]}</span>
+                </div>
+            </div>`;
+      }
+      document.querySelector(
+        '.bill_Management_container_content_container'
+      ).innerHTML = htmlBill;
+
+      var bill = document.querySelectorAll('.bill_product_content_item');
+
+      for (let i = 0; i < unique(x).length; i++) {
+        htmlBillitem[i] = '';
+        for (let j = 0; j < e.length; j++) {
+          if (unique(x)[i] == e[j].id) {
+            htmlBillitem[i] += ` <div class="bill_product_item row">
+                    <div class="col-2">
+                        <img src="${e[j].img}" alt="">
+                    </div>
+                    <div class="col-8">
+                        <h3>${e[j].name}</h3>
+                        <p>${e[j].status}</p>
+                        <span>${e[j].quantity}</span>   
+                    </div>
+                    <div class="col-2">
+                        <span>${e[j].quantity * e[i].price}</span>
+                    </div>
+                </div>`;
+          }
+        }
+        bill[i].innerHTML = htmlBillitem[i];
+      }
+
+      // Làm phần xem thêm của từng sản phẩm
+      var see_more = document.querySelectorAll('.see_more');
+      var bill_product = document.querySelectorAll('.bill_product');
+      for (let i = 0; i < see_more.length; i++) {
+        see_more[i].addEventListener('click', function () {
+          bill_product[i].classList.toggle('more_see');
+        });
+      }
+    });
 }
 
 //-------------------------------------- PHẦN 4: CÁC THAO TÁC VỚI THÊM MỚI SẢN PHẨM ------
@@ -1248,6 +1276,7 @@ function loadAdmin() {
   renderProductManagement();
   bill_btn.classList.add('active');
   $('.bill_Management').show();
+  renderBills();
 }
 
 customer_btn.addEventListener('click', function () {

@@ -144,6 +144,7 @@ function delProduct() {
         }
       );
       updateCart();
+      multiPageItem();
     }
   })
 }
@@ -237,7 +238,7 @@ confirmBtn.addEventListener('click', (e) => {
         function (data) {
           if (data == "Your order is confirmed") {
             alert('Your order is confirmed!!!')
-            window.location = 'http://127.0.0.1:5500/FE/index.html';
+            window.location = '../index.html';
           }
         }
       );

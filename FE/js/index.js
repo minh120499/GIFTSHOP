@@ -59,26 +59,26 @@ function showData() {
         </div>`;
       }
 
-      for (var i = 0; i < 10; i++) {
-        html2 += `<div class="flash_sale_content_item">
-          <div class="new_arrivals_container_content">
-              <img src="${e[i].src}" alt="">
-              <h3><span>${e[i].name}</span></h3>
-              <p><span>${e[i].price}$</span></p>
-              <div class="product_item_hover">
-                  <li class="FtPrAni_1">
-                      <button class="add_view"><a href=""><i class="far fa-eye"></i></a></button>
-                  </li>
-                  <li class="FtPrAni_2">
-                      <div class="item_hover_show">
-                          <button class="add_cart">Add to cart</button>
-                          <button class="add_tym"><i class="far fa-heart"></i></button>
-                      </div>
-                  </li>
-              </div>
-          </div>
-        </div>`;
-      }
+      // for (var i = 0; i < 10; i++) {
+      //   html2 += `<div class="flash_sale_content_item">
+      //     <div class="new_arrivals_container_content">
+      //         <img src="${e[i].src}" alt="">
+      //         <h3><span>${e[i].name}</span></h3>
+      //         <p><span>${e[i].price}$</span></p>
+      //         <div class="product_item_hover">
+      //             <li class="FtPrAni_1">
+      //                 <button class="add_view"><a href=""><i class="far fa-eye"></i></a></button>
+      //             </li>
+      //             <li class="FtPrAni_2">
+      //                 <div class="item_hover_show">
+      //                     <button class="add_cart">Add to cart</button>
+      //                     <button class="add_tym"><i class="far fa-heart"></i></button>
+      //                 </div>
+      //             </li>
+      //         </div>
+      //     </div>
+      //   </div>`;
+      // }
 
       for (var i = 20; i < 27; i++) {
         html3 += `<div class="product_top_mid_item">
@@ -111,7 +111,7 @@ function showData() {
       }
 
       document.querySelector('.new_Arrivals').innerHTML = html;
-      document.querySelector('.flash_sale_content_container').innerHTML = html2;
+      // document.querySelector('.flash_sale_content_container').innerHTML = html2;
       document.querySelector('.product_top_mid_center').innerHTML = html3;
       document.querySelector('.product_bottom_content').innerHTML = html4;
       document.querySelector('.product_top_right_content').innerHTML = html5;
@@ -164,9 +164,9 @@ var prev_sale = document.querySelector('.flash_sale_content_btn_left');
 var next_sale = document.querySelector('.flash_sale_content_btn_right');
 var index = 0;
 
-if (index == 0) {
-  prev_sale.classList.add('hide');
-}
+// if (index == 0) {
+//   prev_sale.classList.add('hide');
+// }
 
 function checkIndex() {
   if (index == 0) {

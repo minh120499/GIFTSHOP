@@ -19,16 +19,17 @@ purchase_Order.addEventListener('click', function () {
   document.querySelector('.Order_Purchase').classList.add('show');
 });
 
+var idMerry = localStorage.getItem('userId');
+
 // API các thao tác với API
 var api = 'http://localhost/BE/Users/GetInfo.php';
 var info = [];
 let data = new FormData();
-data.append('userid', 'minh');
+data.append('userid', idMerry);
 axios.post(api, data).then((e) => {
   info = e.data;
 });
 
-var idMerry = localStorage.getItem('idMerry');
 var AvatarFile = '';
 
 // Hàm lấy giá trị trong API
@@ -47,8 +48,6 @@ function start() {
       AvatarFile = info[0].avatar;
       a = a.split('/').reverse();
       a = a.join('-');
-
-      // sau đó kiểm tra nếu cái id trên localStorage nó trùng với email hoặc phone thì
 
       // ta sẽ đổ hết dữ liệu ra
       var html_mail = `<span>${info[0].email}</span>`;
@@ -141,7 +140,7 @@ function saveInfor() {
   if (firstname && lastname && address && birthday) {
     if (file == '') {
       let dataUpdate = new FormData();
-      dataUpdate.append('userid', 'minh');
+      dataUpdate.append('userid', idMerry);
       dataUpdate.append('firstname', firstname);
       dataUpdate.append('lastname', lastname);
       dataUpdate.append('address', address);
@@ -152,7 +151,7 @@ function saveInfor() {
       });
     } else {
       let dataUpdate = new FormData();
-      dataUpdate.append('userid', 'minh');
+      dataUpdate.append('userid', idMerry);
       dataUpdate.append('firstname', firstname);
       dataUpdate.append('lastname', lastname);
       dataUpdate.append('address', address);
