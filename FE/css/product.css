@@ -200,10 +200,6 @@ ul {
   transition: all 0.3s;
 }
 
-.rightside .addcart button i {
-  display: none;
-}
-
 .rightside .wishlist,
 .rightside .compare {
   border: 1px solid #d7182a;
@@ -516,39 +512,39 @@ ul {
   color: #d7182a !important;
 }
 
-.rightside .tabs .tab .existed-review {
+.rightside .tabs .tab .already-logged-in {
   display: none;
 }
 
-.rightside .tabs .tab .existed-review .review {
+.rightside .tabs .tab .review {
   border: 1px solid #ebebeb;
   padding: 10px;
 }
 
-.rightside .tabs .tab .existed-review .review .username-wrapper {
+.rightside .tabs .tab .review .username-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
-.rightside .tabs .tab .existed-review p {
+.rightside .tabs .tab .already-logged-in p {
   margin-top: 20px;
 }
 
-.rightside .tabs .tab .existed-review .ratable {
+.rightside .tabs .tab .already-logged-in .ratable {
   font-size: 14px;
 }
 
-.rightside .tabs .tab .existed-review #form-review {
+.rightside .tabs .tab .already-logged-in #form-review {
   margin-top: 20px;
 }
 
-.rightside .tabs .tab .existed-review #form-review textarea {
+.rightside .tabs .tab .already-logged-in #form-review textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ebebeb;
 }
 
-.rightside .tabs .tab .existed-review #form-review input[type='submit'] {
+.rightside .tabs .tab .already-logged-in #form-review input[type='submit'] {
   text-transform: uppercase;
   font-weight: 500;
   background-color: #000;
@@ -559,7 +555,12 @@ ul {
   margin-top: 20px;
 }
 
-.rightside .tabs .tab .existed-review #form-review input[type='submit']:hover {
+.rightside
+  .tabs
+  .tab
+  .already-logged-in
+  #form-review
+  input[type='submit']:hover {
   background-color: #c01526;
 }
 

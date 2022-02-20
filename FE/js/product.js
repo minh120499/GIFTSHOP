@@ -77,7 +77,6 @@ function getDataFromServer() {
                   <div class="addcart">
                       <button>
                           <span>Add to cart</span>
-                          <i class="fas fa-shopping-cart"></i>
                       </button>
                   </div>`;
     if (
@@ -179,8 +178,8 @@ function getDataFromServer() {
         document.querySelector('.related-products').innerHTML = html;
       });
     // Thêm Description
-    let description = product[0].detail;
-    $('.desc-text').text(description);
+    $('.desc-text').text(product[0].detail);
+    $('.product-name__review').text(product[0].name);
   });
 }
 function RenderBestSale() {
@@ -220,7 +219,7 @@ function RenderCategories() {
       document.querySelector('#render-leftside-categories').innerHTML = html;
     });
 }
-function abc() {
+function addDOMEvent() {
   // Kiểm tra DOM đã được render hay chưa
   function docReady(fn) {
     if (
@@ -304,7 +303,6 @@ function abc() {
   wl.forEach((item) => {
     item.onclick = (e) => {
       let data = new FormData();
-      console.log(123);
       data.append('userid', localStorage.getItem('userid'));
       data.append('productid', e.target.getAttribute('productid'));
       if (item.className.includes('clicked-wishlist')) {
@@ -327,6 +325,23 @@ function abc() {
         });
       }
     };
+  });
+
+  // Đánh giá, rating về sản phẩm
+  docReady(() => {
+    if (localStorage.userid) {
+      document.querySelector('.no-login').style.display = 'none';
+      document.querySelector('.already-logged-in').style.display = 'block';
+      const formReview = document.querySelector('#form-review');
+      let submitBtn = formReview.querySelector('input[type="submit"]');
+      submitBtn.addEventListener('click', () => {
+        let data = new FormData();
+        data.append('productid');
+        data.append('userid');
+        data.append('content');
+        data.append('rating');
+      });
+    }
   });
 
   // Button product-name-link
@@ -356,6 +371,6 @@ setTimeout(() => {
   getWishlist();
   getDataFromServer();
   setTimeout(() => {
-    abc();
+    addDOMEvent();
   }, 1000);
 }, 1000);
