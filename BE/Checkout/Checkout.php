@@ -22,5 +22,4 @@ $stmt->bindParam('payment', $_POST['payment']);
 $stmt->bindParam('orderid', $_POST['orderid']);
 $stmt->bindParam('userid', $_POST['userid']);
 
-
 $stmt->execute();

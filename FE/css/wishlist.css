@@ -1,64 +1,64 @@
-img {
-    height: 250px;
-    width: 150px;
-    object-fit: contain;
-}
+@import './general.css';
+@import './header.css';
+@import './responsive/rpHeader.css';
+@import './footer.css';
+
+/* img {
+  height: 250px;
+  width: 150px;
+  object-fit: contain;
+} */
 
 /* --------------------------------------------------------  Section -------------------------------------------------------- */
-.section {
-    height: 250px;
-    width: 1150px;
-    margin-left: 100px;
-}
 
 .wrapper {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 
-    margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .bread-crumb {
-    margin: 30px 0;
-
+  margin: 30px 0;
 }
 
 .bread-crumb ul li {
-    display: inline;
-    margin-right: 10px;
-    text-transform: uppercase;
+  display: inline;
+  margin-right: 10px;
+  text-transform: uppercase;
 }
 
 .bread-crumb ul li a,
 .bread-crumb ul li i,
 .bread-crumb ul li span {
-    color: #7d7d7d;
-    text-decoration: none;
-    font-weight: 500;
+  color: #7d7d7d;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .bread-crumb ul li a:hover {
-    color: #d7182a;
+  color: #d7182a;
 }
 
 #contents table {
-    text-align: center;
-    color: #554d4d;
-    width: 1100px;
-    line-height: 2.5;
-    border-collapse: 0;
+  text-align: center;
+  color: #554d4d;
+  width: 100%;
+  line-height: 2.5;
+  border-collapse: 0;
 }
 
-tr, td {
-    border: 1px solid black;
+tr,
+td {
+  border: 1px solid black;
 }
 
 #btn-delete {
-    text-align: center;
+  text-align: center;
 }
 
-#btn-delete  > button {
-    border: none;
-    font-size: 30px;
+#btn-delete > button {
+  border: none;
+  font-size: 30px;
 }

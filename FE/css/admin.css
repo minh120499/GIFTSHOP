@@ -1,712 +1,781 @@
-@import "../css/general.css";
+@import '../css/general.css';
 
-body{
-    background-color: #001C41;
+body {
+  background-color: #001c41;
 }
 
-.nav_left{
-    margin-top: 50px;
-    color: #fff;
+.nav_left {
+  margin-top: 50px;
+  color: #fff;
 }
 
-.right{
-    height: auto;
-    bottom: 0;
+.right {
+  height: auto;
+  bottom: 0;
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
-    margin: 0 10px 10px 10px;
-    padding-bottom: 15px;
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  margin: 0 10px 10px 10px;
+  padding-bottom: 15px;
 }
 
-.info_img{
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 4px solid #fff;
+.info_img {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid #fff;
 }
 
 .info_img img {
-    width: 100%;
-    object-fit: cover;
-    object-position: left;
+  width: 100%;
+  object-fit: cover;
+  object-position: left;
 }
 
-.info_title h2{
-    margin-top: 10px;
-    font-size: 22px;
-    margin-bottom: 3px;
+.info_title h2 {
+  margin-top: 10px;
+  font-size: 22px;
+  margin-bottom: 3px;
 }
 
-.info_title p{
-    font-size: 15px;
+.info_title p {
+  font-size: 15px;
 }
 
-.admin_function ul li{
-    margin: 20px 10px;
-    padding: 10px 0px;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+.admin {
+  min-height: 100vh;
 }
 
-.admin_function ul li i{
-    margin: 0 10px;
-    font-size: 20px;
+.admin_function ul li {
+  margin: 20px 10px;
+  padding: 10px 0px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.admin_function ul li:hover{
-    background-color: #C5DEFD;
-    border-radius: 10px;
-    color: #000;
+.admin_function ul li i {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.admin_function ul li:hover {
+  background-color: #c5defd;
+  border-radius: 10px;
+  color: #000;
 }
 
 /*--------------------------------------- CSS phần right ------------------------------*/
 /*--------------------------------------- CSS phần Khách hàng ------------------------------*/
-.col-10{
-    background-color: #f5f5f5;
-    margin-top: 50px;
-    margin-bottom: 0;
-    padding-bottom: 30px;
+.col-10 {
+  background-color: #f5f5f5;
+  margin-top: 50px;
+  margin-bottom: 0;
+  padding-bottom: 30px;
 }
 
-.customer_Management_title,.product_Management_title {
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 5px 10px;
-    border-left: 15px solid #FFD43A;
-    box-shadow: -8px -2px 16px -4px rgba(0,0,0,0.24);
+.customer_Management_title,
+.product_Management_title {
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border-left: 15px solid #ffd43a;
+  box-shadow: -8px -2px 16px -4px rgba(0, 0, 0, 0.24);
 }
 
-.customer_Management_title span,.product_Management_title span{
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
+.customer_Management_title span,
+.product_Management_title span {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.customer_Management_check,.product_Management_check{
-    background-color:  #fff;
-    margin-top: 20px;
-    margin-left: 10px;
-    padding: 15px 40px; 
-    box-shadow: -8px -2px 16px -4px rgba(0,0,0,0.24);
-    display: flex;
-    align-items: center;
+.customer_Management_check,
+.product_Management_check {
+  background-color: #fff;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 15px 40px;
+  box-shadow: -8px -2px 16px -4px rgba(0, 0, 0, 0.24);
+  display: flex;
+  align-items: center;
 }
 
-.customer_Management_check form span,.product_Management_check form span{
-    font-size: 18px;
-    margin-right: 10px;
+.customer_Management_check span,
+.product_Management_check span {
+  font-size: 18px;
+  margin-right: 10px;
 }
 
-.customer_Management_check form select,.product_Management_check form select{
-    margin-right: 30px;
-    outline: none;
-    font-size: 15px;
+.customer_Management_check select,
+.product_Management_check select {
+  margin-right: 30px;
+  outline: none;
+  font-size: 15px;
 }
 
-.customer_Management_check form input,.product_Management_check form input{
-    width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    padding: 5px 10px;
-    margin-right: 10px;
+.customer_Management_check input,
+.product_Management_check input {
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 5px 10px;
+  margin-right: 10px;
 }
 
-.customer_Management_check form button, .product_Management_check form button{
-    padding: 5px 20px;
-    background-color: #FFD43A;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    font-size: 15px;
-    transition: all 0.3s ease;
+.customer_Management_check button,
+.product_Management_check button,
+.product_Management_choose .Button_show {
+  padding: 5px 20px;
+  background-color: #ffd43a;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 15px;
+  transition: all 0.3s ease;
 }
 
-.customer_Management_check form button:hover,
-.product_Management_check form button:hover{
-    background-color: #C5DEFD;
+.customer_Management_check button:hover,
+.product_Management_check button:hover,
+.product_Management_choose .Button_show:hover {
+  background-color: #c5defd;
+  cursor: pointer;
 }
 
-.customer_Management_content,.customer_Information,.product_Management_content,
-.product_Detail_content,.bill_Management_container_search,.bill_Management_container_content>h3,
-.bill_Management_container_content_item,.add_product_content{
-    background-color: #fff;
-    margin-left: 10px;
-    margin-top: 20px;
-    padding: 15px 40px; 
-    box-shadow: -8px -2px 16px -4px rgba(0,0,0,0.24);
+.customer_Management_content,
+.customer_Information,
+.product_Management_content,
+.product_Detail_content,
+.bill_Management_container_search,
+.bill_Management_container_content > h3,
+.bill_Management_container_content_item,
+.add_product_content {
+  background-color: #fff;
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 15px 40px;
+  box-shadow: -8px -2px 16px -4px rgba(0, 0, 0, 0.24);
 }
 
-.customer_Management_content h3,.customer_Information h3,.product_Management_content h3,
-.product_Detail_content h3,.add_product_content h3{
-    margin-top: 0;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+.customer_Management_content h3,
+.customer_Information h3,
+.product_Management_content h3,
+.product_Detail_content h3,
+.add_product_content h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 
-.customer_Management_content table{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 3px solid #ccc;
-    width: 100%;
-    padding: 10px;
+.customer_Management_content table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3px solid #ccc;
+  width: 100%;
+  padding: 10px;
 }
 
-.customer_Management_content table tr{
-    height: 40px;
+.customer_Management_content table tr {
+  height: 40px;
 }
 
-.customer_Management_content table tr:nth-child(1){
-    border-bottom: 1px solid #ccc;
-    height: 50px;
-    font-size: 16px;
-    background-color: #C5DEFD ;
+.customer_Management_content table thead {
+  border-bottom: 1px solid #ccc;
+  height: 50px;
+  font-size: 16px;
+  background-color: #c5defd;
 }
 
 .customer_Management_content table tr th,
 .customer_Management_content table tr td {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .customer_Management_content table tr th:nth-child(1),
 .customer_Management_content table tr td:nth-child(1) {
-    text-align: center;
-    width: 60px;
-    padding: 0;
+  text-align: center;
+  width: 60px;
+  padding: 0;
 }
 
-.customer_Management_content table tr th,.customer_Management_content table tr td{
-    border-right: 1.5px solid #ccc;
+.customer_Management_content table tr th,
+.customer_Management_content table tr td {
+  border-right: 1.5px solid #ccc;
 }
 
-.customer_Detail{
-    color: var(--primary_color) ;
-    cursor: pointer;
+.customer_Detail {
+  color: var(--primary_color);
+  cursor: pointer;
 }
 
 /*--------------------------------------- CSS phần Chi tiết khách hàng ------------------------------*/
-.row{
-    margin: 0 !important;
+.row {
+  margin: 0 !important;
 }
 
-.customer_Information .row{
-    margin: 0 !important;
+#searchErr {
+  color: var(--primary_color);
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.customer_Information .row {
+  margin: 0 !important;
+}
+
+.Information_Customer .col-4 {
+  display: flex;
+  align-items: center;
 }
 
 .customer_Information_avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  padding: 0 10px;
+  border: 1px solid #999;
 }
 
-.customer_Information_avatar img{
-    width: 100%;
-    cursor: pointer;
+.customer_Information_avatar img {
+  height: 100%;
+  cursor: pointer;
+  object-fit: fill;
+  object-position: center;
 }
 
-.customer_Information_title ul li{
-    display: flex;
-    margin: 15px 0;
+.customer_Information_title ul li {
+  display: flex;
+  margin: 15px 0;
 }
 
-.customer_Information_f{
-    width: 150px;
-    font-size: 17px;
-    color: #001C41;
+.customer_Information_f {
+  width: 150px;
+  font-size: 17px;
+  color: #001c41;
 }
 
-.customer_Information_content h3{
-    padding-top: 20px;
+.customer_Information_content h3 {
+  padding-top: 20px;
 }
 
-.customer_Information_content ul li{
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.customer_Information_content ul li {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.customer_Information_content>ul>li span:nth-child(1){
-    font-size: 16px;
+.customer_Information_content > ul > li span:nth-child(1) {
+  font-size: 16px;
 }
 
-.customer_Information_content{
-    display: flex;
-    flex-direction:column ;
+.customer_Information_content {
+  display: flex;
+  flex-direction: column;
 }
 
-.customer_Information_content button{
-    width: 150px;
-    height: 30px;
-    margin-top: 20px;
-    right: 0;
-    border: none;
-    background-color: #C5DEFD;
-    font-size: 15px;
-    font-weight: bold;
+.customer_Information_content button {
+  width: 150px;
+  height: 30px;
+  margin-top: 20px;
+  right: 0;
+  border: none;
+  background-color: #c5defd;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .customer_Information_content_price,
 .customer_Information_content_quantily,
-.customer_Information_content_classification{
-    color: var(--primary_color);
+.customer_Information_content_classification {
+  color: var(--primary_color);
 }
-
 
 /*--------------------------------------- CSS phần quản lý sản phẩm ------------------------------*/
-.product_Management_choose{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    background-color: #fff;
-    margin: 20px 0 10px 10px;
-    box-shadow: -8px -2px 16px -4px rgba(0,0,0,0.24);
+.product_Management_choose {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  background-color: #fff;
+  margin: 20px 0 10px 10px;
+  box-shadow: -8px -2px 16px -4px rgba(0, 0, 0, 0.24);
+  padding: 30px 40px;
 }
 
-.product_Management_choose li{
-    font-size: 18px;
-    cursor: pointer;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
+.product_Management_choose .form-group,
+.product_Management_choose .form-group label {
+  margin: 0;
 }
 
-.product_Management_check form{
-    display: flex;
-    text-align: center;
-    align-items: center;
+.product_Management_check .product_Management_check_content {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
-.product_Management_check_Sort{
-    margin-left: 50px;
+.product_Management_check_Sort {
+  margin-left: 10px;
 }
 
-.product_Management_content{
-    background-color: #fff;
+.product_Management_check_Sort span {
+  color: var(--primary_color);
+  font-size: 13px;
 }
 
-.product_Management_content_item{
-    border-bottom: 1px solid #C5DEFD;
+.product_Management_content {
+  background-color: #fff;
 }
 
-.product_Management_content_item_img{
-    position: relative;
-    overflow: hidden;
+.product_Management_content_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.product_Management_content_item_img img{
-    width: 100%;
+.product_Management_content_paging {
+  margin: 0 20px;
 }
 
-.product_Management_content_item_title{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.product_Management_content_paging span {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px 6px;
+  margin: 0 2px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.product_Management_content_item_title h4{
-    font-size: 20px;
-    cursor: pointer;
+.product_Management_content_paging span:hover {
+  background-color: #c5defd;
 }
 
-.product_Management_content_item_title h4:hover{
-    color: var(--primary_color);
+.paging_active {
+  background-color: #c5defd;
 }
 
-.product_Management_content_item_title p{
-    font-size: 14px;
-    color: #333;
+.product_Management_content_item {
+  border-bottom: 1px solid #c5defd;
+  padding: 20px 0 10px 0;
 }
 
-.product_Management_content_item_title span{
-    font-size: 20px;
-    color: var(--primary_color);
+.product_Management_content_item_img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 160px;
+  border: 1px solid #ccc;
 }
 
-.product_Management_content_item_price{
-    display: flex;
-    align-items: center;
+.product_Management_content_item_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.product_Management_content_item_price span{
-    color: var(--primary_color);
-    font-size: 22px;
+.product_Management_content_item_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.add_view{
-    color: #fff;
-    width: 30px;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    border: none;
-    height: 30px;
-    font-size: 12px;
-    background: var(--primary_color);
-    transform: translateX(-50%);
-    transform: translateY(-50%);
-    top: -30px;
-    transition: all 0.3s ease;
+.product_Management_content_item_title h4 {
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.add_view:hover{
-    color: var(--primary_color);
-    background-color: #fff;
-    border: 1px solid var(--primary_color);
-    cursor: pointer;
+.product_Management_content_item_title h4:hover {
+  color: var(--primary_color);
 }
 
-.product_Management_content_item_img:hover .add_view{
-    top: 50%;
+.product_Management_content_item_title p {
+  font-size: 14px;
+  color: #333;
+}
+
+.product_Management_content_item_title span {
+  font-size: 20px;
+  color: var(--primary_color);
+}
+
+.product_Management_content_item_price {
+  display: flex;
+  align-items: center;
+}
+
+.product_Management_content_item_price span {
+  color: var(--primary_color);
+  font-size: 22px;
+}
+
+.add_view {
+  color: #fff;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  border: none;
+  height: 30px;
+  font-size: 12px;
+  background: var(--primary_color);
+  transform: translate(-50%, -50%);
+  top: -30px;
+  transition: all 0.3s ease;
+}
+
+.add_view:hover {
+  color: var(--primary_color);
+  background-color: #fff;
+  border: 1px solid var(--primary_color);
+  cursor: pointer;
+}
+
+.product_Management_content_item_img:hover .add_view {
+  top: 50%;
 }
 
 /*--------------------------------------- CSS phần chi tiết từng sản phẩm ------------------------------*/
-.product_Detail_content form .col-4 img{
-    width: 100%;
+.product_Detail_content .col-4 {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 400px;
+  margin: 20px 0;
 }
 
-.product_Detail_content form .col-4 span{
-    color: #999;
+.product_Detail_content .col-4 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
 }
 
-.product_Detail_content form .col-8{
-    padding: 20px;
+.product_Detail_content .col-4 span {
+  color: #999;
 }
 
-.product_Detail_content form .form-group{
-    display: flex;
-    align-items: center;
+.product_Detail_content .col-8 {
+  padding: 20px;
 }
 
-.product_Detail_content form .form-group label{
-    width: 150px;
-    font-size: 16px;
-    font-weight: normal;
+.product_Detail_content .form-group {
+  display: flex;
+  align-items: center;
 }
 
-.product_Detail_content form .form-group input,
-.product_Detail_content form .form-group textarea{
-    width: 400px;
-    outline: none;
+.product_Detail_content .form-group label {
+  width: 150px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
-.product_price_now,.product_quantity{
-    color: var(--primary_color);
-    font-size: 18px;
+.product_Detail_content .form-group input,
+.product_Detail_content .form-group textarea {
+  width: 400px;
+  outline: none;
 }
 
-.product_Detail_content form .form-group input{
-    height: 30px;
-    padding: 0 10px;
+.product_price_now,
+.product_quantity {
+  color: var(--primary_color);
+  font-size: 18px;
 }
 
-.product_Detail_content form .form_btn{
-    width: 100%;
-    display: flex;
-    justify-content: right;
+.product_Detail_content .form-group input {
+  height: 30px;
+  padding: 0 10px;
 }
 
-.product_Detail_content form .form_btn button,.product_Detail_comeback button,
-.bill_Management_container_search form button,.add_product_content_btn button{
-    background-color: var(--primary_color);
-    color: #fff;
-    outline: none;
-    border: none;
-    padding: 5px 20px;
-    margin: 20px 170px ;
+.product_Detail_content .form_btn {
+  width: 100%;
+  display: flex;
+  justify-content: right;
 }
 
-.product_Detail_content form .form_btn button:hover,.product_Detail_comeback button:hover,
-.bill_Management_container_search form button:hover,.add_product_content_btn button:hover{
-    background-color: #C5DEFD;
-    color: #000;
+.product_Detail_content .form_btn button,
+.product_Detail_comeback button,
+.bill_Management_container_search button,
+.add_product_content_btn button {
+  background-color: var(--primary_color);
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 5px 20px;
+  margin: 20px 170px;
+}
+
+.product_Detail_content .form_btn button:hover,
+.product_Detail_comeback button:hover,
+.bill_Management_container_search button:hover,
+.add_product_content_btn button:hover {
+  background-color: #c5defd;
+  color: #000;
 }
 
 .product_Detail_content_statistical li {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
 .product_Detail_content_statistical li span:nth-child(1) {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .product_Detail_content_statistical li span:nth-child(2) {
-    color: var(--primary_color);
-    font-size: 18px;
+  color: var(--primary_color);
+  font-size: 18px;
 }
 
-.product_Detail_comeback{
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    justify-content: right;
+.product_Detail_content .row .col-8 .form-group .label span {
+  color: var(--primary_color);
+  font-size: 13px;
 }
 
-.product_Detail_comeback button{
-    margin-right: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.product_Detail_comeback {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: right;
+}
+
+.product_Detail_comeback button {
+  margin-right: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /*--------------------------------------- CSS giao diện quản lý hóa đơn ------------------------------*/
-.bill_Management_container_search form {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.bill_Management_container_search_content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.bill_Management_container_search form .form-group {
-    margin: 0;
+.bill_Management_container_search_content .form-group span {
+  color: var(--primary_color);
+  margin-left: 10px;
+  font-size: 13px;
 }
 
-.bill_Management_container_content_item_date{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+.bill_Management_container_search_content button {
+  margin: 0;
 }
 
-.bill_Management_container_content_item_date span:nth-child(1){
-    font-size: 18px;
+.bill_Management_container_search .form-group {
+  margin: 0;
 }
 
-.bill_Management_container_content_item_date span:nth-child(2){
-    color: var(--primary_color);
+.bill_Management_container_content_item_date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 
-.bill_product{
-    height: 150px;
-    overflow: hidden;
-    animation: billAni linear 0.3s ease;
-    transition: all 0.3s ease;
+.bill_Management_container_content_item_date span:nth-child(1) {
+  font-size: 18px;
 }
 
-.bill_product_item{
-    margin-top: 5px !important;
+.bill_Management_container_content_item_date span:nth-child(2) {
+  color: var(--primary_color);
 }
 
-.bill_product_item .col-2 img{
-    width: 100%;
+.bill_product {
+  height: 150px;
+  overflow: hidden;
+  animation: billAni linear 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.bill_product_item .col-8{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.bill_product_item {
+  margin-top: 5px !important;
 }
 
-.bill_product_item .col-8 h3{
-    font-size: 20px;    
+.bill_product_item .col-2 img {
+  width: 100%;
 }
 
-.bill_product_item .col-8 p{
-    font-size: 16px;
-    color: #999;
+.bill_product_item .col-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.bill_product_item .col-8 h3:hover{
-    cursor: pointer;
-    color: var(--primary_color);
+.bill_product_item .col-8 h3 {
+  font-size: 20px;
 }
 
-.bill_product_item .col-2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    color: var(--primary_color);
+.bill_product_item .col-8 p {
+  font-size: 16px;
+  color: #999;
 }
 
-.bill_Management_container_content_item_add{
-    width: 100%;
-    margin: 20px 0 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bill_product_item .col-8 h3:hover {
+  cursor: pointer;
+  color: var(--primary_color);
 }
 
-.bill_Management_container_content_item_add .line{
-    width: 200px;
-    height: 1px;
-    background-color: rgb(184, 182, 182);
+.bill_product_item .col-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: var(--primary_color);
 }
 
-.bill_Management_container_content_item_add span{
-    font-size: 16px;
-    margin: 0 20px;
+.bill_Management_container_content_item_add {
+  width: 100%;
+  margin: 20px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.bill_Management_container_content_item_add span:hover{
-    color: var(--primary_color);
-    cursor: pointer;
+.bill_Management_container_content_item_add .line {
+  width: 200px;
+  height: 1px;
+  background-color: rgb(184, 182, 182);
 }
 
-.bill_Management_container_content_item_total{
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.bill_Management_container_content_item_add span {
+  font-size: 16px;
+  margin: 0 20px;
 }
 
-.bill_Management_container_content_item_total span{
-    margin-right:40px;
+.bill_Management_container_content_item_add span:hover {
+  color: var(--primary_color);
+  cursor: pointer;
 }
 
-.bill_Management_container_content_item_total span:nth-child(2){
-    font-size: 18px;
+.bill_Management_container_content_item_total {
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
-.total_money_bill{
-    color: var(--primary_color);
-    font-size: 20px;
+.bill_Management_container_content_item_total span {
+  margin-right: 40px;
+}
+
+.bill_Management_container_content_item_total span:nth-child(2) {
+  font-size: 18px;
+}
+
+.total_money_bill {
+  color: var(--primary_color);
+  font-size: 20px;
 }
 
 @keyframes billAni {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /*--------------------------------------- CSS giao diện Thêm Sản Phẩm ------------------------------*/
-.add_product_content .row .col-4 img{
-    width: 100%;
+.add_product_content .row .col-4 span {
+  color: #999;
 }
 
-.add_product_content .row .col-4 span{
-    color: #999;
+.add_product_content .row .col-8 {
+  margin-top: 30px;
 }
 
-.add_product_content .row .col-8{
-    margin-top: 30px;
+.add_product_content .row .col-8 .form-group {
+  display: flex;
+  align-items: center;
 }
 
-.add_product_content .row .col-8 .form-group{
-    display: flex;
-    align-items: center;
-}
-
-.add_product_content .row .col-8 .form-group label{
-    width: 300px;
-    font-size: 18px;
-    font-weight: normal;
+.add_product_content .row .col-8 .form-group label {
+  width: 300px;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .add_product_content .row .col-8 .form-group input,
 .add_product_content .row .col-8 .form-group select,
-.add_product_content .row .col-8 .form-group textarea{
-    width: 300px;
-    background-color: #EFEFEF;
-    border: none;
-    outline: none;
-    padding: 0 10px;
-    font-size: 15px;
+.add_product_content .row .col-8 .form-group textarea {
+  width: 300px;
+  background-color: #efefef;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 15px;
 }
 
 .add_product_content .row .col-8 .form-group input,
-.add_product_content .row .col-8 .form-group select{
-    height: 35px;
+.add_product_content .row .col-8 .form-group select {
+  height: 35px;
 }
 
-.add_product_content_btn{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.add_product_content_btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-
-
-/*-------------------------------- Quản lý các thông tin ---------------------*/
-/*--- Khách hàng --*/
-/* .customer_Management{
-    display: block;
+.add_product_content .row .col-4 span:last-child,
+.add_product_content .row .col-8 .form-group span {
+  color: var(--primary_color);
+  margin-left: 20px;
+  font-size: 12px;
 }
 
-.customer_Management_check{
-    display: block;
+.add_product_img {
+  margin: 30px 0 20px 0;
+  border: 1px solid #666;
+  width: 100%;
+  height: 320px;
 }
 
-.customer_Management_content{
-    display: block;
-} */
-
-/*-- Thông tin khách hàng */
-/* .customer_Information{
-    display: none;
-} */
-
-
-/*-------- quản lý sản phẩm ------*/
-.product_Management{
-    display: block;
+.add_product_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
 }
 
-.product_Management_container{
-    display: block;
+.more_see {
+  height: auto;
 }
 
-.product_Management_content_Birthday{
-    display: block;
+.product_active {
+  background-color: #c5defd;
+  color: #000;
 }
 
-
-/*-------- Quản lý hóa đon ----*/
-/* .bill_Management{
-    display: none;
-} */
-
-
-/*------ Phần thêm sản phẩm ---*/
-/* .add_product{
-    display: none;
-} */
-
-
-
-.more_see{
-    height: auto;
+.active {
+  background-color: #c5defd;
+  border-radius: 10px;
+  color: #000;
 }
 
-.product_active{
-    background-color: #C5DEFD;
-    color: #000;
+.show {
+  display: block;
 }
 
-.active{
-    background-color: #C5DEFD;
-    border-radius: 10px;
-    color: #000;
+.hide {
+  display: none;
 }
-
-.show{
-    display: block;
-}
-
-.hide{
-    display: none;
-}
-

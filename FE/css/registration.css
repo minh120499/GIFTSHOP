@@ -3,41 +3,25 @@
 @import '../css/header.css';
 @import '../css/responsive/rpHeader.css';
 
-/*----------------------------------------------Header --------------------------------*/
-header {
-  background-color: #fff;
-  height: 80px;
-  width: 100%;
-}
+/*---------------------------------------------- Bread-crumb --------------------------------*/
 
-header .container,
-.header_left,
-.header_left li:nth-child(2),
-.header_right {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.bread-crumb {
+  margin: 30px 0;
 }
-
-header .container {
-  justify-content: space-between;
+.bread-crumb ul li {
+  display: inline;
+  margin-right: 10px;
+  text-transform: uppercase;
 }
-
-.header_left li:nth-child(2) span {
-  margin-left: 30px;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: cursive;
+.bread-crumb ul li a,
+.bread-crumb ul li i,
+.bread-crumb ul li span {
+  color: #7d7d7d;
+  text-decoration: none;
+  font-weight: 500;
 }
-
-.header_right {
-  justify-content: right;
-}
-
-.header_right span {
-  font-size: 15px;
-  color: var(--primary_color) !important;
+.bread-crumb ul li a:hover {
+  color: #d7182a;
 }
 
 /*---------------------------------------------- Form đăng ký Registration  --------------------------------*/

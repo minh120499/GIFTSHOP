@@ -140,12 +140,12 @@ function delProduct() {
 // Validate Form dữ liệu người dùng
 const formInfo = document.querySelector('#form-info');
 const nextBtn = formInfo.parentElement.querySelector('.btn-next1');
-const listInput = ['#name', '#lastname', '#phone', '#email', '#address'];
+const listInput = ['#firstname', '#lastname', '#phone', '#email', '#address'];
 var parentEles = Array.from(formInfo.querySelectorAll('.form-ctrl'));
 listInput.forEach((input) => {
   validateForm.sanitizeValue(input);
 });
-validateForm.uppercase('#name');
+validateForm.uppercase('#firstname');
 validateForm.uppercase('#lastname');
 nextBtn.addEventListener('click', (e) => {
   listInput.forEach((input) => {
@@ -201,10 +201,33 @@ confirmBtn.addEventListener('click', (e) => {
     finalStep.classList.add('active');
     setTimeout(() => {
       alert('Your order is confirmed!!!');
+      $.post(
+        'http://localhost/BE/Checkout/Checkout.php',
+        {
+          userid: 1,
+          orderid: 2,
+          name: 3,
+          email: 3,
+          phone: 3,
+          address: 3,
+          payment: 'ssss',
+        },
+        function (data) {
+          // console.log(data);
+          // var dataneh = $.parseJSON(data)[0];
+        }
+      );
       window.location = 'http://127.0.0.1:5500/FE/index.html';
     }, 1000);
   }
 });
+
+
+var firstNameVal = document.querySelector('#firstname').value;
+var lastNameVal = document.querySelector('#lastname').value;
+var emailVal = document.querySelector('#email').value;
+var phoneVal = document.querySelector('#phone').value;
+var addressVal = document.querySelector('#address').value;
 
 // Đổ dữ liệu người dùng
 $.post(
@@ -213,8 +236,13 @@ $.post(
     userid: 3,
   },
   function (data) {
-    var dataneh = $.parseJSON(data)[0];
-    console.log(dataneh);
+    var dataUser = $.parseJSON(data)[0];
+    firstNameVal = dataUser.firstname;
+    lastNameVal = dataUser.lastname;
+    emailVal = dataUser.email;
+    phoneVal = dataUser.phone.split('-').join('');
+    addressVal = dataUser.address;
+    console.log(dataUser);
   }
 );
 
