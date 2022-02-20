@@ -45,12 +45,17 @@ function getDataFromServer() {
     for (let i = 0; i < 5 - Math.round(product[0].rating); ++i) {
       html += `<i class="fa fa-star"></i>`;
     }
-    html += `<span style='margin-left: 25px; font-weight:300; font-size: 12px'><i>${product[0].view} views</i></span>`;
-    html += `</div>
-                  <div class="prices">
-                      <span class="old-price">$ ${product[0].price}</span>
-                      <span class="new-price">$ ${product[0].price}</span>
-                  </div>`;
+    html += `<span style='margin-left: 25px; font-weight:300; font-size: 12px'><i>${product[0].view} views</i></span></div>`;
+    if (product[0].sale == "") {
+      html += `<div class="prices">
+                        <span class="new-price">$ ${product[0].price}</span>
+                    </div>`;
+    } else {
+      html += `<div class="prices">
+                        <span class="old-price">$ ${product[0].price}</span>
+                        <span class="new-price">$ ${product[0].price * (100 - product[0].sale) / 100}</span>
+                    </div>`;
+    }
     if (parseInt(product[0].quantity) > parseInt(product[0].sold)) {
       html += `<div class="status green">In Stock</div>`;
     } else {
@@ -110,10 +115,10 @@ function getDataFromServer() {
               </small>
               <div class="download">
                   <a href="http://localhost/document/${product[0].name
-                    .split(' ')
-                    .join(
-                      '%20'
-                    )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
+        .split(' ')
+        .join(
+          '%20'
+        )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
               </div>
           </div>
       </div>`;
@@ -143,12 +148,18 @@ function getDataFromServer() {
                                         <div class="box-detail__top">
                                             <a href="#" class="product-link product-name-link" productid="${item.id}">${item.name}</a>
                                         </div>
-                                        <div class="box-detail__bottom">
-                                            <div class="prices">
-                                                <span class="old-price">$ ${item.price}</span>
-                                                <span class="new-price">$ ${item.price}</span>
-                                            </div>
-                                            <div class="buttons">
+                                        <div class="box-detail__bottom"></div>`
+          if (item.sale == "") {
+            html += `<div class="prices">
+                        <span class="new-price">$ ${item.price}</span>
+                    </div>`;
+          } else {
+            html += `<div class="prices">
+                        <span class="old-price">$ ${item.price}</span>
+                        <span class="new-price">$ ${product[0].price * (100 - item.sale) / 100}</span>
+                    </div>`;
+          }
+          html += `<div class="buttons">
                                                 <div class="addcart">
                                                     <button type="submit">Add to cart</button>
                                                 </div>`;
@@ -196,11 +207,19 @@ function RenderBestSale() {
                       <a href="./product.html" class="product-name-link" productid="${item.id}"><img src="${item.src}" width="100px" height="100px"
                               alt="" class="thumbnail"></a>
                       <div class="item-info">
-                          <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>
-                          <div class="prices">
-                              <span class="new-price">$ ${item.price}</span>
-                          </div>
-                      </div>
+                          <a href="./product.html" productid="${item.id}" title="${product.name}" class="product-link product-name-link">${item.name}</a>`
+        if (item.sale == "") {
+          html += `
+          <div class="prices">
+            <span class="new-price">$ ${item.price}</span>
+          </div>`;
+        } else {
+          html += `
+          <div class="prices">
+            <span class="new-price">$ ${item.price * (100 - item.sale) / 100}</span>
+          </div>`;
+        }
+        html += `</div>
                   </div>
               </li>`;
       });
@@ -303,7 +322,6 @@ function abc() {
   wl.forEach((item) => {
     item.onclick = (e) => {
       let data = new FormData();
-      console.log(123);
       data.append('userid', localStorage.getItem('userid'));
       data.append('productid', e.target.getAttribute('productid'));
       if (item.className.includes('clicked-wishlist')) {
