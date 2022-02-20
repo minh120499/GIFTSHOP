@@ -133,6 +133,7 @@ function delProduct() {
         }
       );
       updateCart();
+      multiPageItem();
     });
   }
 }

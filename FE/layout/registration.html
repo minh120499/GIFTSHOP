@@ -35,6 +35,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
 
     <link rel="stylesheet" href="../CSS/registration.css" />
   </head>
@@ -58,79 +63,93 @@
       </div>
 
       <!-- Form đăng ký Registration -->
-      <div class="row content">
-        <div class="col-6 Information">
-          <h2>User Information</h2>
-          <div class="form-group">
-            <label for="">FirstName : <span id="firstNameError"></span></label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              name="firstName"
-            />
+      <div class="container">
+        <div class="row content">
+          <div class="col-6 Information">
+            <h2>User Information</h2>
+            <div class="form-group">
+              <label for=""
+                >FirstName : <span id="firstNameError"></span
+              ></label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                name="firstName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">LastName : <span id="lastNameError"></span></label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                name="lastName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Address : <span id="addressError"></span></label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Birthday : <span id="birthdayError"></span></label>
+              <input type="date" id="birthday" />
+            </div>
           </div>
-          <div class="form-group">
-            <label for="">LastName : <span id="lastNameError"></span></label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              name="lastName"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Address : <span id="addressError"></span></label>
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              name="address"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Birthday : <span id="birthdayError"></span></label>
-            <input type="date" id="birthday" />
-          </div>
-        </div>
-        <div class="col-6 Registration">
-          <h2>Registration</h2>
-          <div class="form-group">
-            <label for="">Avatar :</label>
-            <input
-              type="file"
-              class="form-control-file border"
-              name="avatar"
-              id="avatar"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Email : <span id="emailError"></span></label>
-            <input type="email" class="form-control" id="email" name="email" />
-          </div>
-          <div class="form-group">
-            <label for="">Phone number : <span id="phoneError"></span></label>
-            <input type="number" class="form-control" id="phone" name="phone" />
-          </div>
-          <div class="form-group">
-            <label for="">Password : <span id="passwordError"></span></label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            />
-          </div>
+          <div class="col-6 Registration">
+            <h2>Registration</h2>
+            <div class="form-group">
+              <label for="">Avatar :</label>
+              <input
+                type="file"
+                class="form-control-file border"
+                name="avatar"
+                id="avatar"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Email : <span id="emailError"></span></label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Phone number : <span id="phoneError"></span></label>
+              <input
+                type="number"
+                class="form-control"
+                id="phone"
+                name="phone"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Password : <span id="passwordError"></span></label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              />
+            </div>
 
-          <div class="form_check_btn">
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onclick="SubmitRegistration();"
-            >
-              Submit
-            </button>
+            <div class="form_check_btn">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onclick="SubmitRegistration();"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>

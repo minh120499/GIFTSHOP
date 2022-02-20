@@ -25,6 +25,7 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
@@ -47,7 +48,7 @@
                 type="text"
                 class="form-control"
                 id="username"
-                placeholder="Email/Phone Number"
+                placeholder="Phone Number"
                 name="username"
               />
             </div>
@@ -60,8 +61,8 @@
                 name="password"
               />
             </div>
-            <div class="form-group login_form_item">
-              <span class="loginError"></span>
+            <div class="loginError_item">
+              <span id="loginError"></span>
             </div>
             <button class="btn btn-primary" onclick="Loginform();">
               Login
@@ -98,7 +99,7 @@
           </div>
           <div class="login_form_bot">
             <span>Do you know Merry</span>
-            <a href="./registration.html"> Register now </a>
+            <a href="../layout/registration.html"> Register now </a>
           </div>
         </div>
       </div>
