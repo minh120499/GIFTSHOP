@@ -2,43 +2,19 @@
 require_once '../ConnectDataBase/connect.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
-
+$password = $_POST['password'];
+// $password = password_hash($password, PASSWORD_DEFAULT);
 $stmt = $conn->prepare("SELECT * FROM `administrator` WHERE `account` = :username AND `password` = :password ;");
 $stmt->bindParam('username', $_POST['username']);
-$stmt->bindParam('password', $_POST['password']);
+$stmt->bindParam('password', $password);
 $stmt->execute();
-if($stmt->rowCount() == 1) {
+if ($stmt->rowCount() == 1) {
     die("Welcome Admin");
 }
 
-$stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = :username AND `password` = :password ;");
+$stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = :username AND `password` = :password");
 $stmt->bindParam('username', $_POST['username']);
-$stmt->bindParam('password', $_POST['password']);
+$stmt->bindParam('password', $password);
 $stmt->execute();
-
-$data = [];
 $count = $stmt->rowCount();
-
-if ($count == 0) {
-    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = :username;");
-    $stmt->bindParam('username', $username);
-    $stmt->execute();
-
-    $count = $stmt->rowCount();
-    $count == 1 ? die("Password Incorrect") : die("Invalid Username");
-}
-
-foreach ($stmt->fetchAll() as $key => $value) {
-    $data[] = array(
-        'id' => $value['id'],
-        'fullname' => $value['firstname'],
-        'lastname' => $value['lastname'],
-        'address' => $value['address'],
-        'email' => $value['email'],
-        'phone' => $value['phone'],
-        'avatar' => $value['avatar'],
-        'birthday' => $value['birthday']
-    );
-}
-
-die("Login Success");
+$count == 0 ? die("Invalid Username") : die("Login Success");

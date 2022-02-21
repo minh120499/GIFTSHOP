@@ -138,6 +138,7 @@ function renderContent(listProducts = 'empty', productsPerPage = 'empty') {
       } else {
         previousBtn.disabled = false;
       }
+      console.log(listProducts)
       productsPerPage == 'empty' ? '' : (listProducts = productsPerPage);
       listProducts.forEach((item, i) => {
         if (i >= start && i < end) {
@@ -482,14 +483,14 @@ if (localStorage.getItem('brandid')) {
   renderProductsByBrands(localStorage.getItem('brandid'));
   setTimeout(() => {
     viewButton();
+    // localStorage.removeItem('brandid');
   }, 1000);
-  localStorage.removeItem('brandid');
 } else if (localStorage.getItem('cateid')) {
   renderProductsByCategories(localStorage.getItem('cateid'));
   setTimeout(() => {
     viewButton();
+    // localStorage.removeItem('cateid');
   }, 1000);
-  localStorage.removeItem('cateid');
 } else {
   asyncCall();
 }

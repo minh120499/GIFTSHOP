@@ -935,6 +935,7 @@ function renderBills() {
     .get('http://localhost/BE/Admin/GetOrders.php')
     .then((e) => e.data)
     .then((e) => {
+      console.log(e)
       var x = [];
       var y = [];
       var n = [];

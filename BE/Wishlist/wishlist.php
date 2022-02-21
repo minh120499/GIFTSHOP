@@ -1,15 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
-require './conn.php';
-$a = new Database();
-$cnn = $a->connect();
+require_once '../ConnectDataBase/connect.php';
 $stmt = $conn->prepare("SELECT `id` FROM `users` WHERE `username` = :userid ");
 $stmt->bindParam('userid', $_POST['userid']);
 $stmt->execute();
 $id = $stmt->fetch();
 $userid = $id['id'] * 1;
-$stmt = $cnn->prepare("SELECT `products`.`id`,`products`.`name`,`price`,`quantity`,`src` FROM `products`
+$stmt = $conn->prepare("SELECT `products`.`id`,`products`.`name`,`price`,`quantity`,`src` FROM `products`
                         INNER JOIN `users`
                         INNER JOIN `wishlists`
                         INNER JOIN `productimg`
