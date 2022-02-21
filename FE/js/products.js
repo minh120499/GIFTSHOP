@@ -261,27 +261,6 @@ function clickBtnChoosePage(e) {
     behavior: 'smooth',
   });
 }
-// Hiển thị dữ liệu ra theo loại sản phẩm
-function RenderCategories() {
-  axios
-    .get('http://localhost/BE/DataList/Categories.php')
-    .then((e) => e.data)
-    .then((e) => {
-      let html = '';
-      e.forEach((item) => {
-        html += `<li cateid="${item.id}" class="${item.name}"><span>${item.name}</span></li>`;
-      });
-      document.querySelector('.SideBar_Category').outerHTML = html;
-    });
-  setTimeout(() => {
-    let dom = document.querySelectorAll('li[cateid]');
-    dom.forEach((item) => {
-      item.onclick = () => {
-        renderProductsByCategories(item.getAttribute('cateid'));
-      };
-    });
-  }, 1000);
-}
 
 //Lay va in ra brand
 function RenderBrand() {
@@ -408,8 +387,10 @@ function viewButton() {
                 .post('http://localhost/be/Checkout/AddToCart.php', data)
                 .then((e) => e.data)
                 .then((e) => {
-                  console.log(e)
-                  e == 'Add Success' ? alertMess(e) : alertMess('Error', 'Error');
+                  console.log(e);
+                  e == 'Add Success'
+                    ? alertMess(e)
+                    : alertMess('Error', 'Error');
                 });
               return;
             }
@@ -476,7 +457,6 @@ axios
 
 RenderBestSale();
 RenderBrand();
-RenderCategories();
 
 if (localStorage.getItem('brandid')) {
   renderProductsByBrands(localStorage.getItem('brandid'));
