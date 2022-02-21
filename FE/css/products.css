@@ -82,12 +82,6 @@
   cursor: pointer;
 }
 
-/* .SideBar_content>li a{
-    font-size: 13px;
-    color: var(--text_color);
-    font-weight: bold;
-} */
-
 .SideBar_content > li:hover span {
   cursor: pointer;
   color: var(--primary_color);
@@ -96,11 +90,6 @@
 .SideBar_content > li span {
   font-size: 13px;
 }
-
-/* .SideBar_price li:nth-child(2) input{
-    width: 100%;
-    background-color: var(--primary_color);
-} */
 
 .SideBar_price div:nth-child(2) input {
   width: 100px;
