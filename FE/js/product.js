@@ -13,7 +13,6 @@ var totalquantity = 1;
 function getDataFromServer() {
   //Render chi tiết sản phẩm
   $.ajax('http://localhost/BE/DataList/Product.php').done(function (data) {
-    // console.log(data);
     $.parseJSON(data).map((item) => {
       if (item.id == localStorage.getItem('productid')) {
         product = [...product, ...[item]];
@@ -54,9 +53,8 @@ function getDataFromServer() {
     } else {
       html += `<div class="prices">
                         <span class="old-price">$ ${product[0].price}</span>
-                        <span class="new-price">$ ${
-                          (product[0].price * (100 - product[0].sale)) / 100
-                        }</span>
+                        <span class="new-price">$ ${(product[0].price * (100 - product[0].sale)) / 100
+        }</span>
                     </div>`;
     }
     if (parseInt(product[0].quantity) > parseInt(product[0].sold)) {
@@ -117,10 +115,10 @@ function getDataFromServer() {
               </small>
               <div class="download">
                   <a href="http://localhost/document/${product[0].name
-                    .split(' ')
-                    .join(
-                      '%20'
-                    )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
+        .split(' ')
+        .join(
+          '%20'
+        )}.docx" class="download-btn"><i class="fas fa-arrow-alt-to-bottom" style="margin-right: 10px;"></i>More Info</a>
               </div>
           </div>
       </div>`;
@@ -159,9 +157,8 @@ function getDataFromServer() {
           } else {
             html += `<div class="prices">
                         <span class="old-price">$ ${item.price}</span>
-                        <span class="new-price">$ ${
-                          (product[0].price * (100 - item.sale)) / 100
-                        }</span>
+                        <span class="new-price">$ ${(product[0].price * (100 - item.sale)) / 100
+              }</span>
                     </div>`;
           }
           html += `<div class="buttons">
@@ -221,8 +218,7 @@ function RenderBestSale() {
         } else {
           html += `
           <div class="prices">
-            <span class="new-price">$ ${
-              (item.price * (100 - item.sale)) / 100
+            <span class="new-price">$ ${(item.price * (100 - item.sale)) / 100
             }</span>
           </div>`;
         }
@@ -338,6 +334,7 @@ function addDOMEvent() {
   let wl = document.querySelectorAll('.wishlist');
   wl.forEach((item) => {
     item.onclick = (e) => {
+      console.log(e)
       let data = new FormData();
       data.append('userid', localStorage.getItem('userid'));
       data.append('productid', e.target.getAttribute('productid'));
@@ -394,11 +391,10 @@ function addDOMEvent() {
         axios
           .post('http://localhost/be/Comment/Postcomment.php', data)
           .then((e) => {
-            console.log(e);
             if (e.data == 'Comment success') {
               alertMess(e.data);
             }
-          });
+          })
       });
     }
   });
@@ -408,7 +404,7 @@ function addDOMEvent() {
     let data = new FormData();
     data.append('productid', localStorage.getItem('productid'));
     axios.post('http://localhost/be/Comment/GetComment.php', data).then((e) => {
-      console.log(e.data);
+      console.log(e)
       if (e.data !== []) {
         document.querySelector('.no-review').style.display = 'none';
         const reviews = document.querySelector('.reviews');
@@ -418,7 +414,6 @@ function addDOMEvent() {
                         <div class="username-wrapper">
                         <span class="username">${e.data[i].firstname} ${e.data[i].lastname}</span>
                         <div class="rating">`;
-          console.log(e.data[i].rating);
           for (let j = 0; j < parseInt(e.data[i].rating); ++j) {
             html += `<i class="fa fa-star checked"></i>`;
           }

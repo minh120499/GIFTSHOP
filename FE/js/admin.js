@@ -1271,13 +1271,13 @@ var addProduct_btn = document.querySelector('.addProduct_btn');
 // Tải dữ liệu lên khi load trang
 function loadAdmin() {
   hideContentRight();
-  // $('.customer_Management').show();
-  // customer_btn.classList.add('active');
-  renderContentCustomer();
+  $('.customer_Management').show();
+  customer_btn.classList.add('active');
   renderProductManagement();
-  bill_btn.classList.add('active');
-  $('.bill_Management').show();
+  // customer_btn.add('active');
+  // // $('.customer_btn').show();
   renderBills();
+  renderContentCustomer();
 }
 
 customer_btn.addEventListener('click', function () {

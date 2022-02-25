@@ -14,8 +14,6 @@ function Loginform() {
 
   // Sau khi đăng thông tin được điền đầy đủ
   if (username && password) {
-    console.log(username);
-    console.log(password);
     // Post dữ liệu lên
     let data = new FormData();
     data.append('username', username);
@@ -28,10 +26,12 @@ function Loginform() {
         if (e.data == 'Login Success') {
           // Đẩy lên localstorage
           localStorage.setItem('userid', username);
+          window.history.back();
+        } else if (e.data == 'Welcome Admin') {
+          window.location = '../admin.html'
         } else {
           return false;
         }
       });
-    window.history.back();
   }
 }

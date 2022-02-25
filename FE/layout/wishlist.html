@@ -80,6 +80,7 @@
               axios
                 .post('http://localhost/BE/Wishlist/wishlist.php', data)
                 .then((e) => {
+                  console.log(e)
                   return e.data;
                 })
                 .then((e) => {
@@ -113,12 +114,11 @@
                       axios
                         .post('http://localhost/BE/Wishlist/delete.php', form)
                         .then((e) => {
-                          alertMess(e.data)
+                          // alertMess(e.data)
                           this.parentNode.parentNode.innerHTML = '';
                           axios
                             .post(
-                              'http://localhost/BE/Wishlist/wishlist.php',
-                              data
+                              'http://localhost/BE/Wishlist/wishlist.php', data
                             )
                             .then((e) => e.data)
                             .then((e) => {
